@@ -1,0 +1,27 @@
+footer {
+    margin-top: 5%;
+}
+
+.social-icon {
+    font-size: 20px;
+}
+@media (max-width:767px) {
+ .footer-body{
+    text-align: right;
+ }
+    
+}
+@media (min-width: 768px){
+
+.text-md-start {
+    text-align: right !important;
+}
+}
+.me-3{
+    margin-left: 10px;
+}
+.footer-body,
+.text-muted{
+background-color: #444A54 !important;
+color: #D0D0D0;
+}

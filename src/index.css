@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  font-family: "Changa-Regular" ,sans-serif ;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: "Changa-Regular";
+  src: url(/src/assets/fonts/static/Changa-Regular.ttf);
+}
+@font-face {
+  font-family: "Changa-SemiBold";
+  src: url(/src/assets/fonts/static/Changa-SemiBold.ttf);
+}
+@font-face {
+  font-family: "Changa-ExtraBold";
+  src: url(/src/assets/fonts/static/Changa-ExtraBold.ttf);
+}
+@font-face {
+  font-family: "Changa-Light";
+  src: url(/src/assets/fonts/static/Changa-Light.ttf);
+}
+
