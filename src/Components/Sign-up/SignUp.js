@@ -2,25 +2,28 @@ import React, { useState } from 'react'
 import style from './signUp.module.css'
 import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
-import Form from 'react-bootstrap/Form';
+
 export default function SignUp() {
-  const [value, setValue] = useState()
+
+  const validname = /^[A-Za-z]+$/;
   const validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  const validPass = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
   const [formData, setFormData] = useState({
-    username: '',
+    userName: '',
     email: '',
+    phone: '',
     password: '',
     confirmPassword: '',
+
   })
 
+  const { userName, email, phone, password, confirmPassword } = formData
   const [formError, setFormError] = useState({})
 
-  const onChangeHandler = (event) => {
+  const onChangeHandler = e => {
 
-    setFormData(() => ({
-      ...formData,
-      [event.target.name]: event.target.value
-    }))
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+    console.log(formData)
 
   }
 
@@ -29,16 +32,23 @@ export default function SignUp() {
     e.preventDefault()
     let err = {}
 
-    if (formData.username === '') {
-      err.username = 'Please Fill Out This Field'
+    if (formData.userName === '') {
+      err.userName = 'Your Name is required';
+    } else if (!validname.test(userName)) {
+      err.userName = 'Your Name must be only string without spaces';
     }
-    if (formData.email !== validEmail) {
-      err.email = "Invalid Email"
+    if (formData.email === '') {
+      err.email = "Email is required";
+    } else if (!validEmail.test(email)) {
+      err.email = "Invalid Email";
     }
     if (formData.password === '') {
-      err.password = 'Please Fill Out This Field'
+      err.password = "password is required"
+    } else if (!validPass.test(password)) {
+      err.password = 'Minimum eight characters, at least one letter and one numbe';
+
     }
-    if (formData.confirmPassword === formData.password) {
+    if (formData.confirmPassword !== formData.password) {
       err.confirmPassword = "Confirm Password does not match"
     }
     setFormError({ ...err })
@@ -51,52 +61,45 @@ export default function SignUp() {
           <p className={style.signup__para}>Work for charity ? <a href='/charitySign-up'>Sign up for charity account</a></p>
           <hr />
 
-          <Form onSubmit={onSubmitHandler} >
+          <form onSubmit={onSubmitHandler} >
             <div className={style.userName}>
               <div class={style.inputGroupp}>
-                <input required="" type="text" name="text" autocomplete="off" className={style.inputt} onChange={onChangeHandler} value={formData.username} />
-                <label class={style.userLabell}> Your Full Name</label>
-                <div className={`${style.msErr}`}>{formError.username}</div>
+                <input name="userName" autoComplete="off" className={`${style.input}`} placeholder="Your Full Name" onChange={onChangeHandler} value={userName} />
+                <div className={`${style.msErr}`}>{formError.userName}</div>
               </div>
               <div class={style.inputGroupp}>
-                <input required="" type="text" name="text" autocomplete="off" className={style.inputt} onChange={onChangeHandler} value={formData.email} />
-                <label class={style.userLabell}> Your Email</label>
+                <input name="email" autoComplete="off" className={`${style.input}`} placeholder="Your Email" onChange={onChangeHandler} value={email} />
                 <div className={`${style.msErr}`}>{formError.email}</div>
               </div>
               <div class={style.inputGroupp}>
-                <input required="" type="text" name="text" autocomplete="off" className={style.inputt} />
-                <label class={style.userLabell}> Your Skills</label>
+                <input name="skills" autoComplete="off" className={`${style.input}`} placeholder="Your Skills" />
               </div>
               <div class={style.inputGroupp}>
                 <PhoneInput
                   defaultCountry="EG"
                   international
-                  error={value ? (isValidPhoneNumber(value) ? undefined : 'Invalid phone number') : 'Phone number required'}
-                  value={value}
-                  onChange={setValue}
-                  className={` ${style.PhoneInputInput} ${style.PhoneInput} ${style.inputt}`} />
+                  error={phone ? (isValidPhoneNumber(phone) ? undefined : 'Invalid phone number') : 'Phone number required'}
+                  value={phone}
+                  onChange={onChangeHandler}
+                  className={` ${style.PhoneInputInput} ${style.PhoneInput} ${style.input}`} />
               </div>
               <div class={style.inputGroupp}>
-                <input required="" type="text" name="text" autocomplete="off" className={style.inputt} />
-                <label class={style.userLabell}> Your Address</label>
+                <input name="address" autoComplete="off" className={`${style.input}`} placeholder="Your Address" />
               </div>
               <div class={style.inputGroupp}>
-                <input required="" type="text" name="text" autocomplete="off" className={style.inputt} />
-                <label class={style.userLabell}> Your Age</label>
+                <input name="age" autoComplete="off" className={`${style.input}`} placeholder="Your Age" />
               </div>
               <div class={style.inputGroupp}>
-                <input required="" type="password" name="text" autocomplete="off" className={style.inputt} onChange={onChangeHandler} value={formData.password} />
-                <label class={style.userLabell}> Your Password</label>
-                <div className={`${style.msErr}`}>{formError.password}</div>
+                <input name="password" type="password" autoComplete="off" className={`${style.input}`} placeholder="Your Password" onChange={onChangeHandler} value={password} />
+                <div className={`${style.msErr}`}><p>{formError.password}</p></div>
               </div>
               <div class={style.inputGroupp}>
-                <input required="" type="password" name="text" autocomplete="off" className={style.inputt} onChange={onChangeHandler} value={formData.confirmPassword} />
-                <label class={style.userLabell}> Confirm Password</label>
+                <input name="confirmPassword" type="password" autoComplete="off" className={`${style.input}`} placeholder="Confirm Password" onChange={onChangeHandler} value={confirmPassword} />
                 <div className={`${style.msErr}`}>{formError.confirmPassword}</div>
               </div>
               <button className={style.signup__btn}>Sign Up</button>
             </div>
-          </Form>
+          </form>
 
 
           <hr className={style.forgetLine} />

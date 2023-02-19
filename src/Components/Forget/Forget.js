@@ -11,8 +11,7 @@ export default function Forget() {
                     <div>
                         <h4 className={style.forgot__title}>Forgot your password?</h4>
                         <div class={style.inputGroupp}>
-                            <input required="" type="text" name="text" autocomplete="off" className={style.inputt} />
-                            <label class={style.userLabell}> Email address</label>
+                            <input name="email" autoComplete="off" className={`${style.input}`} placeholder="Your Email" />
                         </div>
                         <button className={style.log__btn}>Request new password</button>
                     </div>

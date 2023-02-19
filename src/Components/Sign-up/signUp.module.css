@@ -20,8 +20,10 @@ text-align: center;
 }
 .msErr{
     color: rgb(168, 1, 1);
-    margin-left: 50px;
-    width: 65%;
+margin: 15px 0 0 15px;
+font-size: 17px;
+font-weight: bold;
+
 }
 .signup__title {
     margin: 20px 0;
@@ -33,56 +35,6 @@ text-align: center;
     margin-bottom: 20px;
 }
 
-.inputt {
-    border-radius: 10px;
-    border: 2px solid #fff !important;
-    background: #fff;
-    padding: 1rem;
-    font-size: 1rem;
-    color: #202020;
-    transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
-    width: 80%;
-    margin-top: 20px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-}
-
-.userLabell {
-    position: absolute;
-    left: 12%;
-    top: 20px;
-    color: #E68500;
-    font-size: 17px;
-    pointer-events: none;
-    transform: translateY(1rem);
-    transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.inputt:focus,
-.inputt:valid {
-    outline: none;
-    border: 1.5px solid #e4e4e4;
-}
-
-.inputt:hover {
-    border: 2px solid #E68500 !important;
-    box-shadow: 0 0 0 4px rgba(234, 147, 76, 0.61);
-}
-
-.inputt:focus~label,
-inputt:valid~label {
-    transform: translateY(-20%) scale(0.8);
-    padding: 0 .2em;
-    color: #E68500;
-    font-size: 20px;
-    font-weight: bold;
-    -webkit-transform: translateY(-20%) scale(0.8);
-    -moz-transform: translateY(-20%) scale(0.8);
-    -ms-transform: translateY(-20%) scale(0.8);
-    -o-transform: translateY(-20%) scale(0.8);
-}
 
 .signup__btn {
     --color: #333;
@@ -159,13 +111,9 @@ margin:15px 50%;
         width: 90%;
     }
 
-    .inputt,
+    .input,
     .signup__btn {
         width: 80%;
-    }
-
-    .user-labell {
-        left: 15%;
     }
 
     .signup__btn:hover:before {
@@ -184,11 +132,12 @@ margin:15px 50%;
 
 .userName{
     display: grid;
-    grid-template-columns: repeat(2,auto);
+    grid-template-columns: repeat(2,1fr);
 }
 .PhoneInputInput input {
     border:none !important;
     outline: none !important;
+    background-color: #f5f0f0 !important;
 }
 .PhoneInput{
     margin-right: -70px;
@@ -196,4 +145,28 @@ margin:15px 50%;
 }
 .msError {
     color: rgb(168, 1, 1);
+}
+.input {
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    padding: 1em;
+    background-color: #f5f0f0;
+    box-shadow: inset 2px 5px 10px rgba(234, 147, 76, 0.61);
+    transition: 300ms ease-in-out;
+    font-size:17px ;
+    color: #202020;
+    width: 85%;
+    margin-top: 20px;
+    border: 2px solid #E68500 !important;
+}
+
+.input:focus {
+    background-color: white;
+    transform: scale(1.05);
+box-shadow: 0 0 0 4px rgba(234, 147, 76, 0.61);
+}
+.input:hover {
+    border: 2px solid #E68500 !important;
+    box-shadow: 0 0 0 4px rgba(234, 147, 76, 0.61);
 }

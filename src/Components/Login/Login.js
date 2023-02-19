@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import style from './Login.module.css'
+import { AuthContext } from '../AuthContext'
 
 export default function Login() {
     const [active, setActive] = useState(true)
@@ -7,6 +8,23 @@ export default function Login() {
         role === "volenteer" ? setActive(true) : setActive(false)
     }
 
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const authContext = useContext(AuthContext);
+
+    function login(e) {
+        e.preventDefault();
+
+
+        if (password === '123') {
+            const token = 'abc';
+            localStorage.setItem('token', token);
+            localStorage.setItem('email', email);
+            authContext.setAuth({ token, email });
+        } else {
+            alert('wrong details');
+        }
+    }
 
     return (
         <>
@@ -24,15 +42,12 @@ export default function Login() {
                     </ul>
                     <div>
                         <div class={style.inputGroupp}>
-                            <input required="" type="text" name="text" autocomplete="off" className={style.inputt} />
-                            <label class={style.userLabell}> Email address</label>
-
+                            <input name="email" autoComplete="off" className={`${style.input}`} placeholder="Your Email" onChange={e => setEmail(e.target.value)} value={email} />
                         </div>
                         <div class={style.inputGroupp}>
-                            <input required="" type="password" name="text" autocomplete="off" className={style.inputt} />
-                            <label class={style.userLabell}> Password</label>
+                            <input name="password" type="password" autoComplete="off" className={`${style.input}`} placeholder="Your Password" onChange={e => setPassword(e.target.value)} value={password} />
                         </div>
-                        <button className={style.log__btn}>Sign in</button>
+                        <button className={style.log__btn} onClick={login}>Sign in</button>
                     </div>
                     <hr className={style.forgetLine} />
                     <a href='/forget' className={style.log__link}> Forget your password?</a>
