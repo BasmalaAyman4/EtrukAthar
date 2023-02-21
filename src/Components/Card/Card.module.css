@@ -1,0 +1,109 @@
+.card {
+    width: 400px;
+    height: 530px;
+    border-radius: 20px;
+    background: #fff;
+    position: relative;
+    border: 2px solid #c3c6ce;
+    transition: 0.5s ease-out;
+    overflow: visible;
+    box-shadow: 2px 0 12px 0 rgb(0 0 0 / 15%);
+
+}
+
+.cardDetails {
+    color: black;
+    height: 100%;
+    direction: rtl;
+}
+
+.cardButton {
+    transform: translate(-50%, 125%);
+    width: 60%;
+    border-radius: 1rem;
+    border: none;
+    background-color: #fd9707;
+    color: #fff;
+    font-size: 1rem;
+    padding: .5rem 1rem;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    opacity: 0;
+    transition: 0.3s ease-out;
+    font-family: "Changa-Light";
+}
+
+.textTitle {
+    color: #000;
+    font-weight: bold;
+    font-family: "Changa-SemiBold" !important;
+    margin: 15px;
+}
+
+.textPara {
+    margin: 15px;
+    font-family: "Changa-Light";
+    font-size: 18px;
+
+}
+
+/*img*/
+.cardImg {
+    width: 396px;
+    height: 250px;
+    border-radius: 20px 20px 0 0;
+    -webkit-border-radius: 20px 20px 0 0;
+    -moz-border-radius: 20px 20px 0 0;
+    -ms-border-radius: 20px 20px 0 0;
+    -o-border-radius: 20px 20px 0 0;
+}
+
+/*Hover*/
+.card:hover {
+    border-color: #fd9707;
+    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
+}
+
+.card:hover .cardButton {
+    transform: translate(-50%, 50%);
+    opacity: 1;
+}
+
+.cardPrice {
+    background: #f6f6f6;
+    padding: 10px 20px;
+    border-radius: 0 0 5px 5px;
+    -webkit-border-radius: 0 0 18px 18px;
+    -moz-border-radius: 0 0 5px 5px;
+    -ms-border-radius: 0 0 5px 5px;
+    -o-border-radius: 0 0 5px 5px;
+    height: 117px;
+}
+
+.allCollect {
+    display: flex;
+    justify-content: space-between;
+    font-family: "Cairo", Sans-serif;
+    align-items: center;
+}
+
+.priceCollect,
+.priceTitle {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+}
+
+span:nth-child(1) {
+    font-weight: bold;
+}
+
+.prog {
+    background: #d9dfdb !important;
+    border-radius: 25px;
+    box-shadow: inset 0 2px 2px -1px rgb(0 0 0 / 11%);
+    height: 12px;
+    margin-top: 10px;
+
+}

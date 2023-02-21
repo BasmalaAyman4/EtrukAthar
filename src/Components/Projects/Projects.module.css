@@ -1,0 +1,34 @@
+.projects{
+        font-family: "Changa-Regular", sans-serif !important;
+        display: flex;
+        flex-direction: column;
+}
+.donate__link{
+    margin: auto;
+    margin-top: 20px;
+    text-decoration: none;
+    border: 2px solid #6b6b6b;
+    color: #6b6b6b;
+    padding: 10px 30px;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+}
+.donate__link:hover{
+    color: #6b6b6b;
+}
+.donate__para{
+    margin: auto;
+    margin-top: 20px;
+    letter-spacing: 1px;
+    color: #6b6b6b;
+}
+.projects__body{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    margin-top: 70px;
+    direction: rtl;
+}
+

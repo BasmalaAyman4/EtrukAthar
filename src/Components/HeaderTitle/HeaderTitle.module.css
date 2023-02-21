@@ -1,0 +1,41 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    background-image: url(./../../assets/images/projects.png);
+    height: 25vh;
+}
+
+.section__body {
+    margin: auto;
+    text-align: center;
+    color: #fff;
+}
+
+.section__title {
+    font-size: 40px;
+    position: relative;
+    margin-bottom: 30px;
+    font-family: "Changa-Regular", sans-serif;
+}
+
+.section__title::after {
+    content: '';
+    position: absolute;
+    background-color: #fff;
+    height: 5px;
+    width: 50px;
+    top: 65px;
+    left: 60px;
+}
+
+.section__para {
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    font-family: "Changa", Sans-serif;
+}
+
+.section__price {
+    font-family: "Changa", Sans-serif;
+    font-weight: 600;
+}
