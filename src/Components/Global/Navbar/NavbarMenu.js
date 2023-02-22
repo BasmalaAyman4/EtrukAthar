@@ -116,7 +116,7 @@ export default function NavbarMenu() {
                                             <NavLink className="nav-link" to="/" href="index.html">{t("الرئيسية")} </NavLink>
                                         </li>
                                         <li>
-                                            <NavLink className="nav-link" to="/projects" href="index.html">{t("المشاريع")} </NavLink>
+                                            <NavLink className="nav-link" to="/" href="index.html">{t("المشاريع")} </NavLink>
                                         </li>
                                         <li>
                                             <NavLink

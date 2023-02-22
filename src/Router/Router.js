@@ -6,6 +6,7 @@ import SignUp from './../Components/Sign-up/SignUp'
 import CharitySignup from './../Components/CharitySignUp/CahritySignUp'
 import Forget from './../Components/Forget/Forget'
 import { AuthContext } from "../Components/AuthContext";
+import Projects from "../Pages/Projects";
 export default function Router() {
   const authContext = useContext(AuthContext);
   return (
@@ -16,6 +17,7 @@ export default function Router() {
         <Route path="/forget" element={<Forget />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/charitySign-up" element={<CharitySignup />} />
+        <Route path="/projects" element={<Projects />} />
       </Routes>
     </>
   )

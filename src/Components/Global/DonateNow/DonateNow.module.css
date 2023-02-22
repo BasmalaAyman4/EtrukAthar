@@ -1,0 +1,125 @@
+ .modal__body{
+display: flex;
+justify-content: right;
+margin-left: 101.9%;
+}
+
+.btn{
+    margin-top: 250px;
+        position: fixed !important;
+        z-index: 100;
+        transform: rotate(0.75turn);
+        -webkit-transform: rotate(0.75turn);
+        -moz-transform: rotate(0.75turn);
+        -ms-transform: rotate(0.75turn);
+        -o-transform: rotate(0.75turn);
+        width: 120px;
+        height: 50px;
+        border-radius: 1px !important;
+        -webkit-border-radius: 1px !important;
+        -moz-border-radius: 1px !important;
+        -ms-border-radius: 1px !important;
+        -o-border-radius: 1px !important;
+        background-color: #E68500 !important;
+        border: 1px solid #E68500 !important;
+        font-family: "Changa-Regular", sans-serif !important;
+        font-size: 17px;
+ 
+}
+.btn:hover{
+    background-color: #E68500 !important;
+    border: 1px solid #E68500 !important;
+}
+.modal__title{
+    margin: auto;
+    font-family: "Changa-Regular", sans-serif !important;
+}
+.header{
+    border-bottom: none !important;    
+    margin-bottom: -30px !important;                     
+}
+.header button{
+    margin: 5px !important;
+
+}
+.modal__mainTitle{
+    font-weight: bold;
+}
+.modal__para{
+    font-size: 17px;
+    text-align: center;
+    margin-top: 10px;
+}
+.modal__paypal{
+    background-color: #E7E7E7;
+    padding: 25px 15px 5px 15px ;
+    font-family: "Changa-Regular", sans-serif !important;
+}
+.icon{
+    font-size: 45px;
+    margin-left: 5px;
+}
+.paypal__para{
+    font-size: 20px;
+}
+.price__body{
+    margin-top: 20px;
+    color: #777;
+}
+.price__input{
+    width: 150px;
+    height: 30px;
+}
+.price__icon{
+    background-color: #E7E7E7;
+    color: #000;
+    font-size: 27px;
+    font-weight: bold;
+    padding: 5px;
+    margin-right: 5px;
+    margin-top: -5px;
+    border: 1px solid #333;
+}
+.price__choose{
+    margin-top: 20px;
+}
+.price__btn{
+    margin-left: 10px;
+    background-color: #fff;
+    border: 1px solid #777;
+    padding: 5px 20px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    color: #777;
+    font-family: "Changa-Regular", sans-serif !important;
+    margin-bottom: 10px;
+}
+.price__btn:hover{
+    color: #000;
+    font-weight: bold;
+}
+.price__checkbox{
+    margin: 15px 0;
+}
+.price__para{
+    margin-right: 10px;
+    font-size: 17px;
+    font-family: "Changa-Regular", sans-serif !important;
+}
+.footer{
+    border-top: none;
+}
+.footer__btn{
+    width: 100%;
+    padding-top: 10px;
+    font-family: "Changa-Regular", sans-serif !important;
+    background-color: #E68500;
+    border: 1px solid #E68500;
+}
+.footer__btn:hover{
+    background-color: #E68500;
+    border: 1px solid #E68500;
+}

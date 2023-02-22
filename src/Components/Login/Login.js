@@ -8,21 +8,51 @@ export default function Login() {
         role === "volenteer" ? setActive(true) : setActive(false)
     }
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const authContext = useContext(AuthContext);
+    const validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    const validPass = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    const [formData, setFormData] = useState({
+        userName: '',
+        email: '',
+        phone: '',
+        password: '',
+        confirmPassword: '',
+
+    })
+
+    const { email, password } = formData
+    const [formError, setFormError] = useState({})
+
+    const onChangeHandler = e => {
+
+        setFormData({ ...formData, [e.target.name]: e.target.value })
+        console.log(formData)
+
+    }
 
     function login(e) {
         e.preventDefault();
 
 
-        if (password === '123') {
+        if (password === 'basmala123') {
             const token = 'abc';
             localStorage.setItem('token', token);
             localStorage.setItem('email', email);
             authContext.setAuth({ token, email });
-        } else {
-            alert('wrong details');
+        }
+
+        let err = {}
+
+        if (formData.email === '') {
+            err.email = "Email is required";
+        } else if (!validEmail.test(email)) {
+            err.email = "Invalid Email";
+        }
+        if (formData.password === '') {
+            err.password = "password is required"
+        } else if (!validPass.test(password)) {
+            err.password = 'Minimum eight characters, at least one letter and one numbe';
+            setFormError({ ...err })
         }
     }
 
@@ -42,10 +72,12 @@ export default function Login() {
                     </ul>
                     <div>
                         <div class={style.inputGroupp}>
-                            <input name="email" autoComplete="off" className={`${style.input}`} placeholder="Your Email" onChange={e => setEmail(e.target.value)} value={email} />
+                            <input name="email" autoComplete="off" className={`${style.input}`} placeholder="Your Email" onChange={onChangeHandler} value={email} />
+                            <div className={`${style.msErr}`}>{formError.email}</div>
                         </div>
                         <div class={style.inputGroupp}>
-                            <input name="password" type="password" autoComplete="off" className={`${style.input}`} placeholder="Your Password" onChange={e => setPassword(e.target.value)} value={password} />
+                            <input name="password" type="password" autoComplete="off" className={`${style.input}`} placeholder="Your Password" onChange={onChangeHandler} value={password} />
+                            <div className={`${style.msErr}`}>{formError.password}</div>
                         </div>
                         <button className={style.log__btn} onClick={login}>Sign in</button>
                     </div>
