@@ -1,7 +1,124 @@
+
 .swiperHeader{
     width: 100% !important;
+    position: relative ;
+  
+
 }
-img{
+
+.home-header__info{
+    position: absolute;
+    top: 65%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffffff;
+    font-family: "Changa-SemiBold";
+    width: 100%;
+}
+.home-header__info h2{
+    font-size: 50px;
+    font-weight: 600;
+}
+.home-header__info p{
+    padding: 10px 0;
+    font-size: 30px;
+    font-weight: 400;
+    font-family: "Changa-Regular";
+}
+.home-header__btn{
+    font-family: "Changa-Regular";
+    font-size: 20px;
+    font-weight: 500;
+    color: #FFFFFF;
+    background-color: #E68500;
+    border-radius: 50px ;
+    text-decoration: none;
+    padding: 10px 45px;
+   
+}
+.home-header__btn:hover{
+    color: #FFFFFF;
+    background-color: #E68500;
+
+}
+ .home-header__btn_white{
+    font-family: "Changa-Regular" !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    color: #272727 !important;
+    background-color: #FFFFFF !important;
+    border-radius: 50px !important;
+    text-decoration: none !important;
+    padding: 10px 45px !important;
+    
+    
+} 
+
+.blur{
+    filter: blur(2px) !important;
     width: 100%;
     height: 100vh;
+    animation: zoom-in 8s ease-out infinite;
+}
+.text-algin-style_white-btn{
+    text-align: end;
+}
+.text-algin-style_btn{
+    text-align: start;
+}
+
+@keyframes zoom-in {
+  0% {
+    transform: scale(1, 1);
+  }
+ 
+  100% {
+    transform: scale(1.2, 1.2);
+  }
+  to {
+    transform: scale(1.2,1.2)
+  }
+
+  
+}
+@media (max-width:992px) {
+    .home-header__info{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffffff;
+    font-family: "Changa-SemiBold";
+    width: 100%;
+    }
+    .home-header__info p{
+        padding: 10px 0 !important;
+        font-size: 20px !important;
+    }
+    .home-header__info h2{
+        font-size: 25px !important;
+        font-weight: 400 !important;
+    }
+    .home-header__btn{
+       
+        font-size: 20px;
+        width: 100% !important;
+        padding: 7px 100px !important;
+    
+    }
+    .home-header__btn_white{
+        padding: 7px 100px !important;
+    }
+    .text-algin-style_white-btn{
+        text-align: center !important;
+    }
+    .text-algin-style_btn{
+        text-align: center !important;
+    }
+    
+   
 }

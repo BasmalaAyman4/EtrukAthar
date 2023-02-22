@@ -1,10 +1,9 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import styles from './NavbarMenu.module.css'
 import './NavbarMenu.css'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Logo from './../../../assets/images/images (1).png'
 import { BsFacebook } from "react-icons/bs";
@@ -15,13 +14,45 @@ import { Link, NavLink } from 'react-router-dom';
 import { Collapse } from 'react-bootstrap';
 import x from "./../../../assets/icons/x.svg"
 import { AuthContext } from '../../AuthContext';
+import { useTranslation } from 'react-i18next';
+import cookies from 'js-cookie'
+import i18next from 'i18next';
 export default function NavbarMenu() {
-
+ 
+    const languages = [
+        {
+          code: 'en',
+          name: 'English',
+          dir: 'rtl',
+          country_code: 'gb',
+        },
+        {
+          code: 'ar',
+          name: 'Arabic',
+          dir: 'ltr',
+          country_code: 'sa',
+        },
+      ]  
+     
     const [NavbarSide, setNavbarSide] = useState(false)
     const [openCases, setOpenCases] = useState(false);
     const [openSponsorships, setOpenSponsorships] = useState(false);
     const authContext = useContext(AuthContext);
-
+    const currentLanguageCode = cookies.get('i18next') || 'en'
+    const currentLanguage = languages.find((l) => l.code === currentLanguageCode)
+    const { t } = useTranslation()
+    useEffect(() => {
+        document.body.dir = currentLanguage.dir || 'ltr'
+        document.title = t("عنوان")
+      }, [currentLanguage, t])
+      function handleLanguage(code,index,event){
+        event.preventDefault();
+        i18next.changeLanguage(code)
+        // document.querySelector(".active-language").classList.remove("active-language")
+        // document.getElementById(`language${index}`).classList.add("active-language")
+    
+      }
+    
     function logout() {
         localStorage.removeItem('token');
         localStorage.removeItem('email');
@@ -37,9 +68,20 @@ export default function NavbarMenu() {
                             {authContext.auth.email ? <Link to="" className={`px-3 pt-2 ${styles.header__link}`}> تبرعاتي</Link> : <Link to="/sign-up" className={`px-3 pt-2 ${styles.header__link}`}> تسجيل</Link>}
                             <Link to="" className={`px-3 pt-2 ${styles.header__link}`}>حاسبة الزكاة </Link>
                             <Link to="" className={`px-3 pt-2 ${styles.header__link}`}>كيف أتبرع؟</Link>
-                            <Link to="" className={`px-3 pt-2 ${styles.header__link}`}>من نحن</Link>
-                            <Link to="" className={`px-3 pt-2 ${styles.header__link}`}> English</Link>
-                            <Link to="" className={`px-3 pt-2 ${styles.header__link}`}> Arabic</Link>
+                          
+                                {languages.map(({code, name},index) =>(
+                                <Link 
+                                    id= {`language${index}`}
+                                    key={code} 
+                                    onClick={(event)=>{handleLanguage(code,index,event)}}
+                                    className={`px-3 pt-2 ${styles.header__link}`}
+                                    href="#">{name}
+                                </Link>
+                                
+                                ))}
+              
+                           
+                           
                         </nav>
                         <div className={`pt-2 ${styles.social}`}>
                             <span className='px-2'><BsFacebook /></span>
@@ -71,10 +113,14 @@ export default function NavbarMenu() {
 
                                     <ul className="nav-side__list pt-3">
                                         <li>
-                                            <NavLink className="nav-link" to="/" href="index.html">الرئيسية </NavLink>
+                                            <NavLink className="nav-link" to="/" href="index.html">{t("الرئيسية")} </NavLink>
                                         </li>
                                         <li>
+<<<<<<< HEAD
                                             <NavLink className="nav-link" to="/projects" href="index.html">المشاريع </NavLink>
+=======
+                                            <NavLink className="nav-link" to="/" href="index.html">{t("المشاريع")} </NavLink>
+>>>>>>> 0bfea7afcb136886019c435fe4f7bff88f3154a2
                                         </li>
                                         <li>
                                             <NavLink
@@ -89,7 +135,9 @@ export default function NavbarMenu() {
                                             <Collapse in={openCases}>
                                                 <div id="Cases">
                                                     <ul className=" nav-side_dropdown  "  >
-                                                        <li>  <Link className="dropdown-item" to="/ShopCategory" >حالات إنسانية</Link> </li>
+                                                        <li>  <Link className="dropdown-item" to="/ShopCategory">حالات إنسانية
+
+                                                        </Link> </li>
                                                         <li> <Link className="dropdown-item" to="/ProductDetails">حالات طبية </Link></li>
 
                                                     </ul>
@@ -170,9 +218,9 @@ export default function NavbarMenu() {
                                             <Link className="dropdown-item" to="/Register">كفالة أسرة</Link>
                                         </div>
                                     </div>
-                                    <NavLink to="/trans" className={`${styles.mainNav__link} main-nav__link`}>ملف الشفافيه</NavLink>
+                                    <NavLink to="/trans" className={`${styles.mainNav__link} main-nav__link`}> المناسبات</NavLink>
                                     <NavLink to="/box" className={`${styles.mainNav__link} main-nav__link`}>صندوق علمني</NavLink>
-                                    <NavLink to="/acution" className={`${styles.mainNav__link} main-nav__link`}>المناسبات</NavLink>
+                                    <NavLink to="/acution" className={`${styles.mainNav__link} main-nav__link`}>ملف الشفافيه</NavLink>
 
                                 </Nav>
                             </Offcanvas.Body>

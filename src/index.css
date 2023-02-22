@@ -3,6 +3,7 @@ body {
   font-family: "Changa-Regular" ,sans-serif ;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 @font-face {

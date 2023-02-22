@@ -1,0 +1,17 @@
+
+.home-brief__img{
+    width: 150px;
+    height: 150px;
+}
+.home-brief__title{
+    color: #273435 !important;
+    font-family: "Changa-Regular";
+    font-size: 25px;
+    font-weight: 500;
+    
+}
+.home-brief__pragraph{
+    font-family: "Changa-Regular";
+    color: #6B6B6B !important;
+    font-size: 18px;
+}
