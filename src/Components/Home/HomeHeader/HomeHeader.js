@@ -32,7 +32,7 @@ const HomeHeader = () => {
       </Swiper>
       <div className={`${styles['home-header__info']} text-center`}>
          <div className='container'>
-          <h2>مهما كان تبرعك صغيراً</h2>
+          <h2>{t}</h2>
           <p className='mb-3'>فإنه يحدث أثراً</p>
            <div className='row'>
            <div className={`col-lg-6 col-sm-12 mb-5  ${styles['text-algin-style_white-btn']} `}>

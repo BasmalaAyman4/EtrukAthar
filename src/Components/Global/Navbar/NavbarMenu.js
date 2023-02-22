@@ -116,7 +116,7 @@ export default function NavbarMenu() {
                                             <NavLink className="nav-link" to="/" href="index.html">{t("الرئيسية")} </NavLink>
                                         </li>
                                         <li>
-                                            <NavLink className="nav-link" to="/" href="index.html">{t("المشاريع")} </NavLink>
+                                            <NavLink className="nav-link" to="/projects" href="index.html">{t("المشاريع")} </NavLink>
                                         </li>
                                         <li>
                                             <NavLink
@@ -196,18 +196,18 @@ export default function NavbarMenu() {
                         >
                             <Offcanvas.Body>
                                 <Nav className={`justify-content-end flex-grow-1 p-2 ${styles.nav__dir} `} >
-                                    <NavLink to="/" className={`${styles["main-nav__link"]} main-nav__link`}>الرئيسية</NavLink>
-                                    <NavLink to="/projects" className={`${styles.mainNav__link} main-nav__link`}>المشاريع</NavLink>
+                                    <NavLink to="/" className={`${styles["main-nav__link"]} main-nav__link`}>{t("الرئيسية")}</NavLink>
+                                    <NavLink to="/projects" className={`${styles.mainNav__link} main-nav__link`}> {t("المشاريع")}</NavLink>
                                     <div className="dropdown">
-                                        <NavLink className={`${styles.mainNav__link}  nav-item nav__item  nav-link`}  >الحالات</NavLink>
+                                        <NavLink className={`${styles.mainNav__link}  nav-item nav__item  nav-link`}  > {t("الحالات")}</NavLink>
 
                                         <div className="dropdown-menu show nav__dropdown-list">
-                                            <Link className="dropdown-item" to="/Login"> حالات إنسانية</Link>
-                                            <Link className="dropdown-item" to="/Register">حالات إنسانية</Link>
+                                            <Link className="dropdown-item" to="/Login">{t("حالات إنسانية")}</Link>
+                                            <Link className="dropdown-item" to="/Register">  {t("حالات طبية")}</Link>
                                         </div>
                                     </div>
                                     <div className="dropdown">
-                                        <NavLink className={`${styles.mainNav__link}nav-item nav__item  nav-link`}  >الكفالات</NavLink>
+                                        <NavLink className={`${styles.mainNav__link}nav-item nav__item  nav-link`}  > {t(" الكفالات")}</NavLink>
 
                                         <div className="dropdown-menu show nav__dropdown-list">
                                             <Link className="dropdown-item" to="/Login">كفالة يتيم</Link>
