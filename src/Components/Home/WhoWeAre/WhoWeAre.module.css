@@ -1,0 +1,123 @@
+.who-we-are{
+    direction: rtl;
+}
+body[dir='ltr'] .who-we-are {
+    direction: rtl;
+    
+  
+}
+
+body[dir='rtl'] .who-we-are {
+    direction: ltr;
+    
+  
+}
+.who-we-are__img{
+    width: 100%;
+    height: 100%;
+}
+.who-we-are__img-container{
+    width: 100%;
+    height: 500px !important;
+    position: relative !important;
+    border-radius: 40px !important ;
+    margin-top: 45px;
+}
+.who-we-are__img{
+    border-radius: 40px !important ;
+}
+.who-we-are__img-info{
+    
+    position: absolute;
+    z-index: 1111;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #e6860057;
+    border-radius: 40px !important ;
+}
+.who-we-are__img-container_modify{
+    width: 100%;
+    height: 600px !important;
+    position: relative !important;
+    border-radius: 40px !important ;
+}
+.who-we-are__img-info_modify{
+    position: absolute;
+    z-index: 1111;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00000069;
+    border-radius: 40px !important ;
+}
+.who-we-are__img-info-h2{
+    text-align: center ;
+    margin-top: 250px;
+    color: #fff;
+    font-family: "Changa-ExtraBold";
+    font-size: 35px;
+}
+.who-we-are__img-info-h2-modify{
+    text-align: center ;
+    margin-top: 300px;
+    color: #fff;
+    font-family: "Changa-ExtraBold";
+    font-size: 35px;
+}
+.who-we-are__info{
+    margin-top: 70px;
+    text-align: right;
+}
+.who-we-are__info_h3_black{
+    font-family: "Changa-SemiBold";
+    font-size: 60px;
+    font-weight: 700;
+    color: #444A54;
+    line-height: 40px;
+}
+.who-we-are__info_h3_orange{
+font-family: "Changa-SemiBold";
+font-size: 60px;
+font-weight: 700;
+color: #E68500;
+line-height: 40px;
+margin-top: 35px;
+position: relative;
+margin-bottom: 20px;
+
+}
+.who-we-are__info_h3_orange::after{
+    position: absolute;
+    content: "";
+    z-index: 1000;
+    bottom: -30px;
+    right: 0;
+    background-color: #E68500;
+    height: 6px;
+    width: 15%;
+
+    
+}
+.who-we-are__info_p{
+    color: #6B6B6B;
+    font-family: "Changa-Regular";
+    margin-top: 20px;
+}
+.who-we-are__info_btn{
+    font-family: "Changa-Regular";
+    font-size: 20px;
+    font-weight: 500;
+    color: #FFFFFF;
+    background-color: #E68500;
+    border-radius: 50px ;
+    text-decoration: none;
+    padding: 10px 45px;
+    margin-top: 20px;
+}
+.who-we-are__info_btn:hover{
+    color: #FFFFFF;
+    background-color: #E68500;
+}
