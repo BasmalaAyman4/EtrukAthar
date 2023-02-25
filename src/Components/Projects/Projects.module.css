@@ -46,6 +46,7 @@
     .projects__body {
                 display: grid;
                     grid-template-columns: repeat(2, 1fr);
+                    gap: 2%;
         }
 }
 @media (min-width: 1200px) {

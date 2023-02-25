@@ -80,7 +80,7 @@
     -moz-border-radius: 0 0 5px 5px;
     -ms-border-radius: 0 0 5px 5px;
     -o-border-radius: 0 0 5px 5px;
-    height: 141px;
+    height:144px;
 }
 
 .allCollect {
@@ -108,4 +108,9 @@ span:nth-child(1) {
     margin-top: 10px;
     height: 12px !important;
 
+}
+@media (min-width:1200px) and (max-width:1400px){
+    .cardPrice {
+            height: 22%;
+        }
 }
