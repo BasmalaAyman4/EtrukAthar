@@ -19,7 +19,7 @@
     z-index: 100;
     width: 100%;
     height: 5px;
-    top: 74px;
+    top: 72px;
     right: 0;
     background-color: #E68500 !important;
     opacity: 0;
@@ -72,26 +72,48 @@
     transition: all 1s ease;
 
 }
-.Nav-button .icon-bar::before{
+body[dir="rtl"] .Nav-button .icon-bar::before{
     content: "";
     position: absolute;
     top: -10px;
-    left: 0;
+    right: 0;
     width: 30px;
     height: 2px;
     background-color: #E68500;
     transition: all .5s ease;
 
 }
-.Nav-button .icon-bar::after{
+body[dir="rtl"] .Nav-button .icon-bar::after{
     content: "";
     position: absolute;
     top: 10px;
-    left:  0;
+    right:  0;
     width: 30px;
     height: 2px;
     background-color: #E68500;
     transition: all .5s ease;
+
+}
+body[dir="ltr"] .Nav-button .icon-bar::before{
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background-color: #E68500;
+  transition: all .5s ease;
+
+}
+body[dir="ltr"] .Nav-button .icon-bar::after{
+  content: "";
+  position: absolute;
+  top: 10px;
+  left:  0;
+  width: 30px;
+  height: 2px;
+  background-color: #E68500;
+  transition: all .5s ease;
 
 }
 .nav-animation .icon-bar{
@@ -216,13 +238,17 @@
     
   }
   
-  .side__close-button{
+body[dir="ltr"]  .side__close-button{
     width: 45px;
     height: 45px;
     margin-left: auto;
-  
-  
   }
+  body[dir="rtl"]  .side__close-button {
+    width: 45px;
+    height: 45px;
+    margin-right: auto;
+  }
+ 
   .side__close__svg{
     width: 100%;
     height: 100% ;
@@ -253,7 +279,7 @@
     padding: 10px  30px;
     color :rgba(0, 0, 0, 0.55) !important;
     font-family: "Changa-SemiBold" !important;
-    text-align: right !important;
+    text-align: center !important;
 
     
   }
@@ -407,9 +433,22 @@
         right: -2px;
         top: 0px;
       }
-      .nav__dropdown-list{
+    body[dir="rtl"]  .nav__dropdown-list{
         border-radius: 0px !important;
-        width: 120px;
+        width: auto;
+        padding: 0rem 0;
+        border: 0 !important;
+        transition: all .5s ease ;
+        transform: translate(0,30px) ;
+        visibility: hidden;
+        left: 0px;
+        top: 61px;
+        text-align: center;
+        z-index: 2000;
+      }
+      body[dir="ltr"]    .nav__dropdown-list{
+        border-radius: 0px !important;
+        width: auto;
         padding: 0rem 0;
         border: 0 !important;
         transition: all .5s ease ;
@@ -417,9 +456,9 @@
         visibility: hidden;
         right: 0px;
         top: 61px;
+        z-index: 2000;
         
       }
-      
       .nav__dropdown-list li{
        border-bottom: 1px solid
       }
@@ -456,7 +495,7 @@
         z-index: 100;
         width: 100%;
         height: 5px;
-        top: 74px;
+         top: 72px;
         right: 0;
         background-color: #E68500 !important;
         opacity: 0;

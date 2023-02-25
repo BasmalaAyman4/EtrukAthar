@@ -1,19 +1,13 @@
- .modal__body{
-display: flex;
-justify-content: right;
-margin-left: 101.9%;
-}
 
-.btn{
-    margin-top: 250px;
-        position: fixed !important;
-        z-index: 100;
+
+.modal__btn{
+       position: fixed !important;
+        z-index: 10000;
         transform: rotate(0.75turn);
         -webkit-transform: rotate(0.75turn);
         -moz-transform: rotate(0.75turn);
         -ms-transform: rotate(0.75turn);
         -o-transform: rotate(0.75turn);
-        width: 120px;
         height: 50px;
         border-radius: 1px !important;
         -webkit-border-radius: 1px !important;
@@ -24,6 +18,8 @@ margin-left: 101.9%;
         border: 1px solid #E68500 !important;
         font-family: "Changa-Regular", sans-serif !important;
         font-size: 17px;
+        right: -35px !important;
+        top: 50% !important;
  
 }
 .btn:hover{

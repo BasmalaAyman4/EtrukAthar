@@ -64,7 +64,7 @@ a:hover::after,a.active{
    opacity: 1;
 } */
 @media (max-width:767px) {
-    .header__link:nth-child(-n +5) {
+    .header__link:nth-child(-n +4) {
             display: none;
         }
     .offcanvas-body {
@@ -87,7 +87,7 @@ a:hover::after,a.active{
     .navbar-expand-sm .offcanvas {
         display: none !important;
     }
-    .header__link:nth-child(-n +5) {
+    .header__link:nth-child(-n +4) {
             display: none;
         }
         .offcanvas-body {

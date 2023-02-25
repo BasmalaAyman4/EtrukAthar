@@ -32,14 +32,14 @@ const HomeHeader = () => {
       </Swiper>
       <div className={`${styles['home-header__info']} text-center`}>
          <div className='container'>
-          <h2>{t}</h2>
-          <p className='mb-3'>فإنه يحدث أثراً</p>
-           <div className='row'>
+          <h2>{t("مهما كان تبرعك صغيراً")}</h2>
+          <p className='mb-5'>{t("مهما كان تبرعك صغيراً")}</p>
+           <div className='row '>
            <div className={`col-lg-6 col-sm-12 mb-5  ${styles['text-algin-style_white-btn']} `}>
-                <Link to="" className={`${styles["home-header__btn_white"]} ` }>ملف الشفافية</Link>
+                <Link to="" className={`${styles["home-header__btn_white"]} ` }>{t("ملف الشفافية")}</Link>
              </div>
              <div className={`col-lg-6 col-sm-12 ${styles['text-algin-style_btn']}`}>
-                <Link to="" className={`${styles["home-header__btn"]} ` } >التبرع الفوري</Link>
+                <Link to="" className={`${styles["home-header__btn"]} ` } > {t("التبرع الفوري")}</Link>
              </div>
             
            </div>

@@ -1,6 +1,8 @@
 import React from 'react'
 import styles from "./HomeCounting.module.css"
 import { useSpring ,animated } from 'react-spring'  
+import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
 function Number({n}){
     const {number } = useSpring({
         from: {number :0},
@@ -12,7 +14,7 @@ function Number({n}){
 
 }
 const HomeCounting = () => {
-  
+    const { t } = useTranslation()
   return (
     <section className={`${styles["home-counting"]} mt-5 `}>
     <div className={`${styles["home-counting__container"]} mt-5 `}>
@@ -29,7 +31,7 @@ const HomeCounting = () => {
                             </h3>
                         
                         </div>
-                        <p className={`${styles["home-counting__pragraph"]} `} >مليون دولار تم جمعها</p>
+                        <p className={`${styles["home-counting__pragraph"]} `} >{t(" مشروع تم إنجازه")}</p>
                     </div>
                     <div className='col-lg-3 col-md-6 col-sm-12'>
                         <div className='d-flex justify-content-center align-items-center'>
@@ -41,7 +43,7 @@ const HomeCounting = () => {
                             </h3>
                         
                         </div>
-                        <p className={`${styles["home-counting__pragraph"]} `} >  حالة تم دعمها </p>
+                        <p className={`${styles["home-counting__pragraph"]} `} > {t(" حالة تم دعمها ")}</p>
                     </div>
                     <div className='col-lg-3 col-md-6 col-sm-12'>
                         <div className='d-flex justify-content-center align-items-center'>
@@ -54,7 +56,7 @@ const HomeCounting = () => {
                         
                         </div>
                         <p className={`${styles["home-counting__pragraph"]} `} >
-                            حملة تم إنجازها
+                            {t( "حملة تم إنجازها")}
                         </p>
                     </div>
                     <div className='col-lg-3 col-md-6 col-sm-12'>
@@ -68,7 +70,7 @@ const HomeCounting = () => {
                         
                         </div>
                         <p className={`${styles["home-counting__pragraph"]} `} >
-                        مشروع تم إنجازه  
+                         {t("مشروع تم إنجازه")}
                         </p>
                     </div>
                     

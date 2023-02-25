@@ -58,11 +58,11 @@ export default function DonateNow() {
     }
     return (
         <>
-            <div className={`${style.modal__body}`} >
-                <Button variant="primary" onClick={() => setModalShow(true)} className={`${style.btn}`}>
+       
+                <Button variant="primary" onClick={() => setModalShow(true)} className={`${style["modal__btn"]}`}>
                     <span className={`${style.modal__para}`}> التبرع مباشر</span>
                 </Button>
-            </div>
+        
 
             <MyVerticallyCenteredModal
                 show={modalShow}

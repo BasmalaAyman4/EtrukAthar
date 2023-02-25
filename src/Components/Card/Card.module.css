@@ -1,5 +1,5 @@
 .card {
-    width: 400px;
+    width: 100%;
     height: 530px;
     border-radius: 20px;
     background: #fff;
@@ -8,10 +8,16 @@
     transition: 0.5s ease-out;
     overflow: visible;
     box-shadow: 2px 0 12px 0 rgb(0 0 0 / 15%);
+    cursor: pointer;
 
 }
 
-.cardDetails {
+body[dir="rtl"] .cardDetails {
+    color: black;
+    height: 100%;
+    direction: ltr;
+}
+body[dir="ltr"] .cardDetails {
     color: black;
     height: 100%;
     direction: rtl;
@@ -50,7 +56,7 @@
 
 /*img*/
 .cardImg {
-    width: 396px;
+    width: 100%;
     height: 250px;
     border-radius: 20px 20px 0 0;
     -webkit-border-radius: 20px 20px 0 0;
@@ -78,7 +84,7 @@
     -moz-border-radius: 0 0 5px 5px;
     -ms-border-radius: 0 0 5px 5px;
     -o-border-radius: 0 0 5px 5px;
-    height: 117px;
+    height: 144px;
 }
 
 .allCollect {
@@ -107,3 +113,9 @@ span:nth-child(1) {
     margin-top: 10px;
 
 }
+@media (min-width:1200px) and (max-width:1400px){
+    .cardPrice {
+            height: 22%;
+        }
+}
+

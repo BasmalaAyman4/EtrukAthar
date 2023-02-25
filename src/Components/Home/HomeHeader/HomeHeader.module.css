@@ -8,7 +8,7 @@
 
 .home-header__info{
     position: absolute;
-    top: 65%;
+    top: 50%;
     transform: translateY(-50%);
     z-index: 1000;
     left: 50%;

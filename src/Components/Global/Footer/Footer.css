@@ -1,10 +1,45 @@
 footer {
     margin-top: 5%;
+    font-family: "Changa-Regular";
 }
 
-.social-icon {
+body[dir="ltr"] .social-icon {
     font-size: 20px;
+    direction: rtl;
 }
+body[dir="rtl"] .social-icon{
+    font-size: 20px;
+    direction: ltr;
+}
+
+body[dir="ltr"] .footer-dir{
+    direction: rtl;
+}
+body[dir="rtl"] .footer-dir{
+    direction: ltr;
+}
+body[dir="ltr"] .footer__h6{
+   text-align: right !important;
+}
+body[dir="rtl"] .footer__h6{
+    text-align: left !important;
+ }
+a{
+    text-decoration: none !important;
+}
+
+.footer__contact-us_p{
+    direction: rtl !important ;
+ }
+ body[dir="rtl"]  .footer__link{
+  display: flex;
+ }
+ body[dir="ltr"]  .footer__link{
+    display: flex;
+  }
+  .footer_we-are_p{
+    text-align: right;
+  }
 @media (max-width:767px) {
  .footer-body{
     text-align: right;
