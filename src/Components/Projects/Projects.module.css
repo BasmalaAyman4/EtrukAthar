@@ -24,11 +24,36 @@
     margin-top: 20px;
     letter-spacing: 1px;
     color: #6b6b6b;
+    text-align: center;
 }
 .projects__body{
     display: grid;
     grid-template-columns: repeat(3,1fr);
     margin-top: 70px;
     direction: rtl;
+    margin-bottom: 70px;
 }
-
+@media (max-width:767px) {
+    .projects__body{
+        display: block;
+    }
+}
+@media (min-width:768px) and (max-width:992px) {
+    .projects__body {
+        display: block;
+    }
+}
+@media (min-width: 995px) {
+    .projects__body {
+                display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 2%;
+        }
+}
+@media (min-width: 1200px) {
+    .projects__body {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1%;
+    }
+}

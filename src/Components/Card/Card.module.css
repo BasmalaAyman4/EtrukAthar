@@ -8,7 +8,8 @@
     transition: 0.5s ease-out;
     overflow: visible;
     box-shadow: 2px 0 12px 0 rgb(0 0 0 / 15%);
-    cursor: pointer;
+    margin: auto;
+    margin-bottom: 40px;
 
 }
 
@@ -84,7 +85,7 @@ body[dir="ltr"] .cardDetails {
     -moz-border-radius: 0 0 5px 5px;
     -ms-border-radius: 0 0 5px 5px;
     -o-border-radius: 0 0 5px 5px;
-    height: 144px;
+    height:144px;
 }
 
 .allCollect {
@@ -109,8 +110,8 @@ span:nth-child(1) {
     background: #d9dfdb !important;
     border-radius: 25px;
     box-shadow: inset 0 2px 2px -1px rgb(0 0 0 / 11%);
-    height: 12px;
     margin-top: 10px;
+    height: 12px !important;
 
 }
 @media (min-width:1200px) and (max-width:1400px){
@@ -118,4 +119,8 @@ span:nth-child(1) {
             height: 22%;
         }
 }
-
+@media (max-width:767px){
+    .cardPrice {
+        height: 148px;
+    }
+}

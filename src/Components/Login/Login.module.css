@@ -1,22 +1,24 @@
 .logForm {
-    margin-top: 50px;
     display: flex;
-    background-image: url(./../../assets/images/6660.jpg);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: 90vh;
-        margin-top: -2px;
-        text-align: center;
+    text-align: center;
+    background-image: url(../../assets/images/WhatsApp\ Image\ 2023-02-25\ at\ 12.33.53\ AM.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 80vh;
    
 }
+.userName {
 
+    margin:50px 0;
+}
 .login {
-    min-width: 50%;
-    margin: auto;
-    border: 1px solid #eee;
-    box-shadow: 0 0 4px 0 #00000040;
-    padding-bottom: 30px;
+    width: 40%;
+        margin: auto;
+        margin-top: 3%;
+        border: 1px solid #eee;
+        box-shadow: 0 0 4px 0 #00000040;
+        padding-bottom: 50px;
 
 }
 
@@ -24,24 +26,20 @@
     margin: 30px 0;
     color: #fff;
 }
-
-.inputGroupp {
-    position: relative;
-    margin-bottom: 20px;
-}
 .input {
-    border: none;
-    outline: none;
-    border-radius: 15px;
-    padding: 1em;
-    background-color: #f5f0f0;
-    box-shadow: inset 2px 5px 10px rgba(234, 147, 76, 0.61);
-    transition: 300ms ease-in-out;
-    font-size: 17px;
-    color: #202020;
-    width: 50%;
-    margin-top: 20px;
-    border: 2px solid #E68500 !important;
+        border: none;
+            outline: none;
+            border-radius: 15px;
+            padding: 1em;
+            background-color: #f5f0f0;
+            box-shadow: inset 2px 5px 10px rgba(234, 147, 76, 0.61);
+            transition: 300ms ease-in-out;
+            font-size: 17px;
+            color: #202020;
+            border: 2px solid #E68500 !important;
+            width: 600px !important;
+            height: 50px;
+            margin: 10px auto;
 }
 
 .input:focus {
@@ -73,7 +71,6 @@
     font-weight: 500;
     color: #fff;
     background-color: #E68500;
-    padding-left: 30px;
 }
 
 .log__btn:before {
@@ -97,7 +94,7 @@
 
 .log__btn:hover:before{
     top: -30px;
-    left: -30px;
+    left: -40px;
 }
 
 .log__btn:active:before{
@@ -121,21 +118,6 @@
 .log__link:hover {
     color: #000;
 
-}
-@media (max-width:767px)  {
-    .login{
-        width: 90%;
-    }
-    .inputt,
-    .log__btn{
-        width: 80%;
-    }
-    .user-labell{
-        left: 15%;
-    }
-    .log__btn:hover:before {
-        left: -50px;
-    }
 }
 .userLog__list{
     list-style: none;
@@ -165,90 +147,50 @@ background-color: #E68500;
     -o-border-radius: 15px;
     color: #fff;
 }
-
-.select {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    width: 50%;
-    height: 40px;
-    margin: auto;
-    margin-bottom: 30px;
-    color: #E68500;
-}
-.display__none{
-    display: none;
-}
-
-.option {
-    padding: 0 30px 0 10px;
-    min-height: 40px;
-    display: flex;
-    align-items: center;
-    background: #fff;
-    border-top: #E68500 solid 1px;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    pointer-events: none;
-    order: 2;
-    z-index: 1;
-    transition: background .4s ease-in-out;
-    box-sizing: border-box;
-    overflow: hidden;
-    white-space: nowrap;
-
-}
-
-.option:hover {
-    background:#e4e4e4;
-}
-
-.select:focus .option {
-    position: relative;
-    pointer-events: all;
-}
-
-.selectopt {
-    opacity: 0;
-    position: absolute;
-    left: -99999px;
-}
-
-.selectopt:checked+label {
-    order: 1;
-    z-index: 2;
-    background: #fff;
-    border-top: none;
-    position: relative;
-}
-
-.selectopt:checked+label:after {
-    content: '';
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid white;
-    position: absolute;
-    right: 10px;
-    top: calc(50% - 2.5px);
-    pointer-events: none;
-    z-index: 3;
-}
-
-.selectopt:checked+label:before {
-    position: absolute;
-    right: 0;
-    height: 40px;
-    width: 40px;
-    content: '';
-    background: #E68500;
-}
 .msErr {
     color: rgb(168, 1, 1);
     margin: 15px 0 0 15px;
     font-size: 17px;
     font-weight: bold;
 
+}
+@media (max-width:767px) {
+    .login {
+        width: 95%;
+        margin-top: 50px;
+    }
+
+    .input,
+    .log__btn {
+        width: 85% !important;
+        margin: auto;
+    }
+    .input{
+        margin-top: 30px;
+    }
+    .user-labell {
+        left: 15%;
+    }
+
+    .log__btn:hover:before {
+        left: -50px;
+    }
+}
+@media (min-width:768px) and (max-width:1200px) {
+    .login {
+        width: 95%;
+    }
+
+}
+@media (min-width:1201px) and (max-width:1450px) {
+    .login {
+        width: 75%;
+    }
+
+}
+
+@media (min-width:1451px) {
+        .login {
+                width: 50%;
+            }
 }

@@ -1,8 +1,8 @@
 
-
-.modal__btn{
-       position: fixed !important;
-        z-index: 10000;
+.btn{
+  
+        position: fixed !important;
+        z-index: 100;
         transform: rotate(0.75turn);
         -webkit-transform: rotate(0.75turn);
         -moz-transform: rotate(0.75turn);
@@ -18,8 +18,9 @@
         border: 1px solid #E68500 !important;
         font-family: "Changa-Regular", sans-serif !important;
         font-size: 17px;
+        z-index: 100000 !important;
         right: -35px !important;
-        top: 50% !important;
+        top: 40%;
  
 }
 .btn:hover{
@@ -112,10 +113,19 @@
     width: 100%;
     padding-top: 10px;
     font-family: "Changa-Regular", sans-serif !important;
-    background-color: #E68500;
-    border: 1px solid #E68500;
+    background-color: #E68500 !important;
+    border: 1px solid #E68500 !important;
 }
 .footer__btn:hover{
-    background-color: #E68500;
-    border: 1px solid #E68500;
+    background-color: #E68500 !important;
+    border: 1px solid #E68500 !important;
+}
+.modal{
+    z-index: 10000 !important;
+}
+@media (max-width:767px) {
+    .btn{
+        margin-left: 82.5%;
+    }
+    
 }

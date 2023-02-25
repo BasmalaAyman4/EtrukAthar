@@ -1,5 +1,5 @@
 import React from 'react'
-import { Autoplay, Pagination, Navigation ,EffectFade} from "swiper";
+import { Autoplay, Pagination, Navigation, EffectFade } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "./HomeHeader.module.css"
 import "swiper/css";
@@ -13,37 +13,36 @@ const HomeHeader = () => {
   const { t } = useTranslation()
   return (
     <div className='mb-5'>
-    <Swiper  
-        
+      <Swiper
+
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
           delay: 1000,
           disableOnInteraction: false,
         }}
-       
+
         effect={"fade"}
-        navigation={true}
-        modules={[EffectFade,Autoplay, Navigation]}
-        className= {`mySwiper ${styles['swiper-style']}`}>
+        modules={[EffectFade, Autoplay, Navigation]}
+        className={`mySwiper ${styles['swiper-style']}`}>
         <SwiperSlide className={`${styles.swiperHeader}`}><img src={img1} className={styles.blur} alt="" /></SwiperSlide>
-        <SwiperSlide className={`${styles.swiperHeader}`}><img src={img2} className={styles.blur}  alt="" /></SwiperSlide>
-        <SwiperSlide className={`${styles.swiperHeader}`}><img src={img3} className={styles.blur}  alt="" /></SwiperSlide>
+        <SwiperSlide className={`${styles.swiperHeader}`}><img src={img2} className={styles.blur} alt="" /></SwiperSlide>
+        <SwiperSlide className={`${styles.swiperHeader}`}><img src={img3} className={styles.blur} alt="" /></SwiperSlide>
       </Swiper>
       <div className={`${styles['home-header__info']} text-center`}>
-         <div className='container'>
-          <h2>{t("مهما كان تبرعك صغيراً")}</h2>
-          <p className='mb-5'>{t("مهما كان تبرعك صغيراً")}</p>
-           <div className='row '>
-           <div className={`col-lg-6 col-sm-12 mb-5  ${styles['text-algin-style_white-btn']} `}>
-                <Link to="" className={`${styles["home-header__btn_white"]} ` }>{t("ملف الشفافية")}</Link>
-             </div>
-             <div className={`col-lg-6 col-sm-12 ${styles['text-algin-style_btn']}`}>
-                <Link to="" className={`${styles["home-header__btn"]} ` } > {t("التبرع الفوري")}</Link>
-             </div>
-            
-           </div>
-           </div>
+        <div className='container'>
+          <h2>مهما كان تبرعك صغيراً</h2>
+          <p className='mb-3'>فإنه يحدث أثراً</p>
+          <div className='row'>
+            <div className={`col-lg-6 col-sm-12 mb-5  ${styles['text-algin-style_white-btn']} `}>
+              <Link to="" className={`${styles["home-header__btn_white"]} `}>ملف الشفافية</Link>
+            </div>
+            <div className={`col-lg-6 col-sm-12 ${styles['text-algin-style_btn']}`}>
+              <Link to="" className={`${styles["home-header__btn"]} `} >التبرع الفوري</Link>
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
   )
