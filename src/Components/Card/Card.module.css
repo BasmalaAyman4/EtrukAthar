@@ -114,3 +114,8 @@ span:nth-child(1) {
             height: 22%;
         }
 }
+@media (max-width:767px){
+    .cardPrice {
+        height: 148px;
+    }
+}
