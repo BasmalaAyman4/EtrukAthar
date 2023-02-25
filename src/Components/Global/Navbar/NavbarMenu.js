@@ -18,22 +18,22 @@ import { useTranslation } from 'react-i18next';
 import cookies from 'js-cookie'
 import i18next from 'i18next';
 export default function NavbarMenu() {
-
+ 
     const languages = [
         {
-            code: 'en',
-            name: 'English',
-            dir: 'rtl',
-            country_code: 'gb',
+          code: 'en',
+          name: 'English',
+          dir: 'rtl',
+          country_code: 'gb',
         },
         {
-            code: 'ar',
-            name: 'Arabic',
-            dir: 'ltr',
-            country_code: 'sa',
+          code: 'ar',
+          name: 'Arabic',
+          dir: 'ltr',
+          country_code: 'sa',
         },
-    ]
-
+      ]  
+     
     const [NavbarSide, setNavbarSide] = useState(false)
     const [openCases, setOpenCases] = useState(false);
     const [openSponsorships, setOpenSponsorships] = useState(false);
@@ -44,15 +44,15 @@ export default function NavbarMenu() {
     useEffect(() => {
         document.body.dir = currentLanguage.dir || 'ltr'
         document.title = t("عنوان")
-    }, [currentLanguage, t])
-    function handleLanguage(code, index, event) {
+      }, [currentLanguage, t])
+      function handleLanguage(code,index,event){
         event.preventDefault();
         i18next.changeLanguage(code)
         // document.querySelector(".active-language").classList.remove("active-language")
         // document.getElementById(`language${index}`).classList.add("active-language")
-
-    }
-
+    
+      }
+    
     function logout() {
         localStorage.removeItem('token');
         localStorage.removeItem('email');
@@ -68,20 +68,20 @@ export default function NavbarMenu() {
                             {authContext.auth.email ? <Link to="" className={`px-3 pt-2 ${styles.header__link}`}> تبرعاتي</Link> : <Link to="/sign-up" className={`px-3 pt-2 ${styles.header__link}`}> تسجيل</Link>}
                             <Link to="" className={`px-3 pt-2 ${styles.header__link}`}>حاسبة الزكاة </Link>
                             <Link to="" className={`px-3 pt-2 ${styles.header__link}`}>كيف أتبرع؟</Link>
-
-                            {languages.map(({ code, name }, index) => (
-                                <Link
-                                    id={`language${index}`}
-                                    key={code}
-                                    onClick={(event) => { handleLanguage(code, index, event) }}
+                          
+                                {languages.map(({code, name},index) =>(
+                                <Link 
+                                    id= {`language${index}`}
+                                    key={code} 
+                                    onClick={(event)=>{handleLanguage(code,index,event)}}
                                     className={`px-3 pt-2 ${styles.header__link}`}
                                     href="#">{name}
                                 </Link>
-
-                            ))}
-
-
-
+                                
+                                ))}
+              
+                           
+                           
                         </nav>
                         <div className={`pt-2 ${styles.social}`}>
                             <span className='px-2'><BsFacebook /></span>
@@ -116,10 +116,7 @@ export default function NavbarMenu() {
                                             <NavLink className="nav-link" to="/" href="index.html">{t("الرئيسية")} </NavLink>
                                         </li>
                                         <li>
-
-                                            <NavLink className="nav-link" to="/projects" href="index.html"> {t("المشاريع")}</NavLink>
-
-
+                                            <NavLink className="nav-link" to="/" href="index.html">{t("المشاريع")} </NavLink>
                                         </li>
                                         <li>
                                             <NavLink
@@ -199,18 +196,18 @@ export default function NavbarMenu() {
                         >
                             <Offcanvas.Body>
                                 <Nav className={`justify-content-end flex-grow-1 p-2 ${styles.nav__dir} `} >
-                                    <NavLink to="/" className={`${styles["main-nav__link"]} main-nav__link`}>الرئيسية</NavLink>
-                                    <NavLink to="/projects" className={`${styles.mainNav__link} main-nav__link`}>المشاريع</NavLink>
+                                    <NavLink to="/" className={`${styles["main-nav__link"]} main-nav__link`}>{t("الرئيسية")}</NavLink>
+                                    <NavLink to="/projects" className={`${styles.mainNav__link} main-nav__link`}> {t("المشاريع")}</NavLink>
                                     <div className="dropdown">
-                                        <NavLink className={`${styles.mainNav__link}  nav-item nav__item  nav-link`}  >الحالات</NavLink>
+                                        <NavLink className={`${styles.mainNav__link}  nav-item nav__item  nav-link`}  > {t("الحالات")}</NavLink>
 
                                         <div className="dropdown-menu show nav__dropdown-list">
-                                            <Link className="dropdown-item" to="/Login"> حالات إنسانية</Link>
-                                            <Link className="dropdown-item" to="/Register">حالات إنسانية</Link>
+                                            <Link className="dropdown-item" to="/Login">{t("حالات إنسانية")}</Link>
+                                            <Link className="dropdown-item" to="/Register">  {t("حالات طبية")}</Link>
                                         </div>
                                     </div>
                                     <div className="dropdown">
-                                        <NavLink className={`${styles.mainNav__link}nav-item nav__item  nav-link`}  >الكفالات</NavLink>
+                                        <NavLink className={`${styles.mainNav__link}nav-item nav__item  nav-link`}  > {t(" الكفالات")}</NavLink>
 
                                         <div className="dropdown-menu show nav__dropdown-list">
                                             <Link className="dropdown-item" to="/Login">كفالة يتيم</Link>
