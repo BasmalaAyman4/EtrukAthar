@@ -18,22 +18,22 @@ import { useTranslation } from 'react-i18next';
 import cookies from 'js-cookie'
 import i18next from 'i18next';
 export default function NavbarMenu() {
- 
+
     const languages = [
         {
-          code: 'en',
-          name: 'English',
-          dir: 'rtl',
-          country_code: 'gb',
+            code: 'en',
+            name: 'English',
+            dir: 'rtl',
+            country_code: 'gb',
         },
         {
-          code: 'ar',
-          name: 'Arabic',
-          dir: 'ltr',
-          country_code: 'sa',
+            code: 'ar',
+            name: 'Arabic',
+            dir: 'ltr',
+            country_code: 'sa',
         },
-      ]  
-     
+    ]
+
     const [NavbarSide, setNavbarSide] = useState(false)
     const [openCases, setOpenCases] = useState(false);
     const [openSponsorships, setOpenSponsorships] = useState(false);
@@ -44,15 +44,15 @@ export default function NavbarMenu() {
     useEffect(() => {
         document.body.dir = currentLanguage.dir || 'ltr'
         document.title = t("عنوان")
-      }, [currentLanguage, t])
-      function handleLanguage(code,index,event){
+    }, [currentLanguage, t])
+    function handleLanguage(code, index, event) {
         event.preventDefault();
         i18next.changeLanguage(code)
         // document.querySelector(".active-language").classList.remove("active-language")
         // document.getElementById(`language${index}`).classList.add("active-language")
-    
-      }
-    
+
+    }
+
     function logout() {
         localStorage.removeItem('token');
         localStorage.removeItem('email');
@@ -68,20 +68,20 @@ export default function NavbarMenu() {
                             {authContext.auth.email ? <Link to="" className={`px-3 pt-2 ${styles.header__link}`}> تبرعاتي</Link> : <Link to="/sign-up" className={`px-3 pt-2 ${styles.header__link}`}> تسجيل</Link>}
                             <Link to="" className={`px-3 pt-2 ${styles.header__link}`}>حاسبة الزكاة </Link>
                             <Link to="" className={`px-3 pt-2 ${styles.header__link}`}>كيف أتبرع؟</Link>
-                          
-                                {languages.map(({code, name},index) =>(
-                                <Link 
-                                    id= {`language${index}`}
-                                    key={code} 
-                                    onClick={(event)=>{handleLanguage(code,index,event)}}
+
+                            {languages.map(({ code, name }, index) => (
+                                <Link
+                                    id={`language${index}`}
+                                    key={code}
+                                    onClick={(event) => { handleLanguage(code, index, event) }}
                                     className={`px-3 pt-2 ${styles.header__link}`}
                                     href="#">{name}
                                 </Link>
-                                
-                                ))}
-              
-                           
-                           
+
+                            ))}
+
+
+
                         </nav>
                         <div className={`pt-2 ${styles.social}`}>
                             <span className='px-2'><BsFacebook /></span>
@@ -214,7 +214,7 @@ export default function NavbarMenu() {
                                             <Link className="dropdown-item" to="/Register">كفالة أسرة</Link>
                                         </div>
                                     </div>
-                                    <NavLink to="/b" className={`${styles.mainNav__link} main-nav__link `}> المناسبات</NavLink>
+                                    <NavLink to="/b" className={`${styles.mainNav__link} main-nav__link event`}> المناسبات</NavLink>
                                     <NavLink to="/box" className={`${styles.mainNav__link} main-nav__link`}>صندوق علمني</NavLink>
                                     <NavLink to="/acution" className={`${styles.mainNav__link} main-nav__link`}>ملف الشفافيه</NavLink>
 
