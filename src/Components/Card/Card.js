@@ -2,6 +2,7 @@ import React from 'react'
 import './Card.css'
 import styles from './Card.module.css'
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import { Link } from 'react-router-dom';
 export default function Card(props) {
     return (
         <>
@@ -25,7 +26,7 @@ export default function Card(props) {
 
                     </div>
                 </div>
-                <button className={`${styles.cardButton}`}>للتبرع </button>
+                <Link to='/card-details'><button className={`${styles.cardButton}`}>للتبرع </button></Link>
             </div>
         </>
     )

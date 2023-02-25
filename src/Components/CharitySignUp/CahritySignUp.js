@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import style from '../Sign-up/signUp.module.css'
 import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
-
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 export default function CahritySignUp() {
     const validname = /^[A-Za-z]+$/;
     const validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -57,21 +58,33 @@ export default function CahritySignUp() {
             <section className={style.logForm}>
                 <div className={style.signup}>
                     <h2 className={style.signup__title}>Sign Up</h2>
-                    <p className={style.signup__para}>Volunteer or doner ? <a href='/signup'>Sign up for user</a></p>
+                    <p className={style.signup__para}> doner ? <a href='/signup'>Sign up for user</a></p>
                     <hr />
-                    <form onSubmit={onSubmitHandler} >
+                    <Form onSubmit={onSubmitHandler} >
                         <div className={style.userName}>
-                            <div class={style.inputGroupp}>
-                                <input name="userName" autoComplete="off" className={`${style.input}`} placeholder="Your Charity Name" onChange={onChangeHandler} value={userName} />
-                                <div className={`${style.msErr}`}>{formError.userName}</div>
-                            </div>
-                            <div class={style.inputGroupp}>
-                                <input name="email" autoComplete="off" className={`${style.input}`} placeholder="Your Charity Email" onChange={onChangeHandler} value={email} />
-                                <div className={`${style.msErr}`}>{formError.email}</div>
-                            </div>
-                            <div class={style.inputGroupp}>
-                                <input name="type-of-work" autoComplete="off" className={`${style.input}`} placeholder="Type of Work" />
-                            </div>
+
+                            <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                <Form.Control name="userName" className={`${style.input}`} placeholder="Your Charity Name" onChange={onChangeHandler} value={userName} />
+                                <Form.Text className={`${style.msErr}`}>
+                                    {formError.userName}
+                                </Form.Text>
+                            </Form.Group>
+
+                            <Form.Group className="mb-3" controlId="formBasicPassword">
+                                <Form.Control name="email" autoComplete="off" className={`${style.input}`} placeholder="Your Charity Email" onChange={onChangeHandler} value={email} />
+                                <Form.Text className={`${style.msErr}`}>
+                                    {formError.email}
+                                </Form.Text>
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="formBasicPassword">
+                                <Form.Control name="type-of-work" autoComplete="off" className={`${style.input}`} placeholder="Type Of Work" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="formBasicPassword">
+                                <Form.Control name="RegistrationNumber" autoComplete="off" className={`${style.input}`} placeholder="Registration Number" />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="formBasicPassword">
+                                <Form.Control name="yourArea" autoComplete="off" className={`${style.input}`} placeholder="Your Area" />
+                            </Form.Group>
                             <div class={style.inputGroupp}>
                                 <PhoneInput
                                     defaultCountry="EG"
@@ -81,25 +94,23 @@ export default function CahritySignUp() {
                                     onChange={onChangeHandler}
                                     className={` ${style.PhoneInputInput} ${style.PhoneInput} ${style.input}`} />
                             </div>
-                            <div class={style.inputGroupp}>
-                                <input name="RegistrationNumber" autoComplete="off" className={`${style.input}`} placeholder="Registration Number" />
-                            </div>
-                            <div class={style.inputGroupp}>
-                                <input name="YourArea" autoComplete="off" className={`${style.input}`} placeholder="Your Area" />
-                            </div>
-                            <div class={style.inputGroupp}>
-                                <input name="password" type="password" autoComplete="off" className={`${style.input}`} placeholder="Your Password" onChange={onChangeHandler} value={password} />
-                                <div className={`${style.msErr}`}><p>{formError.password}</p></div>
-                            </div>
-                            <div class={style.inputGroupp}>
-                                <input name="confirmPassword" type="password" autoComplete="off" className={`${style.input}`} placeholder="Confirm Password" onChange={onChangeHandler} value={confirmPassword} />
-                                <div className={`${style.msErr}`}>{formError.confirmPassword}</div>
-                            </div>
-                            <button className={style.signup__btn}>Sign Up</button>
+                            <Form.Group className="mb-3" controlId="formBasicPassword">
+                                <Form.Control name="password" type="password" autoComplete="off" className={`${style.input}`} placeholder="Your Password" onChange={onChangeHandler} value={password} />
+                                <Form.Text className={`${style.msErr}`}>
+                                    {formError.password}
+                                </Form.Text>
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="formBasicPassword">
+                                <Form.Control name="confirmPassword" type="password" autoComplete="off" className={`${style.input}`} placeholder="Confirm Password" onChange={onChangeHandler} value={confirmPassword} />
+                                <Form.Text className={`${style.msErr}`}>
+                                    {formError.confirmPassword}
+                                </Form.Text>
+                            </Form.Group>
+                            <Button className={style.signup__btn} type="submit">
+                                Sign Up
+                            </Button>
                         </div>
-                    </form>
-                    <hr className={style.forgetLine} />
-                    <p className={style.signup__term}> Aleardy have an account?<a href='/login'>Sign In</a> </p>
+                    </Form>
                 </div>
             </section>
         </>

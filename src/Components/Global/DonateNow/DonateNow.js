@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import style from './DonateNow.module.css'
@@ -21,6 +21,7 @@ export default function DonateNow() {
                 size="lg"
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
+                className={`${style.modal}`}
             >
                 <Modal.Header closeButton className={`${style.header}`}>
                     <Modal.Title id="contained-modal-title-vcenter" className={`${style.modal__title}`}>
@@ -58,12 +59,9 @@ export default function DonateNow() {
     }
     return (
         <>
-            <div className={`${style.modal__body}`} >
-                <Button variant="primary" onClick={() => setModalShow(true)} className={`${style.btn}`}>
-                    <span className={`${style.modal__para}`}> التبرع مباشر</span>
-                </Button>
-            </div>
-
+            <Button variant="primary" onClick={() => setModalShow(true)} className={`${style.btn}`}>
+                <span className={`${style.modal__para}`}> التبرع مباشر</span>
+            </Button>
             <MyVerticallyCenteredModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}

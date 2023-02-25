@@ -162,7 +162,7 @@ export default function NavbarMenu() {
                                             </Collapse>
                                         </li>
                                         <li>
-                                            <NavLink className="nav-link" to="/" href="index.html">المناسبات</NavLink>
+                                            <NavLink className="nav-link" to="/b" href="index.html">المناسبات</NavLink>
                                         </li>
                                         <li>
                                             <NavLink className="nav-link" to="/" href="index.html"> من نحن </NavLink>
@@ -217,7 +217,7 @@ export default function NavbarMenu() {
                                             <Link className="dropdown-item" to="/Register">كفالة أسرة</Link>
                                         </div>
                                     </div>
-                                    <NavLink to="/trans" className={`${styles.mainNav__link} main-nav__link`}> المناسبات</NavLink>
+                                    <NavLink to="/b" className={`${styles.mainNav__link} main-nav__link `}> المناسبات</NavLink>
                                     <NavLink to="/box" className={`${styles.mainNav__link} main-nav__link`}>صندوق علمني</NavLink>
                                     <NavLink to="/acution" className={`${styles.mainNav__link} main-nav__link`}>ملف الشفافيه</NavLink>
 

@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react'
 import style from './Login.module.css'
 import { AuthContext } from '../AuthContext'
-
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 export default function Login() {
     const [active, setActive] = useState(true)
     const showActive = (role) => {
@@ -64,21 +65,25 @@ export default function Login() {
                     <hr />
                     <ul className={style.userLog__list}>
                         <li className={`${style.userLog__item}`} onClick={() => { showActive("volenteer") }} >
-                            <button type='button' className={`${active ? style.user__link : style.userLog__link}`} >AS VOUNTEER OR DONOR</button>
+                            <button type='button' className={`${active ? style.user__link : style.userLog__link}`} >AS DONOR</button>
                         </li>
                         <li className={`${style.userLog__item}  `} onClick={() => { showActive("charity") }} >
                             <button type='button' className={`${active ? style.userLog__link : style.user__link}`} >AS CHARITY</button>
                         </li>
                     </ul>
-                    <div>
-                        <div class={style.inputGroupp}>
-                            <input name="email" autoComplete="off" className={`${style.input}`} placeholder="Your Email" onChange={onChangeHandler} value={email} />
-                            <div className={`${style.msErr}`}>{formError.email}</div>
-                        </div>
-                        <div class={style.inputGroupp}>
-                            <input name="password" type="password" autoComplete="off" className={`${style.input}`} placeholder="Your Password" onChange={onChangeHandler} value={password} />
-                            <div className={`${style.msErr}`}>{formError.password}</div>
-                        </div>
+                    <div className={style.userName}>
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                            <Form.Control name="email" autoComplete="off" className={`${style.input}`} placeholder="Your Email" onChange={onChangeHandler} value={email} />
+                            <Form.Text className={`${style.msErr}`}>
+                                {formError.email}
+                            </Form.Text>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                            <Form.Control name="password" type="password" autoComplete="off" className={`${style.input}`} placeholder="Your Password" onChange={onChangeHandler} value={password} />
+                            <Form.Text className={`${style.msErr}`}>
+                                {formError.password}
+                            </Form.Text>
+                        </Form.Group>
                         <button className={style.log__btn} onClick={login}>Sign in</button>
                     </div>
                     <hr className={style.forgetLine} />

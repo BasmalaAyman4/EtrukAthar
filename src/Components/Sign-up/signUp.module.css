@@ -1,40 +1,80 @@
 .logForm {
-    margin-top: 50px;
     display: flex;
-    background-image: url(./../../assets/images/6660.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 90vh;
-    margin-top: -2px;
-text-align: center;
+    text-align: center;
+    background-image: url(../../assets/images/WhatsApp\ Image\ 2023-02-25\ at\ 12.33.53\ AM.jpeg);
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+height: 80vh;
+}
+
+.userName {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2%;
+    margin: 0 20px;
 }
 
 .signup {
-    min-width: 50%;
+    width: 60%;
     margin: auto;
+    margin-top: 5%;
     border: 1px solid #eee;
     box-shadow: 0 0 4px 0 #00000040;
-    padding-bottom: 30px;
-
+    padding-bottom: 50px;
 }
-.msErr{
-    color: rgb(168, 1, 1);
-margin: 15px 0 0 15px;
-font-size: 17px;
-font-weight: bold;
 
-}
 .signup__title {
     margin: 20px 0;
     color: #fff;
 }
 
-.inputGroupp {
-    position: relative;
-    margin-bottom: 20px;
+.msErr {
+    color: rgb(168, 1, 1) !important;
+    font-size: 17px !important;
+    font-weight: bold !important;
+
 }
 
+.signup__para {
+    font-size: 17px;
+    margin: 20px 0;
+    color: #fff;
+}
+
+.signup__para a {
+    color: #E68500;
+    font-weight: bold;
+}
+.signup__para a:hover {
+    color: #fff;
+}
+.input {
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    padding: 1em;
+    background-color: #f5f0f0;
+    box-shadow: inset 2px 5px 10px rgba(234, 147, 76, 0.61);
+    transition: 300ms ease-in-out;
+    font-size: 17px;
+    color: #202020;
+    margin-top: 20px;
+    border: 2px solid #E68500 !important;
+    min-width: 400px !important;
+    height: 50px;
+}
+
+.input:focus {
+    background-color: white;
+    transform: scale(1.05);
+    box-shadow: 0 0 0 4px rgba(234, 147, 76, 0.61);
+}
+
+.input:hover {
+    border: 2px solid #E68500 !important;
+    box-shadow: 0 0 0 4px rgba(234, 147, 76, 0.61);
+}
 
 .signup__btn {
     --color: #333;
@@ -42,18 +82,16 @@ font-weight: bold;
     display: inline-block;
     width: 8em;
     height: 2.6em;
-    line-height: 2.5em;
-    margin: 20px;
     position: relative;
     overflow: hidden;
-    border: 2px solid #E68500;
+    border: 2px solid #E68500 !important;
     transition: color .5s;
     z-index: 1;
     font-size: 17px;
     border-radius: 6px;
     font-weight: 500;
     color: #fff;
-    background-color: #E68500;
+    background-color: #E68500 !important;
 }
 
 .signup__btn:before {
@@ -68,6 +106,8 @@ font-weight: bold;
 
 .signup__btn:hover {
     color: #fff;
+    background-color: #E68500 !important;
+    border: 2px solid #E68500 !important;
 }
 
 .signup__btn:before {
@@ -87,86 +127,60 @@ font-weight: bold;
 }
 
 .signup__btn {
-    width: 80%;
-margin:15px 50%;
+    width: 100%;
 }
 
-.forgetLine {
-    margin-bottom: 20px;
-}
-
-.signup__term{
-    color: #fff;
-    margin-right: 100px;
-    
-}
-.signup__term a{
-    color: #000;
-    margin-left: 10px;
-}
-
-
-@media (max-width:767px) {
-    .signup {
-        width: 90%;
-    }
-
-    .input,
-    .signup__btn {
-        width: 80%;
-    }
-
-    .signup__btn:hover:before {
-        left: -50px;
-    }
-}
-.signup__para{
-    font-size: 17px;
-    margin: 20px 0;
-    color: #fff;
-}
-.signup__para a{
-    color: #E68500;
-    font-weight: bold;
-}
-
-.userName{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-}
 .PhoneInputInput input {
-    border:none !important;
+    border: none !important;
     outline: none !important;
     background-color: #f5f0f0 !important;
 }
-.PhoneInput{
-    margin-right: -70px;
-    margin-left: 50px;
-}
-.msError {
-    color: rgb(168, 1, 1);
-}
-.input {
-    border: none;
-    outline: none;
-    border-radius: 15px;
-    padding: 1em;
-    background-color: #f5f0f0;
-    box-shadow: inset 2px 5px 10px rgba(234, 147, 76, 0.61);
-    transition: 300ms ease-in-out;
-    font-size:17px ;
-    color: #202020;
-    width: 85%;
-    margin-top: 20px;
-    border: 2px solid #E68500 !important;
+
+@media (max-width:767px) {
+    .signup {
+        width: 95%;
+        margin-top: 50px;
+    }
+
+    .userName {
+        display: block;
+    }
+
+    .logForm {
+        height: 100vh;
+        margin-top: 20px;
+        margin-top: -1px;
+    }
 }
 
-.input:focus {
-    background-color: white;
-    transform: scale(1.05);
-box-shadow: 0 0 0 4px rgba(234, 147, 76, 0.61);
+@media (min-width:768px) and (max-width:1200px) {
+    .signup {
+        width: 95%;
+    }
+
+    .userName {
+        display: block;
+    }
+
+    .logForm {
+        height: 100vh;
+        margin-top: 20px;
+        margin-top: -1px;
+    }
 }
-.input:hover {
-    border: 2px solid #E68500 !important;
-    box-shadow: 0 0 0 4px rgba(234, 147, 76, 0.61);
+
+@media (min-width:1201px) and (max-width:1450px) {
+    .signup {
+        width: 75%;
+    }
+
+    .signup__btn {
+        margin: 0 50%;
+    }
+}
+
+@media (min-width:1451px) {
+    .signup__btn {
+        margin: 0 50%;
+    }
 }
