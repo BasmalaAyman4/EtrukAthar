@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import style from './signUp.module.css'
+import  './SignUp.css'
 import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useTranslation } from 'react-i18next';
 
 export default function SignUp() {
 
@@ -18,7 +20,7 @@ export default function SignUp() {
     confirmPassword: '',
 
   })
-
+   
   const { userName, email, phone, password, confirmPassword } = formData
   const [formError, setFormError] = useState({})
 
@@ -26,7 +28,11 @@ export default function SignUp() {
 
     setFormData({ ...formData, [e.target.name]: e.target.value })
     console.log(formData)
+  }
 
+  const onChangeHandlerPhone = data => {
+    setFormData( { ...formData, phone: data })
+    console.log(formData)
   }
 
 
@@ -55,37 +61,33 @@ export default function SignUp() {
     }
     setFormError({ ...err })
   }
+  const {t}= useTranslation()
   return (
     <>
       <section className={style.logForm}>
+        <div className='container' >
         <div className={style.signup}>
-          <h2 className={style.signup__title}>Sign Up</h2>
-          <p className={style.signup__para}>Work for charity ? <a href='/charitySign-up'>Sign up for charity account</a></p>
+          <h2 className={style.signup__title}>{t("تسجيل حساب جديد")}</h2>
+          <p className={style.signup__para}>{t("تعمل  كجمعية خيرية؟")}<a href='/charitySign-up'>{t(" انشاء حساب كجمعية خيرية")}</a></p>
           <hr />
           <Form onSubmit={onSubmitHandler} >
             <div className={style.userName}>
 
               <Form.Group className="mb-3" controlId="formBasicEmail" >
-                <Form.Control name="userName" className={`${style.input}`} placeholder="Your Full Name" onChange={onChangeHandler} value={userName} />
+                <Form.Control name="userName" className={`${style.input}`} placeholder={t("اسم المستخدم")} onChange={onChangeHandler} value={userName} />
                 <Form.Text className={`${style.msErr}`}>
                   {formError.userName}
                 </Form.Text>
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Control name="email" autoComplete="off" className={`${style.input}`} placeholder="Your Email" onChange={onChangeHandler} value={email} />
+                <Form.Control name="email" autoComplete="off" className={`${style.input}`} placeholder={t(" البريد الإلكتروني")} onChange={onChangeHandler} value={email} />
                 <Form.Text className={`${style.msErr}`}>
                   {formError.email}
                 </Form.Text>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Control name="skills" autoComplete="off" className={`${style.input}`} placeholder="Your Skills" />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Control name="address" autoComplete="off" className={`${style.input}`} placeholder="Your Address" />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Control name="age" autoComplete="off" className={`${style.input}`} placeholder="Your Age" />
+                <Form.Control name="skills" autoComplete="off" className={`${style.input}`} placeholder={t("مهارات")} />
               </Form.Group>
               <div class={style.inputGroupp}>
                 <PhoneInput
@@ -93,26 +95,35 @@ export default function SignUp() {
                   international
                   error={phone ? (isValidPhoneNumber(phone) ? undefined : 'Invalid phone number') : 'Phone number required'}
                   value={phone}
-                  onChange={onChangeHandler}
-                  className={` ${style.PhoneInputInput} ${style.PhoneInput} ${style.input}`} />
+                  name="phone"
+                  onChange={onChangeHandlerPhone}
+                  className={` ${style.PhoneInputInput} ${style.PhoneInput}  ${style.input}`} />
               </div>
               <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Control name="password" type="password" autoComplete="off" className={`${style.input}`} placeholder="Your Password" onChange={onChangeHandler} value={password} />
-                <Form.Text className={`${style.msErr}`}>
-                  {formError.password}
-                </Form.Text>
+                <Form.Control name="address" autoComplete="off" className={`${style.input}`} placeholder={t("العنوان")} />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Control name="confirmPassword" type="password" autoComplete="off" className={`${style.input}`} placeholder="Confirm Password" onChange={onChangeHandler} value={confirmPassword} />
+                <Form.Control name="age" autoComplete="off" className={`${style.input}`} placeholder={t( "العمر")} />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Control name="confirmPassword" type="password" autoComplete="off" className={`${style.input}`} placeholder={t( "تأكيد كلمة المرور")} onChange={onChangeHandler} value={confirmPassword} />
                 <Form.Text className={`${style.msErr}`}>
                   {formError.confirmPassword}
                 </Form.Text>
               </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Control name="password" type="password" autoComplete="off" className={`${style.input}`} placeholder={t("كلمة المرور")} onChange={onChangeHandler} value={password} />
+                <Form.Text className={`${style.msErr}`}>
+                  {formError.password}
+                </Form.Text>
+              </Form.Group>
+             
               <Button className={style.signup__btn} type="submit">
-                Sign Up
+                {t("انشاء حساب")}
               </Button>
             </div>
           </Form>
+        </div>
         </div>
       </section>
     </>

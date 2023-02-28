@@ -86,7 +86,7 @@
 @media (max-width:992px) {
     .home-header__info{
     position: absolute;
-    top: 50%;
+    top: 45%;
     transform: translateY(-50%);
     z-index: 1000;
     left: 50%;
@@ -121,4 +121,43 @@
     }
     
    
+}
+@media (max-width:350px) {
+    .home-header__info{
+        position: absolute;
+        top: 50% !important;
+        transform: translateY(-50%);
+        z-index: 1000;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #ffffff;
+        font-family: "Changa-SemiBold";
+        width: 100%;
+        }
+    .home-header__btn{
+        font-family: "Changa-Regular";
+        font-size: 15px !important;
+        font-weight: 500;
+        color: #FFFFFF;
+        background-color: #E68500;
+        border-radius: 50px ;
+        text-decoration: none;
+        padding: 10px 45px !important;
+       
+    }
+
+    .home-header__btn_white{
+        font-family: "Changa-Regular" !important;
+        font-size: 15px !important;
+        font-weight: 500 !important;
+        color: #272727 !important;
+        background-color: #FFFFFF !important;
+        border-radius: 50px !important;
+        text-decoration: none !important;
+        padding: 10px 45px !important;
+        
+        
+    } 
+    
+
 }

@@ -22,7 +22,7 @@ const HomeBrief = () => {
                   </div>
                   <div className='col-lg-4 col-sm-12 mb-5'>
                   <div className='text-center'> 
-                        <Link class="" to="">
+                        <Link class="" to="/askForVoluntary">
                             <img className={`${styles["home-brief__img"]} `} src={img2} alt="" />
                         </Link>
                         <h4  className={`${styles["home-brief__title"]}`}>{t("تطوع معنا")}</h4>

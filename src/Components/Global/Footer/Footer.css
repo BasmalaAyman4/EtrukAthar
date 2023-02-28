@@ -7,6 +7,46 @@ body[dir="rtl"] .social-icon{
     font-size: 20px;
     direction: ltr;
 }
+.social-icon .fa {
+	width: 40px;
+    height: 28px;
+	color: #FFF;
+	padding-top: 12px;
+	transition: all ease 0.5s;
+	-moz-transition: all ease 0.5s;
+	-webkit-transition: all ease 0.5s;
+	-o-transition: all ease 0.5s;
+}
+
+.social-icon svg:hover {
+	transform: scale(1.2,1.2);
+	-moz-transform: scale(1.2,1.2);
+	-webkit-transform: scale(1.2,1.2);
+	-o-transform: scale(1.2,1.2);
+	transition: all ease 0.5s;
+	-moz-transition: all ease 0.5s;
+	-webkit-transition: all ease 0.5s;
+	-o-transition: all ease 0.5s;
+}
+.social-icon .facebook:hover {
+  color: #3b5998;
+}
+.social-icon .twitter:hover {
+  color: #1da1f2;
+}
+.social-icon .google:hover {
+  color: #dd4b39;
+}
+.social-icon .whatsapp:hover {
+    color: #25D366;
+  }
+
+.social-icon .instagram:hover {
+  color: #f77737;
+}
+.social-icon .youtube:hover {
+  color: #ff0000;
+}
 
 body[dir="ltr"] .footer-dir{
     direction: rtl;
@@ -24,8 +64,13 @@ a{
     text-decoration: none !important;
 }
 
-.footer__contact-us_p{
+body[dir="rtl"] .footer__contact-us_p{
     direction: rtl !important ;
+    text-align: left;
+ }
+ body[dir="ltr"] .footer__contact-us_p{
+    direction: ltr !important ;
+    text-align: right;
  }
  body[dir="rtl"]  .footer__link{
   display: flex;
@@ -33,8 +78,11 @@ a{
  body[dir="ltr"]  .footer__link{
     display: flex;
   }
-  .footer_we-are_p{
+  body[dir="ltr"]  .footer_we-are_p{
     text-align: right;
+  }
+  body[dir="rtl"]  .footer_we-are_p{
+    text-align: left;
   }
 @media (max-width:767px) {
  .footer-body{

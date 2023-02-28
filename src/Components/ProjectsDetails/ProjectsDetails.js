@@ -124,8 +124,7 @@ export default function ProjectsDetails() {
 
                 </div>
             </Container>
-            <p>hjhhj</p>
-            <p>hhj</p>
+        
         </>
     )
 }

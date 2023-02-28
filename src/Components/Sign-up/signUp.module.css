@@ -1,11 +1,13 @@
 .logForm {
     display: flex;
     text-align: center;
-    background-image: url(../../assets/images/WhatsApp\ Image\ 2023-02-25\ at\ 12.33.53\ AM.jpeg);
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-height: 80vh;
+    background-image: url(../../assets/images/3-copy-scaled.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+    padding-bottom: 50px;
+
 }
 
 .userName {
@@ -20,54 +22,66 @@ height: 80vh;
     margin: auto;
     margin-top: 5%;
     border: 1px solid #eee;
-    box-shadow: 0 0 4px 0 #00000040;
+    box-shadow: 0 0 4px 0 #ff9500da;
     padding-bottom: 50px;
+    border-radius: 15px;
+    background-color: #eeeeeee0 !important;
 }
 
 .signup__title {
     margin: 20px 0;
-    color: #fff;
+    color: #E68500;
+    font-family: "Changa-SemiBold";
 }
 
 .msErr {
-    color: rgb(168, 1, 1) !important;
-    font-size: 17px !important;
-    font-weight: bold !important;
+    color: rgba(209, 3, 3, 0.938) !important;
+    font-size: 12px !important;
+    font-family: "Changa-Regular";
+    font-weight: bold;
 
 }
 
 .signup__para {
     font-size: 17px;
     margin: 20px 0;
-    color: #fff;
+    color: #292929;
+    font-family: "Changa-Regular";
 }
 
 .signup__para a {
-    color: #E68500;
+    color: #333333;
     font-weight: bold;
+    font-family: "Changa-Regular";
 }
 .signup__para a:hover {
-    color: #fff;
+    color: #333333 !important;
 }
 .input {
     border: none;
     outline: none;
-    border-radius: 15px;
+    border-radius: 15px !important;
     padding: 1em;
-    background-color: #f5f0f0;
-    box-shadow: inset 2px 5px 10px rgba(234, 147, 76, 0.61);
+    background-color: #f5f0f0cb !important;
+    box-shadow: inset 2px 5px 10px rgba(234, 147, 76, 0.61) !important;
     transition: 300ms ease-in-out;
-    font-size: 17px;
-    color: #202020;
+    font-size: 14px;
+    color: #202020 !important;
     margin-top: 20px;
-    border: 2px solid #E68500 !important;
-    min-width: 400px !important;
+    border: 1px solid #E68500 !important;
+    
     height: 50px;
+    font-family: "Changa-Regular" !important;
 }
-
+body[dir="rtl"] .input::placeholder{
+    text-align: left !important;
+}
+body[dir="ltr"] .input::placeholder{
+    text-align: right !important;
+}
 .input:focus {
-    background-color: white;
-    transform: scale(1.05);
+    background-color: #f5f0f0cb ;
+    transform: scale(1.01);
     box-shadow: 0 0 0 4px rgba(234, 147, 76, 0.61);
 }
 
@@ -92,6 +106,8 @@ height: 80vh;
     font-weight: 500;
     color: #fff;
     background-color: #E68500 !important;
+    font-family: "Changa-Regular" !important;
+    margin-top: 10px !important;
 }
 
 .signup__btn:before {
@@ -130,10 +146,22 @@ height: 80vh;
     width: 100%;
 }
 
-.PhoneInputInput input {
+body[dir="rtl"] .PhoneInputInput input {
     border: none !important;
     outline: none !important;
-    background-color: #f5f0f0 !important;
+    background-color: #f5f0f0cb !important;
+    border-radius: 0px !important;
+    direction: ltr !important;
+
+    
+}
+body[dir="ltr"] .PhoneInputInput input {
+    border: none !important;
+    outline: none !important;
+    background-color: #f5f0f0cb !important;
+    border-radius: 0px !important;
+    direction: ltr !important;
+    
 }
 
 @media (max-width:767px) {
@@ -147,7 +175,7 @@ height: 80vh;
     }
 
     .logForm {
-        height: 100vh;
+        height: auto;
         margin-top: 20px;
         margin-top: -1px;
     }
@@ -163,7 +191,7 @@ height: 80vh;
     }
 
     .logForm {
-        height: 100vh;
+        height: auto;
         margin-top: 20px;
         margin-top: -1px;
     }

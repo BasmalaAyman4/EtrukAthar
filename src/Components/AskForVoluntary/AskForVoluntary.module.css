@@ -1,0 +1,37 @@
+body[dir="ltr"] .ask-for-voulenteer{
+    direction: rtl;
+}
+body[dir="rtl"] .ask-for-voulenteer{
+    direction: ltr;
+}
+.ask-for-voulenteer__info_contant h4{
+
+    color: #E68500;
+    font-size: 16px;
+    font-family: "Changa-SemiBold";
+    padding-bottom: 5px;
+}
+.ask-for-voulenteer__info_contant p{
+    font-family: "Changa-Regular";
+    font-size: 16px;
+    color: #6B6B6B;
+
+
+}
+.text-decore{
+    text-decoration: underline;
+}
+.ask-for-voulenteer__link{
+    font-family: "Changa-Regular" !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    color: #FFFFFF !important;
+    background-color: #E68500 !important;
+    border-radius: 50px !important;
+    text-decoration: none !important;
+    padding: 5px 30px !important;
+ 
+}
+.ask-for-voulenteer__info_strong{
+    color: #6B6B6B !important;
+}

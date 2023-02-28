@@ -20,7 +20,7 @@
         font-size: 17px;
         z-index: 100000 !important;
         right: -35px !important;
-        top: 40%;
+        top: 50%;
  
 }
 .btn:hover{
@@ -123,9 +123,9 @@
 .modal{
     z-index: 10000 !important;
 }
-@media (max-width:767px) {
+/* @media (max-width:767px) {
     .btn{
         margin-left: 82.5%;
     }
     
-}
+} */

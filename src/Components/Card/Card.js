@@ -3,7 +3,9 @@ import './Card.css'
 import styles from './Card.module.css'
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 export default function Card(props) {
+    const {t} = useTranslation()
     return (
         <>
             <div className={`${styles.card}`}>
@@ -26,7 +28,7 @@ export default function Card(props) {
 
                     </div>
                 </div>
-                <Link to='/card-details'><button className={`${styles.cardButton}`}>للتبرع </button></Link>
+                <Link to='/card-details'><button className={`${styles.cardButton}`}>{t("للتبرع")} </button></Link>
             </div>
         </>
     )

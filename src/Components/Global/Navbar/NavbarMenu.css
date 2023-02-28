@@ -509,7 +509,9 @@ body[dir="ltr"]  .side__close-button{
         opacity: 1 !important;
     }
 
-
+    a.nav-link{
+      color: rgba(0, 0, 0, 0.55) !important;
+    }
 .event:hover{
   animation: sh0 0.5s ease-in-out both;
 }

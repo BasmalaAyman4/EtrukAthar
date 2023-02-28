@@ -1,11 +1,12 @@
 .logForm {
     display: flex;
     text-align: center;
-    background-image: url(../../assets/images/WhatsApp\ Image\ 2023-02-25\ at\ 12.33.53\ AM.jpeg);
+    background-image: url(../../assets/images/3-copy-scaled.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 80vh;
+    height: auto;
+    padding-bottom: 50px;
    
 }
 .userName {
@@ -13,18 +14,22 @@
     margin:50px 0;
 }
 .login {
-    width: 40%;
-        margin: auto;
-        margin-top: 3%;
-        border: 1px solid #eee;
-        box-shadow: 0 0 4px 0 #00000040;
-        padding-bottom: 50px;
+    width: 35%;
+    margin: auto;
+    margin-top: 3%;
+    border: 1px solid #eee;
+    box-shadow: 0 0 4px 0 #ff9500da;
+    padding-bottom: 30px;
+    border-radius: 15px;
+    background-color: #eeeeeee0 !important;
+    font-family: "Changa-Regular" !important;
 
 }
 
 .login__title {
-    margin: 30px 0;
-    color: #fff;
+    margin: 20px 0;
+    color: #E68500;
+    font-family: "Changa-SemiBold";
 }
 .input {
         border: none;
@@ -37,7 +42,7 @@
             font-size: 17px;
             color: #202020;
             border: 2px solid #E68500 !important;
-            width: 600px !important;
+            width: 500px !important;
             height: 50px;
             margin: 10px auto;
 }
@@ -57,10 +62,10 @@
     --color: #333;
     font-family: inherit;
     display: inline-block;
-    width: 8em;
+    width: 500px !important;
     height: 2.6em;
     line-height: 2.5em;
-    margin: 20px;
+    margin: 5px;
     position: relative;
     overflow: hidden;
     border: 2px solid #E68500;
@@ -72,7 +77,12 @@
     color: #fff;
     background-color: #E68500;
 }
-
+body[dir="rtl"] .input::placeholder{
+    text-align: left !important;
+}
+body[dir="ltr"] .input::placeholder{
+    text-align: right !important;
+}
 .log__btn:before {
     content: "";
     position: absolute;
@@ -111,18 +121,19 @@
 }
 
 .log__link {
-    color: #fff;
+    color: #333333;
     text-decoration: none;
 }
 
 .log__link:hover {
-    color: #000;
+    color: #333;
 
 }
 .userLog__list{
     list-style: none;
 display: flex;
 justify-content: space-around;
+margin-top: 5px !important;
   
 }
 .userLog__link{
@@ -145,12 +156,13 @@ background-color: #E68500;
     -moz-border-radius: 15px;
     -ms-border-radius: 15px;
     -o-border-radius: 15px;
-    color: #fff;
+    color: #ffffff;
 }
+
 .msErr {
-    color: rgb(168, 1, 1);
-    margin: 15px 0 0 15px;
-    font-size: 17px;
+    color: rgba(209, 3, 3, 0.938) !important;
+    font-size: 12px !important;
+    font-family: "Changa-Regular";
     font-weight: bold;
 
 }

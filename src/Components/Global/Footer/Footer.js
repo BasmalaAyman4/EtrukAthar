@@ -1,7 +1,7 @@
 import React from 'react'
 import './Footer.css'
 import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
-import { FaFacebook, FaLinkedin, FaGoogle, FaTwitter, FaWhatsapp, FaGithub, FaHome, FaEnvelope, FaPhone, FaPrint } from "react-icons/fa";
+import { FaFacebook, FaLinkedin, FaGoogle, FaTwitter, FaWhatsapp, FaGithub, FaHome, FaEnvelope, FaPhone, FaPrint, FaYoutube, FaInstagram } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -16,22 +16,22 @@ export default function Footer() {
 
                     <div className='social-icon text-center'>
                         <Link to='' className='me-4 text-reset '>
-                            <FaFacebook />
+                            <FaFacebook  className='facebook' />
                         </Link>
                         <Link to='' className='me-4 text-reset '>
-                            <FaLinkedin />
+                            <FaGoogle className='google'  />
                         </Link>
                         <Link to='' className='me-4 text-reset '>
-                            <FaGoogle />
+                            <FaWhatsapp className='whatsapp' />
                         </Link>
                         <Link to='' className='me-4 text-reset '>
-                            <FaWhatsapp />
-                        </Link>
-                        <Link to='' className='me-4 text-reset '>
-                            <FaTwitter />
+                            <FaTwitter className='twitter'/>
                         </Link>
                         <Link to='' className='me-4 text-reset'>
-                            <FaGithub />
+                            <FaYoutube className='youtube' />
+                        </Link>
+                        <Link to='' className='me-4 text-reset'>
+                            <FaInstagram className='instagram' />
                         </Link>
                     </div>
                 </section>
@@ -42,7 +42,7 @@ export default function Footer() {
 
                             <MDBCol md="3" lg="4" xl="3" className='mx-auto mb-4'>
                                 <h6 className='footer__h6 text-uppercase fw-bold mb-4'>
-                                    <MDBIcon icon="gem" className="me-3" />
+                                   
                                     {t("من نحن؟")}
                                 </h6>
                                 <hr />
@@ -74,10 +74,10 @@ export default function Footer() {
                                 <p>
                                     <Link to='#!' className='text-reset footer__link'>
                                         {t( "كيف اتبرع ؟ ")}
-                                                             </Link>
+                                    </Link>
                                 </p>
                                 <p>
-                                    <Link to='#!' className='text-reset footer__link'>
+                                    <Link to='/askForVoluntary' className='text-reset footer__link'>
                                         {t( "تطوع معنا")}
                                     </Link>
                                 </p>
@@ -124,7 +124,7 @@ export default function Footer() {
                                 </p>
                                 <p>
                                     <Link to='#!' className='text-reset footer__link'>
-                                    {t(  "ملف الشفافية")}
+                                    {t(  "ملف الشفافيه")}
                                     </Link>
                                 </p>
                             </MDBCol>

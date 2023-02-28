@@ -13,7 +13,7 @@ import { BsTwitter } from "react-icons/bs";
 import { Link, NavLink } from 'react-router-dom';
 import { Collapse } from 'react-bootstrap';
 import x from "./../../../assets/icons/x.svg"
-import { AuthContext } from '../../AuthContext';
+import { AuthContext } from '../../../Components/Context/AuthContext';
 import { useTranslation } from 'react-i18next';
 import cookies from 'js-cookie'
 import i18next from 'i18next';
@@ -64,10 +64,10 @@ export default function NavbarMenu() {
                 <Container>
                     <div className={`${styles.header}`}>
                         <nav className={`${styles.navLink__header}`}>
-                            {authContext.auth.email ? <Link to="/" className={`px-3 pt-2 ${styles.header__link}`} onClick={logout}>تسجيل الخروج</Link> : <Link to="/login" className={`px-3 pt-2 ${styles.header__link}`} >تسجيل الدخول</Link>}
-                            {authContext.auth.email ? <Link to="" className={`px-3 pt-2 ${styles.header__link}`}> تبرعاتي</Link> : <Link to="/sign-up" className={`px-3 pt-2 ${styles.header__link}`}> تسجيل</Link>}
-                            <Link to="" className={`px-3 pt-2 ${styles.header__link}`}>حاسبة الزكاة </Link>
-                            <Link to="" className={`px-3 pt-2 ${styles.header__link}`}>كيف أتبرع؟</Link>
+                            {authContext.auth.email ? <Link to="/" className={`px-3 pt-2 ${styles.header__link}`} onClick={logout}>{t( "تسجيل خروج")}</Link> : <Link to="/login" className={`px-3 pt-2 ${styles.header__link}`} > {t("تسجيل الدخول")}</Link>}
+                            {authContext.auth.email ? <Link to="" className={`px-3 pt-2 ${styles.header__link}`}> {t( "تبرعاتي")}</Link> : <Link to="/sign-up" className={`px-3 pt-2 ${styles.header__link}`}> {t("تسجيل")}</Link>}
+                            <Link to="" className={`px-3 pt-2 ${styles.header__link}`}> {t("حاسبة الزكاة")} </Link>
+                            <Link to="" className={`px-3 pt-2 ${styles.header__link}`}>{t( "كيف اتبرع ؟ ")} </Link>
 
                             {languages.map(({ code, name }, index) => (
                                 <Link
@@ -159,13 +159,13 @@ export default function NavbarMenu() {
                                             </Collapse>
                                         </li>
                                         <li>
-                                            <NavLink className="nav-link" to="/b" href="index.html">المناسبات</NavLink>
+                                            <NavLink className="nav-link" to="/b" href="index.html">{t(" المناسبات")}</NavLink>
                                         </li>
                                         <li>
                                             <NavLink className="nav-link" to="/" href="index.html">{t("صندوق علمني ")} </NavLink>
                                         </li>
                                         <li>
-                                            <NavLink className="nav-link" to="/" href="index.html">   {t( "ملف الشفافية")}</NavLink>
+                                            <NavLink className="nav-link" to="/" href="index.html">   {t("ملف الشفافيه")}</NavLink>
                                         </li>
                                         <li>
                                             <NavLink className="nav-link" to="/" href="index.html">{t("حاسبة الزكاة")}   </NavLink>
@@ -217,9 +217,9 @@ export default function NavbarMenu() {
                                             <Link className="dropdown-item" to="/Register"> {t("كفالة أسرة")}</Link>
                                         </div>
                                     </div>
-                                    <NavLink to="/b" className={`${styles.mainNav__link} main-nav__link event`}> المناسبات</NavLink>
-                                    <NavLink to="/box" className={`${styles.mainNav__link} main-nav__link`}>صندوق علمني</NavLink>
-                                    <NavLink to="/acution" className={`${styles.mainNav__link} main-nav__link`}>ملف الشفافيه</NavLink>
+                                    <NavLink to="/b" className={`${styles.mainNav__link} main-nav__link event`}>{t(" المناسبات")}</NavLink>
+                                    <NavLink to="/box" className={`${styles.mainNav__link} main-nav__link`}> {t("صندوق علمني ")}</NavLink>
+                                    <NavLink to="/acution" className={`${styles.mainNav__link} main-nav__link`}>{t("ملف الشفافيه")} </NavLink>
 
                                 </Nav>
                             </Offcanvas.Body>

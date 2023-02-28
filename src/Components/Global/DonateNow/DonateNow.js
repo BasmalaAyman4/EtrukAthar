@@ -5,9 +5,10 @@ import style from './DonateNow.module.css'
 import { FaCcPaypal, FaCcMastercard } from "react-icons/fa";
 import { BiDollar } from "react-icons/bi";
 import NumericInput from 'react-numeric-input';
+import { useTranslation } from 'react-i18next';
 export default function DonateNow() {
     const [modalShow, setModalShow] = useState(false)
-
+    const {t} = useTranslation()
     const [priceShow, setPriceshow] = useState("");
     function clickPrice(price) {
         setPriceshow("")
@@ -60,7 +61,7 @@ export default function DonateNow() {
     return (
         <>
             <Button variant="primary" onClick={() => setModalShow(true)} className={`${style.btn}`}>
-                <span className={`${style.modal__para}`}> التبرع مباشر</span>
+                <span className={`${style.modal__para}`}> {t(" التبرع مباشر ")}</span>
             </Button>
             <MyVerticallyCenteredModal
                 show={modalShow}

@@ -1,13 +1,15 @@
 import React, { useState, useContext } from 'react'
 import style from './Login.module.css'
-import { AuthContext } from '../AuthContext'
+import { AuthContext } from '../../Components/Context/AuthContext'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useTranslation } from 'react-i18next';
 export default function Login() {
     const [active, setActive] = useState(true)
     const showActive = (role) => {
         role === "volenteer" ? setActive(true) : setActive(false)
     }
+    const {t} = useTranslation()
 
     const authContext = useContext(AuthContext);
     const validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -53,41 +55,45 @@ export default function Login() {
             err.password = "password is required"
         } else if (!validPass.test(password)) {
             err.password = 'Minimum eight characters, at least one letter and one numbe';
-            setFormError({ ...err })
+           
         }
+        setFormError({ ...err })
     }
 
     return (
         <>
             <section className={style.logForm}>
+
+                <div className='container'>
                 <div className={style.login}>
-                    <h2 className={style.login__title}>Sign in</h2>
+                    <h2 className={style.login__title}>{t("تسجيل الدخول")}</h2>
                     <hr />
                     <ul className={style.userLog__list}>
                         <li className={`${style.userLog__item}`} onClick={() => { showActive("volenteer") }} >
-                            <button type='button' className={`${active ? style.user__link : style.userLog__link}`} >AS DONOR</button>
+                            <button type='button' className={`${active ? style.user__link : style.userLog__link}`} >{t("متبرع")}</button>
                         </li>
                         <li className={`${style.userLog__item}  `} onClick={() => { showActive("charity") }} >
-                            <button type='button' className={`${active ? style.userLog__link : style.user__link}`} >AS CHARITY</button>
+                            <button type='button' className={`${active ? style.userLog__link : style.user__link}`} >{t("جمعية ")}</button>
                         </li>
                     </ul>
                     <div className={style.userName}>
                         <Form.Group className="mb-3" controlId="formBasicPassword">
-                            <Form.Control name="email" autoComplete="off" className={`${style.input}`} placeholder="Your Email" onChange={onChangeHandler} value={email} />
+                            <Form.Control name="email" autoComplete="off" className={`${style.input}`} placeholder={t(" البريد الإلكتروني")} onChange={onChangeHandler} value={email} />
                             <Form.Text className={`${style.msErr}`}>
                                 {formError.email}
                             </Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicPassword">
-                            <Form.Control name="password" type="password" autoComplete="off" className={`${style.input}`} placeholder="Your Password" onChange={onChangeHandler} value={password} />
+                            <Form.Control name="password" type="password" autoComplete="off" className={`${style.input}`} placeholder={t( "كلمة المرور")} onChange={onChangeHandler} value={password} />
                             <Form.Text className={`${style.msErr}`}>
                                 {formError.password}
                             </Form.Text>
                         </Form.Group>
-                        <button className={style.log__btn} onClick={login}>Sign in</button>
+                        <button className={style.log__btn} onClick={login}>{t("تسجيل الدخول")}</button>
                     </div>
                     <hr className={style.forgetLine} />
-                    <a href='/forget' className={style.log__link}> Forget your password?</a>
+                    <a href='/forget' className={style.log__link}> {t("هل نسيت كلمة السر؟")}</a>
+                </div>
                 </div>
             </section>
         </>
