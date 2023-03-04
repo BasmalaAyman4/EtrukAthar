@@ -11,15 +11,15 @@ import pro3 from './../../assets/images/pro3.jpg'
 import { useTranslation } from 'react-i18next'
 
 export default function Projects() {
-    const {t} = useTranslation()
+    const { t } = useTranslation()
     return (
         <>
             <section className={`${styles.projects}`}>
                 <HeaderTitle title={t("المشاريع")} para={t("المبلغ المجموع للمشاريع")} price='1.037.976.07$' />
-                <Link to='' className={`${styles.donate__link}`}>{t( "تبرع فوري لصندوق المشاريع")}</Link>
-              
+                <Link to='' className={`${styles.donate__link}`}>{t("تبرع فوري لصندوق المشاريع")}</Link>
+
                 <Container>
-                <p className={`${styles.donate__para}`}>{t(     "نواظب على التنقيب عن مستلزمات المجتمع، ساعين لأجل توفير مشاريع من شأنها تلبية متطلباتهم، وتوفير حياةٍ كريمة لكلّ من تكبّد ويلاتُ الحرب")}</p>
+                    <p className={`${styles.donate__para}`}>{t("نواظب على التنقيب عن مستلزمات المجتمع، ساعين لأجل توفير مشاريع من شأنها تلبية متطلباتهم، وتوفير حياةٍ كريمة لكلّ من تكبّد ويلاتُ الحرب")}</p>
                     <div className={`${styles.projects__body}`}>
                         <Card title='دفء الحياة 11 '
                             para='لا يعلمون من الشتاء سوى رجفة أطراف أطفالهم وتجمّدها، ولا من الأمطار والثلوج سوى غرق الخيام… '

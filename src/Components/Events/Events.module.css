@@ -1,0 +1,245 @@
+.events{
+    font-family: "Changa-Regular", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+.events__para {
+    margin: auto;
+    margin-top: 20px;
+    letter-spacing: 1px;
+    color: #6b6b6b;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 17px;
+}
+.eventsStyle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+.search {
+    border: 1px solid #e6e6e6;
+    padding: 10px 3px 10px 10px;
+    position: relative;
+    max-width: 530px;
+}
+
+.search::after {
+    content: "";
+    position: absolute;
+    background: #e6e6e6;
+    top: 10px;
+    bottom: 0;
+    left: 32%;
+    width: 1px;
+    height: 30px;
+}
+
+.formSelect,
+.searchbox {
+    border: none;
+    outline: none;
+    margin-right: 30px;
+}
+
+
+.search__link {
+    background-color: #E86500;
+    color: white;
+    padding: 7px 30px;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.search__link:hover {
+    text-decoration: none;
+    background-color: black;
+    color: white;
+}
+.events__view{
+    border: 1px solid #E86500;
+    padding: 10px;
+    position: relative;
+   
+}
+.events__view::after{
+        content: "";
+        position: absolute;
+        background: #777;
+        top: 7px;
+        bottom: 0;
+        left: 50%;
+        width: 1px;
+        height: 30px;
+}
+.view__link,
+.calender__link{
+    margin: 0 15px;
+    color: #777;
+}
+.style__link{
+    color: #E86500;
+    margin: 0 15px;
+}
+.style__link:hover,
+.view__link:hover,
+.calender__link:hover{
+    color: #E86500;
+}
+.events__body{
+display: grid;
+grid-template-columns: auto 1fr;
+    color: #585858;
+}
+.upcomingEvent__title{
+    position: relative;
+    margin-bottom: 20px;
+}
+.upcomingEvent__title::after{
+    content: '';
+    position: absolute;
+    background-color: #6b6b6b;
+    width: 600px;
+    height: 2px;
+    top: 20px;
+}
+.annualEvents{
+    display: flex;
+    flex-direction: column;
+    direction: rtl;
+}
+.annualEvents__title{
+    background-color:#E86500;
+    color: #fff;
+    padding: 10px 30px;
+    position: relative;
+    border-bottom: 4px solid #E3E3E3;
+    width: 70%;
+}
+.annualEvents__title::after{
+    content: '';
+    position: absolute;
+    top: 100%;
+    right: 0px;
+    display: block;
+    border-top: 10px solid #000;
+    border-right: 11px solid transparent;
+}
+.otherEvents{
+    margin-top: 15px;
+}
+.annualEvents__link{
+    margin: 5px 20px;
+    color: #585858;
+}
+.annualEvents__link:hover{
+    color: #E86500;
+}
+.annualEvents__para{
+    width: 70%;
+    margin-top: 10px;
+}
+.none{
+    display: none;
+}
+.hint{
+    border: 1px solid #E86500;
+background-color: #E86500;
+color: #fff;
+margin-top: 20px;
+text-align: center;
+}
+
+@media (max-width:767px) {
+    .eventsStyle,
+    .events__body{
+        display: flex;
+        flex-direction: column;
+    }
+        .formSelect,
+        .searchbox{
+            margin-right: 0;
+        }
+                .search__link{
+                    margin-left: -50px;
+                }
+                .search{
+                    margin-bottom: 20px;
+                }
+.upcomingEvent__title::after{
+    display: none;
+}
+.upcomingEvent__title{
+    text-align: center;
+}
+.annualEvents__title{
+    width: 100%;
+}
+.CalendarStyle{
+    width: 100%;
+}
+.hint{
+    font-size: 10px;
+}
+
+}
+@media (min-width:767px) and (max-width:992px) {
+
+    .eventsStyle{
+        display: flex;
+        align-items: center;
+  
+    }
+    .events__body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .formSelect,
+    .searchbox {
+        margin-right: 0;
+    }
+
+    .search__link {
+        margin-left: -50px;
+    }
+    .upcomingEvent__title::after {
+        width: 400px;
+    }
+
+    .annualEvents__title {
+        width: 100%;
+    }
+        .CalendarStyle {
+            width: 100%;
+        }
+    
+        .hint {
+            font-size: 15px;
+        }
+
+}
+@media (min-width:993px) and (max-width:1200px) {
+
+
+
+    .events__body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .search__link {
+        margin-left: -50px;
+    }
+
+    .upcomingEvent__title::after {
+        width: 400px;
+    }
+
+    .annualEvents__title {
+        width: 100%;
+    }
+
+}

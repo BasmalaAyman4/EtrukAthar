@@ -1,0 +1,41 @@
+.eventCard {
+    border: 1px solid #e6e6e6;
+    display: flex;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    height: 110px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.event__date {
+    background-color: #E86500;
+    padding: 15px;
+    border-radius: 10px 0 0px 10px;
+    -webkit-border-radius: 10px 0 0px 10px;
+    -moz-border-radius: 10px 0 0px 10px;
+    -ms-border-radius: 10px 0 0px 10px;
+    -o-border-radius: 10px 0 0px 10px;
+    color: #fff;
+}
+
+.eventCard__body {
+    padding: 10px;
+}
+.eventCard__para {
+    font-size: 20px;
+    color: #8a8b8b;
+    font-weight: 300;
+}
+.event__date{
+    text-align: center;
+}
+.link{
+    color: black;
+}
+.link:hover {
+    color: #E86500;
+}

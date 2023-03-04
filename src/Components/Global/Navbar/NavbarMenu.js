@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import Logo from './../../../assets/images/images (1).png'
+import Logo from './../../../assets/images/images (1).jpg'
 import { BsFacebook } from "react-icons/bs";
 import { BsYoutube } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
@@ -17,6 +17,7 @@ import { AuthContext } from '../../../Components/Context/AuthContext';
 import { useTranslation } from 'react-i18next';
 import cookies from 'js-cookie'
 import i18next from 'i18next';
+import { MdNotificationsActive } from "react-icons/md";
 export default function NavbarMenu() {
 
     const languages = [
@@ -64,10 +65,10 @@ export default function NavbarMenu() {
                 <Container>
                     <div className={`${styles.header}`}>
                         <nav className={`${styles.navLink__header}`}>
-                            {authContext.auth.email ? <Link to="/" className={`px-3 pt-2 ${styles.header__link}`} onClick={logout}>{t( "تسجيل خروج")}</Link> : <Link to="/login" className={`px-3 pt-2 ${styles.header__link}`} > {t("تسجيل الدخول")}</Link>}
-                            {authContext.auth.email ? <Link to="" className={`px-3 pt-2 ${styles.header__link}`}> {t( "تبرعاتي")}</Link> : <Link to="/sign-up" className={`px-3 pt-2 ${styles.header__link}`}> {t("تسجيل")}</Link>}
+                            {authContext.auth.email ? <Link to="/" className={`px-3 pt-2 ${styles.header__link}`} onClick={logout}>{t("تسجيل خروج")}</Link> : <Link to="/login" className={`px-3 pt-2 ${styles.header__link}`} > {t("تسجيل الدخول")}</Link>}
+                            {authContext.auth.email ? <Link to="" className={`px-3 pt-2 ${styles.header__link}`}> {t("تبرعاتي")}</Link> : <Link to="/sign-up" className={`px-3 pt-2 ${styles.header__link}`}> {t("تسجيل")}</Link>}
                             <Link to="" className={`px-3 pt-2 ${styles.header__link}`}> {t("حاسبة الزكاة")} </Link>
-                            <Link to="" className={`px-3 pt-2 ${styles.header__link}`}>{t( "كيف اتبرع ؟ ")} </Link>
+                            <Link to="" className={`px-3 pt-2 ${styles.header__link}`}>{t("كيف اتبرع ؟ ")} </Link>
 
                             {languages.map(({ code, name }, index) => (
                                 <Link
@@ -125,16 +126,16 @@ export default function NavbarMenu() {
                                                 aria-controls="Cases"
                                                 aria-expanded={openCases}
                                             >
-                                               {t(" الحالات")}
+                                                {t(" الحالات")}
 
                                             </NavLink>
                                             <Collapse in={openCases}>
                                                 <div id="Cases">
                                                     <ul className=" nav-side_dropdown  "  >
-                                                        <li>  <Link className="dropdown-item" to="/ShopCategory">{t(" حالات إنسانية")} 
+                                                        <li>  <Link className="dropdown-item" to="/ShopCategory">{t(" حالات إنسانية")}
 
                                                         </Link> </li>
-                                                        <li> <Link className="dropdown-item" to="/ProductDetails">{t( " حالات طبية")} </Link></li>
+                                                        <li> <Link className="dropdown-item" to="/ProductDetails">{t(" حالات طبية")} </Link></li>
 
                                                     </ul>
                                                 </div>
@@ -146,14 +147,14 @@ export default function NavbarMenu() {
                                                 onClick={() => setOpenSponsorships(!openSponsorships)}
                                                 aria-controls="Sponsorships"
                                                 aria-expanded={openSponsorships} >
-                                                {t( "الكفالات")}
+                                                {t("الكفالات")}
 
                                             </NavLink>
                                             <Collapse in={openSponsorships}>
                                                 <div id="Sponsorships">
                                                     <ul className=" nav-side_dropdown " >
-                                                        <li>  <Link className="dropdown-item" to="/Blog">{t( " كفالة يتيم")} </Link></li>
-                                                        <li>  <Link className="dropdown-item" to="/BlogDetails"> {t( "كفالة أسرة")}</Link></li>
+                                                        <li>  <Link className="dropdown-item" to="/Blog">{t(" كفالة يتيم")} </Link></li>
+                                                        <li>  <Link className="dropdown-item" to="/BlogDetails"> {t("كفالة أسرة")}</Link></li>
                                                     </ul>
                                                 </div>
                                             </Collapse>
@@ -171,14 +172,14 @@ export default function NavbarMenu() {
                                             <NavLink className="nav-link" to="/" href="index.html">{t("حاسبة الزكاة")}   </NavLink>
                                         </li>
                                         <li>
-                                            <NavLink className="nav-link" to="/" href="index.html"> {t( "كيف اتبرع ؟ ")}</NavLink>
+                                            <NavLink className="nav-link" to="/" href="index.html"> {t("كيف اتبرع ؟ ")}</NavLink>
                                         </li>
-                                       
+
                                         <li>
-                                            <NavLink className="nav-link" to="/" href="index.html"> {t( "تسجيل")}  </NavLink>
+                                            <NavLink className="nav-link" to="/" href="index.html"> {t("تسجيل")}  </NavLink>
                                         </li>
                                         <li>
-                                            <NavLink className="nav-link" to="/login" href="index.html"> {t( "تسجيل الدخول")}  </NavLink>
+                                            <NavLink className="nav-link" to="/login" href="index.html"> {t("تسجيل الدخول")}  </NavLink>
                                         </li>
 
 
@@ -205,19 +206,19 @@ export default function NavbarMenu() {
                                         <NavLink className={`${styles.mainNav__link}  nav-item nav__item  nav-link`}  >  {t(" الحالات")}</NavLink>
 
                                         <div className="dropdown-menu show nav__dropdown-list">
-                                            <Link className="dropdown-item" to="/Login">{t( " حالات إنسانية")}</Link>
-                                            <Link className="dropdown-item" to="/Register">  {t( " حالات طبية")}</Link>
+                                            <Link className="dropdown-item" to="/Login">{t(" حالات إنسانية")}</Link>
+                                            <Link className="dropdown-item" to="/Register">  {t(" حالات طبية")}</Link>
                                         </div>
                                     </div>
                                     <div className="dropdown">
-                                        <NavLink className={`${styles.mainNav__link}nav-item nav__item  nav-link`}  > {t( "الكفالات")}</NavLink>
+                                        <NavLink className={`${styles.mainNav__link}nav-item nav__item  nav-link`}  > {t("الكفالات")}</NavLink>
 
                                         <div className="dropdown-menu show nav__dropdown-list">
-                                            <Link className="dropdown-item" to="/Login"> {t(  " كفالة يتيم")}</Link>
+                                            <Link className="dropdown-item" to="/Login"> {t(" كفالة يتيم")}</Link>
                                             <Link className="dropdown-item" to="/Register"> {t("كفالة أسرة")}</Link>
                                         </div>
                                     </div>
-                                    <NavLink to="/b" className={`${styles.mainNav__link} main-nav__link event`}>{t(" المناسبات")}</NavLink>
+                                    <NavLink to="/event" className={`${styles.mainNav__link} main-nav__link `}><MdNotificationsActive className='event' />{t(" المناسبات")}</NavLink>
                                     <NavLink to="/box" className={`${styles.mainNav__link} main-nav__link`}> {t("صندوق علمني ")}</NavLink>
                                     <NavLink to="/acution" className={`${styles.mainNav__link} main-nav__link`}>{t("ملف الشفافيه")} </NavLink>
 

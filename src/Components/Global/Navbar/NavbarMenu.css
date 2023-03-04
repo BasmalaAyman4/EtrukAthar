@@ -512,27 +512,42 @@ body[dir="ltr"]  .side__close-button{
     a.nav-link{
       color: rgba(0, 0, 0, 0.55) !important;
     }
-.event:hover{
-  animation: sh0 0.5s ease-in-out both;
+.event{
+  margin-right: 5px;
+  font-size: 20px;
+}
+.main-nav__link:hover .event{
+  animation: sh0 0.5s linear infinite both;
+  -webkit-animation: sh0 0.5s linear infinite both;
 }
 @keyframes sh0 {
   0% {
-    transform: rotate(0deg) translate3d(0, 0, 0);
-  }
-
-  25% {
-    transform: rotate(7deg) translate3d(0, 0, 0);
-  }
-
-  50% {
-    transform: rotate(-7deg) translate3d(0, 0, 0);
-  }
-
-  75% {
-    transform: rotate(1deg) translate3d(0, 0, 0);
-  }
-
-  100% {
-    transform: rotate(0deg) translate3d(0, 0, 0);
-  }
+      -webkit-transform: translate(0);
+      transform: translate(0);
+    }
+  
+    20% {
+      -webkit-transform: translate(-2px, 2px);
+      transform: translate(-2px, 2px);
+    }
+  
+    40% {
+      -webkit-transform: translate(-2px, -2px);
+      transform: translate(-2px, -2px);
+    }
+  
+    60% {
+      -webkit-transform: translate(2px, 2px);
+      transform: translate(2px, 2px);
+    }
+  
+    80% {
+      -webkit-transform: translate(2px, -2px);
+      transform: translate(2px, -2px);
+    }
+  
+    100% {
+      -webkit-transform: translate(0);
+      transform: translate(0);
+    }
 }

@@ -9,6 +9,7 @@ import Projects from "../Pages/Projects";
 import CardDetails from './../Components/ProjectsDetails/ProjectsDetails'
 import AskForVoluntary from "../Components/AskForVoluntary/AskForVoluntary";
 import CharitySignUp from "../Components/CharitySignUp/CharitySignUp";
+import Events from "../Pages/Events";
 export default function Router() {
   const authContext = useContext(AuthContext);
   return (
@@ -22,6 +23,7 @@ export default function Router() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/card-details" element={<CardDetails />} />
         <Route path="/askForVoluntary" element={<AskForVoluntary />} />
+        <Route path="/event" element={<Events />} />
       </Routes>
     </>
   )
