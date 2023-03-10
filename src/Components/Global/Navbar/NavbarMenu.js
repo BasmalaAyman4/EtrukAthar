@@ -163,11 +163,12 @@ export default function NavbarMenu() {
                                             <NavLink className="nav-link" to="/b" href="index.html">{t(" المناسبات")}</NavLink>
                                         </li>
                                         <li>
-                                            <NavLink className="nav-link" to="/" href="index.html">{t("صندوق علمني ")} </NavLink>
+                                            <NavLink className="nav-link" to="/" href="index.html">   {t( "جمعيات  خيرية")}</NavLink>
                                         </li>
                                         <li>
-                                            <NavLink className="nav-link" to="/" href="index.html">   {t("ملف الشفافيه")}</NavLink>
+                                            <NavLink className="nav-link" to="/" href="index.html">{t("صندوق علمني ")} </NavLink>
                                         </li>
+                                      
                                         <li>
                                             <NavLink className="nav-link" to="/" href="index.html">{t("حاسبة الزكاة")}   </NavLink>
                                         </li>
@@ -219,8 +220,9 @@ export default function NavbarMenu() {
                                         </div>
                                     </div>
                                     <NavLink to="/event" className={`${styles.mainNav__link} main-nav__link `}><MdNotificationsActive className='event' />{t(" المناسبات")}</NavLink>
+                                    <NavLink to="/acution" className={`${styles.mainNav__link} main-nav__link`}>{t( "جمعيات  خيرية")} </NavLink>
                                     <NavLink to="/box" className={`${styles.mainNav__link} main-nav__link`}> {t("صندوق علمني ")}</NavLink>
-                                    <NavLink to="/acution" className={`${styles.mainNav__link} main-nav__link`}>{t("ملف الشفافيه")} </NavLink>
+               
 
                                 </Nav>
                             </Offcanvas.Body>

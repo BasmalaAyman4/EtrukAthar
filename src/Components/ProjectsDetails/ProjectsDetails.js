@@ -19,6 +19,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 // import required modules
 import { Autoplay, Pagination } from "swiper";
+import { useTranslation } from 'react-i18next';
 export default function ProjectsDetails() {
 
     const [priceShow, setPriceshow] = useState("");
@@ -27,14 +28,17 @@ export default function ProjectsDetails() {
         setPriceshow(price)
         console.log(priceShow);
     }
+    const {t} =useTranslation()
     return (
         <>
 
             <Container>
                 <div className={style.cardDetails}>
                     <aside dir='rtl' className={`${style.aside}`}>
-                        <button className={`${style.cardDetails__btn}`}>تبرع الان عبر البطاقة البنكية</button>
-                        <div className={`${style.modal__paypal}`}><p className={`${style.paypal__para}`}><FaCcPaypal className={`${style.icon}`} /> للتبرع عبر Paypal</p></div>
+                        <button className={`${style.cardDetails__btn}`}>
+                            {t( "تبرع الان عبر البطاقة البنكية")}
+                        </button>
+                        <div className={`${style.modal__paypal}`}><p className={`${style.paypal__para}`}><FaCcPaypal className={`${style.icon}`} /> {t("للتبرع عبر Paypal")}</p></div>
                         <NumericInput value={priceShow ? priceShow : 20.00} className={`${style.price__input}`} /><BiDollar className={`${style.price__icon}`} />
                         <div className={`${style.price__choose}`}>
                             <button className={`${style.price__btn}`} onClick={() => { clickPrice(10.00) }}>10.00$</button>
@@ -43,20 +47,21 @@ export default function ProjectsDetails() {
                             <button className={`${style.price__btn}`} onClick={() => { clickPrice(100.00) }}>100.00$</button>
                         </div>
                         <div className={`${style.price__checkbox}`}>
-                            <label><input type="checkbox" /><span className={`${style.price__para}`}>تغطيه رسوم المعاملات 1.29$</span></label>
+                            <label><input type="checkbox" /><span className={`${style.price__para}`}>{t("تغطيه رسوم المعاملات 1.29$")}
+                            </span></label>
                         </div>
-                        <button className={`${style.price__btn}`}> تبرع عبر paypal</button>
-                        <div className={`${style.modal__paypal}`}><p className={`${style.paypal__para}`}><FaCcMastercard className={`${style.icon}`} />  وسائل التبرع ألاخري </p></div>
-                        <button className={`${style.cardDetails__btn}`}>وسائل الدفع الأخري</button>
+                        <button className={`${style.price__btn}`}>{t("للتبرع عبر Paypal")}</button>
+                        <div className={`${style.modal__paypal}`}><p className={`${style.paypal__para}`}><FaCcMastercard className={`${style.icon}`} />{t("  وسائل التبرع ألاخري ")}</p></div>
+                        <button className={`${style.cardDetails__btn}`}>{t("وسائل الدفع الأخري")}</button>
                     </aside>
                     <section dir='rtl' className={`${style.cardDetails__info}`}>
                         <div className={`${style.cardDetails__body}`}>
                             <h3 className={`${style.cardDetails__title}`}>دفء الحياة 11</h3>
-                            <p className={`${style.cardDetails__para}`}>مشروع رقم 45</p>
+                            <p className={`${style.cardDetails__para}`}>{t("مشروع رقم")}</p>
                             <hr />
                         </div>
                         <div className={`${style.collect}`}>
-                            <p className={`${style.collect__para}`}>تم جمع <bold className={`${style.bold}`}>42.512$</bold> من اصل 50.000$ </p>
+                            <p className={`${style.collect__para}`}>{t( "تم جمع ")}<bold className={`${style.bold}`}>42.512$</bold> {t("من اصل")} 50$ </p>
                             <ProgressBar now={88} className={`${style.progress} `} />
                         </div>
                         <div className={`${style.cardDetails__icon}`}>
@@ -81,7 +86,7 @@ export default function ProjectsDetails() {
                             </button>
                         </div>
                         <Player className={`${style.video}`} src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" poster={img1} />
-                        <div className={`${style.modal__collect}`}><p className={`${style.paypal__para}`}>  تبرعك هو أملهم و نجاحهم, فكن عونا لهم </p></div>
+                        <div className={`${style.modal__collect}`}><p className={`${style.paypal__para}`}> {t(" تبرعك هو أملهم و نجاحهم, فكن عونا لهم ")}</p></div>
                         <div >
                             <p className={`${style.details__para}`}>لا يعلمون من الشتاء سوى رجفة أطراف أطفالهم وتجمّدها، ولا من الأمطار والثلوج سوى غرق الخيام وسقوطها فوق رؤوسهم، فلا مأوى يحميهم من برد الشتاء، ولا جدار يُخفّف عنهم قسوته.</p>
                             <p className={`${style.details__para}`}>من أجل آلاف العوائل، المصابين، المرضى، الأيتام والأرامل، من أجل عجزهم وبكاء أطفالهم، نُطلق وككل عام حملة دفء 11 المخصصة للاجئين السوريين في الأردن و أهلنا المهجرين في الشمال السوري لتأمين الكسوة الشتوية ومستلزمات التدفئة من مدفأة وحطب وغيرها من مواد التدفئة ، ونُتيح لكم فرصة التبرع للمساهمة بتأمينها لأكبر عدد من العوائل.</p>
@@ -105,19 +110,19 @@ export default function ProjectsDetails() {
                             <SwiperSlide><img src={details3} alt='' className={`${style.imgSwiper}`} /></SwiperSlide>
 
                         </Swiper>
-                        <div className={`${style.modal__collect}`}><p className={`${style.paypal__para}`}>  <FaNewspaper className={`${style.icon__new}`} /> أخبار المشروع </p></div>
+                        <div className={`${style.modal__collect}`}><p className={`${style.paypal__para}`}>  <FaNewspaper className={`${style.icon__new}`} />{t(" أخبار المشروع")}</p></div>
                         <div className={`${style.projectNews}`}>
                             <p className={`${style.paypal__para}`}>2022-12-01</p>
-                            <p className={`${style.paypal__para}`}>قمنا بإطلاق حملتنا التبرعية - دفء الحياة 11 - وكلنا أمل أنكم ستكونون بجانب من يحتاج لدعمكم.</p>
+                            <p className={`${style.paypal__para}`}>{t("قمنا بإطلاق حملتنا التبرعية - دفء الحياة 11 - وكلنا أمل أنكم ستكونون بجانب من يحتاج لدعمكم.")}</p>
                         </div>
-                        <div className={`${style.modal__collect}`}><p className={`${style.paypal__para}`}>  <FaProjectDiagram className={`${style.icon__new}`} />  مشاريع ذات صلة </p></div>
+                        <div className={`${style.modal__collect}`}><p className={`${style.paypal__para}`}>  <FaProjectDiagram className={`${style.icon__new}`} />  {t("مشاريع ذات صلة ")}</p></div>
                         <div className={`${style.newProject}`}>
                             <div className={`${style.newProject__img}`}><img alt='' src={new1} className={`${style.newImg}`} /></div>
                             <div className={`${style.newProject__body}`}>
                                 <h3 className={`${style.newProject__title}`}>قرية بسمة أمل</h3>
-                                <p className={`${style.collect__para}`}>تم جمع <bold className={`${style.bold}`}>42.512$</bold> من اصل 50.000$ </p>
+                                <p className={`${style.collect__para}`}>{t( "تم جمع ")}<bold className={`${style.bold}`}>42.512$</bold> {t("من اصل")} 50$ </p>
                                 <ProgressBar now={10} className={`${style.progress} ${style.progress__new} `} />
-                                <Button className={`${style.newProject__btn}`}>ادعم المشروع</Button>
+                                <Button className={`${style.newProject__btn}`}>{t("ادعم المشروع")}</Button>
                             </div>
                         </div>
                     </section>

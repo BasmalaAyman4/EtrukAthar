@@ -11,7 +11,17 @@
     cursor: pointer;
 }
 
-.event__date {
+body[dir="rtl"] .event__date {
+    background-color: #E86500;
+    padding: 15px;
+    border-radius: 0px 10px 10px 0px;
+    -webkit-border-radius:0px 10px 10px 0px;
+    -moz-border-radius: 0px 10px 10px 0px;
+    -ms-border-radius: 0px 10px 10px 0px;
+    -o-border-radius: 0px 10px 10px 0px;
+    color: #fff;
+}
+body[dir="ltr"] .event__date {
     background-color: #E86500;
     padding: 15px;
     border-radius: 10px 0 0px 10px;
@@ -22,8 +32,13 @@
     color: #fff;
 }
 
-.eventCard__body {
+body[dir="rtl"] .eventCard__body {
     padding: 10px;
+    direction: ltr;
+}
+body[dir="ltr"] .eventCard__body {
+    padding: 10px;
+    direction: rtl;
 }
 .eventCard__para {
     font-size: 20px;

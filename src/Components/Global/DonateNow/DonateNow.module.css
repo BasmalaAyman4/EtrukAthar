@@ -52,9 +52,13 @@
     padding: 25px 15px 5px 15px ;
     font-family: "Changa-Regular", sans-serif !important;
 }
-.icon{
+body[dir="ltr"] .icon{
     font-size: 45px;
     margin-left: 5px;
+}
+body[dir="rtl"] .icon{
+    font-size: 45px;
+    margin-right: 5px;
 }
 .paypal__para{
     font-size: 20px;
@@ -101,8 +105,13 @@
 .price__checkbox{
     margin: 15px 0;
 }
-.price__para{
+body[dir="ltr"] .price__para{
     margin-right: 10px;
+    font-size: 17px;
+    font-family: "Changa-Regular", sans-serif !important;
+}
+body[dir="rtl"] .price__para{
+    margin-left: 10px;
     font-size: 17px;
     font-family: "Changa-Regular", sans-serif !important;
 }
@@ -122,6 +131,12 @@
 }
 .modal{
     z-index: 10000 !important;
+}
+body[dir="rtl"] .modal__bodyy{
+    direction:ltr;
+}
+body[dir="ltr"] .modal__bodyy{
+    direction:rtl;
 }
 /* @media (max-width:767px) {
     .btn{

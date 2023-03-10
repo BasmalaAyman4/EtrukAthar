@@ -32,24 +32,24 @@
     font-family: "Changa-SemiBold";
 }
 .input {
-        border: none;
-            outline: none;
-            border-radius: 15px;
-            padding: 1em;
-            background-color: #f5f0f0;
-            box-shadow: inset 2px 5px 10px rgba(234, 147, 76, 0.61);
-            transition: 300ms ease-in-out;
-            font-size: 17px;
-            color: #202020;
-            border: 2px solid #E68500 !important;
-            width: 500px !important;
-            height: 50px;
-            margin: 10px auto;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    padding: 1em;
+    background-color: #f5f0f0;
+    box-shadow: inset 2px 5px 10px rgba(234, 147, 76, 0.61);
+    transition: 300ms ease-in-out;
+    font-size: 17px;
+    color: #202020;
+    border: 2px solid #E68500 !important;
+    width: 500px !important;
+    height: 50px;
+    margin: 10px auto;
 }
 
 .input:focus {
     background-color: white;
-    transform: scale(1.05);
+    transform: scale(1.01);
     box-shadow: 0 0 0 4px rgba(234, 147, 76, 0.61);
 }
 
@@ -131,14 +131,16 @@ body[dir="ltr"] .input::placeholder{
 }
 .userLog__list{
     list-style: none;
-display: flex;
-justify-content: space-around;
-margin-top: 5px !important;
-  
+    display: flex;
+    justify-content: space-around;
+
+    padding: 0 !important;
+    margin-top: 10px !important;
+    
 }
 .userLog__link{
     background-color: #fff;
-    padding: 10px 30px;
+    padding: 10px 20px;
     border: 2px solid #E68500;
     border-radius: 15px;
     -webkit-border-radius: 15px;
@@ -149,7 +151,7 @@ margin-top: 5px !important;
 }
 .user__link{
 background-color: #E68500;
-    padding: 10px 30px;
+    padding: 10px 20px;
     border: 2px solid #E68500;
     border-radius: 15px;
     -webkit-border-radius: 15px;

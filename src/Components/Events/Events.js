@@ -18,13 +18,13 @@ export default function Events() {
     return (
         <>
             <section className={`${style.events}`}>
-                <HeaderTitle title={t("المناسبات")} para={t("المبلغ المجموع للمناسبات")} price='10.763.00$' />
+                <HeaderTitle title={t(" المناسبات")} para={t("المبلغ المجموع للمناسبات")} price='10.763.00$' />
                 <Container>
-                    <p className={`${style.events__para}`}>سعينا إلى جعل أي فرحة لكم مضاعفة بأجر لا يقدر بثمن</p>
+                    <p className={`${style.events__para}`}> {t("سعينا إلى جعل أي فرحة لكم مضاعفة بأجر لا يقدر بثمن")} </p>
                     <div className={`${style.eventsStyle}`}>
                         <div className={`${style.search}`}>
                             <select className={`${style.formSelect}`}>
-                                <option>All Categories</option>
+                                <option>{t("كل الاقسام")}</option>
                                 <option>Nightstand</option>
                                 <option>&nbsp;&nbsp;&nbsp;coffer</option>
                                 <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cradle</option>
@@ -39,17 +39,17 @@ export default function Events() {
                                 <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;faldstool</option>
                                 <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vargueno</option>
                             </select>
-                            <input className={`${style.searchbox}`} type="text" name="serach" placeholder="Search Events..." />
-                            <a className={`${style.search__link}`} href="/">SEARCH</a>
+                            <input className={`${style.searchbox}`} type="text" name="serach" placeholder={t("البحث في الأحداث ...")} />
+                            <a className={`${style.search__link}`} href="/">{t("بحث")}</a>
                         </div>
                         <div className={`${style.events__view}`}>
-                            <a href='#' className={`${active ? style.style__link : style.view__link}`} onClick={() => { showActive("list") }}><BsListUl /> List View</a>
-                            <a href='#' className={`${active ? style.calender__link : style.style__link}`} onClick={() => { showActive("calender") }}><BsCalendarEvent /> Calender</a>
+                            <Link to='' className={`${active ? style.style__link : style.view__link}`} onClick={() => { showActive("list") }}><BsListUl /> {t("عرض الاحداث")}</Link>
+                            <Link to='' className={`${active ? style.calender__link : style.style__link}`} onClick={() => { showActive("calender") }}><BsCalendarEvent />{t("النتيجة")}</Link>
                         </div>
                     </div>
                     <div className={`${style.events__body}`}>
                         <div className={`${active ? style.upcomingEvent : style.none}`}>
-                            <h2 className={`${style.upcomingEvent__title}`}><RxCounterClockwiseClock /> الاحداث القادمة</h2>
+                            <h2 className={`${style.upcomingEvent__title}`}><RxCounterClockwiseClock /> {t("الاحداث القادمة")}</h2>
                             <EventCard month='Feb' day='28' title='إنشائنا لقرية الحياة، والتي أنهت معاناة أكثر من مئتي عائلة مهجّرة ' time='3:00 PM - 4:00 PM EST' />
                             <EventCard month='Mar' day='2' title='تقديم المساعدة لطلاب الجامعات الذين يعيشون بعيداً عن ذويهم ' time='5:30 PM - 7:30 PM EST' />
                             <EventCard month='Mar' day='10' title='أشد ما يمكن أن يُشعر المهجّر بالعجز عدم وجود مصدر دخل يُعينه.' time='12:15 PM - 1:00 PM EST' />
@@ -61,6 +61,7 @@ export default function Events() {
                         </div>
                         <div className={`${active ? style.none : style.upcomingEvent}`}>
                             <h2 className={`${style.upcomingEvent__title}`}><BsCalendarEvent /> تقويم الاحداث</h2>
+
                             <Calendar
                                 className={`${style.CalendarStyle}`}
                                 dateCellRender={(date) => {
@@ -82,14 +83,14 @@ export default function Events() {
 
                         <div className={`${style.otherEvent}`}>
                             <div className={`${style.annualEvents}`}>
-                                <h2 className={`${style.annualEvents__title}`} >الاحداث السنوية</h2>
+                                <h2 className={`${style.annualEvents__title}`} >{t("الاحداث السنوية")}</h2>
                                 <Link to='#' className={`${style.annualEvents__link}`}>حمله البذور و العقائق</Link>
                                 <Link to='#' className={`${style.annualEvents__link}`}>حمله اعاله الاطفال </Link>
                             </div>
                             <div className={`${style.annualEvents} ${style.otherEvents}`}>
-                                <h2 className={`${style.annualEvents__title}`} >مناسبات اخري</h2>
-                                <p className={`${style.annualEvents__para}`}> الكارثة كبيرة و حجم الضرر مهول و كما قال النبي محمد (ﷺ) " المؤمن للمؤمن كالبنيان يشد بعضه بعضاً ".</p>
-                                <p className={`${style.annualEvents__para}`}>عملنا على توزيع المواد الغذاية و المدافئ ومواد التدفئة والوجبات السريعة و الفواكه على العوائل المتضررة جراء الزلزال</p>
+                                <h2 className={`${style.annualEvents__title}`} >{t("مناسبات اخري")}</h2>
+                                <p className={`${style.annualEvents__para}`}> {t( "الكارثة كبيرة و حجم الضرر مهول و كما قال النبي محمد (ﷺ)  المؤمن للمؤمن كالبنيان يشد بعضه بعضاً ")}</p>
+                                <p className={`${style.annualEvents__para}`}>{t(  "عملنا على توزيع المواد الغذاية و المدافئ ومواد التدفئة والوجبات السريعة و الفواكه على العوائل المتضررة جراء الزلزال")} </p>
                             </div>
                         </div>
 

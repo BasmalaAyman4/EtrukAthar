@@ -1,3 +1,9 @@
 .swiper-pagination-bullet{
   background-color:  #000 !important;
 }
+body[dir="rtl"] .progress{
+   direction: ltr;
+}
+body[dir="ltr"] .progress{
+  direction: rtl;
+}

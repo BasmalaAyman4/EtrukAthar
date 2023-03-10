@@ -67,9 +67,9 @@ export default function Login() {
                     <div className={style.login}>
                         <h2 className={style.login__title}>{t("تسجيل الدخول")}</h2>
                         <hr />
-                        <ul className={style.userLog__list}>
+                        <ul className={`${style.userLog__list}`}>
                             <li className={`${style.userLog__item}`} onClick={() => { showActive("volenteer") }} >
-                                <button type='button' className={`${active ? style.user__link : style.userLog__link}`} >{t("متبرع")}</button>
+                                <button type='button' className={`${active ? style.user__link : style.userLog__link}`} >{t("مستخدم")}</button>
                             </li>
                             <li className={`${style.userLog__item}  `} onClick={() => { showActive("charity") }} >
                                 <button type='button' className={`${active ? style.userLog__link : style.user__link}`} >{t("جمعية ")}</button>

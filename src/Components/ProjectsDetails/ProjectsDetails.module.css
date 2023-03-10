@@ -1,23 +1,46 @@
-.cardDetails{
+body[dir="ltr"] .cardDetails{
     display: flex;
     justify-content: space-between;
     margin: 40px 0;
+    text-align: right;
+}
+body[dir="rtl"] .cardDetails{
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0;
+    direction:rtl;
+    text-align: left;
 }
 
-.modal__paypal,
-.modal__collect {
+
+body[dir="rtl"] .modal__paypal,
+body[dir="rtl"] .modal__collect {
     background-color: #E7E7E7;
     padding: 20px 20px 5px 10px;
     font-family: "Changa-Regular", sans-serif !important;
     margin-top: 10px;
     min-width: 400px;
     margin-bottom: 15px;
+    direction: ltr;
+}
+
+body[dir="ltr"] .modal__paypal,
+body[dir="ltr"] .modal__collect {
+    background-color: #E7E7E7;
+    padding: 20px 20px 5px 10px;
+    font-family: "Changa-Regular", sans-serif !important;
+    margin-top: 10px;
+    min-width: 400px;
+    margin-bottom: 15px;
+    direction: rtl;
 }
 .icon,
 .icon__new {
     font-size: 45px;
     margin-left: 5px;
+    margin-right: 5px;
     color: #000;
+   
 }
 .icon__new{
     font-size: 30px;
@@ -30,7 +53,6 @@
 .price__input {
     width: 150px;
     height: 30px;
-
 }
 
 .price__icon {
@@ -44,10 +66,14 @@
     border: 1px solid #333;
 }
 
-.price__choose {
+body[dir="rtl"] .price__choose {
     margin-top: 20px;
+    direction: ltr;
 }
-
+body[dir="ltr"] .price__choose {
+    margin-top: 20px;
+    direction: rtl;
+}
 .price__btn {
     margin-left: 10px;
     background-color: #fff;
@@ -68,13 +94,23 @@
     color: #000;
     font-weight: bold;
 }
-.price__checkbox {
+body[dir="rtl"] .price__checkbox {
     margin: 15px 0;
+    direction: ltr;
+}
+body[dir="ltr"] .price__checkbox {
+    margin: 15px 0;
+    direction: rtl;
 }
 
-.price__para {
+body[dir="ltr"] .price__para {
     margin-right: 10px;
-    font-size: 17px;
+    font-size: 14px;
+    font-family: "Changa-Regular", sans-serif !important;
+}
+body[dir="rtl"] .price__para {
+    margin-left: 10px;
+    font-size: 14px;
     font-family: "Changa-Regular", sans-serif !important;
 }
 .cardDetails__btn{
@@ -109,27 +145,53 @@
 .bold{
 font-size: 30px;
 }
-.cardDetails__icon{
+body[dir="ltr"] .cardDetails__icon{
     display: flex;
     gap: 5%;
     margin-top: 20px;
     margin-right: 20px;
+    direction: rtl;
 
 }
-.icon__social{
-        position: relative;
-        width: 150px;
-        height: 50px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        background: #fff;
-        border: none;
-        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
-        justify-content: center;
-        font-family: "Changa-Regular", sans-serif !important;
-       font-size: 17px;
-        letter-spacing: 1.2px;
+body[dir="rtl"] .cardDetails__icon{
+    display: flex;
+    gap: 5%;
+    margin-top: 20px;
+    margin-right: 20px;
+    direction: ltr;
+
+}
+body[dir="rtl"] .icon__social{
+    position: relative;
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: none;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+    justify-content: center;
+    font-family: "Changa-Regular", sans-serif !important;
+    font-size: 17px;
+    letter-spacing: 1.2px;
+    direction:rtl;      
+}
+body[dir="ltr"] .icon__social{
+    position: relative;
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: none;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+    justify-content: center;
+    font-family: "Changa-Regular", sans-serif !important;
+    font-size: 17px;
+    letter-spacing: 1.2px;
+    direction:ltr;
         
 }
 .icon__social1{

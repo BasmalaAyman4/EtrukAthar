@@ -15,6 +15,7 @@ export default function DonateNow() {
         setPriceshow(price)
         console.log(priceShow);
     }
+  
     function MyVerticallyCenteredModal(props) {
         return (
             <Modal
@@ -26,12 +27,12 @@ export default function DonateNow() {
             >
                 <Modal.Header closeButton className={`${style.header}`}>
                     <Modal.Title id="contained-modal-title-vcenter" className={`${style.modal__title}`}>
-                        <h2 className={`${style.modal__mainTitle}`}>التبرع المباشر للصندوق العام</h2>
-                        <p className={`${style.modal__para}`}>مهما كان تبرعك صغيرا,اترك أثرا</p>
+                        <h2 className={`${style.modal__mainTitle}`}>{t("التبرع المباشر للصندوق العام")}</h2>
+                        <p className={`${style.modal__para}`}>{t("مهما كان تبرعك صغيرا,اترك أثرا")}</p>
                     </Modal.Title>
                 </Modal.Header>
-                <Modal.Body dir='rtl' >
-                    <div className={`${style.modal__paypal}`}><p className={`${style.paypal__para}`}><FaCcPaypal className={`${style.icon}`} /> للتبرع عبر Paypal</p></div>
+                <Modal.Body className={`${style.modal__bodyy}`} >
+                    <div className={`${style.modal__paypal}`}><p className={`${style.paypal__para}`}><FaCcPaypal className={`${style.icon}`} /> {t("للتبرع عبر Paypal")}</p></div>
                     <div className={`${style.price__body}`}>
                         <NumericInput value={priceShow ? priceShow : 20.00} className={`${style.price__input}`} /><BiDollar className={`${style.price__icon}`} />
                         <div className={`${style.price__choose}`}>
@@ -43,17 +44,17 @@ export default function DonateNow() {
                         </div>
                     </div>
                     <div className={`${style.price__checkbox}`}>
-                        <label><input type="checkbox" /><span className={`${style.price__para}`}>تغطيه رسوم المعاملات 1.29$</span></label>
+                        <label><input type="checkbox" /><span className={`${style.price__para}`}>{t( "تغطيه رسوم المعاملات 1.29$")}</span></label>
                         <div>
-                            <label><input type="checkbox" /><span className={`${style.price__para}`}>جعل تبرعي متكرر كل شهر</span></label>
+                            <label><input type="checkbox" /><span className={`${style.price__para}`}>  {t( "جعل تبرعي متكرر كل شهر")}</span></label>
                         </div>
                     </div>
-                    <button className={`${style.price__btn}`}>تبرع الان</button>
-                    <div className={`${style.modal__paypal}`}><p className={`${style.paypal__para}`}><FaCcMastercard className={`${style.icon}`} />  وسائل التبرع ألاخري </p></div>
+                    <button className={`${style.price__btn}`}>{t( "تبرع الآن")}</button>
+                    <div className={`${style.modal__paypal}`}><p className={`${style.paypal__para}`}><FaCcMastercard className={`${style.icon}`} /> {t( "  وسائل التبرع ألاخري ")}</p></div>
                 </Modal.Body>
                 <Modal.Footer className={`${style.footer}`}>
 
-                    <Button className={`${style.footer__btn}`} >استعراض الان</Button>
+                    <Button className={`${style.footer__btn}`} >{t(" التبرع مباشر ")} </Button>
                 </Modal.Footer>
             </Modal>
         );
