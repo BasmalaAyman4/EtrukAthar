@@ -14,6 +14,7 @@ export default function EventCard(props) {
                         <h4 className={`${style.eventCard__title}`}> {props.title}</h4>
                         <p className={`${style.eventCard__para}`}> {props.time}</p>
                     </div>
+
                 </div>
             </Link>
         </>

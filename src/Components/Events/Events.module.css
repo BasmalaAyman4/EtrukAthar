@@ -72,13 +72,23 @@ body[dir="rtl"] .eventsStyle{
     position: relative;
    
 }
-.events__view::after{
+body[dir="ltr"] .events__view::after{
     content: "";
     position: absolute;
     background: #777;
     top: 7px;
     bottom: 0;
-    left: 50%;
+    left: 40%;
+    width: 1px;
+    height: 30px;
+}
+body[dir="rtl"] .events__view::after {
+    content: "";
+    position: absolute;
+    background: #777;
+    top: 7px;
+    bottom: 0;
+    left: 55%;
     width: 1px;
     height: 30px;
 }
@@ -96,7 +106,7 @@ body[dir="ltr"] .events__view{
 }
 .style__link{
     color: #E86500;
-    margin: 0 15px;
+    margin: 0 25px;
 }
 .style__link:hover,
 .view__link:hover,

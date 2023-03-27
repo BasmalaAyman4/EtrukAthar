@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom';
 import EventCard from './../EventCard/EventCard'
 import { Calendar } from 'antd';
 import './event.css'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 export default function Events() {
     const { t } = useTranslation()
     const [active, setActive] = useState(true)
@@ -21,7 +23,9 @@ export default function Events() {
                 <HeaderTitle title={t(" المناسبات")} para={t("المبلغ المجموع للمناسبات")} price='10.763.00$' />
                 <Container>
                     <p className={`${style.events__para}`}> {t("سعينا إلى جعل أي فرحة لكم مضاعفة بأجر لا يقدر بثمن")} </p>
+
                     <div className={`${style.eventsStyle}`}>
+
                         <div className={`${style.search}`}>
                             <select className={`${style.formSelect}`}>
                                 <option>{t("كل الاقسام")}</option>
@@ -42,11 +46,14 @@ export default function Events() {
                             <input className={`${style.searchbox}`} type="text" name="serach" placeholder={t("البحث في الأحداث ...")} />
                             <a className={`${style.search__link}`} href="/">{t("بحث")}</a>
                         </div>
+
                         <div className={`${style.events__view}`}>
                             <Link to='' className={`${active ? style.style__link : style.view__link}`} onClick={() => { showActive("list") }}><BsListUl /> {t("عرض الاحداث")}</Link>
-                            <Link to='' className={`${active ? style.calender__link : style.style__link}`} onClick={() => { showActive("calender") }}><BsCalendarEvent />{t("النتيجة")}</Link>
+                            <Link to='' className={`${active ? style.calender__link : style.style__link}`} onClick={() => { showActive("calender") }}><BsCalendarEvent /> {t("النتيجة")}</Link>
                         </div>
+
                     </div>
+
                     <div className={`${style.events__body}`}>
                         <div className={`${active ? style.upcomingEvent : style.none}`}>
                             <h2 className={`${style.upcomingEvent__title}`}><RxCounterClockwiseClock /> {t("الاحداث القادمة")}</h2>
@@ -89,14 +96,14 @@ export default function Events() {
                             </div>
                             <div className={`${style.annualEvents} ${style.otherEvents}`}>
                                 <h2 className={`${style.annualEvents__title}`} >{t("مناسبات اخري")}</h2>
-                                <p className={`${style.annualEvents__para}`}> {t( "الكارثة كبيرة و حجم الضرر مهول و كما قال النبي محمد (ﷺ)  المؤمن للمؤمن كالبنيان يشد بعضه بعضاً ")}</p>
-                                <p className={`${style.annualEvents__para}`}>{t(  "عملنا على توزيع المواد الغذاية و المدافئ ومواد التدفئة والوجبات السريعة و الفواكه على العوائل المتضررة جراء الزلزال")} </p>
+                                <p className={`${style.annualEvents__para}`}> {t("الكارثة كبيرة و حجم الضرر مهول و كما قال النبي محمد (ﷺ)  المؤمن للمؤمن كالبنيان يشد بعضه بعضاً ")}</p>
+                                <p className={`${style.annualEvents__para}`}>{t("عملنا على توزيع المواد الغذاية و المدافئ ومواد التدفئة والوجبات السريعة و الفواكه على العوائل المتضررة جراء الزلزال")} </p>
                             </div>
                         </div>
 
                     </div>
                 </Container>
-            </section>
+            </section >
 
         </>
     )

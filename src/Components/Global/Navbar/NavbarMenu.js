@@ -117,7 +117,7 @@ export default function NavbarMenu() {
                                             <NavLink className="nav-link" to="/" href="index.html">{t("الرئيسية")} </NavLink>
                                         </li>
                                         <li>
-                                            <NavLink className="nav-link" to="/" href="index.html">{t("المشاريع")} </NavLink>
+                                            <NavLink className="nav-link" to="/projects" href="index.html">{t("المشاريع")} </NavLink>
                                         </li>
                                         <li>
                                             <NavLink
@@ -160,15 +160,15 @@ export default function NavbarMenu() {
                                             </Collapse>
                                         </li>
                                         <li>
-                                            <NavLink className="nav-link" to="/b" href="index.html">{t(" المناسبات")}</NavLink>
+                                            <NavLink className="nav-link" to="/event" href="index.html">{t(" المناسبات")}</NavLink>
                                         </li>
                                         <li>
-                                            <NavLink className="nav-link" to="/" href="index.html">   {t( "جمعيات  خيرية")}</NavLink>
+                                            <NavLink className="nav-link" to="/" href="index.html">   {t("جمعيات  خيرية")}</NavLink>
                                         </li>
                                         <li>
                                             <NavLink className="nav-link" to="/" href="index.html">{t("صندوق علمني ")} </NavLink>
                                         </li>
-                                      
+
                                         <li>
                                             <NavLink className="nav-link" to="/" href="index.html">{t("حاسبة الزكاة")}   </NavLink>
                                         </li>
@@ -177,7 +177,7 @@ export default function NavbarMenu() {
                                         </li>
 
                                         <li>
-                                            <NavLink className="nav-link" to="/" href="index.html"> {t("تسجيل")}  </NavLink>
+                                            <NavLink className="nav-link" to="/sign-up" href="index.html"> {t("تسجيل")}  </NavLink>
                                         </li>
                                         <li>
                                             <NavLink className="nav-link" to="/login" href="index.html"> {t("تسجيل الدخول")}  </NavLink>
@@ -220,9 +220,9 @@ export default function NavbarMenu() {
                                         </div>
                                     </div>
                                     <NavLink to="/event" className={`${styles.mainNav__link} main-nav__link `}><MdNotificationsActive className='event' />{t(" المناسبات")}</NavLink>
-                                    <NavLink to="/acution" className={`${styles.mainNav__link} main-nav__link`}>{t( "جمعيات  خيرية")} </NavLink>
+                                    <NavLink to="/acution" className={`${styles.mainNav__link} main-nav__link`}>{t("جمعيات  خيرية")} </NavLink>
                                     <NavLink to="/box" className={`${styles.mainNav__link} main-nav__link`}> {t("صندوق علمني ")}</NavLink>
-               
+
 
                                 </Nav>
                             </Offcanvas.Body>
