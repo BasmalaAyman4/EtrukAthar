@@ -148,14 +148,14 @@ body[dir="ltr"] .annualEvents{
     border-bottom: 4px solid #E3E3E3;
     width: 70%;
 }
-/* body[dir="rtl"] .annualEvents__title{
+ body[dir="rtl"] .annualEvents__title{
     background-color:#E86500;
     color: #fff;
     padding: 10px 30px;
     position: relative;
     border-bottom: 4px solid #E3E3E3;
     width: 70%;
-} */
+} 
 body[dir="rtl"] .annualEvents__title::after{
     content: '';
     position: absolute;
