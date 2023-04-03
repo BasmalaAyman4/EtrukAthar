@@ -43,7 +43,7 @@ export default function Events() {
                                 <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;faldstool</option>
                                 <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vargueno</option>
                             </select>
-                            <input className={`${style.searchbox}`} type="text" name="serach" placeholder={t("البحث في الأحداث ...")} />
+                            <input className={`${style.searchbox}`} type="text" name="serach" placeholder={t("البحث في الأحداث...")} />
                             <a className={`${style.search__link}`} href="/">{t("بحث")}</a>
                         </div>
 
