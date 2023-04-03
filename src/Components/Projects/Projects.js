@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from './Projects.module.css'
+import './Projects.css'
 import HeaderTitle from '../HeaderTitle/HeaderTitle'
 import { Link } from 'react-router-dom'
 import Card from '../Card/Card'
-import './prog.css'
 import { Container } from 'react-bootstrap'
 import pro1 from './../../assets/images/pro1.jpg'
 import pro2 from './../../assets/images/pro2.jpeg'
@@ -18,8 +18,46 @@ export default function Projects() {
                 <HeaderTitle title={t("المشاريع")} para={t("المبلغ المجموع للمشاريع")} price='1.037.976.07$' />
                 <Link to='' className={`${styles.donate__link}`}>{t("تبرع فوري لصندوق المشاريع")}</Link>
 
-                <Container>
+                <div className="container">
+
                     <p className={`${styles.donate__para}`}>{t("نواظب على التنقيب عن مستلزمات المجتمع، ساعين لأجل توفير مشاريع من شأنها تلبية متطلباتهم، وتوفير حياةٍ كريمة لكلّ من تكبّد ويلاتُ الحرب")}</p>
+                    <div className='row'>
+                    <div className='col-lg-3'>
+                    <fieldset>
+                        <legend> جميع الحالات </legend>
+                        <div class="radio-item-container">
+                            <div class="radio-item">
+                                <label for="vanilla">
+                                    <input type="radio" id="vanilla" name="flavor" value="vanilla" />
+                                    <span>هاي <span class="icon">💃</span> </span>
+                                </label>
+                            </div>
+
+                            <div class="radio-item">
+                                <label for="chocolate">
+                                    <input type="radio" id="chocolate" name="flavor" value="chocolate" />
+                                    <span className='label-radio__content'>Chocolate </span> <span class="icon">🍫</span></label>
+                            </div>
+
+                            <div class="radio-item">
+                                <label for="strawberry">
+                                    <input type="radio" id="strawberry" name="flavor" value="strawberry" />
+                                    <span>Strawberry <span class="icon">🍓</span></span></label>
+                            </div>
+                            <div class="radio-item">
+                                <label for="strawberry">
+                                    <input type="radio" id="strawberry" name="flavor" value="strawberry" />
+                                    <span>Strawberry <span class="icon">🍓</span></span></label>
+                            </div>
+                            <div class="radio-item">
+                                <label for="strawberry">
+                                    <input type="radio" id="strawberry" name="flavor" value="strawberry" />
+                                    <span>Strawberry <span class="icon">🍓</span></span></label>
+                            </div>
+                        </div>
+                  </fieldset>
+                    </div>
+                    <div className='col-lg-9'>
                     <div className={`${styles.projects__body}`}>
                         <Card title='دفء الحياة 11 '
                             para='لا يعلمون من الشتاء سوى رجفة أطراف أطفالهم وتجمّدها، ولا من الأمطار والثلوج سوى غرق الخيام… '
@@ -103,7 +141,10 @@ export default function Projects() {
                             prog='10'
                             img={pro2} />
                     </div>
-                </Container>
+                    </div>
+      
+                    </div>
+                </div>
 
             </section>
         </>

@@ -10,7 +10,7 @@ import { BsFacebook } from "react-icons/bs";
 import { BsYoutube } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
 import { BsTwitter } from "react-icons/bs";
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation} from 'react-router-dom';
 import { Collapse } from 'react-bootstrap';
 import x from "./../../../assets/icons/x.svg"
 import { AuthContext } from '../../../Components/Context/AuthContext';
@@ -18,8 +18,14 @@ import { useTranslation } from 'react-i18next';
 import cookies from 'js-cookie'
 import i18next from 'i18next';
 import { MdNotificationsActive } from "react-icons/md";
+import { useRef } from 'react';
+    
+     
 export default function NavbarMenu() {
-
+    
+        const location = useLocation()
+       
+  
     const languages = [
         {
             code: 'en',
@@ -34,7 +40,7 @@ export default function NavbarMenu() {
             country_code: 'sa',
         },
     ]
-
+    const toggleNav = useRef();
     const [NavbarSide, setNavbarSide] = useState(false)
     const [openCases, setOpenCases] = useState(false);
     const [openSponsorships, setOpenSponsorships] = useState(false);
@@ -43,14 +49,18 @@ export default function NavbarMenu() {
     const currentLanguage = languages.find((l) => l.code === currentLanguageCode)
     const { t } = useTranslation()
     useEffect(() => {
+        setNavbarSide(false)
+    }, [location])
+    useEffect(() => {
+        
         document.body.dir = currentLanguage.dir || 'ltr'
         document.title = t("عنوان")
+       
     }, [currentLanguage, t])
     function handleLanguage(code, index, event) {
         event.preventDefault();
         i18next.changeLanguage(code)
-        // document.querySelector(".active-language").classList.remove("active-language")
-        // document.getElementById(`language${index}`).classList.add("active-language")
+
 
     }
 
@@ -104,7 +114,7 @@ export default function NavbarMenu() {
                                 <span className="icon-bar"></span>
                             </button>
 
-                            <div className={NavbarSide ? "navbar-toggle show-nav" : "navbar-toggle"} >
+                            <div ref={toggleNav} className={NavbarSide ? "navbar-toggle show-nav" : "navbar-toggle"} >
                                 <div className="nav-side">
                                     <div className="side__close " >
                                         <button onClick={() => { setNavbarSide(false) }} className="btn side__close-button  ">
