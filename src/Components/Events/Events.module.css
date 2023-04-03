@@ -126,7 +126,7 @@ grid-template-columns: 1fr 1fr;
     content: '';
     position: absolute;
     background-color: #6b6b6b;
-    width: 600px;
+    max-width: 600px;
     height: 2px;
     top: 20px;
 }
@@ -198,8 +198,32 @@ color: #fff;
 margin-top: 20px;
 text-align: center;
 }
-
-@media (max-width:767px) {
+@media (min-width:300px) and (max-width:414px) {
+    .eventsStyle,
+        .events__body {
+            display: flex;
+            flex-direction: column;
+        }
+    
+        .formSelect,
+        .searchbox {
+            margin-right: 0px;
+        }
+                .searchbox {
+                    margin-right: 0px;
+                    margin-left: -40px;
+                }
+    
+        .search__link {
+            margin-left: -65px;
+        }
+    
+        .search {
+            margin-bottom: 20px;
+        }
+    
+}
+@media (min-width:415px) and (max-width:767px) {
     .eventsStyle,
     .events__body{
         display: flex;
