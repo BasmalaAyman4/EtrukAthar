@@ -28,7 +28,7 @@
 }
 .projects__body{
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(2,1fr);
     margin-top: 70px;
     direction: rtl;
     margin-bottom: 70px;
@@ -53,7 +53,7 @@
 @media (min-width: 1200px) {
     .projects__body {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1%;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2%;
     }
 }

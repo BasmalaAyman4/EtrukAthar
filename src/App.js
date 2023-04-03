@@ -10,13 +10,10 @@ import DonateNow from './Components/Global/DonateNow/DonateNow'
 function App() {
   return (
     <>
-
       <Navbar />
       <DonateNow />
       <Router />
       <Footer />
-
-
     </>
   );
 }
