@@ -6,16 +6,17 @@ import { FaCcPaypal, FaCcMastercard } from "react-icons/fa";
 import { BiDollar } from "react-icons/bi";
 import NumericInput from 'react-numeric-input';
 import { useTranslation } from 'react-i18next';
+
 export default function DonateNow() {
     const [modalShow, setModalShow] = useState(false)
-    const {t} = useTranslation()
+    const { t } = useTranslation()
     const [priceShow, setPriceshow] = useState("");
     function clickPrice(price) {
         setPriceshow("")
         setPriceshow(price)
         console.log(priceShow);
     }
-  
+
     function MyVerticallyCenteredModal(props) {
         return (
             <Modal
@@ -44,13 +45,13 @@ export default function DonateNow() {
                         </div>
                     </div>
                     <div className={`${style.price__checkbox}`}>
-                        <label><input type="checkbox" /><span className={`${style.price__para}`}>{t( "تغطيه رسوم المعاملات 1.29$")}</span></label>
+                        <label><input type="checkbox" /><span className={`${style.price__para}`}>{t("تغطيه رسوم المعاملات 1.29$")}</span></label>
                         <div>
-                            <label><input type="checkbox" /><span className={`${style.price__para}`}>  {t( "جعل تبرعي متكرر كل شهر")}</span></label>
+                            <label><input type="checkbox" /><span className={`${style.price__para}`}>  {t("جعل تبرعي متكرر كل شهر")}</span></label>
                         </div>
                     </div>
-                    <button className={`${style.price__btn}`}>{t( "تبرع الآن")}</button>
-                    <div className={`${style.modal__paypal}`}><p className={`${style.paypal__para}`}><FaCcMastercard className={`${style.icon}`} /> {t( "  وسائل التبرع ألاخري ")}</p></div>
+                    <button className={`${style.price__btn}`}>{t("تبرع الآن")}</button>
+                    <div className={`${style.modal__paypal}`}><p className={`${style.paypal__para}`}><FaCcMastercard className={`${style.icon}`} /> {t("  وسائل التبرع ألاخري ")}</p></div>
                 </Modal.Body>
                 <Modal.Footer className={`${style.footer}`}>
 

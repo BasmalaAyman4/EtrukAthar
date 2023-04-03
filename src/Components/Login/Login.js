@@ -46,12 +46,12 @@ export default function Login() {
         let err = {}
 
         if (formData.email === '') {
-            err.email = "Email is required";
+            err.email = "البريد الالكتروني مطلوب";
         } else if (!validEmail.test(email)) {
-            err.email = "Invalid Email";
+            err.email = "بريد غير صحيح";
         }
         if (formData.password === '') {
-            err.password = "password is required"
+            err.password = "كلمه السر مطلوبه"
         } else if (!validPass.test(password)) {
             err.password = 'Minimum eight characters, at least one letter and one numbe';
 
