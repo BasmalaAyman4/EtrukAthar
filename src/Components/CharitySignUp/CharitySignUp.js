@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import style from '../Sign-up/signUp.module.css'
+import style from "./charitySignUp.module.css"
 import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
 import Button from 'react-bootstrap/Button';

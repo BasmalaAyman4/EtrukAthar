@@ -32,7 +32,7 @@
     font-size: 20px;
     font-weight: 500;
     color: #FFFFFF;
-    background-color: #E68500;
+    background-color: #EF8451;
     border-radius: 50px ;
     text-decoration: none;
     padding: 10px 45px;
@@ -40,7 +40,7 @@
 }
 .home-header__btn:hover{
     color: #FFFFFF;
-    background-color: #E68500;
+    background-color: #EF8451;
 
 }
  .home-header__btn_white{
@@ -174,7 +174,7 @@
         font-size: 15px !important;
         font-weight: 500;
         color: #FFFFFF;
-        background-color: #E68500;
+        background-color: #EF8451;
         border-radius: 50px ;
         text-decoration: none;
         padding: 10px 45px !important;

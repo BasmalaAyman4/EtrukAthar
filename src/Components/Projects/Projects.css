@@ -17,7 +17,7 @@ legend {
 	padding: 20px;
 	box-sizing: border-box;
 	border-radius: 10px 10px 0 0;
-	border: 2px solid #E68500;
+	border: 2px solid #EF8451;
 	display: flex;
 	justify-content: center;
 }
@@ -55,7 +55,7 @@ fieldset input[type="radio"]:after {
 	top: -10.5px;
 	left: -30px;
 	border-radius: 20px;
-	border: 2px solid #E68500;
+	border: 2px solid #EF8451;
 	transition: linear 0.2s;
 	cursor: pointer;
 }
@@ -65,7 +65,7 @@ fieldset input[type="radio"]:checked:after {
 	position: absolute;
 	height: 16px;
 	width: 16px;
-	background: #E68500;
+	background: #EF8451;
 	transition: linear 0.2s;
 	cursor: pointer;
 }
@@ -86,7 +86,7 @@ fieldset input[type="radio"]:checked:before {
 .radio-item-container {
 	display: flex;
 	flex-direction: column;
-	border: 2px solid #E68500;
+	border: 2px solid #EF8451;
 	border-top: 0;
 	background: #fff;
 	border-radius: 0 0 10px 10px;

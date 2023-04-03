@@ -1,0 +1,221 @@
+.logForm {
+    display: flex;
+    text-align: center;
+    background-image: url(../../assets/images/3-copy-scaled.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+    padding-bottom: 50px;
+
+}
+
+.userName {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2%;
+    margin: 0 20px;
+}
+
+.signup {
+    width: 60%;
+    margin: auto;
+    margin-top: 5%;
+    border: 1px solid #eee;
+    box-shadow: 0 0 4px 0 #ff9500da;
+    padding-bottom: 50px;
+    border-radius: 15px;
+    background-color: #eeeeeee0 !important;
+}
+
+.signup__title {
+    margin: 20px 0;
+    color: #E68500;
+    font-family: "Changa-SemiBold";
+}
+
+.msErr {
+    color: rgba(209, 3, 3, 0.938) !important;
+    font-size: 12px !important;
+    font-family: "Changa-Regular";
+    font-weight: bold;
+
+}
+
+.signup__para {
+    font-size: 17px;
+    margin: 20px 0;
+    color: #292929;
+    font-family: "Changa-Regular";
+}
+
+.signup__para a {
+    color: #333333;
+    font-weight: bold;
+    font-family: "Changa-Regular";
+}
+
+.signup__para a:hover {
+    color: #333333 !important;
+}
+
+.input {
+    border: none;
+    outline: none;
+    border-radius: 15px !important;
+    padding: 1em;
+    background-color: #f5f0f0cb !important;
+    box-shadow: inset 2px 5px 10px rgba(234, 147, 76, 0.61) !important;
+    transition: 300ms ease-in-out;
+    font-size: 14px;
+    color: #202020 !important;
+    margin-top: 20px;
+    border: 1px solid #E68500 !important;
+
+    height: 50px;
+    font-family: "Changa-Regular" !important;
+}
+
+body[dir="rtl"] .input::placeholder {
+    text-align: left !important;
+}
+
+body[dir="ltr"] .input::placeholder {
+    text-align: right !important;
+}
+
+.input:focus {
+    background-color: #f5f0f0cb;
+    transform: scale(1.01);
+    box-shadow: 0 0 0 4px rgba(234, 147, 76, 0.61);
+}
+
+.input:hover {
+    border: 2px solid #E68500 !important;
+    box-shadow: 0 0 0 4px rgba(234, 147, 76, 0.61);
+}
+
+
+.signup__btn {
+    --color: #333;
+    font-family: inherit;
+    display: inline-block;
+    width: 20em !important;
+    height: 2.6em;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #E68500 !important;
+    transition: color .5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #E68500 !important;
+    font-family: "Changa-Regular" !important;
+    margin-top: 10px  !important;
+}
+
+.signup__btn:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: #fff;
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+.signup__btn:hover {
+    color: #fff;
+    background-color: #E68500 !important;
+    border: 2px solid #E68500 !important;
+}
+
+.signup__btn:before {
+    top: 100%;
+    left: 100%;
+    transition: all .7s;
+}
+
+.signup__btn:hover:before {
+    top: -30px;
+    left: -40px;
+}
+
+.signup__btn:active:before {
+    background: #fff;
+    transition: background 0s;
+}
+
+.signup__btn {
+    width: 100%;
+}
+
+body[dir="rtl"] .PhoneInputInput input {
+    border: none !important;
+    outline: none !important;
+    background-color: #f5f0f0cb !important;
+    border-radius: 0px !important;
+    direction: ltr !important;
+
+
+}
+
+body[dir="ltr"] .PhoneInputInput input {
+    border: none !important;
+    outline: none !important;
+    background-color: #f5f0f0cb !important;
+    border-radius: 0px !important;
+    direction: ltr !important;
+
+}
+
+@media (max-width:767px) {
+    .signup {
+        width: 95%;
+        margin-top: 50px;
+    }
+
+    .userName {
+        display: block;
+    }
+
+    .logForm {
+        height: auto;
+        margin-top: 20px;
+        margin-top: -1px;
+    }
+}
+
+@media (min-width:768px) and (max-width:1200px) {
+    .signup {
+        width: 95%;
+    }
+
+    .userName {
+        display: block;
+    }
+
+    .logForm {
+        height: auto;
+        margin-top: 20px;
+        margin-top: -1px;
+    }
+}
+
+@media (min-width:1201px) and (max-width:1450px) {
+    .signup {
+        width: 75%;
+    }
+
+    .signup__btn {
+        margin: 0 50%;
+    }
+}
+
+@media (min-width:1451px) {
+    .signup__btn {
+        margin: 0 50%;
+    }
+}

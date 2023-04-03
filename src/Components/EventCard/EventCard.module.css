@@ -16,7 +16,7 @@
     }
 }
 body[dir="rtl"] .event__date {
-    background-color: #E86500;
+    background-color: #246d57da;
     padding: 15px;
     border-radius: 0px 10px 10px 0px;
     -webkit-border-radius:0px 10px 10px 0px;
@@ -26,7 +26,7 @@ body[dir="rtl"] .event__date {
     color: #fff;
 }
 body[dir="ltr"] .event__date {
-    background-color: #E86500;
+    background-color: #246d57da;
     padding: 15px;
     border-radius: 10px 0 0px 10px;
     -webkit-border-radius: 10px 0 0px 10px;
@@ -57,5 +57,5 @@ body[dir="ltr"] .eventCard__body {
     color: black;
 }
 .link:hover {
-    color: #E86500;
+    color: #246d57da;
 }
