@@ -10,7 +10,11 @@
     margin-bottom: 20px;
     cursor: pointer;
 }
-
+@media (min-width:1201px) {
+    .eventCard{
+        width: 680px;
+    }
+}
 body[dir="rtl"] .event__date {
     background-color: #E86500;
     padding: 15px;

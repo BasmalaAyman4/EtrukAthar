@@ -115,7 +115,7 @@ body[dir="ltr"] .events__view{
 }
 .events__body{
 display: grid;
-grid-template-columns: auto 1fr;
+grid-template-columns: 1fr 1fr;
     color: #585858;
 }
 .upcomingEvent__title{
@@ -289,4 +289,21 @@ text-align: center;
         width: 100%;
     }
 
+}
+@media (min-width:1201px) {
+.upcomingEvent__title::after {
+        width: 380px;
+    }
+}
+@media (min-width:1201px) and (max-width:1399px) {
+    .upcomingEvent__title::after {
+        width: 380px;
+    }
+}
+@media (min-width:1400px) {
+.events__body {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        color: #585858;
+    }
 }
