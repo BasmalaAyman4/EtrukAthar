@@ -1,6 +1,6 @@
 .card {
     width: 100%;
-    height: 530px;
+    height: 498px;
     border-radius: 20px;
     background: #fff;
     position: relative;
@@ -44,14 +44,15 @@ body[dir="ltr"] .cardDetails {
 .textTitle {
     color: #000;
     font-weight: bold;
-    font-family: "Changa-SemiBold" !important;
+    font-size: 20px;
+    font-family: "Changa-Regular";
     margin: 15px;
 }
 
 .textPara {
     margin: 15px;
-    font-family: "Changa-Light";
-    font-size: 18px;
+    font-family: "Changa-Regular";
+    font-size: 15px;
 
 }
 
@@ -79,13 +80,14 @@ body[dir="ltr"] .cardDetails {
 
 .cardPrice {
     background: #f6f6f6;
-    padding: 10px 20px 25px 20px;
+    padding: 10px 20px 20px 20px;
     border-radius: 0 0 5px 5px;
     -webkit-border-radius: 0 0 18px 18px;
     -moz-border-radius: 0 0 5px 5px;
     -ms-border-radius: 0 0 5px 5px;
     -o-border-radius: 0 0 5px 5px;
-    height:144px
+    height:150px;
+    font-family: "Changa-Regular";
 }
 
 .allCollect {
@@ -116,7 +118,7 @@ span:nth-child(1) {
 }
 @media (min-width:1200px) and (max-width:1400px){
     .cardPrice {
-            height: 22%;
+            height: 26%;
         }
 }
 @media (max-width:767px){
