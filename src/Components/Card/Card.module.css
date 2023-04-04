@@ -29,7 +29,7 @@ body[dir="ltr"] .cardDetails {
     width: 60%;
     border-radius: 1rem;
     border: none;
-    background-color: #fd9707;
+    background-color: #EF8451;
     color: #fff;
     font-size: 1rem;
     padding: .5rem 1rem;
@@ -69,7 +69,7 @@ body[dir="ltr"] .cardDetails {
 
 /*Hover*/
 .card:hover {
-    border-color: #fd9707;
+    border-color: #EF8451;
     box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
 }
 

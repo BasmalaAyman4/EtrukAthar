@@ -1,34 +1,40 @@
 .logForm {
     display: flex;
     text-align: center;
-    background-image: url(../../assets/images/3-copy-scaled.jpg);
+    background-image: url(../../assets/images/ngo-illustration-Artboard-5.png);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
     height: auto;
-    padding-bottom: 50px;
-   
+    padding-bottom: 150px;
+    background-color: #2A6355;
+    margin-left: -50%; 
+}
+body[dir="rtl"] .logForm{
+    margin-right: -90%;
 }
 .userName {
-
+   
     margin:50px 0;
 }
 .login {
     width: 35%;
     margin: auto;
-    margin-top: 3%;
+    margin-top: 10%;
     border: 1px solid #eee;
-    box-shadow: 0 0 4px 0 #ff9500da;
+    box-shadow: 0 0 4px 0 #246d57da;
     padding-bottom: 30px;
     border-radius: 15px;
     background-color: #eeeeeee0 !important;
     font-family: "Changa-Regular" !important;
-
+margin-left: 90% !important;
+}
+body[dir="rtl"] .login{
+    margin-left: -40% !important;
 }
 
 .login__title {
     margin: 20px 0;
-    color: #EF8451;
+    color: #2A6355;
     font-family: "Changa-SemiBold";
 }
 .input {
@@ -37,11 +43,10 @@
     border-radius: 15px;
     padding: 1em;
     background-color: #f5f0f0;
-    box-shadow: inset 2px 5px 10px rgba(234, 147, 76, 0.61);
     transition: 300ms ease-in-out;
     font-size: 17px;
     color: #202020;
-    border: 2px solid #EF8451 !important;
+    border: 2px solid #2A6355!important;
     width: 500px !important;
     height: 50px;
     margin: 10px auto;
@@ -50,12 +55,12 @@
 .input:focus {
     background-color: white;
     transform: scale(1.01);
-    box-shadow: 0 0 0 4px rgba(234, 147, 76, 0.61);
+    box-shadow: 0 0 0 4px rgba(21, 65, 50, 0.61);
 }
 
 .input:hover {
-    border: 2px solid #EF8451 !important;
-    box-shadow: 0 0 0 4px rgba(234, 147, 76, 0.61);
+    border: 2px solid #2A6355 !important;
+    box-shadow: 0 0 0 4px rgba(21, 65, 50, 0.61);
 }
 
 .log__btn{
@@ -68,14 +73,14 @@
     margin: 5px;
     position: relative;
     overflow: hidden;
-    border: 2px solid #EF8451;
+    border: 2px solid #2A6355;
     transition: color .5s;
     z-index: 1;
     font-size: 17px;
     border-radius: 6px;
     font-weight: 500;
     color: #fff;
-    background-color: #EF8451;
+    background-color: #2A6355;
 }
 body[dir="rtl"] .input::placeholder{
     text-align: left !important;
@@ -141,18 +146,18 @@ body[dir="ltr"] .input::placeholder{
 .userLog__link{
     background-color: #fff;
     padding: 10px 20px;
-    border: 2px solid #EF8451;
+    border: 2px solid #2A6355;
     border-radius: 15px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     -ms-border-radius: 15px;
     -o-border-radius: 15px;
-    color: #EF8451;
+    color: #2A6355;
 }
 .user__link{
-background-color: #EF8451;
+background-color: #2A6355;
     padding: 10px 20px;
-    border: 2px solid #EF8451;
+    border: 2px solid #2A6355;
     border-radius: 15px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
@@ -169,10 +174,20 @@ background-color: #EF8451;
 
 }
 @media (max-width:767px) {
-    .login {
-        width: 95%;
+     .login {
+        width: 65%;
         margin-top: 50px;
+        margin-left: 35% !important;
     }
+                body[dir="rtl"] .login {
+                    width: 50%;
+                    margin-top: 50px;
+                    margin-left: 0 !important;
+                }
+        
+                body[dir="rtl"] .logForm {
+                    margin-left: 0 !important;
+                }
 
     .input,
     .log__btn {
@@ -193,18 +208,55 @@ background-color: #EF8451;
 @media (min-width:768px) and (max-width:1200px) {
     .login {
         width: 95%;
+        margin-left: 30% !important;
     }
+                        body[dir="rtl"] .login {
+                            width: 90%;
+                            margin-top: 50px;
+                            margin-left: -20% !important;
+                        }
+            
+                        
 
 }
 @media (min-width:1201px) and (max-width:1450px) {
     .login {
         width: 75%;
+        margin-left: 40% !important;
     }
+                 body[dir="rtl"] .login {
+                     width: 90%;
+                     margin-top: 50px;
+                     margin-left: -17% !important;
+                 }
 
 }
 
-@media (min-width:1451px) {
+@media (min-width:1451px) and (max-width:1560px){
         .login {
                 width: 50%;
+                margin-left: 82% !important;
             }
+        body[dir="rtl"] .login {
+                width: 50%;
+                margin-top: 50px;
+                margin-left: -25% !important;
+            }
+        body[dir="rtl"] .logForm {
+                  margin-right: -90% !important;
+            }
+}
+@media (min-width:1561px) {
+    .login {
+        width: 50%;
+    }
+                        body[dir="rtl"] .login {
+                            width: 50%;
+                            margin-top: 50px;
+                            margin-left: -32% !important;
+                        }
+            
+                        body[dir="rtl"] .logForm {
+                            margin-right: -90% !important;
+                        }
 }

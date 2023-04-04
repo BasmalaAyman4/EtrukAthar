@@ -116,9 +116,9 @@ body[dir="rtl"] .price__para {
 .cardDetails__btn{
    width: 100%;
     padding: 15px 0;
-    background-color: #E86500;
+    background-color: #EF8451;
     color: #fff;
-    border: 1PX solid #E86500;
+    border: 1PX solid #EF8451;
     font-family: "Changa-Regular", sans-serif !important;
     font-size: 17px;
 }
@@ -128,7 +128,7 @@ body[dir="rtl"] .price__para {
 
 }
 .cardDetails__title{
-    color: #E86500;
+    color: #EF8451;
     font-weight: bold;
 }
 .cardDetails__para{
@@ -295,7 +295,7 @@ body[dir="ltr"] .icon__social{
     padding: 15px;
 }
 .newProject__title{
-    color: #E86500;
+    color: #EF8451;
     font-family: "Changa-Light";
     font-weight: bold;
 }
@@ -311,8 +311,8 @@ body[dir="ltr"] .icon__social{
     border: 1px solid #444A54 !important;
 }
 .newProject__btn:hover{
-    background-color: #E86500 !important;
-    border: 1px solid #E86500 !important;
+    background-color: #EF8451 !important;
+    border: 1px solid #EF8451 !important;
 }
 @media (max-width:767px) {
     .cardDetails {

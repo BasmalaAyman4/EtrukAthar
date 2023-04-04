@@ -54,7 +54,7 @@ body[dir="rtl"] .eventsStyle{
 
 
 .search__link {
-    background-color: #E86500;
+    background-color: #246d57da;
     color: white;
     padding: 7px 30px;
     text-decoration: none;
@@ -67,7 +67,7 @@ body[dir="rtl"] .eventsStyle{
     color: white;
 }
 .events__view{
-    border: 1px solid #E86500;
+    border: 1px solid #246d57da;
     padding: 10px;
     position: relative;
    
@@ -93,7 +93,7 @@ body[dir="rtl"] .events__view::after {
     height: 30px;
 }
 body[dir="ltr"] .events__view{
-    border: 1px solid #E86500;
+    border: 1px solid #246d57da;
     padding: 10px;
     position: relative;
     direction: rtl;
@@ -105,13 +105,13 @@ body[dir="ltr"] .events__view{
     color: #777;
 }
 .style__link{
-    color: #E86500;
+    color: #246d57da;
     margin: 0 25px;
 }
 .style__link:hover,
 .view__link:hover,
 .calender__link:hover{
-    color: #E86500;
+    color: #246d57da;
 }
 .events__body{
 display: grid;
@@ -141,7 +141,7 @@ body[dir="ltr"] .annualEvents{
     direction: rtl;
 }
 .annualEvents__title{
-    background-color:#E86500;
+    background-color:#246d57da;
     color: #fff;
     padding: 10px 30px;
     position: relative;
@@ -149,7 +149,7 @@ body[dir="ltr"] .annualEvents{
     width: 70%;
 }
  body[dir="rtl"] .annualEvents__title{
-    background-color:#E86500;
+    background-color:#246d57da;
     color: #fff;
     padding: 10px 30px;
     position: relative;
@@ -182,7 +182,7 @@ body[dir="ltr"] .annualEvents__title::after{
     color: #585858;
 }
 .annualEvents__link:hover{
-    color: #E86500;
+    color: #246d57da;
 }
 .annualEvents__para{
     width: 70%;
@@ -192,8 +192,8 @@ body[dir="ltr"] .annualEvents__title::after{
     display: none;
 }
 .hint{
-    border: 1px solid #E86500;
-background-color: #E86500;
+    border: 1px solid #246d57da;
+background-color: #246d57da;
 color: #fff;
 margin-top: 20px;
 text-align: center;
