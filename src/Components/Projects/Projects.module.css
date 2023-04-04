@@ -32,6 +32,8 @@
     margin-top: 70px;
     direction: rtl;
     margin-bottom: 70px;
+    margin-right: 50px;
+    gap: 5% !important;
 }
 @media (max-width:767px) {
     .projects__body{
@@ -56,4 +58,7 @@
         grid-template-columns: repeat(3, 1fr);
         gap: 1%;
     }
+}
+.category{
+    padding-left: 20px;
 }

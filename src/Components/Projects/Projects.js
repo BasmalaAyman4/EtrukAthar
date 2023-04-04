@@ -9,7 +9,9 @@ import pro1 from './../../assets/images/pro1.jpg'
 import pro2 from './../../assets/images/pro2.jpeg'
 import pro3 from './../../assets/images/pro3.jpg'
 import { useTranslation } from 'react-i18next'
-
+import 'bootstrap/dist/css/bootstrap.css';
+import Figure from 'react-bootstrap/Figure';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 export default function Projects() {
     const { t } = useTranslation()
     return (
@@ -22,8 +24,8 @@ export default function Projects() {
 
                     <p className={`${styles.donate__para}`}>{t("نواظب على التنقيب عن مستلزمات المجتمع، ساعين لأجل توفير مشاريع من شأنها تلبية متطلباتهم، وتوفير حياةٍ كريمة لكلّ من تكبّد ويلاتُ الحرب")}</p>
                     <div className='row'>
-                        <div className='col-lg-2 col-md-12 col-sm-12'>
-                            <fieldset>
+                        <div className='col-lg-2 col-md-12 col-sm-12 category'>
+                            <fieldset className={`${styles.category}`}>
                                 <h4 className='side-filter__item-header-title'> categories </h4>
                                 <div class="radio-item-container">
                                     <div class="radio-item">
@@ -80,87 +82,56 @@ export default function Projects() {
                         </div>
                         <div className='col-lg-10 col-md-12 col-sm-12'>
                             <div className={`${styles.projects__body}`}>
-                                <Card title='دفء الحياة 11 '
-                                    para='لا يعلمون من الشتاء سوى رجفة أطراف أطفالهم وتجمّدها، ولا من الأمطار والثلوج سوى غرق الخيام… '
-                                    price='42,512$'
-                                    totalPrice='جمعت من 50,000$'
-                                    numOfDonates='44'
-                                    prog='80'
-                                    img={pro1} />
-                                <Card title='شوربة دافئة'
-                                    para='لا يعلمون من الشتاء سوى رجفة أطراف أطفالهم وتجمّدها، ولا من الأمطار والثلوج سوى غرق الخيام… '
-                                    price='73$'
-                                    totalPrice='جمعت من 5,000$'
-                                    numOfDonates='3'
-                                    prog='10'
-                                    img={pro2} />
-                                <Card title='  زلزال يزيد معاناتهم '
-                                    para=' ليلة ليست كمثيلها قضتها العائلات في جنوب تركيا و سوريا برعب و خوف العديد من الأفراد ما ...' price='128,775$'
-                                    totalPrice='جمعت من 150,000$'
-                                    numOfDonates='448'
-                                    prog='80'
-                                    img={pro3} />
-                                <Card title='  زلزال يزيد معاناتهم '
-                                    para=' ليلة ليست كمثيلها قضتها العائلات في جنوب تركيا و سوريا برعب و خوف العديد من الأفراد ما ...'
-                                    price='128,775$'
-                                    totalPrice='جمعت من 150,000$'
-                                    numOfDonates='448'
-                                    prog='80'
-                                    img={pro3} />
-                                <Card title='دفء الحياة 11 '
-                                    para='لا يعلمون من الشتاء سوى رجفة أطراف أطفالهم وتجمّدها، ولا من الأمطار والثلوج سوى غرق الخيام… '
-                                    price='42,512$'
-                                    totalPrice='جمعت من 50,000$'
-                                    numOfDonates='44'
-                                    prog='80'
-                                    img={pro1} />
-                                <Card title='شوربة دافئة'
-                                    para='لا يعلمون من الشتاء سوى رجفة أطراف أطفالهم وتجمّدها، ولا من الأمطار والثلوج سوى غرق الخيام… '
-                                    price='73$'
-                                    totalPrice='جمعت من 5,000$'
-                                    numOfDonates='3'
-                                    prog='10'
-                                    img={pro2} />
-                                <Card title='  زلزال يزيد معاناتهم '
-                                    para=' ليلة ليست كمثيلها قضتها العائلات في جنوب تركيا و سوريا برعب و خوف العديد من الأفراد ما ...' price='128,775$'
-                                    totalPrice='جمعت من 150,000$'
-                                    numOfDonates='448'
-                                    prog='80'
-                                    img={pro3} />
-                                <Card title='دفء الحياة 11 '
-                                    para='لا يعلمون من الشتاء سوى رجفة أطراف أطفالهم وتجمّدها، ولا من الأمطار والثلوج سوى غرق الخيام… '
-                                    price='42,512$'
-                                    totalPrice='جمعت من 50,000$'
-                                    numOfDonates='44'
-                                    prog='80'
-                                    img={pro1} />
-                                <Card title='شوربة دافئة'
-                                    para='لا يعلمون من الشتاء سوى رجفة أطراف أطفالهم وتجمّدها، ولا من الأمطار والثلوج سوى غرق الخيام… '
-                                    price='73$'
-                                    totalPrice='جمعت من 5,000$'
-                                    numOfDonates='3'
-                                    prog='10'
-                                    img={pro2} />
-                                <Card title='  زلزال يزيد معاناتهم '
-                                    para=' ليلة ليست كمثيلها قضتها العائلات في جنوب تركيا و سوريا برعب و خوف العديد من الأفراد ما ...' price='128,775$'
-                                    totalPrice='جمعت من 150,000$'
-                                    numOfDonates='448'
-                                    prog='80'
-                                    img={pro3} />
-                                <Card title='دفء الحياة 11 '
-                                    para='لا يعلمون من الشتاء سوى رجفة أطراف أطفالهم وتجمّدها، ولا من الأمطار والثلوج سوى غرق الخيام… '
-                                    price='42,512$'
-                                    totalPrice='جمعت من 50,000$'
-                                    numOfDonates='44'
-                                    prog='80'
-                                    img={pro1} />
-                                <Card title='شوربة دافئة'
-                                    para='لا يعلمون من الشتاء سوى رجفة أطراف أطفالهم وتجمّدها، ولا من الأمطار والثلوج سوى غرق الخيام… '
-                                    price='73$'
-                                    totalPrice='جمعت من 5,000$'
-                                    numOfDonates='3'
-                                    prog='10'
-                                    img={pro2} />
+
+                                <Card
+                                    img={pro1}
+                                    title="زلزال يزيد معاناتهم "
+                                    para="ليلة ليست كمثيلها قضتها العائلات في جنوب تركيا و سوريا برعب و خوف العديد من الأفراد ما ..."
+                                    prog="60"
+                                    numOfDonates="$56 880 "
+                                    totalPrice="$70 000 "
+                                />
+                                <Card
+                                    img={pro1}
+                                    title="زلزال يزيد معاناتهم "
+                                    para="ليلة ليست كمثيلها قضتها العائلات في جنوب تركيا و سوريا برعب و خوف العديد من الأفراد ما ..."
+                                    prog="60"
+                                    numOfDonates="$56 880 "
+                                    totalPrice="$70 000 "
+                                />
+                                <Card
+                                    img={pro1}
+                                    title="زلزال يزيد معاناتهم "
+                                    para="ليلة ليست كمثيلها قضتها العائلات في جنوب تركيا و سوريا برعب و خوف العديد من الأفراد ما ..."
+                                    prog="60"
+                                    numOfDonates="$56 880 "
+                                    totalPrice="$70 000 "
+                                />
+                                <Card
+                                    img={pro1}
+                                    title="زلزال يزيد معاناتهم "
+                                    para="ليلة ليست كمثيلها قضتها العائلات في جنوب تركيا و سوريا برعب و خوف العديد من الأفراد ما ..."
+                                    prog="60"
+                                    numOfDonates="$56 880 "
+                                    totalPrice="$70 000 "
+                                />
+                                <Card
+                                    img={pro1}
+                                    title="زلزال يزيد معاناتهم "
+                                    para="ليلة ليست كمثيلها قضتها العائلات في جنوب تركيا و سوريا برعب و خوف العديد من الأفراد ما ..."
+                                    prog="60"
+                                    numOfDonates="$56 880 "
+                                    totalPrice="$70 000 "
+                                />
+                                <Card
+                                    img={pro1}
+                                    title="زلزال يزيد معاناتهم "
+                                    para="ليلة ليست كمثيلها قضتها العائلات في جنوب تركيا و سوريا برعب و خوف العديد من الأفراد ما ..."
+                                    prog="60"
+                                    numOfDonates="$56 880 "
+                                    totalPrice="$70 000 "
+                                />
+
                             </div>
                         </div>
 

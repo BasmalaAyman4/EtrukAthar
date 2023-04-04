@@ -54,7 +54,7 @@ body[dir="rtl"] .eventsStyle{
 
 
 .search__link {
-    background-color: #246d57da;
+    background-color: #EF8451;
     color: white;
     padding: 7px 30px;
     text-decoration: none;
@@ -63,7 +63,7 @@ body[dir="rtl"] .eventsStyle{
 
 .search__link:hover {
     text-decoration: none;
-    background-color: black;
+    background-color: #246d57da;
     color: white;
 }
 .events__view{

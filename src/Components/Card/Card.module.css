@@ -1,111 +1,78 @@
 .card {
+    border: 1px solid #eee;
     width: 100%;
-    height: 498px;
-    border-radius: 20px;
-    background: #fff;
+    height: 480px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.figImg {
+    width: 600px !important;
+    height: 250px !important;
+    border-radius: 8px 8px 0px 0px;
+    -webkit-border-radius: 8px 8px 0px 0px;
+    -moz-border-radius: 8px 8px 0px 0px;
+    -ms-border-radius: 8px 8px 0px 0px;
+    -o-border-radius: 8px 8px 0px 0px;
+}
+
+.cardFig {
     position: relative;
-    border: 2px solid #c3c6ce;
-    transition: 0.5s ease-out;
-    overflow: visible;
-    box-shadow: 2px 0 12px 0 rgb(0 0 0 / 15%);
-    margin: auto;
-    margin-bottom: 40px;
-
 }
 
-body[dir="rtl"] .cardDetails {
-    color: black;
-    height: 100%;
-    direction: ltr;
-}
-body[dir="ltr"] .cardDetails {
-    color: black;
-    height: 100%;
-    direction: rtl;
-}
-
-.cardButton {
-    transform: translate(-50%, 125%);
-    width: 60%;
-    border-radius: 1rem;
-    border: none;
-    background-color: #EF8451;
-    color: #fff;
-    font-size: 1rem;
-    padding: .5rem 1rem;
-    position: absolute;
-    left: 50%;
-    bottom: 0;
+.cardLink {
+    top: 0;
+    left: 0;
+    z-index: 99;
     opacity: 0;
-    transition: 0.3s ease-out;
-    font-family: "Changa-Light";
+    visibility: hidden;
+    background: rgba(14, 13, 13, 0.61);
+    transition: all .5s;
+    height: 250px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    border-radius: 8px 8px 0px 0px;
 }
 
-.textTitle {
+.card:hover .cardLink {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cardDonate {
+    color: #fff;
+    background-color: #EF8451;
+    padding: 10px 30px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+.cardDonate:hover {
+    background-color: #2A6355;
+    color: #fff;
+}
+
+.cardContentTitle {
     color: #000;
     font-weight: bold;
     font-size: 20px;
     font-family: "Changa-Regular";
-    margin: 15px;
+    margin-right: 10px;
 }
 
-.textPara {
-    margin: 15px;
+.cardContentPara {
+    margin: 10px;
     font-family: "Changa-Regular";
     font-size: 15px;
-
-}
-
-/*img*/
-.cardImg {
-    width: 100%;
-    height: 250px;
-    border-radius: 20px 20px 0 0;
-    -webkit-border-radius: 20px 20px 0 0;
-    -moz-border-radius: 20px 20px 0 0;
-    -ms-border-radius: 20px 20px 0 0;
-    -o-border-radius: 20px 20px 0 0;
-}
-
-/*Hover*/
-.card:hover {
-    border-color: #EF8451;
-    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
-}
-
-.card:hover .cardButton {
-    transform: translate(-50%, 50%);
-    opacity: 1;
-}
-
-.cardPrice {
-    background: #f6f6f6;
-    padding: 10px 20px 20px 20px;
-    border-radius: 0 0 5px 5px;
-    -webkit-border-radius: 0 0 18px 18px;
-    -moz-border-radius: 0 0 5px 5px;
-    -ms-border-radius: 0 0 5px 5px;
-    -o-border-radius: 0 0 5px 5px;
-    height:150px;
-    font-family: "Changa-Regular";
-}
-
-.allCollect {
-    display: flex;
-    justify-content: space-between;
-    font-family: "Cairo", Sans-serif;
-    align-items: center;
-}
-
-.priceCollect,
-.priceTitle {
-    display: flex;
-    flex-direction: column;
-    margin-top: 15px;
-}
-
-span:nth-child(1) {
-    font-weight: bold;
 }
 
 .prog {
@@ -114,20 +81,35 @@ span:nth-child(1) {
     box-shadow: inset 0 2px 2px -1px rgb(0 0 0 / 11%);
     margin-top: 10px;
     height: 12px !important;
+}
 
+.bar {
+    margin: 20px 10px;
+    position: relative;
 }
-@media (min-width:1200px) and (max-width:1400px){
-    .cardPrice {
-            height: 26%;
-        }
+
+.b {
+    position: absolute;
+    background-color: #EF8451;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 12px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    left: 35%;
+    top: -100%;
+    color: #fff;
 }
-@media (max-width:767px){
-    .cardPrice {
-        height: 148px;
-    }
-}
-@media (max-width:438px){
-    .cardPrice {
-        height:fit-content
-    }
+
+.don {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px 10px;
+    color: #777;
 }
