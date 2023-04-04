@@ -18,7 +18,7 @@
     flex-direction: row-reverse !important;
 }
 header {
-    background-color: #E68500;
+    background-color: #EF8451;
     color: white;
 }
 
@@ -53,11 +53,11 @@ a::after{
     height: 5px;
     top: 68px;
     right: 0;
-    background-color: #E68500 !important;
+    background-color: #EF8451 !important;
     opacity: 0;
 }
 a:hover{
-    color: #E68500 !important;
+    color: #EF8451 !important;
 
 }
 a:hover::after,a.active{
@@ -110,7 +110,7 @@ a:hover::after,a.active{
 }
 
 .offcanvas-body .navbar-nav .nav-link:hover {
-    color: #E68500;
+    color: #EF8451;
     background-color: #E7E7E7 !important;
 }
 .navbar-nav{

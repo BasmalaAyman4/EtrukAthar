@@ -30,7 +30,7 @@
 
 .signup__title {
     margin: 20px 0;
-    color: #E68500;
+    color: #EF8451;
     font-family: "Changa-SemiBold";
 }
 
@@ -68,7 +68,7 @@
     font-size: 14px;
     color: #202020 !important;
     margin-top: 20px;
-    border: 1px solid #E68500 !important;
+    border: 1px solid #EF8451 !important;
     
     height: 50px;
     font-family: "Changa-Regular" !important;
@@ -86,7 +86,7 @@ body[dir="ltr"] .input::placeholder{
 }
 
 .input:hover {
-    border: 2px solid #E68500 !important;
+    border: 2px solid #EF8451 !important;
     box-shadow: 0 0 0 4px rgba(234, 147, 76, 0.61);
 }
 
@@ -98,14 +98,14 @@ body[dir="ltr"] .input::placeholder{
     height: 2.6em;
     position: relative;
     overflow: hidden;
-    border: 2px solid #E68500 !important;
+    border: 2px solid #EF8451 !important;
     transition: color .5s;
     z-index: 1;
     font-size: 17px;
     border-radius: 6px;
     font-weight: 500;
     color: #fff;
-    background-color: #E68500 !important;
+    background-color: #EF8451 !important;
     font-family: "Changa-Regular" !important;
     margin-top: 10px !important;
 }
@@ -122,8 +122,8 @@ body[dir="ltr"] .input::placeholder{
 
 .signup__btn:hover {
     color: #fff;
-    background-color: #E68500 !important;
-    border: 2px solid #E68500 !important;
+    background-color: #EF8451 !important;
+    border: 2px solid #EF8451 !important;
 }
 
 .signup__btn:before {

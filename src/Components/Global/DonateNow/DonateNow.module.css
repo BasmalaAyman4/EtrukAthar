@@ -14,8 +14,8 @@
         -moz-border-radius: 1px !important;
         -ms-border-radius: 1px !important;
         -o-border-radius: 1px !important;
-        background-color: #E68500 !important;
-        border: 1px solid #E68500 !important;
+        background-color: #EF8451 !important;
+        border: 1px solid #EF8451 !important;
         font-family: "Changa-Regular", sans-serif !important;
         font-size: 17px;
         z-index: 100000 !important;
@@ -24,8 +24,8 @@
  
 }
 .btn:hover{
-    background-color: #E68500 !important;
-    border: 1px solid #E68500 !important;
+    background-color: #EF8451 !important;
+    border: 1px solid #EF8451 !important;
 }
 .modal__title{
     margin: auto;
@@ -122,12 +122,12 @@ body[dir="rtl"] .price__para{
     width: 100%;
     padding-top: 10px;
     font-family: "Changa-Regular", sans-serif !important;
-    background-color: #E68500 !important;
-    border: 1px solid #E68500 !important;
+    background-color: #EF8451 !important;
+    border: 1px solid #EF8451 !important;
 }
 .footer__btn:hover{
-    background-color: #E68500 !important;
-    border: 1px solid #E68500 !important;
+    background-color: #EF8451 !important;
+    border: 1px solid #EF8451 !important;
 }
 .modal{
     z-index: 10000 !important;

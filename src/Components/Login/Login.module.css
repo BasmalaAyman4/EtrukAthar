@@ -28,7 +28,7 @@
 
 .login__title {
     margin: 20px 0;
-    color: #E68500;
+    color: #EF8451;
     font-family: "Changa-SemiBold";
 }
 .input {
@@ -41,7 +41,7 @@
     transition: 300ms ease-in-out;
     font-size: 17px;
     color: #202020;
-    border: 2px solid #E68500 !important;
+    border: 2px solid #EF8451 !important;
     width: 500px !important;
     height: 50px;
     margin: 10px auto;
@@ -54,7 +54,7 @@
 }
 
 .input:hover {
-    border: 2px solid #E68500 !important;
+    border: 2px solid #EF8451 !important;
     box-shadow: 0 0 0 4px rgba(234, 147, 76, 0.61);
 }
 
@@ -68,14 +68,14 @@
     margin: 5px;
     position: relative;
     overflow: hidden;
-    border: 2px solid #E68500;
+    border: 2px solid #EF8451;
     transition: color .5s;
     z-index: 1;
     font-size: 17px;
     border-radius: 6px;
     font-weight: 500;
     color: #fff;
-    background-color: #E68500;
+    background-color: #EF8451;
 }
 body[dir="rtl"] .input::placeholder{
     text-align: left !important;
@@ -141,18 +141,18 @@ body[dir="ltr"] .input::placeholder{
 .userLog__link{
     background-color: #fff;
     padding: 10px 20px;
-    border: 2px solid #E68500;
+    border: 2px solid #EF8451;
     border-radius: 15px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     -ms-border-radius: 15px;
     -o-border-radius: 15px;
-    color: #E68500;
+    color: #EF8451;
 }
 .user__link{
-background-color: #E68500;
+background-color: #EF8451;
     padding: 10px 20px;
-    border: 2px solid #E68500;
+    border: 2px solid #EF8451;
     border-radius: 15px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
