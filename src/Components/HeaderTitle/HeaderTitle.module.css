@@ -24,7 +24,7 @@
 .section__title::after {
     content: '';
     position: absolute;
-    background-color: #fff;
+    background-color: #EF8451;
     height: 4px;
     width: 50px;
     z-index: 1000;
@@ -43,4 +43,5 @@
 .section__price {
     font-family: "Changa-Regular";
     font-weight: 600;
+    color: #EF8451;
 }
