@@ -14,11 +14,11 @@ export default function Projects() {
                 <HeaderTitle title={t("المشاريع")} para={t("المبلغ المجموع للمشاريع")} price='1.037.976.07$' />
                 <Link to='' className={`${styles.donate__link}`}>{t("تبرع فوري لصندوق المشاريع")}</Link>
 
-                <div className="container-fluid">
+                <div className="container">
 
                     <p className={`${styles.donate__para}`}>{t("نواظب على التنقيب عن مستلزمات المجتمع، ساعين لأجل توفير مشاريع من شأنها تلبية متطلباتهم، وتوفير حياةٍ كريمة لكلّ من تكبّد ويلاتُ الحرب")}</p>
                     <div className={`${styles.projects_dir} row`}>
-                        <div className='col-lg-2 col-md-2 col-sm-12 category'>
+                        <div className='col-lg-2 col-md-12 col-sm-12 category'>
                             <fieldset className={`${styles.category}`}>
                                 <h4 className='side-filter__item-header-title'> {t("انواع الحالات")} </h4>
                                 <div class="radio-item-container">
@@ -74,7 +74,7 @@ export default function Projects() {
 
                             </fieldset>
                         </div>
-                        <div className='col-lg-10 col-md-10 col-sm-12'>
+                        <div className='col-lg-10 col-md-12 col-sm-12'>
                             <div className={`${styles.projects__body}`}>
 
                                 <Card />
