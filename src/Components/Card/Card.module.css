@@ -1,21 +1,22 @@
 .card {
     border: 1px solid #eee;
-    width: 100%;
+    width: 90%;
     height: 480px;
-    /* -webkit-border-radius: 10px;
+    -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
-    -o-border-radius: 10px; */
+    -o-border-radius: 10px; 
     margin-bottom: 20px;
+    margin-right: 10%;
 }
 .figImg {
     width: 600px !important;
     height: 250px !important;
-    /* border-radius: 8px 8px 0px 0px;
+     border-radius: 8px 8px 0px 0px;
     -webkit-border-radius: 8px 8px 0px 0px;
     -moz-border-radius: 8px 8px 0px 0px;
     -ms-border-radius: 8px 8px 0px 0px;
-    -o-border-radius: 8px 8px 0px 0px; */
+    -o-border-radius: 8px 8px 0px 0px;
 }
 .figImg img{
     max-width: unset !important;
@@ -40,6 +41,7 @@
     align-items: center;
     width: 100%;
     position: absolute;
+    border-radius: 8px 8px 0px 0px;
   
 }
 
