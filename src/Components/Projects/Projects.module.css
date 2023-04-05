@@ -29,11 +29,10 @@
 .projects__body{
     display: grid;
     grid-template-columns: repeat(2,1fr);
-    margin-top: 70px;
+    margin-top: 50px;
     direction: rtl;
     margin-bottom: 70px;
-    margin-right: 50px;
-    gap: 5% !important;
+    gap: 2% !important;
 }
 @media (max-width:767px) {
     .projects__body{
