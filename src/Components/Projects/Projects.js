@@ -25,33 +25,33 @@ export default function Projects() {
                                     <div class="radio-item">
                                         <label className='label_radio' for="vanilla">
                                             <input type="radio" id="vanilla" name="flavor" value="vanilla" />
-                                            <span>هاي  </span>
+                                            <span> حالات طبية  </span>
                                         </label>
                                     </div>
 
                                     <div class="radio-item">
                                         <label className='label_radio' for="chocolate">
                                             <input type="radio" id="chocolate" name="flavor" value="chocolate" />
-                                            <span className='label-radio__content'>Chocolate</span>
+                                            <span className='label-radio__content'>حالات انسانية</span>
                                         </label>
                                     </div>
 
                                     <div class="radio-item">
                                         <label className='label_radio' for="strawberry">
                                             <input type="radio" id="strawberry" name="flavor" value="strawberry" />
-                                            <span>Strawberry </span>
+                                            <span>كفالة يتيم </span>
                                         </label>
                                     </div>
                                     <div class="radio-item">
                                         <label className='label_radio' for="strawberry">
                                             <input type="radio" id="strawberry" name="flavor" value="strawberry" />
-                                            <span>Strawberry </span>
+                                            <span>التعليم </span>
                                         </label>
                                     </div>
                                     <div class="radio-item">
                                         <label className='label_radio' for="strawberry">
                                             <input type="radio" id="strawberry" name="flavor" value="strawberry" />
-                                            <span>Strawberry </span>
+                                            <span>الغارمين </span>
                                         </label>
                                     </div>
 
