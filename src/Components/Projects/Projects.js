@@ -4,14 +4,8 @@ import './Projects.css'
 import HeaderTitle from '../HeaderTitle/HeaderTitle'
 import { Link } from 'react-router-dom'
 import Card from '../Card/Card'
-import { Container } from 'react-bootstrap'
-import pro1 from './../../assets/images/pro1.jpg'
-import pro2 from './../../assets/images/pro2.jpeg'
-import pro3 from './../../assets/images/pro3.jpg'
 import { useTranslation } from 'react-i18next'
 import 'bootstrap/dist/css/bootstrap.css';
-import Figure from 'react-bootstrap/Figure';
-import ProgressBar from 'react-bootstrap/ProgressBar';
 export default function Projects() {
     const { t } = useTranslation()
     return (
@@ -83,55 +77,7 @@ export default function Projects() {
                         <div className='col-lg-10 col-md-12 col-sm-12'>
                             <div className={`${styles.projects__body}`}>
 
-                                <Card
-                                    img={pro1}
-                                    title="زلزال يزيد معاناتهم "
-                                    para="ليلة ليست كمثيلها قضتها العائلات في جنوب تركيا و سوريا برعب و خوف العديد من الأفراد ما ..."
-                                    prog="60"
-                                    numOfDonates="$56 880 "
-                                    totalPrice="$70 000 "
-                                />
-                                <Card
-                                    img={pro1}
-                                    title="زلزال يزيد معاناتهم "
-                                    para="ليلة ليست كمثيلها قضتها العائلات في جنوب تركيا و سوريا برعب و خوف العديد من الأفراد ما ..."
-                                    prog="60"
-                                    numOfDonates="$56 880 "
-                                    totalPrice="$70 000 "
-                                />
-                                <Card
-                                    img={pro1}
-                                    title="زلزال يزيد معاناتهم "
-                                    para="ليلة ليست كمثيلها قضتها العائلات في جنوب تركيا و سوريا برعب و خوف العديد من الأفراد ما ..."
-                                    prog="60"
-                                    numOfDonates="$56 880 "
-                                    totalPrice="$70 000 "
-                                />
-                                <Card
-                                    img={pro1}
-                                    title="زلزال يزيد معاناتهم "
-                                    para="ليلة ليست كمثيلها قضتها العائلات في جنوب تركيا و سوريا برعب و خوف العديد من الأفراد ما ..."
-                                    prog="60"
-                                    numOfDonates="$56 880 "
-                                    totalPrice="$70 000 "
-                                />
-                                <Card
-                                    img={pro1}
-                                    title="زلزال يزيد معاناتهم "
-                                    para="ليلة ليست كمثيلها قضتها العائلات في جنوب تركيا و سوريا برعب و خوف العديد من الأفراد ما ..."
-                                    prog="60"
-                                    numOfDonates="$56 880 "
-                                    totalPrice="$70 000 "
-                                />
-                                <Card
-                                    img={pro1}
-                                    title="زلزال يزيد معاناتهم "
-                                    para="ليلة ليست كمثيلها قضتها العائلات في جنوب تركيا و سوريا برعب و خوف العديد من الأفراد ما ..."
-                                    prog="60"
-                                    numOfDonates="$56 880 "
-                                    totalPrice="$70 000 "
-                                />
-
+                                <Card />
                             </div>
                         </div>
 
