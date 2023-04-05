@@ -17,10 +17,10 @@ export default function Projects() {
                 <div className="container-fluid">
 
                     <p className={`${styles.donate__para}`}>{t("نواظب على التنقيب عن مستلزمات المجتمع، ساعين لأجل توفير مشاريع من شأنها تلبية متطلباتهم، وتوفير حياةٍ كريمة لكلّ من تكبّد ويلاتُ الحرب")}</p>
-                    <div className='row'>
-                        <div className='col-lg-2 col-md-12 col-sm-12 category'>
+                    <div className={`${styles.projects_dir} row`}>
+                        <div className='col-lg-2 col-md-2 col-sm-12 category'>
                             <fieldset className={`${styles.category}`}>
-                                <h4 className='side-filter__item-header-title'> categories </h4>
+                                <h4 className='side-filter__item-header-title'> {t("انواع الحالات")} </h4>
                                 <div class="radio-item-container">
                                     <div class="radio-item">
                                         <label className='label_radio' for="vanilla">
@@ -57,7 +57,7 @@ export default function Projects() {
 
                                 </div>
                                 <div class="form-group mt-5">
-                                    <h4 className='side-filter__item-header-title pb-3'>donation types</h4>
+                                    <h4 className='side-filter__item-header-title pb-3'>{t("انواع التبرع")}</h4>
 
                                     <input class="form-group_checklist" type="checkbox" id="html" />
                                     <label class="form-group_checklist_label" for="html">HTML</label>
@@ -74,7 +74,7 @@ export default function Projects() {
 
                             </fieldset>
                         </div>
-                        <div className='col-lg-10 col-md-12 col-sm-12'>
+                        <div className='col-lg-10 col-md-10 col-sm-12'>
                             <div className={`${styles.projects__body}`}>
 
                                 <Card />

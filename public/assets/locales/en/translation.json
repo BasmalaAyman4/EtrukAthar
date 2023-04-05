@@ -2,7 +2,8 @@
     "عنوان":"etruk Athr",
     "الرئيسية": "Home",
     "المشاريع": "Projects",
-    " الحالات":  " Cases "  ,
+    "الحالات":  " Cases "  ,
+    "تواصل معنا":"Contact Us",
     " حالات إنسانية":  "Humanitarian cases ",
     " حالات طبية":"Medical cases",
     "الكفالات" : "Sponsorships",
@@ -130,7 +131,9 @@
    "مهما كان تبرعك صغيرا,اترك أثرا":"No matter how small your donation is, leave an impact.",
    "جعل تبرعي متكرر كل شهر":"Make my donation recurring every month",
    "تبرع الآن":"Donate Now",
-   "استعراض الآن":"Browse now"
+   "استعراض الآن":"Browse now",
+   "انواع الحالات":"All Cases",
+   "انواع التبرع":"Types of Donation"
    
 
 

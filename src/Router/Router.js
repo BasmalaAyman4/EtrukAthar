@@ -20,7 +20,7 @@ export default function Router() {
         <Route path="/forget" element={<Forget />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/charitySign-up" element={<CharitySignUp />} />
-        <Route path="/projects" element={<Projects />} />
+        <Route path="/cases" element={<Projects />} />
         <Route path="/card-details" element={<CardDetails />} />
         <Route path="/askForVoluntary" element={<AskForVoluntary />} />
         <Route path="/event" element={<Events />} />

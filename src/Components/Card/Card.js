@@ -14,12 +14,12 @@ export default function Card() {
             {data &&
                 data.map(({ id, title, para, progress, totalPrice, numOfDonates }) => (
                     <div className={`${styles.card} ${id}`}>
-                        <Figure className={`${styles.cardFig}`}>
-                            <Figure.Image src={photo} alt="" className={`${styles.figImg}`} />
+                        <div className={`${styles.cardFig}`}>
+                            <img src={photo} alt="" className={`${styles.figImg}`} />
                             <div className={`${styles.cardLink}`}>
                                 <a href="/card-details" className={`${styles.cardDonate}`}>للمزيد من التفاصيل </a>
                             </div>
-                        </Figure>
+                        </div>
                         <div className={`${styles.cardContent}`}>
                             <h3 class={`${styles.cardContentTitle}`}>{title}</h3>
                             <p className={`${styles.cardContentPara}`}> {para}</p>

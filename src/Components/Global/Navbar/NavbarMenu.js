@@ -127,7 +127,7 @@ export default function NavbarMenu() {
                                             <NavLink className="nav-link" to="/" href="index.html">{t("الرئيسية")} </NavLink>
                                         </li>
                                         <li>
-                                            <NavLink className="nav-link" to="/projects" href="index.html">{t("المشاريع")} </NavLink>
+                                            <NavLink className="nav-link" to="/cases" href="index.html">{t("الحالات")} </NavLink>
                                         </li>
 
                                         <li>
@@ -135,6 +135,9 @@ export default function NavbarMenu() {
                                         </li>
                                         <li>
                                             <NavLink className="nav-link" to="/" href="index.html">   {t("جمعيات  خيرية")}</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink className="nav-link" to="/event" href="index.html">{t("تواصل معنا")}</NavLink>
                                         </li>
                                         <li>
                                             <NavLink className="nav-link" to="/" href="index.html">{t("صندوق علمني ")} </NavLink>
@@ -175,10 +178,10 @@ export default function NavbarMenu() {
                             <Offcanvas.Body>
                                 <Nav className={`justify-content-end flex-grow-1 p-2 ${styles.nav__dir} `} >
                                     <NavLink to="/" className={`${styles["main-nav__link"]} main-nav__link`}>{t("الرئيسية")}</NavLink>
-                                    <NavLink to="/projects" className={`${styles.mainNav__link} main-nav__link`}> {t("المشاريع")}</NavLink>
+                                    <NavLink to="/cases" className={`${styles.mainNav__link} main-nav__link`}> {t("الحالات")}</NavLink>
                                     <NavLink to="/event" className={`${styles.mainNav__link} main-nav__link `}><MdNotificationsActive className='event' />{t(" المناسبات")}</NavLink>
-                                    <NavLink to="/acution" className={`${styles.mainNav__link} main-nav__link`}>{t(" تواصل معنا")} </NavLink>
                                     <NavLink to="/acution" className={`${styles.mainNav__link} main-nav__link`}>{t("جمعيات  خيرية")} </NavLink>
+                                    <NavLink to="/acution" className={`${styles.mainNav__link} main-nav__link`}>{t( "تواصل معنا")} </NavLink>
                                     <NavLink to="/box" className={`${styles.mainNav__link} main-nav__link`}> {t("صندوق علمني ")}</NavLink>
 
 
