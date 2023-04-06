@@ -12,6 +12,7 @@ import details1 from './../../assets/images/details1.jpeg'
 import details2 from './../../assets/images/details2.jpeg'
 import details3 from './../../assets/images/details3.jpeg'
 import new1 from './../../assets/images/3-copy-scaled.jpg'
+import etruk from "./../../assets/videos/VID_20230406031110.mp4"
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
@@ -28,7 +29,7 @@ export default function ProjectsDetails() {
         setPriceshow(price)
         console.log(priceShow);
     }
-    const {t} =useTranslation()
+    const { t } = useTranslation()
     return (
         <>
 
@@ -36,7 +37,7 @@ export default function ProjectsDetails() {
                 <div className={style.cardDetails}>
                     <aside dir='rtl' className={`${style.aside}`}>
                         <button className={`${style.cardDetails__btn}`}>
-                            {t( "تبرع الان عبر البطاقة البنكية")}
+                            {t("تبرع الان عبر البطاقة البنكية")}
                         </button>
                         <div className={`${style.modal__paypal}`}><p className={`${style.paypal__para}`}><FaCcPaypal className={`${style.icon}`} /> {t("للتبرع عبر Paypal")}</p></div>
                         <NumericInput value={priceShow ? priceShow : 20.00} className={`${style.price__input}`} /><BiDollar className={`${style.price__icon}`} />
@@ -61,7 +62,7 @@ export default function ProjectsDetails() {
                             <hr />
                         </div>
                         <div className={`${style.collect}`}>
-                            <p className={`${style.collect__para}`}>{t( "تم جمع ")}<bold className={`${style.bold}`}>42.512$</bold> {t("من اصل")} 50$ </p>
+                            <p className={`${style.collect__para}`}>{t("تم جمع ")}<bold className={`${style.bold}`}>42.512$</bold> {t("من اصل")} 50$ </p>
                             <ProgressBar now={88} className={`${style.progress} `} />
                         </div>
                         <div className={`${style.cardDetails__icon}`}>
@@ -85,6 +86,7 @@ export default function ProjectsDetails() {
                                 <span>Twitter</span>
                             </button>
                         </div>
+
                         <Player className={`${style.video}`} src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" poster={img1} />
                         <div className={`${style.modal__collect}`}><p className={`${style.paypal__para}`}> {t(" تبرعك هو أملهم و نجاحهم, فكن عونا لهم ")}</p></div>
                         <div >
@@ -120,7 +122,7 @@ export default function ProjectsDetails() {
                             <div className={`${style.newProject__img}`}><img alt='' src={new1} className={`${style.newImg}`} /></div>
                             <div className={`${style.newProject__body}`}>
                                 <h3 className={`${style.newProject__title}`}>قرية بسمة أمل</h3>
-                                <p className={`${style.collect__para}`}>{t( "تم جمع ")}<bold className={`${style.bold}`}>42.512$</bold> {t("من اصل")} 50$ </p>
+                                <p className={`${style.collect__para}`}>{t("تم جمع ")}<bold className={`${style.bold}`}>42.512$</bold> {t("من اصل")} 50$ </p>
                                 <ProgressBar now={10} className={`${style.progress} ${style.progress__new} `} />
                                 <Button className={`${style.newProject__btn}`}>{t("ادعم المشروع")}</Button>
                             </div>
@@ -129,7 +131,7 @@ export default function ProjectsDetails() {
 
                 </div>
             </Container>
-        
+
         </>
     )
 }

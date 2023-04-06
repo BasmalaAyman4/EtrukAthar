@@ -152,3 +152,6 @@ body[dir='rtl'] .who-we-are__info_h3_orange::after{
 @media (max-width: 991px) {
 
 }
+.video{
+    height: 300px !important;
+}

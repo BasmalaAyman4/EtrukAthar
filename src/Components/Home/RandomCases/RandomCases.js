@@ -1,7 +1,7 @@
 import React from 'react'
 import { Pagination } from 'swiper'
 import styles from './RandomCases.module.css'
-import  './RandomCases.css'
+import './RandomCases.css'
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -11,99 +11,99 @@ import Card from '../../Card/Card';
 const RadomCases = () => {
   return (
     <section className={`mt-5 ${styles["random-cases"]}`}>
-        <div className='container'>
+      <div className='container'>
         <Swiper
-         spaceBetween={30}
+          spaceBetween={30}
           autoHeight={true}
           autoplay={{
             delay: 1000,
             disableOnInteraction: false,
           }}
-      
-        breakpoints={{
-          640: {
-            slidesPerView: 1,
-            spaceBetween: 10,
-          },
-          1024: {
-            slidesPerView: 2,
-            spaceBetween: 10,
-          },
-          1300: {
-            slidesPerView: 3,
-            spaceBetween: 10,
-          },
-          1400: {
-            slidesPerView: 3,
-            spaceBetween: 10,
-          }
-        }}
 
-        className="mySwiper"
-      >
-        <SwiperSlide>
-            <Card title='دفء الحياة 11 '
-                  para='لا يعلمون من الشتاء سوى رجفة أطراف أطفالهم وتجمّدها، ولا من الأمطار والثلوج سوى غرق الخيام… '
-                  price='42,512$'
-                  totalPrice='جمعت من 50,000$'
-                  numOfDonates='44'
-                  prog='80'
-                  img={pro1} 
-            />
-        </SwiperSlide>
-        <SwiperSlide>
-           <Card title='دفء الحياة 11 '
-                  para='لا يعلمون من الشتاء سوى رجفة أطراف أطفالهم وتجمّدها، ولا من الأمطار والثلوج سوى غرق الخيام… '
-                  price='42,512$'
-                  totalPrice='جمعت من 50,000$'
-                  numOfDonates='44'
-                  prog='80'
-                  img={pro1} 
-            />
-        </SwiperSlide>
-        <SwiperSlide>
-            <Card title='دفء الحياة 11 '
-                  para='لا يعلمون من الشتاء سوى رجفة أطراف أطفالهم وتجمّدها، ولا من الأمطار والثلوج سوى غرق الخيام… '
-                  price='42,512$'
-                  totalPrice='جمعت من 50,000$'
-                  numOfDonates='44'
-                  prog='80'
-                  img={pro1} 
-            />
-        </SwiperSlide>
-        <SwiperSlide>
-            <Card title='دفء الحياة 11 '
-                  para='لا يعلمون من الشتاء سوى رجفة أطراف أطفالهم وتجمّدها، ولا من الأمطار والثلوج سوى غرق الخيام… '
-                  price='42,512$'
-                  totalPrice='جمعت من 50,000$'
-                  numOfDonates='44'
-                  prog='80'
-                  img={pro1} 
-            />
-        </SwiperSlide>
-        <SwiperSlide>
-            <Card title='دفء الحياة 11 '
-                  para='لا يعلمون من الشتاء سوى رجفة أطراف أطفالهم وتجمّدها، ولا من الأمطار والثلوج سوى غرق الخيام… '
-                  price='42,512$'
-                  totalPrice='جمعت من 50,000$'
-                  numOfDonates='44'
-                  prog='80'
-                  img={pro1} 
-            />
-        </SwiperSlide>
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+              spaceBetween: 10,
+            },
+            1024: {
+              slidesPerView: 2,
+              spaceBetween: 10,
+            },
+            1300: {
+              slidesPerView: 3,
+              spaceBetween: 10,
+            },
+            1400: {
+              slidesPerView: 3,
+              spaceBetween: 10,
+            }
+          }}
 
-        <SwiperSlide>
+          className="mySwiper"
+        >
+          <SwiperSlide>
             <Card title='دفء الحياة 11 '
-                  para='لا يعلمون من الشتاء سوى رجفة أطراف أطفالهم وتجمّدها، ولا من الأمطار والثلوج سوى غرق الخيام… '
-                  price='42,512$'
-                  totalPrice='جمعت من 50,000$'
-                  numOfDonates='44'
-                  prog='80'
-                  img={pro1} 
+              para='لا يعلمون من الشتاء سوى رجفة أطراف أطفالهم وتجمّدها، ولا من الأمطار والثلوج سوى غرق الخيام… '
+              price='42,512$'
+              totalPrice='جمعت من 50,000$'
+              numOfDonates='44'
+              prog='80'
+              img={pro1}
             />
-        </SwiperSlide>
-       
-      </Swiper>
+          </SwiperSlide>
+          <SwiperSlide>
+            <Card title='دفء الحياة 11 '
+              para='لا يعلمون من الشتاء سوى رجفة أطراف أطفالهم وتجمّدها، ولا من الأمطار والثلوج سوى غرق الخيام… '
+              price='42,512$'
+              totalPrice='جمعت من 50,000$'
+              numOfDonates='44'
+              prog='80'
+              img={pro1}
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Card title='دفء الحياة 11 '
+              para='لا يعلمون من الشتاء سوى رجفة أطراف أطفالهم وتجمّدها، ولا من الأمطار والثلوج سوى غرق الخيام… '
+              price='42,512$'
+              totalPrice='جمعت من 50,000$'
+              numOfDonates='44'
+              prog='80'
+              img={pro1}
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Card title='دفء الحياة 11 '
+              para='لا يعلمون من الشتاء سوى رجفة أطراف أطفالهم وتجمّدها، ولا من الأمطار والثلوج سوى غرق الخيام… '
+              price='42,512$'
+              totalPrice='جمعت من 50,000$'
+              numOfDonates='44'
+              prog='80'
+              img={pro1}
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Card title='دفء الحياة 11 '
+              para='لا يعلمون من الشتاء سوى رجفة أطراف أطفالهم وتجمّدها، ولا من الأمطار والثلوج سوى غرق الخيام… '
+              price='42,512$'
+              totalPrice='جمعت من 50,000$'
+              numOfDonates='44'
+              prog='80'
+              img={pro1}
+            />
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <Card title='دفء الحياة 11 '
+              para='لا يعلمون من الشتاء سوى رجفة أطراف أطفالهم وتجمّدها، ولا من الأمطار والثلوج سوى غرق الخيام… '
+              price='42,512$'
+              totalPrice='جمعت من 50,000$'
+              numOfDonates='44'
+              prog='80'
+              img={pro1}
+            />
+          </SwiperSlide>
+
+        </Swiper>
       </div>
     </section>
   )
