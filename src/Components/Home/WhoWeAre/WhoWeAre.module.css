@@ -153,5 +153,9 @@ body[dir='rtl'] .who-we-are__info_h3_orange::after{
 
 }
 .video{
-    height: 300px !important;
+    height: 500px !important;
+    padding: 0 !important;
+}
+.v{
+    margin: 70px auto;
 }

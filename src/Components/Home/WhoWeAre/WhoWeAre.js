@@ -6,7 +6,8 @@ import img2 from './../../../assets/images/who-we-are2.jpg'
 import img3 from './../../../assets/images/who-we-are3.jpg'
 import { useTranslation } from 'react-i18next'
 import { Player } from 'video-react';
-import etruk from "./../../../assets/videos/VID_20230406031110.mp4"
+import etruk from "./../../../assets/videos/lv_0_20230406013906.mp4"
+import img4 from "./../../../assets/images/9eed201930ce4a42bdddf8e2adcede32.jpg"
 const WhoWeAre = () => {
     const { t } = useTranslation()
     return (
@@ -14,8 +15,8 @@ const WhoWeAre = () => {
 
             <section className={`${styles['who-we-are']} mt-5 mb-5`}>
                 <div className='container'>
+
                     <div className='row'>
-                        <div className={`${styles[`v`]}`}><Player src={etruk} className={`${styles[`video`]}`} /></div>
                         <div className='col-lg-4 col-sm-12'>
                             <div className={`${styles["who-we-are__info"]} `}>
                                 <h3 className={`${styles["who-we-are__info_h3_black"]} `}>
@@ -25,7 +26,7 @@ const WhoWeAre = () => {
                                     {t(" اترك أثراً ")}
                                 </h3>
                                 <p className={`${styles["who-we-are__info_p"]} mt-5`}>
-                                    {t(". مجموعة هذه حياتي التطوعية ، مجموعة شبابية تعنى برفع سوية المجتمع والعمل التطوعي")}
+                                    {t(". مجموعة   اترك اثرا ، مجموعة شبابية تعنى برفع سوية المجتمع والعمل التطوعي")}
                                 </p>
                                 <p className={`${styles["who-we-are__info_p"]} mb-5`}>
                                     {t(".أسست عام 2020 في مصر ومرخصة سنة 2023 كـ شركة غير ربحية ، وكجمعية خيرية في سويسرا 2023 ، وتوسعت أنشطة عملها ل تركيا و الداخل السوري")}
@@ -67,10 +68,8 @@ const WhoWeAre = () => {
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
-
+                    <div className={`${styles[`v`]}`}><Player src={etruk} className={`${styles[`video`]}`} poster={img4} /></div>
                 </div>
 
             </section>
