@@ -1,0 +1,27 @@
+
+[
+{   "id": 1,
+    "category_name":"حالات طبية"
+}, 
+{
+    "id": 2,
+    "category_name":"حالات انسانية"
+ 
+},
+{
+  "id": 3,
+  "category_name":"كفالة يتيم"
+
+},
+{
+    "id": 4,
+    "category_name":"التعليم"
+  
+  },
+  {
+    "id": 5,
+    "category_name":"الغارمين"
+  
+  }
+
+]

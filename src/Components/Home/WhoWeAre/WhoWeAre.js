@@ -11,11 +11,12 @@ const WhoWeAre = () => {
     const { t } = useTranslation()
     return (
         <>
-
+             
             <section className={`${styles['who-we-are']} mt-5 mb-5`}>
+           
                 <div className='container'>
                     <div className='row'>
-                        <div className={`${styles[`v`]}`}><Player src={etruk} className={`${styles[`video`]}`} /></div>
+                       
                         <div className='col-lg-4 col-sm-12'>
                             <div className={`${styles["who-we-are__info"]} `}>
                                 <h3 className={`${styles["who-we-are__info_h3_black"]} `}>
@@ -70,7 +71,7 @@ const WhoWeAre = () => {
 
 
                     </div>
-
+                    <div className={`${styles[`v`]}`}><Player src={etruk} className={`${styles[`video`]}`} /></div>
                 </div>
 
             </section>

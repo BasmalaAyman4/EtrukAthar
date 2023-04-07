@@ -4,7 +4,7 @@ import styles from './Card.module.css'
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { useTranslation } from 'react-i18next';
 import Figure from 'react-bootstrap/Figure';
-import CardJson from "./.././../Card.json"
+import CardJson from "./../../Data/Card.json"
 import photo from "./../../assets/images/pro1.jpg";
 export default function Card() {
     const { t } = useTranslation()
@@ -12,7 +12,7 @@ export default function Card() {
     return (
         <>
             {data &&
-                data.map(({ id, title, para, progress, totalPrice, numOfDonates }) => (
+                data.map(({id, title, para, progress, totalPrice, numOfDonates }) => (
                     <div className={`${styles.card} ${id}`}>
                         <div className={`${styles.cardFig}`}>
                             <img src={photo} alt="" className={`${styles.figImg}`} />
