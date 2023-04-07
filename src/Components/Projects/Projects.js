@@ -3,16 +3,18 @@ import styles from './Projects.module.css'
 import './Projects.css'
 import HeaderTitle from '../HeaderTitle/HeaderTitle'
 import { Link } from 'react-router-dom'
-import Card from '../Card/Card'
+import CardJson from '../../Data/Card.json'
 import { useTranslation } from 'react-i18next'
 import 'bootstrap/dist/css/bootstrap.css';
 import cases from './../../Data/filterByCases.json'
 import types from "./../../Data/filterByDonationType.json"
+import { Card } from 'react-bootstrap'
 export default function Projects() {
     const { t } = useTranslation()
-    const [data, setData] = useState(cases);
+    const [dataCases, setDataCases] = useState(cases);
     const [dataTypes, setDataTypes] = useState(types);
     console.log(data,"sdsd")
+    const [data, setData] = React.useState(CardJson);
     return (
         <>
             <section className={`${styles.projects}`}>
@@ -27,7 +29,7 @@ export default function Projects() {
                             <fieldset className={`${styles.category}`}>
                                 <h4 className='side-filter__item-header-title'> {t("انواع الحالات")} </h4>
                                 <div class="radio-item-container">
-                                    {data&&data.map(category=>
+                                    {dataCases&&dataCases.map(category=>
                                     <div class="radio-item">
                                         <label className='label_radio' for={category.id}>
                                             <input type="radio" id={category.id} name="flavor" value={category.category_name} />
@@ -53,8 +55,10 @@ export default function Projects() {
                         </div>
                         <div className='col-lg-10 col-md-12 col-sm-12'>
                             <div className={`${styles.projects__body}`}>
-
-                                <Card />
+                                {data &&
+                                    data.map(({ id, title, para, progress, totalPrice, numOfDonates }) => (
+                                        <Card id={id} title={title} para={para} progress={progress} totalPrice={totalPrice} numOfDonates={numOfDonates} />
+                                    ))}
                             </div>
                         </div>
 
