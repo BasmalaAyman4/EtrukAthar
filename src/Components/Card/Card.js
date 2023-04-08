@@ -3,6 +3,7 @@ import './Card.css'
 import styles from './Card.module.css'
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { useTranslation } from 'react-i18next';
+import CardJson from "./../../Data/Card.json"
 import photo from "./../../assets/images/pro1.jpg";
 export default function Card(props) {
     const { t } = useTranslation()

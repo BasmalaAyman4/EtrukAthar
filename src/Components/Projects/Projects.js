@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './Projects.module.css'
 import './Projects.css'
 import HeaderTitle from '../HeaderTitle/HeaderTitle'
 import { Link } from 'react-router-dom'
-import Card from '../Card/Card'
+import CardJson from '../../Data/Card.json'
 import { useTranslation } from 'react-i18next'
 import 'bootstrap/dist/css/bootstrap.css';
-import CardJson from "./.././../Card.json";
+import cases from './../../Data/filterByCases.json'
+import types from "./../../Data/filterByDonationType.json"
+import { Card } from 'react-bootstrap'
 export default function Projects() {
     const { t } = useTranslation()
+    const [dataCases, setDataCases] = useState(cases);
+    const [dataTypes, setDataTypes] = useState(types);
+    console.log(data,"sdsd")
     const [data, setData] = React.useState(CardJson);
     return (
         <>
@@ -24,55 +29,27 @@ export default function Projects() {
                             <fieldset className={`${styles.category}`}>
                                 <h4 className='side-filter__item-header-title'> {t("انواع الحالات")} </h4>
                                 <div class="radio-item-container">
+                                    {dataCases&&dataCases.map(category=>
                                     <div class="radio-item">
-                                        <label className='label_radio' for="vanilla">
-                                            <input type="radio" id="vanilla" name="flavor" value="vanilla" />
-                                            <span> حالات طبية  </span>
+                                        <label className='label_radio' for={category.id}>
+                                            <input type="radio" id={category.id} name="flavor" value={category.category_name} />
+                                            <span> {category.category_name} </span>
                                         </label>
                                     </div>
-
-                                    <div class="radio-item">
-                                        <label className='label_radio' for="chocolate">
-                                            <input type="radio" id="chocolate" name="flavor" value="chocolate" />
-                                            <span className='label-radio__content'>حالات انسانية</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="radio-item">
-                                        <label className='label_radio' for="strawberry">
-                                            <input type="radio" id="strawberry" name="flavor" value="strawberry" />
-                                            <span>كفالة يتيم </span>
-                                        </label>
-                                    </div>
-                                    <div class="radio-item">
-                                        <label className='label_radio' for="strawberry">
-                                            <input type="radio" id="strawberry" name="flavor" value="strawberry" />
-                                            <span>التعليم </span>
-                                        </label>
-                                    </div>
-                                    <div class="radio-item">
-                                        <label className='label_radio' for="strawberry">
-                                            <input type="radio" id="strawberry" name="flavor" value="strawberry" />
-                                            <span>الغارمين </span>
-                                        </label>
-                                    </div>
-
+                                    )}
+                                    
                                 </div>
-                                <div class="form-group mt-5">
-                                    <h4 className='side-filter__item-header-title pb-3'>{t("انواع التبرع")}</h4>
-
-                                    <input class="form-group_checklist" type="checkbox" id="html" />
-                                    <label class="form-group_checklist_label" for="html">HTML</label>
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-group_checklist" type="checkbox" id="css" />
-                                    <label class="form-group_checklist_label" for="css">CSS</label>
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-group_checklist" type="checkbox" id="javascript" />
-                                    <label class="form-group_checklist_label" for="javascript">Javascript</label>
-                                </div>
-
+                                <h4 className='side-filter__item-header-title pb-3'>{t("انواع التبرع")}</h4>
+                                
+                                {dataTypes&&dataTypes.map(type=>(
+                                            <div class="form-group ">
+                                            <input class="form-group_checklist" type="checkbox" id={type.id} />
+                                            <label class="form-group_checklist_label" for={type.id}>{type.type_name}</label>
+                                        </div>
+                                ))}
+                             
+                            
+    
 
                             </fieldset>
                         </div>
