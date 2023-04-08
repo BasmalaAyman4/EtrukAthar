@@ -12,7 +12,6 @@ import details1 from './../../assets/images/details1.jpeg'
 import details2 from './../../assets/images/details2.jpeg'
 import details3 from './../../assets/images/details3.jpeg'
 import new1 from './../../assets/images/3-copy-scaled.jpg'
-import etruk from "./../../assets/videos/VID_20230406031110.mp4"
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";

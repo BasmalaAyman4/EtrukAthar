@@ -13,8 +13,8 @@ export default function Projects() {
     return (
         <>
             <section className={`${styles.projects}`}>
-                <HeaderTitle title={t("المشاريع")} para={t("المبلغ المجموع للمشاريع")} price='1.037.976.07$' />
-                <Link to='' className={`${styles.donate__link}`}>{t("تبرع فوري لصندوق المشاريع")}</Link>
+                <HeaderTitle title={t("الحالات")} para={t("المبلغ المجموع للحالات")} price='1.037.976.07$' />
+                <Link to='' className={`${styles.donate__link}`}>{t("تبرع فوري لصندوق الحالات")}</Link>
 
                 <div className="container">
 
