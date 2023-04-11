@@ -1,17 +1,22 @@
 body[dir="ltr"] .cardDetails{
-    display: flex;
-    justify-content: space-between;
+display: grid;
+grid-template-columns: 1fr auto;
     margin: 40px 0;
     text-align: right;
 }
 body[dir="rtl"] .cardDetails{
-    display: flex;
-    justify-content: space-between;
+ display: grid;
+    grid-template-columns: 1fr auto;
     margin: 40px 0;
     direction:rtl;
     text-align: left;
 }
-
+.aside{
+    margin-right: 30px;
+}
+body[dir="rtl"] .aside {
+    margin-left: 30px;
+}
 
 body[dir="rtl"] .modal__paypal,
 body[dir="rtl"] .modal__collect {
@@ -116,11 +121,12 @@ body[dir="rtl"] .price__para {
 .cardDetails__btn{
    width: 100%;
     padding: 15px 0;
-    background-color: #EF8451;
+    background-color: #2A6355;
     color: #fff;
-    border: 1PX solid #EF8451;
+    border: 1PX solid #269168;
     font-family: "Changa-Regular", sans-serif !important;
     font-size: 17px;
+    margin-bottom: 20px;
 }
 .cardDetails__info{
     font-family: "Changa-Regular", sans-serif !important;
@@ -146,28 +152,21 @@ body[dir="rtl"] .price__para {
 font-size: 30px;
 }
 body[dir="ltr"] .cardDetails__icon{
-    display: flex;
-    gap: 5%;
     margin-top: 20px;
-    margin-right: 20px;
     direction: rtl;
 
 }
 body[dir="rtl"] .cardDetails__icon{
-    display: flex;
-    gap: 5%;
     margin-top: 20px;
-    margin-right: 20px;
     direction: ltr;
 
 }
 body[dir="rtl"] .icon__social{
     position: relative;
-    width: 150px;
+    width: 100%;
     height: 50px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
+margin-bottom: 20px;
     background: #fff;
     border: none;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
@@ -179,11 +178,10 @@ body[dir="rtl"] .icon__social{
 }
 body[dir="ltr"] .icon__social{
     position: relative;
-    width: 150px;
+    width: 100%;
     height: 50px;
+    margin-bottom: 20px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
     background: #fff;
     border: none;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
@@ -314,28 +312,8 @@ body[dir="ltr"] .icon__social{
     background-color: #EF8451 !important;
     border: 1px solid #EF8451 !important;
 }
-@media (max-width:767px) {
-    .cardDetails {
-        display: flex;
-        flex-direction: column-reverse;
-    }
-    .cardDetails__icon{
-        display: grid;
-        grid-template-columns: repeat(2,1fr);
-    }
-    .icon__social{
-        margin-bottom: 10px;
-    }
-    
-    .newProject{
-        display: block;
-        
-    }
-        .aside{
-            margin: auto;
-        }
-       
-}
+
+/*
 @media (min-width:768px) and (max-width:991px) {
     .cardDetails {
         display: flex;
@@ -352,4 +330,60 @@ body[dir="ltr"] .icon__social{
     margin: auto;
     max-width: 100%;
 }
+} */
+
+.imgpay{
+    width: 100px;
+    height: 50px;
+}
+.cvc{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 1%;
+}
+.PhoneInputInput input {
+    border: none !important;
+    outline: none !important;
+    background-color: #fff !important;
+    border-radius: 0px !important;
+}
+.input,
+.textArea {
+    border: none;
+    outline: none;
+    border-radius: 5px !important;
+    padding: 1em;
+    background-color: #fff !important;
+    transition: 300ms ease-in-out;
+    font-size: 14px;
+    color: #202020 !important;
+    margin-top: 20px;
+    border: 2px solid #bebebe !important;
+    font-family: "Changa-Regular" !important;
+
+}
+.input{
+    height: 50px;
+}
+.signup__btn {
+
+    width: 10em !important;
+    height: 2.6em;
+    border: 2px solid #2A6355 !important;
+    font-size: 17px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #2A6355 !important;
+    font-family: "Changa-Regular" !important;
+    margin-top: 10px !important;
+}
+.date{
+font-family: "Changa-Regular" !important;
+    color: #269168;
+}
+.select {
+    width: 100%;
+    padding: 0 !important;
+    margin-bottom: 10px;
 }
