@@ -24,7 +24,7 @@ import { useRef } from 'react';
 export default function NavbarMenu() {
 
     const location = useLocation()
-    const [token,setToken] = useState(localStorage.getItem('token'))
+    const [token, setToken] = useState(localStorage.getItem('token'))
 
     const languages = [
         {
@@ -62,7 +62,7 @@ export default function NavbarMenu() {
         i18next.changeLanguage(code)
     }
     function logout() {
-        setToken(localStorage.setItem("token",""))
+        setToken(localStorage.setItem("token", ""))
     }
     return (
         <>
