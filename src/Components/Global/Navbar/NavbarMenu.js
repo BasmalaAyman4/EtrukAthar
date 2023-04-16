@@ -24,7 +24,7 @@ import { useRef } from 'react';
 export default function NavbarMenu() {
 
     const location = useLocation()
-
+    const [token,setToken] = useState(localStorage.getItem('token'))
 
     const languages = [
         {
@@ -62,9 +62,7 @@ export default function NavbarMenu() {
         i18next.changeLanguage(code)
     }
     function logout() {
-        localStorage.removeItem('token');
-        localStorage.removeItem('email');
-        authContext.setAuth({});
+        setToken(localStorage.setItem("token",""))
     }
     return (
         <>
@@ -72,8 +70,8 @@ export default function NavbarMenu() {
                 <Container>
                     <div className={`${styles.header}`}>
                         <nav className={`${styles.navLink__header}`}>
-                            {authContext.auth.email ? <Link to="/" className={`px-3 pt-2 ${styles.header__link}`} onClick={logout}>{t("تسجيل خروج")}</Link> : <Link to="/login" className={`px-3 pt-2 ${styles.header__link}`} > {t("تسجيل الدخول")}</Link>}
-                            {authContext.auth.email ? <Link to="" className={`px-3 pt-2 ${styles.header__link}`}> {t("تبرعاتي")}</Link> : <Link to="/sign-up" className={`px-3 pt-2 ${styles.header__link}`}> {t("تسجيل")}</Link>}
+                            {token ? <Link to="/" className={`px-3 pt-2 ${styles.header__link}`} onClick={logout}>{t("تسجيل خروج")}</Link> : <Link to="/login" className={`px-3 pt-2 ${styles.header__link}`} > {t("تسجيل الدخول")}</Link>}
+                            {token ? <Link to="" className={`px-3 pt-2 ${styles.header__link}`}> {t("تبرعاتي")}</Link> : <Link to="/sign-up" className={`px-3 pt-2 ${styles.header__link}`}> {t("تسجيل")}</Link>}
                             <Link to="" className={`px-3 pt-2 ${styles.header__link}`}> {t("حاسبة الزكاة")} </Link>
                             <Link to="/askForVoluntary" className={`px-3 pt-2 ${styles.header__link}`}>{t("  تطوع معنا ")} </Link>
 

@@ -189,6 +189,9 @@ export default function Projects() {
                                         <label class="form-group_checklist_label" for={type.name_ar}>{type.name_ar}</label>
                                     </div>
                                 ))}
+
+
+
                             </fieldset>
                         </div>
                         <div className='col-lg-10 col-md-12 col-sm-12'>

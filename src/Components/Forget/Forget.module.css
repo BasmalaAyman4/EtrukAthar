@@ -1,33 +1,32 @@
 .logForm {
- 
     display: flex;
-    background-image: url(./../../assets/images/3-copy-scaled.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: auto;
-    padding-bottom: 50px;
-    
+    text-align: center;
+    background-color: #2A6355;
 
+   min-height: 700px;
+}
+.login__header-image img{
+    width: 100%;
+    text-align: center;
+    height: 600px;
+    background-color: #2A6355;
 }
 
 .login {
-    width: 60%;
     margin: auto;
-    margin-top: 3%;
+    margin-top: 20%;
     border: 1px solid #eee;
-    box-shadow: 0 0 4px 0 #ff9500da;
+    box-shadow: 0 0 4px 0 #246d57da;
     padding-bottom: 30px;
     border-radius: 15px;
     background-color: #eeeeeee0 !important;
     font-family: "Changa-Regular" !important;
-    text-align: center;
-
+    width: 100%;
 }
 
 .login__title {
     margin: 20px 0;
-    color: #EF8451;
+    color: #2A6355;
     font-family: "Changa-SemiBold";
     font-size: 30px;
 }
@@ -35,8 +34,9 @@
     color: #535353 !important;
     text-decoration: none;
     font-family: "Changa-Regular" !important;
-    font-size: 17px;
-    padding: 5px 0px;
+    font-size: 15px;
+    padding: 10px 0px;
+    margin: 10px 0;
 }
 
 .inputGroupp {
@@ -46,33 +46,39 @@
 .input {
     border: none;
     outline: none;
-    border-radius: 15px;
+    border-radius: 15px !important;
     padding: 1em;
-    background-color: #f5f0f0;
-    box-shadow: inset 2px 5px 10px rgba(234, 147, 76, 0.61);
+    background-color: #f5f0f0cb !important;
     transition: 300ms ease-in-out;
-    font-size: 17px;
-    color: #202020;
-    border: 2px solid #EF8451 !important;
-    width: 500px !important;
+    font-size: 14px;
+    color: #202020 !important;
+    margin-top: 20px;
+    /* border: 2px solid #246d57da !important; */
+     background-color: #ffffffcb;
     height: 50px;
-    margin: 10px auto;
+    font-family: "Changa-Regular" !important;
+    width:  85% !important;
+    margin: auto;
 }
+
+.input:focus {
+    /* background-color: #f5f0f0cb; */
+    box-shadow: 0 0 0 0.15rem transparent;
+    border: 0px solid #246d57da !important;
+    transform: scale(1.00);
+    box-shadow: 0 0 0 0.15rem rgba(21, 65, 50, 0.61);
+}
+
+.input:hover {
+    border: 1px solid #246d57da !important;
+    box-shadow: 0 0 0 2px rgba(21, 65, 50, 0.61);
+}
+
 body[dir="rtl"] .input::placeholder{
     text-align: left !important;
 }
 body[dir="ltr"] .input::placeholder{
     text-align: right !important;
-}
-.input:focus {
-    background-color: white;
-    transform: scale(1.01);
-    box-shadow: 0 0 0 4px rgba(234, 147, 76, 0.61);
-}
-
-.input:hover {
-    border: 2px solid #EF8451 !important;
-    box-shadow: 0 0 0 4px rgba(234, 147, 76, 0.61);
 }
 
 .log__btn {
@@ -81,19 +87,21 @@ body[dir="ltr"] .input::placeholder{
     display: inline-block;
     height: 2.6em;
     line-height: 2.5em;
-    margin: 20px;
+    margin: 5px;
     position: relative;
     overflow: hidden;
-    border: 2px solid #EF8451;
+    border: 0px solid #246d57da;
     transition: color .5s;
     z-index: 1;
     font-size: 17px;
     border-radius: 6px;
     font-weight: 500;
+    width:  85% !important;   
     color: #fff;
-    background-color: #EF8451;
-    padding-left: 30px; 
-    width: 500px !important;
+    background-color: #246d57da;
+    border-radius: 15px !important;
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 .log__btn:before {
@@ -101,8 +109,8 @@ body[dir="ltr"] .input::placeholder{
     position: absolute;
     z-index: -1;
     background: #fff;
-    height: 150px;
-    width: 200px;
+    height: 100px;
+    width: 120px;
     border-radius: 50%;
 }
 

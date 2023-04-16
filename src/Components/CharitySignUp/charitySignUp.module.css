@@ -1,15 +1,16 @@
 .logForm {
     display: flex;
     text-align: center;
-    background-image: url(../../assets/images/ngo-illustration-Artboard-5.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    height: auto;
-    padding-bottom: 100px;
-    margin-left: -50%;
+    background-color: #2A6355;
+   min-height: 700px;
+    
+}
+.login__header-image img{
+    width: 100%;
+    text-align: center;
+    height: 600px;
     background-color: #2A6355;
 }
-
 .userName {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -18,20 +19,20 @@
 }
 
 .signup {
-    width: 60%;
     margin: auto;
-    margin-top: 5%;
+    margin-top: 10%;
     border: 1px solid #eee;
-    box-shadow: 0 0 4px 0 #2A6355;
-    padding-bottom: 50px;
+    box-shadow: 0 0 4px 0 #246d57da;
+    padding-bottom: 30px;
     border-radius: 15px;
     background-color: #eeeeeee0 !important;
-        margin-left: 85% !important;
+    font-family: "Changa-Regular" !important;
+    width: 100%;
 }
 
 .signup__title {
     margin: 20px 0;
-    color: #2A6355;
+    color: #246d57da;
     font-family: "Changa-SemiBold";
 }
 
@@ -60,7 +61,7 @@
     color: #333333 !important;
 }
 
-.input {
+body[dir="rtl"]  .input {
     border: none;
     outline: none;
     border-radius: 15px !important;
@@ -70,11 +71,29 @@
     font-size: 14px;
     color: #202020 !important;
     margin-top: 20px;
-    border: 2px solid #2A6355 !important;
-
+    /* border: 2px solid #246d57da !important; */
+     background-color: #ffffffcb;
     height: 50px;
     font-family: "Changa-Regular" !important;
+    direction: ltr;
 }
+body[dir="ltr"] .input {
+    border: none;
+    outline: none;
+    border-radius: 15px !important;
+    padding: 1em;
+    background-color: #f5f0f0cb !important;
+    transition: 300ms ease-in-out;
+    font-size: 14px;
+    color: #202020 !important;
+    margin-top: 20px;
+    /* border: 2px solid #246d57da !important; */
+     background-color: #ffffffcb;
+    height: 50px;
+    font-family: "Changa-Regular" !important;
+    direction: rtl;
+}
+
 
 body[dir="rtl"] .input::placeholder {
     text-align: left !important;
@@ -85,35 +104,39 @@ body[dir="ltr"] .input::placeholder {
 }
 
 .input:focus {
-    background-color: #f5f0f0cb;
-    transform: scale(1.01);
-    box-shadow: 0 0 0 4px rgba(21, 65, 50, 0.61);
+    /* background-color: #f5f0f0cb; */
+    box-shadow: 0 0 0 0.25rem transparent;
+    border: 0px solid #246d57da !important;
+    transform: scale(1.00);
+    box-shadow: 0 0 0 0.25rem rgba(21, 65, 50, 0.61);
 }
 
 .input:hover {
-    border: 2px solid #2A6355 !important;
-    box-shadow: 0 0 0 4px rgba(21, 65, 50, 0.61);
+    border: 2px solid #246d57da !important;
+    box-shadow: 0 0 0 2px rgba(21, 65, 50, 0.61);
 }
-
 
 .signup__btn {
     --color: #333;
     font-family: inherit;
     display: inline-block;
-    width: 20em !important;
     height: 2.6em;
+    line-height: 2.5em;
+    margin: 5px;
     position: relative;
     overflow: hidden;
-    border: 2px solid #2A6355 !important;
     transition: color .5s;
     z-index: 1;
     font-size: 17px;
     border-radius: 6px;
     font-weight: 500;
+    width:  300px !important;   
     color: #fff;
-    background-color: #2A6355 !important;
-    font-family: "Changa-Regular" !important;
-    margin-top: 10px  !important;
+    background-color: #246d57da !important;
+    border-radius: 15px !important;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border: 0px solid #246d57da !important;
 }
 
 .signup__btn:before {
@@ -121,15 +144,15 @@ body[dir="ltr"] .input::placeholder {
     position: absolute;
     z-index: -1;
     background: #fff;
-    height: 150px;
-    width: 200px;
+    height: 100px;
+    width: 120px;
     border-radius: 50%;
 }
 
 .signup__btn:hover {
     color: #fff;
-    background-color: #2A6355 !important;
-    border: 2px solid #2A6355 !important;
+    background-color: #246d57da !important;
+    border: 0;
 }
 
 .signup__btn:before {
@@ -173,7 +196,7 @@ body[dir="ltr"] .PhoneInputInput input {
 
 @media (max-width:767px) {
     .signup {
-        width: 95%;
+        width: 100%;
         margin-top: 50px;
     }
 
@@ -190,7 +213,7 @@ body[dir="ltr"] .PhoneInputInput input {
 
 @media (min-width:768px) and (max-width:1200px) {
     .signup {
-        width: 95%;
+        width: 100%;
     }
 
     .userName {
@@ -204,18 +227,10 @@ body[dir="ltr"] .PhoneInputInput input {
     }
 }
 
-@media (min-width:1201px) and (max-width:1450px) {
-    .signup {
-        width: 75%;
-    }
+ @media (min-width:1201px) and (max-width:1450px) {
 
-    .signup__btn {
+    /* .signup__btn {
         margin: 0 50%;
-    }
-}
+    } */
+} 
 
-@media (min-width:1451px) {
-    .signup__btn {
-        margin: 0 50%;
-    }
-}
