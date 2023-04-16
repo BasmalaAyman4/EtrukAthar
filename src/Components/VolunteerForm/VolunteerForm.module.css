@@ -1,0 +1,161 @@
+.volunteerForm{
+    background-color: #F5F3EE;
+    padding-bottom: 50px;
+}
+.volunteer{
+            height: auto;
+            background-color: #0F393B;
+            padding: 100px 0 50px;
+            border-radius: 0 0 20px 20px;
+            -webkit-border-radius: 0 0 20px 20px;
+            -moz-border-radius: 0 0 20px 20px;
+            -ms-border-radius: 0 0 20px 20px;
+            -o-border-radius: 0 0 20px 20px;
+            margin-bottom: 50px;
+}
+.volunteerImg{
+    width: 350px;
+}
+.volunteerPara{
+font-family: "Changa-SemiBold" !important;
+color: #EF8451;
+}
+.volunteerTitle{
+    color: #fff;
+    font-weight: bold;
+}
+.volunteerDisc{
+    color: #fff;
+    margin-top: 20px;
+}
+.event,
+.join{
+        border-radius: 20px;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            -ms-border-radius: 20px;
+            -o-border-radius: 20px;
+            padding:30px  ;
+}
+.event{
+    background-color: #EF8451;
+    
+}
+.join{
+    background-color: #124C51;
+}
+.eventPara{
+    color: #124C51;
+    font-family: "Changa-SemiBold" !important;
+}
+.volunteerCard{
+    margin-top: -80px;
+
+}
+.volunteerJoin{
+    margin-bottom: 50px !important;
+    
+}
+.volunteerLink{
+    border: 1px solid #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    color: #fff;
+}
+.linkJoin{
+    border: 1px solid #EF8451;
+    color: #EF8451;
+}
+.volunteerLink:hover{
+    color: #fff;
+}
+.contact{
+    background-color:#F2EBE4 ;
+    padding: 30px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    margin-bottom: 50px;
+}
+.form{
+        margin-top: 100px;
+}
+.contactForm{
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    
+}
+.input {
+    border: none;
+    outline: none;
+    border-radius: 15px !important;
+    padding: 1em;
+    background-color: #F5F3EE !important;
+    transition: 300ms ease-in-out;
+    font-size: 14px;
+    color: #202020 !important;
+    margin-top: 20px;
+    border: 2px solid #F5F3EE !important;
+    height: 50px;
+    font-family: "Changa-Regular" !important;
+}
+
+body[dir="rtl"] .input::placeholder {
+    text-align: left !important;
+}
+
+body[dir="ltr"] .input::placeholder {
+    text-align: right !important;
+}
+
+.input:focus {
+    background-color: #F5F3EE !important;
+    transform: scale(1.01);
+    border: none !important;
+}
+.PhoneInputInput input {
+    border: none !important;
+    outline: none !important;
+    background-color: #f5f0f0cb !important;
+    border-radius: 0px !important;
+    direction: ltr !important;
+}
+.signup__btn{
+    background-color: #EF8451 !important;
+    border: 1px solid #EF8451 !important;
+    padding: 7px 30px !important;
+    font-family: "Changa-Regular" !important;
+}
+.signup__btn:hover{
+    background-color: #fff !important;
+    color: #EF8451 !important;
+    border: 1px solid #EF8451 !important;
+}
+.formPara{
+    margin-top: 50px;
+    font-size: 20px;
+}
+.formImg{
+    width: 500px;
+}
+@media (max-width:540px) {
+    .formImg{
+        display: none;
+    }
+}
+@media (max-width:767px) {
+    .event{
+        margin-bottom: 20px;
+    }
+}

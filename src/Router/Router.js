@@ -10,6 +10,7 @@ import CardDetails from './../Components/ProjectsDetails/ProjectsDetails'
 import AskForVoluntary from "../Components/AskForVoluntary/AskForVoluntary";
 import CharitySignUp from "../Components/CharitySignUp/CharitySignUp";
 import Events from "../Pages/Events";
+import VolunteerForm from "../Components/VolunteerForm/VolunteerForm";
 export default function Router() {
   const authContext = useContext(AuthContext);
   return (
@@ -24,6 +25,7 @@ export default function Router() {
         <Route path="/card-details" element={<CardDetails />} />
         <Route path="/askForVoluntary" element={<AskForVoluntary />} />
         <Route path="/event" element={<Events />} />
+        <Route path="/volunteerForm" element={<VolunteerForm />} />
       </Routes>
     </>
   )

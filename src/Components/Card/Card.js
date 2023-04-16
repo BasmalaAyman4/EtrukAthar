@@ -3,7 +3,6 @@ import './Card.css'
 import styles from './Card.module.css'
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { useTranslation } from 'react-i18next';
-import photo from "./../../assets/images/pro1.jpg";
 export default function Card(props) {
     const { t } = useTranslation()
     return (
@@ -11,7 +10,7 @@ export default function Card(props) {
 
             <div className={`${styles.card} ${props.id}`}>
                 <div className={`${styles.cardFig}`}>
-                    <img src={photo} alt="" className={`${styles.figImg}`} />
+                    <img src={props.photo} alt="" className={`${styles.figImg}`} />
                     <div className={`${styles.cardLink}`}>
                         <a href="/card-details" className={`${styles.cardDonate}`}>للمزيد من التفاصيل </a>
                     </div>
@@ -20,8 +19,8 @@ export default function Card(props) {
                     <h3 class={`${styles.cardContentTitle}`}>{props.title}</h3>
                     <p className={`${styles.cardContentPara}`}> {props.para}</p>
                     <div className={`${styles.all}`}>
-                        <div className={`${styles.bar}`}><ProgressBar now={props.progress} className={`${styles.prog}`} />
-                            <span className={`${styles.b}`}>{props.progress} %</span>
+                        <div className={`${styles.bar}`}><ProgressBar now={props.progress} className={`${styles.prog}`} label={`${props.progress}%`} />
+                            {/* <span className={`${styles.b}`}>{props.progress} %</span> */}
                         </div>
                         <div className={`${styles.don}`}>
                             <div className="">عدد التبرعات :  {props.numOfDonates} </div>
