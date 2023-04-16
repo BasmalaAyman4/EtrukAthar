@@ -14,11 +14,8 @@ export default function Projects() {
     const { t } = useTranslation()
     const [dataCases, setDataCases] = useState(cases);
     const [dataTypes, setDataTypes] = useState(types);
-<<<<<<< HEAD
+    console.log(data,"sdsd")
     const [data, setData] = React.useState(CardJson);
-=======
-    const [data, setData] = useState(CardJson);
->>>>>>> 4bc221611728ef64d6ae0685abcd297e54ff971c
     return (
         <>
             <section className={`${styles.projects}`}>
@@ -44,26 +41,17 @@ export default function Projects() {
 
                                 </div>
                                 <h4 className='side-filter__item-header-title pb-3'>{t("انواع التبرع")}</h4>
-<<<<<<< HEAD
                                 
                                 {dataTypes&&dataTypes.map(type=>(
                                             <div class="form-group ">
                                             <input class="form-group_checklist" type="checkbox" id={type.id} />
                                             <label class="form-group_checklist_label" for={type.id}>{type.type_name}</label>
-                                    </div>
+                                        </div>
                                 ))}
                              
                             
     
-=======
->>>>>>> 4bc221611728ef64d6ae0685abcd297e54ff971c
 
-                                {dataTypes && dataTypes.map(type => (
-                                    <div class="form-group ">
-                                        <input class="form-group_checklist" type="checkbox" id={type.id} />
-                                        <label class="form-group_checklist_label" for={type.id}>{type.type_name}</label>
-                                    </div>
-                                ))}
                             </fieldset>
                         </div>
                         <div className='col-lg-10 col-md-12 col-sm-12'>
