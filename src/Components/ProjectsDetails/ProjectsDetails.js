@@ -135,128 +135,109 @@ export default function ProjectsDetails() {
                     </Col>
                     <Col sm={12} xl={4}>
 
-                        {/* <aside dir='rtl' className={`${style.aside}`}>
-                        <button className={`${style.cardDetails__btn}`}>
-                            {t("تبرع الان   للحالات عبر موقعنا ")}
-                        </button>
-                        <NumericInput value={priceShow ? priceShow : 20.00} className={`${style.price__input}`} /><BiDollar className={`${style.price__icon}`} />
-                        <div className={`${style.price__choose}`}>
-                            <button className={`${style.price__btn}`} onClick={() => { clickPrice(10.00) }}>10.00$</button>
-                            <button className={`${style.price__btn}`} onClick={() => { clickPrice(25.00) }}>25.00$</button>
-                            <button className={`${style.price__btn}`} onClick={() => { clickPrice(50.00) }}>50.00$</button>
-                            <button className={`${style.price__btn}`} onClick={() => { clickPrice(100.00) }}>100.00$</button>
-                        </div>
-                        <div className={`${style.price__checkbox}`}>
-                            <label><input type="checkbox" /><span className={`${style.price__para}`}>{t("تغطيه رسوم المعاملات 1.29$")}
-                            </span></label>
-                        </div>
-                        <div className={`${style.modal__paypal}`}><p className={`${style.paypal__para}`}><FaCcMastercard className={`${style.icon}`} /> {t(" للتبرع من خلال البطاقة الائتمانية ")}</p></div>
-                        <Accordion >
-                            <Accordion.Item eventKey="0">
-                                <Accordion.Header><img src={paypal} alt="" className={`${style.imgpay} pay`} /></Accordion.Header>
-                                <Accordion.Body>
-                                    <Form>
-                                        <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                            <Form.Control type='number' name="number" className={`${style.input}`} placeholder={t(" رقم البطاقه الائتمانيه")} required />
-                                        </Form.Group>
-                                        <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                            <Form.Control type='name' name="name" className={`${style.input}`} placeholder={t("  اسم البطاقة الائتمانية")} required />
-                                        </Form.Group>
-                                        <div className={`${style.cvc}`}>
+                        <aside dir='rtl' className={`${style.aside}`}>
+                            <button className={`${style.cardDetails__btn}`}>
+                                {t("تبرع الان   للحالات عبر موقعنا ")}
+                            </button>
+                            <NumericInput value={priceShow ? priceShow : 20.00} className={`${style.price__input}`} /><BiDollar className={`${style.price__icon}`} />
+                            <div className={`${style.price__choose}`}>
+                                <button className={`${style.price__btn}`} onClick={() => { clickPrice(10.00) }}>10.00$</button>
+                                <button className={`${style.price__btn}`} onClick={() => { clickPrice(25.00) }}>25.00$</button>
+                                <button className={`${style.price__btn}`} onClick={() => { clickPrice(50.00) }}>50.00$</button>
+                                <button className={`${style.price__btn}`} onClick={() => { clickPrice(100.00) }}>100.00$</button>
+                            </div>
+                            <div className={`${style.price__checkbox}`}>
+                                <label><input type="checkbox" /><span className={`${style.price__para}`}>{t("تغطيه رسوم المعاملات 1.29$")}
+                                </span></label>
+                            </div>
+                            <Form>
+                                <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                    <Form.Control type='name' name="name" className={`${style.input}`} placeholder={t("  اسم المستخدم ")} required />
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                    <Form.Control type='email' name="email" className={`${style.input}`} placeholder={t("    البريد الالكتروني")} required />
+                                </Form.Group>
+                                <PhoneInput
+                                    defaultCountry="EG"
+                                    international
+                                    error={formData.phone ? (isValidPhoneNumber(formData.phone) ? undefined : 'Invalid phone number') : 'Phone number required'}
+                                    value={formData.phone}
+                                    name="phone"
+                                    onChange={onChangeHandlerPhone}
+                                    className={` ${style.PhoneInputInput} ${style.PhoneInput}  ${style.input}`}
+                                    required />
+                            </Form>
+                            <div className={`${style.modal__paypal}`}><p className={`${style.paypal__para}`}><FaCcMastercard className={`${style.icon}`} /> {t(" للتبرع من خلال البطاقة الائتمانية ")}</p></div>
+                            <Accordion >
+                                <Accordion.Item eventKey="0">
+                                    <Accordion.Header><img src={paypal} alt="" className={`${style.imgpay} pay`} /></Accordion.Header>
+                                    <Accordion.Body>
+                                        <Form>
                                             <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                                <Form.Control type='date' name="expiry" className={`${style.input}`} placeholder={t(" expiration date")} required />
+                                                <Form.Control type='number' name="number" className={`${style.input}`} placeholder={t(" رقم البطاقه الائتمانيه")} required />
                                             </Form.Group>
                                             <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                                <Form.Control name="cvc" type="number" className={`${style.input}`} placeholder={t("كود التحقق من البطاقة ")} required />
+                                                <Form.Control type='name' name="name" className={`${style.input}`} placeholder={t("  اسم البطاقة الائتمانية")} required />
                                             </Form.Group>
-                                        </div>
-                                        <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                            <Form.Control type='name' name="name" className={`${style.input}`} placeholder={t("  اسم المستخدم ")} required />
-                                        </Form.Group>
-                                        <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                            <Form.Control type='email' name="email" className={`${style.input}`} placeholder={t("    البريد الالكتروني")} required />
-                                        </Form.Group>
-                                        <PhoneInput
-                                            defaultCountry="EG"
-                                            international
-                                            error={formData.phone ? (isValidPhoneNumber(formData.phone) ? undefined : 'Invalid phone number') : 'Phone number required'}
-                                            value={formData.phone}
-                                            name="phone"
-                                            onChange={onChangeHandlerPhone}
-                                            className={` ${style.PhoneInputInput} ${style.PhoneInput}  ${style.input}`}
-                                            required />
-                                        <Button type="submit" className={style.signup__btn}>
-                                            تبرع الان
-                                        </Button>
-                                    </Form>
+                                            <div className={`${style.cvc}`}>
+                                                <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                                    <Form.Control type='date' name="expiry" className={`${style.input}`} placeholder={t(" expiration date")} required />
+                                                </Form.Group>
+                                                <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                                    <Form.Control name="cvc" type="number" className={`${style.input}`} placeholder={t("كود التحقق من البطاقة ")} required />
+                                                </Form.Group>
+                                            </div>
+                                            <Button type="submit" className={style.signup__btn}>
+                                                تبرع الان
+                                            </Button>
+                                        </Form>
 
-                                </Accordion.Body>
-                            </Accordion.Item>
-                            <Accordion.Item eventKey="1">
-                                <Accordion.Header><img src={vodafon} alt="" className={`${style.imgpay}`} /></Accordion.Header>
-                                <Accordion.Body>
-                                    <Form>
-                                        <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                            <Form.Control type='name' name="name" className={`${style.input}`} placeholder={t("  اسم المستخدم ")} required />
-                                        </Form.Group>
-                                        <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                            <Form.Control type='email' name="email" className={`${style.input}`} placeholder={t("    البريد الالكتروني")} required />
-                                        </Form.Group>
-                                        <PhoneInput
-                                            defaultCountry="EG"
-                                            international
-                                            error={formData.phone ? (isValidPhoneNumber(formData.phone) ? undefined : 'Invalid phone number') : 'Phone number required'}
-                                            value={formData.phone}
-                                            name="phone"
-                                            onChange={onChangeHandlerPhone}
-                                            className={` ${style.PhoneInputInput} ${style.PhoneInput}  ${style.input}`}
-                                            required />
-                                        <Button type="submit" className={style.signup__btn}>
-                                            تبرع الان
-                                        </Button>
-                                    </Form>
+                                    </Accordion.Body>
+                                </Accordion.Item>
+                                <Accordion.Item eventKey="1">
+                                    <Accordion.Header><img src={vodafon} alt="" className={`${style.imgpay}`} /></Accordion.Header>
+                                    <Accordion.Body>
+                                        <Form>
+                                            <PhoneInput
+                                                defaultCountry="EG"
+                                                international
+                                                error={formData.phone ? (isValidPhoneNumber(formData.phone) ? undefined : 'Invalid phone number') : 'Phone number required'}
+                                                value={formData.phone}
+                                                name="phone"
+                                                onChange={onChangeHandlerPhone}
+                                                className={` ${style.PhoneInputInput} ${style.PhoneInput}  ${style.input}`}
+                                                required />
+                                            <Button type="submit" className={style.signup__btn}>
+                                                تبرع الان
+                                            </Button>
+                                        </Form>
 
-                                </Accordion.Body>
-                            </Accordion.Item>
-                        </Accordion>
-                        <div className={`${style.modal__paypal}`}><p className={`${style.paypal__para}`}>{t(" للتبرع من خلال مندوبنا ")}</p></div>
-                        <Accordion >
-                            <Accordion.Item eventKey="2">
-                                <Accordion.Header><img src={delivery} alt="" className={`${style.imgpay}`} /></Accordion.Header>
-                                <Accordion.Body>
-                                    <Form>
-                                        <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                            <Form.Control type='name' name="name" className={`${style.input}`} placeholder={t("  اسم المستخدم ")} required />
-                                        </Form.Group>
-                                        <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                            <Form.Control type='email' name="email" className={`${style.input}`} placeholder={t("    البريد الالكتروني")} required />
-                                        </Form.Group>
-                                        <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                            <Form.Control type='text' name="city" className={`${style.input}`} placeholder={t("العنوان")} required />
-                                        </Form.Group>
-                                        <PhoneInput
-                                            defaultCountry="EG"
-                                            international
-                                            error={formData.phone ? (isValidPhoneNumber(formData.phone) ? undefined : 'Invalid phone number') : 'Phone number required'}
-                                            value={formData.phone}
-                                            name="phone"
-                                            onChange={onChangeHandlerPhone}
-                                            className={` ${style.PhoneInputInput} ${style.PhoneInput}  ${style.input}`}
-                                            required />
-                                        <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                            <Form.Control type='date' name="expiry" className={`${style.input}`} required />
-                                            <Form.Text className={`${style.date}`}>
-                                                تحديد ميعاد التبرع لارسال المندوب
-                                            </Form.Text>
-                                        </Form.Group>
-                                        <Button type="submit" className={style.signup__btn}>
-                                            تبرع الان
-                                        </Button>
-                                    </Form>
-                                </Accordion.Body>
-                            </Accordion.Item>
-                        </Accordion>
-                    </aside> */}
+                                    </Accordion.Body>
+                                </Accordion.Item>
+                            </Accordion>
+                            <div className={`${style.modal__paypal}`}><p className={`${style.paypal__para}`}>{t(" للتبرع من خلال مندوبنا ")}</p></div>
+                            <Accordion >
+                                <Accordion.Item eventKey="2">
+                                    <Accordion.Header><img src={delivery} alt="" className={`${style.imgpay}`} /></Accordion.Header>
+                                    <Accordion.Body>
+                                        <Form>
+                                            <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                                <Form.Control type='text' name="city" className={`${style.input}`} placeholder={t("العنوان")} required />
+                                            </Form.Group>
+                                            <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                                <Form.Control type='date' name="expiry" className={`${style.input}`} required />
+                                                <Form.Text className={`${style.date}`}>
+                                                    تحديد ميعاد التبرع لارسال المندوب
+                                                </Form.Text>
+                                            </Form.Group>
+                                            <Button type="submit" className={style.signup__btn}>
+                                                تبرع الان
+                                            </Button>
+                                        </Form>
+                                    </Accordion.Body>
+                                </Accordion.Item>
+                            </Accordion>
+                        </aside>
                         {/*  <aside dir='rtl' className={`${style.aside}`}>
                         <button className={`${style.cardDetails__btn}`}>
                             {t("تبرع الان   للحالات عبر موقعنا ")}
@@ -403,43 +384,43 @@ export default function ProjectsDetails() {
                             </Button>
                         </Form>
                     </aside> */}
-
-                        <button className={`${style.cardDetails__btn}`}>
-                            {t("تطوع الان   للحالات عبر موقعنا ")}
-                        </button>
-                        <Form>
-                            <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                <Form.Control type='name' name="name" className={`${style.input}`} placeholder={t("  اسم المستخدم ")} required />
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                <Form.Control type='email' name="email" className={`${style.input}`} placeholder={t("    البريد الالكتروني")} required />
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                <Form.Control type='text' name="city" className={`${style.input}`} placeholder={t("العنوان")} required />
-                            </Form.Group>
-                            <PhoneInput
-                                defaultCountry="EG"
-                                international
-                                error={formData.phone ? (isValidPhoneNumber(formData.phone) ? undefined : 'Invalid phone number') : 'Phone number required'}
-                                value={formData.phone}
-                                name="phone"
-                                onChange={onChangeHandlerPhone}
-                                className={` ${style.PhoneInputInput} ${style.PhoneInput}  ${style.input}`}
-                                required />
-                            <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                <Form.Control as="textarea" rows="3" name="help" className={`${style.textArea}`} placeholder={t("  الاثاث المراد التبرع بها")} />
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                <Form.Control type='date' name="expiry" className={`${style.input}`} required />
-                                <Form.Text className={`${style.date}`}>
-                                    تحديد ميعاد التبرع لارسال المندوب
-                                </Form.Text>
-                            </Form.Group>
-                            <Button type="submit" className={style.signup__btn}>
-                                تبرع الان
-                            </Button>
-                        </Form>
-
+                        {/*  <aside dir='rtl' className={`${style.aside}`}>
+                            <button className={`${style.cardDetails__btn}`}>
+                                {t("تطوع الان   للحالات عبر موقعنا ")}
+                            </button>
+                            <Form>
+                                <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                    <Form.Control type='name' name="name" className={`${style.input}`} placeholder={t("  اسم المستخدم ")} required />
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                    <Form.Control type='email' name="email" className={`${style.input}`} placeholder={t("    البريد الالكتروني")} required />
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                    <Form.Control type='text' name="city" className={`${style.input}`} placeholder={t("العنوان")} required />
+                                </Form.Group>
+                                <PhoneInput
+                                    defaultCountry="EG"
+                                    international
+                                    error={formData.phone ? (isValidPhoneNumber(formData.phone) ? undefined : 'Invalid phone number') : 'Phone number required'}
+                                    value={formData.phone}
+                                    name="phone"
+                                    onChange={onChangeHandlerPhone}
+                                    className={` ${style.PhoneInputInput} ${style.PhoneInput}  ${style.input}`}
+                                    required />
+                                <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                    <Form.Control as="textarea" rows="3" name="help" className={`${style.textArea}`} placeholder={t("  الاثاث المراد التبرع بها")} />
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                    <Form.Control type='date' name="expiry" className={`${style.input}`} required />
+                                    <Form.Text className={`${style.date}`}>
+                                        تحديد ميعاد التبرع لارسال المندوب
+                                    </Form.Text>
+                                </Form.Group>
+                                <Button type="submit" className={style.signup__btn}>
+                                    تبرع الان
+                                </Button>
+                            </Form>
+                        </aside> */}
                     </Col>
 
 

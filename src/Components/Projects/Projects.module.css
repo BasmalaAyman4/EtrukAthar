@@ -13,14 +13,15 @@ body[dir="rtl"] .projects_dir{
     margin: auto;
     margin-top: 20px;
     text-decoration: none;
-    border: 2px solid #6b6b6b;
-    color: #6b6b6b;
+    border: 2px solid #6b6b6b !important;
+    color: #6b6b6b !important;
     padding: 10px 30px;
     border-radius: 50px;
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
     -ms-border-radius: 50px;
     -o-border-radius: 50px;
+    background-color: #fff !important;
 }
 .donate__link:hover{
     color: #6b6b6b;
@@ -63,4 +64,68 @@ body[dir="rtl"] .projects_dir{
         grid-template-columns: repeat(3, 1fr);
         gap: 1%;
     }
+}
+.img {
+    width: 300px;
+    height: 150px;
+}
+
+.fileImg {
+    display: none;
+}
+
+.button {
+    margin: 0 auto;
+    border: 1px solid transparent;
+    width: 300px;
+    height: 150px;
+    cursor: pointer;
+    font-size: 17px;
+    background-color: #dad3d3 !important;
+    margin-bottom: 5px;
+    font-family: "Changa-Regular", sans-serif !important;
+
+}
+
+.input,
+.textArea {
+    border: none;
+    outline: none;
+    border-radius: 5px !important;
+    padding: 1em;
+    background-color: #fff !important;
+    transition: 300ms ease-in-out;
+    font-size: 14px;
+    color: #202020 !important;
+    margin-top: 20px;
+    border: 2px solid #bebebe !important;
+    font-family: "Changa-Regular" !important;
+}
+.signup__btn {
+
+    width: 10em !important;
+    height: 2.6em;
+    border: 2px solid #2A6355 !important;
+    font-size: 17px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #2A6355 !important;
+    font-family: "Changa-Regular" !important;
+    margin-top: 10px !important;
+}
+.para {
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    font-family: "Changa-Regular", sans-serif !important;
+}
+.link {
+    font-weight: bold;
+    text-decoration: none;
+    color: #2A6355;
+}
+
+.link:hover {
+    color: #000;
 }
