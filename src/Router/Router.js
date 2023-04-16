@@ -16,7 +16,7 @@ export default function Router() {
     <>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/login" element={authContext.auth.email ? <Home /> : <Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/forget" element={<Forget />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/charitySign-up" element={<CharitySignUp />} />
