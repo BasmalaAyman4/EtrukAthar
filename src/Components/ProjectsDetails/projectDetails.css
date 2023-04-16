@@ -309,3 +309,17 @@ button:not(:disabled) {
 .video-react-play-progress{
   width: 0%;
 }
+.accordion-button::after {
+color: #000 !important;
+  margin-right: 70%;
+}
+.pay{
+  height: 50px;
+  width: 110px;
+  margin-left: -10px;
+}
+.accordion-button:not(.collapsed) {
+  color: #2B333F !important;
+  background-color: #2a63556e !important;
+  box-shadow: none !important;
+}

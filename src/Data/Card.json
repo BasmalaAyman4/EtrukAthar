@@ -5,7 +5,9 @@
     "para":"ليلة ليست كمثيلها قضتها العائلات في جنوب تركيا و سوريا برعب و خوف العديد من الأفراد ما ...",
     "progress": "60",
     "totalPrice": "$70.000",
-    "numOfDonates": "$56.880"
+    "numOfDonates": "$56.880",
+    "case":{"caseId": "4","caseName" : "education"},
+    "donation":{"donationId": "2","donationName": "volunteer"}
 }, 
 {   "id": 2, 
     "photo":"./assets/images/pro1.jpg",
@@ -13,7 +15,9 @@
     "para":"ليلة ليست كمثيلها قضتها العائلات في جنوب تركيا و سوريا برعب و خوف العديد من الأفراد ما ...",
     "progress": "60",
     "totalPrice": "$70.000",
-    "numOfDonates": "$56.880"
+    "numOfDonates": "$56.880",
+    "case":{"caseId": "4","caseName" : "education"},
+    "donation":{"donationId": "2","donationName": "volunteer"}
 }, 
 {   "id": 3, 
     "photo":"./assets/images/pro1.jpg",
@@ -21,7 +25,9 @@
     "para":"ليلة ليست كمثيلها قضتها العائلات في جنوب تركيا و سوريا برعب و خوف العديد من الأفراد ما ...",
     "progress": "60",
     "totalPrice": "$70.000",
-    "numOfDonates": "$56.880"
+    "numOfDonates": "$56.880",
+    "case":{"caseId": "4","caseName" : "education"},
+    "donation":{"donationId": "2","donationName": "volunteer"}
 }, 
 {   "id": 4, 
     "photo":"./assets/images/pro1.jpg",
@@ -29,7 +35,9 @@
     "para":"ليلة ليست كمثيلها قضتها العائلات في جنوب تركيا و سوريا برعب و خوف العديد من الأفراد ما ...",
     "progress": "60",
     "totalPrice": "$70.000",
-    "numOfDonates": "$56.880"
+    "numOfDonates": "$56.880",
+    "case":{"caseId": "4","caseName" : "education"},
+    "donation":{"donationId": "2","donationName": "volunteer"}
 }, 
 {   "id": 5, 
     "photo":"./assets/images/pro1.jpg",
@@ -37,7 +45,9 @@
     "para":"ليلة ليست كمثيلها قضتها العائلات في جنوب تركيا و سوريا برعب و خوف العديد من الأفراد ما ...",
     "progress": "60",
     "totalPrice": "$70.000",
-    "numOfDonates": "$56.880"
+    "numOfDonates": "$56.880",
+    "case":{"caseId": "4","caseName" : "education"},
+    "donation":{"donationId": "2","donationName": "volunteer"}
 }, 
 {   "id": 6, 
     "photo":"./assets/images/pro1.jpg",
@@ -45,6 +55,8 @@
     "para":"ليلة ليست كمثيلها قضتها العائلات في جنوب تركيا و سوريا برعب و خوف العديد من الأفراد ما ...",
     "progress": "60",
     "totalPrice": "$70.000",
-    "numOfDonates": "$56.880"
+    "numOfDonates": "$56.880",
+    "case":{"caseId": "4","caseName" : "education"},
+    "donation":{"donationId": "2","donationName": "volunteer"}
 } 
 ]
