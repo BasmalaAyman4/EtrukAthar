@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import img from "./../../assets/images/ngo-illustration-Artboard-5.png"
 import { useTranslation } from 'react-i18next';
 import { ToastContainer, toast } from 'react-toastify';
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export default function Login() {
@@ -31,10 +31,7 @@ export default function Login() {
         setFormData({ ...formData, [e.target.name]: e.target.value })
         console.log(formData)
         console.log(userType)
-
     }
-     
- 
     function handleErrors() {
 
         let err = {}
@@ -51,52 +48,52 @@ export default function Login() {
     }
 
     const reqSignUpData = {
-        email: formData.email ,
-        password: formData.password ,
-       
-      }
-      
-      const delay = ms => new Promise(res => setTimeout(res, ms));
-      const handleRedirect = async () => {
-              await delay(7000);
-           
-          if(localStorage.getItem("token")){
-              window.location.reload();
-              navigate("/")
-          }else {
-              navigate("/login") 
-          }
-       }
+        email: formData.email,
+        password: formData.password,
+
+    }
+
+    const delay = ms => new Promise(res => setTimeout(res, ms));
+    const handleRedirect = async () => {
+        await delay(7000);
+
+        if (localStorage.getItem("token")) {
+            window.location.reload();
+            navigate("/")
+        } else {
+            navigate("/login")
+        }
+    }
 
 
 
-    function handleSubmitLogin(e){
-        const toastId =   toast.loading("Please wait...")
-        setTimeout(() => {toast.dismiss(toastId);}, 1000);
+    function handleSubmitLogin(e) {
+        const toastId = toast.loading("Please wait...")
+        setTimeout(() => { toast.dismiss(toastId); }, 1000);
         e.preventDefault()
         handleErrors()
-        if(userType === '1'){
-        axios.post(`http://otrok.invoacdmy.com/api/login`,reqSignUpData)
-        .then((response)=> {
-          localStorage.setItem("token",response.data.token)
-          toast.success("Successfully Logged!")
-          handleRedirect()
-        })
-        .catch((err)=>{
-          toast.error(err.response.data.message)
-        });
-        }else {
-            axios.post(`http://otrok.invoacdmy.com/api/login`,reqSignUpData)
-            .then((response)=> {
-              localStorage.setItem("token",response.data.token)
-              toast.success("Successfully Logged!")
-              handleRedirect()
-            })
-            .catch((err)=>{
-              toast.error(err.response.data.message)
-            });
+        if (userType === '1') {
+            axios.post(`http://otrok.invoacdmy.com/api/login`, reqSignUpData)
+                .then((response) => {
+                    localStorage.setItem("token", response.data.token)
+                    toast.success("Successfully Logged!")
+                    handleRedirect()
+                })
+                .catch((err) => {
+                    toast.error(err.response.data.message)
+                });
+        } else {
+            axios.post(`http://otrok.invoacdmy.com/api/login`, reqSignUpData)
+                .then((response) => {
+                    localStorage.setItem("token", response.data.token)
+                    toast.success("Successfully Logged!")
+                    handleRedirect()
+                })
+                .catch((err) => {
+                    toast.error(err.response.data.message)
+                });
         }
-        
+
     }
 
     return (
@@ -105,52 +102,52 @@ export default function Login() {
 
                 <div className='container'>
                     <div className='row'>
-                    <div  className={`${style["login__header-display"]}  col-lg-4 col-md-12 col-sm-12 d-none d-lg-block d-xl-block`}>
-                                <div className={style["login__header-image"]}>
-                                    <img className='' src={img} alt="" />
-                                </div>
-                        </div>   
-                        <div className='col-lg-7 col-md-12 col-sm-12 pb-5  '>
-                           
-                            <div className={style.login}>
-                            <div className='container'>
-                                <h2 className={style.login__title}>{t("تسجيل الدخول")}</h2>
-                                <hr />
-                                <ul className={`${style.userLog__list}`}>
-                                    <li className={`${style.userLog__item}`} onClick={() => { setUserType('1') }} >
-                                        <button type='button' className={`${userType === '1' ? style.userLog__link :  style.user__link}`} >{t("مستخدم")}</button>
-                                    </li>
-                                    <li className={`${style.userLog__item}  `} onClick={() => { setUserType('2') }} >
-                                        <button type='button' className={`${ userType === '2'  ? style.userLog__link : style.user__link}`} >{t("جمعية ")}</button>
-                                    </li>
-                                </ul>
-                                <div className={style.userName}>
-                                    <Form.Group className="mb-3" controlId="email">
-                                        <Form.Control name="email" type='email' autoComplete="off" className={`${style.input}`} placeholder={t(" البريد الإلكتروني")} onChange={onChangeHandler} value={formData.email} />
-                                        <Form.Text className={`${style.msErr}`}>
-                                            {formError.email}
-                                        </Form.Text>
-                                    </Form.Group>
-                                    <Form.Group className="mb-3" controlId="password">
-                                        <Form.Control name="password" type="password" autoComplete="off" className={`${style.input}`} placeholder={t("كلمة المرور")} onChange={onChangeHandler} value={formData.password} />
-                                        <Form.Text className={`${style.msErr}`}>
-                                            {formError.password}
-                                        </Form.Text>
-                                    </Form.Group>
-                                    <button className={style.log__btn} type='button' onClick={(e)=>{handleSubmitLogin(e)}}>{t("تسجيل الدخول")}</button>
-                                </div>
-                                <hr className={style.forgetLine} />
-                                <a href='/forget' className={style.log__link}> {t("هل نسيت كلمة السر؟")}</a>
+                        <div className={`${style["login__header-display"]}  col-lg-4 col-md-12 col-sm-12 d-none d-lg-block d-xl-block`}>
+                            <div className={style["login__header-image"]}>
+                                <img className='' src={img} alt="" />
                             </div>
-                       
-                          </div>
                         </div>
+                        <div className='col-lg-7 col-md-12 col-sm-12 pb-5  '>
+
+                            <div className={style.login}>
+                                <div className='container'>
+                                    <h2 className={style.login__title}>{t("تسجيل الدخول")}</h2>
+                                    <hr />
+                                    <ul className={`${style.userLog__list}`}>
+                                        <li className={`${style.userLog__item}`} onClick={() => { setUserType('1') }} >
+                                            <button type='button' className={`${userType === '1' ? style.userLog__link : style.user__link}`} >{t("مستخدم")}</button>
+                                        </li>
+                                        <li className={`${style.userLog__item}  `} onClick={() => { setUserType('2') }} >
+                                            <button type='button' className={`${userType === '2' ? style.userLog__link : style.user__link}`} >{t("جمعية ")}</button>
+                                        </li>
+                                    </ul>
+                                    <div className={style.userName}>
+                                        <Form.Group className="mb-3" controlId="email">
+                                            <Form.Control name="email" type='email' autoComplete="off" className={`${style.input}`} placeholder={t(" البريد الإلكتروني")} onChange={onChangeHandler} value={formData.email} />
+                                            <Form.Text className={`${style.msErr}`}>
+                                                {formError.email}
+                                            </Form.Text>
+                                        </Form.Group>
+                                        <Form.Group className="mb-3" controlId="password">
+                                            <Form.Control name="password" type="password" autoComplete="off" className={`${style.input}`} placeholder={t("كلمة المرور")} onChange={onChangeHandler} value={formData.password} />
+                                            <Form.Text className={`${style.msErr}`}>
+                                                {formError.password}
+                                            </Form.Text>
+                                        </Form.Group>
+                                        <button className={style.log__btn} type='button' onClick={(e) => { handleSubmitLogin(e) }}>{t("تسجيل الدخول")}</button>
+                                    </div>
+                                    <hr className={style.forgetLine} />
+                                    <a href='/forget' className={style.log__link}> {t("هل نسيت كلمة السر؟")}</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                </div>
-                   <ToastContainer />
+                <ToastContainer />
             </section>
-      
-       
+
+
         </>
     )
 }

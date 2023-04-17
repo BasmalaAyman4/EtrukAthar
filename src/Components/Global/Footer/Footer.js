@@ -7,25 +7,25 @@ import { useTranslation } from 'react-i18next';
 
 
 export default function Footer() {
-    const {t} = useTranslation()
+    const { t } = useTranslation()
     return (
         <>
-            <MDBFooter className='text-center text-lg-start text-muted'>
+            <MDBFooter className='text-center text-lg-start text-muted f'>
                 <section className='d-flex justify-content-center  p-4 border-bottom'>
-                  
+
 
                     <div className='social-icon text-center'>
                         <Link to='' className='me-4 text-reset '>
-                            <FaFacebook  className='facebook' />
+                            <FaFacebook className='facebook' />
                         </Link>
                         <Link to='' className='me-4 text-reset '>
-                            <FaGoogle className='google'  />
+                            <FaGoogle className='google' />
                         </Link>
                         <Link to='' className='me-4 text-reset '>
                             <FaWhatsapp className='whatsapp' />
                         </Link>
                         <Link to='' className='me-4 text-reset '>
-                            <FaTwitter className='twitter'/>
+                            <FaTwitter className='twitter' />
                         </Link>
                         <Link to='' className='me-4 text-reset'>
                             <FaYoutube className='youtube' />
@@ -42,12 +42,12 @@ export default function Footer() {
 
                             <MDBCol md="3" lg="4" xl="3" className='mx-auto mb-4'>
                                 <h6 className='footer__h6 text-uppercase fw-bold mb-4'>
-                                   
+
                                     {t("من نحن؟")}
                                 </h6>
                                 <hr />
                                 <p className='footer_we-are_p'>
-                                     {t("اترك أثرا , مجموعه شبابية تعني برفع سوية المجتمع و العمل التطوعي , جمعيه خيرية نحو مستقبل مشرق")}
+                                    {t("اترك أثرا , مجموعه شبابية تعني برفع سوية المجتمع و العمل التطوعي , جمعيه خيرية نحو مستقبل مشرق")}
                                 </p>
                             </MDBCol>
 
@@ -58,27 +58,27 @@ export default function Footer() {
                                 <hr />
                                 <p>
                                     <Link to='#!' className='text-reset footer__link'>
-                                    {t( "سياسه الاستخدام")}
+                                        {t("سياسه الاستخدام")}
                                     </Link>
                                 </p>
                                 <p>
                                     <Link to='#!' className='text-reset footer__link'>
-                                    {t("سياسة الخصوصية")}
+                                        {t("سياسة الخصوصية")}
                                     </Link>
                                 </p>
                                 <p>
                                     <Link to='#!' className='text-reset footer__link'>
-                                       {t( "سياسه جمع التبرعات")}
+                                        {t("سياسه جمع التبرعات")}
                                     </Link>
                                 </p>
                                 <p>
                                     <Link to='#!' className='text-reset footer__link'>
-                                        {t( "كيف اتبرع ؟ ")}
+                                        {t("كيف اتبرع ؟ ")}
                                     </Link>
                                 </p>
                                 <p>
                                     <Link to='/askForVoluntary' className='text-reset footer__link'>
-                                        {t( "تطوع معنا")}
+                                        {t("تطوع معنا")}
                                     </Link>
                                 </p>
                             </MDBCol>
@@ -88,43 +88,43 @@ export default function Footer() {
                                 <hr />
                                 <p>
                                     <Link to='#!' className='text-reset footer__link'>
-                                       {t("المشاريع")}
+                                        {t("المشاريع")}
                                     </Link>
                                 </p>
-                               
+
                                 <p>
                                     <Link to='#!' className='text-reset footer__link'>
-                                      {t(" حالات إنسانية")}
-                                    </Link>
-                                </p>
-                                <p>
-                                    <Link to='#!' className='text-reset footer__link'>
-                                      {t(" حالات طبية")}
+                                        {t(" حالات إنسانية")}
                                     </Link>
                                 </p>
                                 <p>
                                     <Link to='#!' className='text-reset footer__link'>
-                                    {t(" كفالة يتيم")}
+                                        {t(" حالات طبية")}
                                     </Link>
                                 </p>
                                 <p>
                                     <Link to='#!' className='text-reset footer__link'>
-                                    {t("كفالة أسرة" )}
+                                        {t(" كفالة يتيم")}
                                     </Link>
                                 </p>
                                 <p>
                                     <Link to='#!' className='text-reset footer__link'>
-                                    {t(" المناسبات")}
+                                        {t("كفالة أسرة")}
                                     </Link>
                                 </p>
                                 <p>
                                     <Link to='#!' className='text-reset footer__link'>
-                                    {t("صندوق علمني ")}
+                                        {t(" المناسبات")}
                                     </Link>
                                 </p>
                                 <p>
                                     <Link to='#!' className='text-reset footer__link'>
-                                    {t(  "ملف الشفافيه")}
+                                        {t("صندوق علمني ")}
+                                    </Link>
+                                </p>
+                                <p>
+                                    <Link to='#!' className='text-reset footer__link'>
+                                        {t("ملف الشفافيه")}
                                     </Link>
                                 </p>
                             </MDBCol>
@@ -132,7 +132,7 @@ export default function Footer() {
                                 <h6 className='footer__h6 text-uppercase fw-bold mb-4' >{t("كن علي تواصل معنا")}</h6>
                                 <hr />
                                 <p className='footer__contact-us_p'>
-                                   {t(" مصر : القاهره , حلوان  ") }
+                                    {t(" مصر : القاهره , حلوان  ")}
                                     <FaHome className="me-3 " />
                                 </p>
                                 <p className='footer__contact-us_p'>
@@ -141,7 +141,7 @@ export default function Footer() {
                                     <FaEnvelope className="me-3" />
                                 </p>
                                 <p className='footer__contact-us_p'>
-                                      + 01 234 567 88 <FaPhone className="me-3" />
+                                    + 01 234 567 88 <FaPhone className="me-3" />
                                 </p>
                                 <p className='footer__contact-us_p'>
                                     + 01 234 567 89 <FaPrint className="me-3" />
