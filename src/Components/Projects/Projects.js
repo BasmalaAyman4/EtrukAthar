@@ -10,28 +10,119 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios'
+import { toast } from 'react-toastify'
+import { ToastContainer } from "react-toastify";
 function MyVerticallyCenteredModal(props) {
-    const [image, setImage] = useState();
-    const [preview, setPreview] = useState();
-    const fileInputRef = useRef();
+
     const [dataCases, setDataCases] = useState([]);
     const [dataTypes, setDataTypes] = useState([]);
-    const [token, setToken] = useState("")
-    useEffect(() => {
-        setToken(localStorage.getItem('token'))
-
-    }, [token])
-    useEffect(() => {
-        if (image) {
-            const reader = new FileReader();
-            reader.onload = () => {
-                setPreview(reader.result)
-            };
-            reader.readAsDataURL(image);
-        } else {
-            setPreview(null)
+    const [formData, setFormData] = useState({
+        title: '',
+        img: "",
+        description: '',
+        totalPrice: '',
+        caseTypeId: '',
+        donationTypeId: '',
+    })
+    const addFile = useRef(null)
+    const addFileInput = useRef(null)
+    const imageContentRef = useRef(null);
+    const imageFirmRef = useRef(null);
+    function handleLogo() {
+        let inputFileEvent = document.querySelector(".input-file-js")
+        inputFileEvent.click()
+    }
+    const [imageUrl, setImage] = useState(null)
+    let previewUploadImage = (e) => {
+        let file = e.target.files[0];
+        if (!file) {
+            return;
         }
-    }, [image])
+        let preViewLink = URL.createObjectURL(file);
+        setImage(preViewLink)
+        setFormData(prevValue => {
+            return {
+                ...prevValue,
+                'img': file
+            }
+        })
+    }
+    const [formError, setFormError] = useState({})
+    const onChangeHandler = e => {
+
+        setFormData({ ...formData, [e.target.name]: e.target.value })
+        console.log(formData, "form")
+    }
+    function errorAddCase() {
+        let err = {}
+
+        if (formData.title === '') {
+            err.title = 'عنوان الحالة مطلوب';
+        }
+        if (formData.img === '') {
+            err.img = "يرجي اختيار صوره للحالة";
+        }
+        if (formData.description === '') {
+            err.description = "نبذه مختصره عن الحالة مطلوبه";
+        }
+        if (formData.totalPrice === '') {
+            err.totalPrice = "المبلغ المراد تجميعه مطلوب"
+        }
+        if (formData.caseType === '') {
+            err.caseType = "يرجي اختيار نوع الحالة"
+        }
+        if (formData.donationType === '') {
+            err.donationType = ' يرجي اختيار نوع التبرع';
+        }
+        setFormError({ ...err })
+
+    }
+    const reqAddCase = {
+        name_ar: formData.title,
+        name_en: formData.title,
+        description_ar: formData.description,
+        description_en: formData.description,
+        initial_amount: formData.totalPrice,
+        image: formData.img,
+        donationtype_id: formData.donationTypeId,
+        category_id: formData.caseTypeId
+    }
+
+    const addNewCase = new FormData();
+    addNewCase.append("name_ar", formData.title);
+    addNewCase.append("name_en", formData.title);
+    addNewCase.append("description_ar", formData.description);
+    addNewCase.append("description_en", formData.description);
+    addNewCase.append("initial_amount", formData.totalPrice);
+    addNewCase.append("image", formData.img);
+    addNewCase.append("donationtype_id", formData.donationTypeId);
+    addNewCase.append("category_id", formData.caseTypeId);
+    const [token, setToken] = useState(localStorage.getItem("token"))
+    const onSubmitHandler = (e) => {
+        const toastId = toast.loading("انتظر قليلا")
+        setTimeout(() => { toast.dismiss(toastId); }, 1000);
+        e.preventDefault()
+        errorAddCase()
+        axios.post(("http://otrok.invoacdmy.com/api/user/case/store", { headers: { "Authorization": ` ${token}` } }), addNewCase)
+            .then(response => {
+                toast.success(response.data.message)
+
+            }
+            ).catch((err) => { console.log(err) })
+        console.log(reqAddCase)
+    }
+    /*     useEffect(() => {
+            if (image) {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    setPreview(reader.result)
+                };
+                reader.readAsDataURL(image);
+            } else {
+                setPreview(null)
+            }
+        }, [image]) */
+
     useEffect(() => {
 
         axios.get("http://otrok.invoacdmy.com/api/dashboard/donationtype/index")
@@ -63,52 +154,76 @@ function MyVerticallyCenteredModal(props) {
             </Modal.Header>
             <Modal.Body dir='rtl'>
                 {!token ? <p className={`${styles.para}`}> يجب تسجيل دخول لاضافة حالة  <a href='/login' className={`${styles.link}`}> تسجل دخول</a></p> :
-                    <Form>
-                        <div className={`${styles.logo}`}>
-                            {preview ? (<img src={preview} alt='' onClick={() => { setImage(null) }} className={`${styles.img}`} />) :
-                                (<button onClick={(event) => { event.preventDefault(); fileInputRef.current.click() }} className={`${styles.button}`}> اضافه صوره للحالة </button>)}
-                            <input className={`${styles.fileImg}`} type='file' ref={fileInputRef} accept="image/*"
-                                onChange={(event) => {
-                                    const file = event.target.files[0];
-                                    if (file) {
-                                        setImage(file)
-                                    } else {
-                                        setImage(null)
-                                    }
-                                }} />
+                    <Form onSubmit={onSubmitHandler}>
+                        <div>
+                            <input className={`${styles.fileImg}  input-file-js`} ref={(e) => {
+                                addFileInput.current = e
+                            }} id="input-file" name="img" type="file" onChange={(e) => { previewUploadImage(e) }} />
+                            {
+                                imageUrl == null ?
+                                    <>
+                                        <div ref={addFile} onClick={() => { handleLogo() }}>
+                                            <img className={`${styles.img}`} ref={imageFirmRef} src={formData.img} alt="" />
+                                        </div>
+                                        {/* {errors.Logo && <span className="error-message ">{errors.Logo}</span>} */}
+                                    </>
+                                    :
+                                    <div ref={addFile} onClick={() => { handleLogo() }}>
+                                        <img className={`${styles.img}`} ref={imageContentRef} src={imageUrl} alt="" />
+                                    </div>
+                            }
                         </div>
                         <Form.Group className="mb-3" controlId="formBasicEmail" >
-                            <Form.Control name="userName" className={`${styles.input}`} placeholder=" عنوان للحالة" required />
+                            <Form.Control name="title" className={`${styles.input}`} placeholder=" عنوان للحالة" onChange={onChangeHandler} value={formData.title} />
+                            <Form.Text className={`${styles.msErr}`}>
+                                {formError.title}
+                            </Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicEmail" >
-                            <Form.Control as="textarea" rows="3" name="help" className={`${styles.textArea}`} placeholder="نبذة مختصرة عن الحالة" required />
+                            <Form.Control as="textarea" rows="3" name="description" className={`${styles.textArea}`} placeholder="نبذة مختصرة عن الحالة" onChange={onChangeHandler} value={formData.description} />
+                            <Form.Text className={`${styles.msErr}`}>
+                                {formError.description}
+                            </Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicEmail" >
-                            <Form.Control name="money" className={`${styles.input}`} placeholder=" المبلغ المراد تجميعة " required />
+                            <Form.Control name="totalPrice" className={`${styles.input}`} placeholder=" المبلغ المراد تجميعة " onChange={onChangeHandler} value={formData.totalPrice} />
+                            <Form.Text className={`${styles.msErr}`}>
+                                {formError.totalPrice}
+                            </Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <select
                                 placeholder="State"
                                 className={`${styles.input} select`}
-                                name="category"
+                                name="caseTypeId"
+                                onChange={onChangeHandler}
+                                value={formData.caseTypeId}
                             >
                                 <option className={styles.option}>نوع الحالة</option>
                                 {dataCases && dataCases.map(category =>
-                                    <option className={styles.option}>{category.name_ar}</option>
+                                    <option className={styles.option} value={category.id}>{category.name_ar}</option>
                                 )}
                             </select>
+                            <Form.Text className={`${styles.msErr}`}>
+                                {formError.caseType}
+                            </Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <select
                                 placeholder="State"
                                 className={`${styles.input} select`}
-                                name="donation"
+                                name="donationTypeId"
+                                onChange={onChangeHandler}
+                                value={formData.donationTypeId}
                             >
                                 <option className={styles.option}> نوع التبرع</option>
                                 {dataTypes && dataTypes.map(type =>
-                                    <option className={styles.option}>{type.name_ar}</option>
+                                    <option className={styles.option} value={type.id} >{type.name_ar}</option>
                                 )}
                             </select>
+                            <Form.Text className={`${styles.msErr}`}>
+                                {formError.donationType}
+                            </Form.Text>
                         </Form.Group>
                         <Button type="submit" className={styles.signup__btn} >
                             اضافة الان

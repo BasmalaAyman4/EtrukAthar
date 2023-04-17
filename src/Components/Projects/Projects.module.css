@@ -129,3 +129,10 @@ body[dir="rtl"] .projects_dir{
 .link:hover {
     color: #000;
 }
+.msErr {
+    color: rgba(209, 3, 3, 0.938) !important;
+    font-size: 12px !important;
+    font-family: "Changa-Regular";
+    font-weight: bold;
+
+}

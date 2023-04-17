@@ -27,22 +27,6 @@ export default function Events() {
                     <div className={`${style.eventsStyle}`}>
 
                         <div className={`${style.search}`}>
-                            <select className={`${style.formSelect}`}>
-                                <option>{t("كل الاقسام")}</option>
-                                <option>Nightstand</option>
-                                <option>&nbsp;&nbsp;&nbsp;coffer</option>
-                                <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cradle</option>
-                                <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dresser</option>
-                                <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;trundle bed</option>
-                                <option>&nbsp;&nbsp;&nbsp;Commode</option>
-                                <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cathedra</option>
-                                <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;confidante</option>
-                                <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sideboard</option>
-                                <option>&nbsp;&nbsp;&nbsp;Modern antique</option>
-                                <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;curule chair</option>
-                                <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;faldstool</option>
-                                <option>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vargueno</option>
-                            </select>
                             <input className={`${style.searchbox}`} type="text" name="serach" placeholder={t("البحث في الأحداث...")} />
                             <a className={`${style.search__link}`} href="/">{t("بحث")}</a>
                         </div>
