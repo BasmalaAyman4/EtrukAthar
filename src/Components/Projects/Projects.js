@@ -20,7 +20,7 @@ export default function Projects() {
 
     //    const [providersFilter,setProvidersFilter]=useState([])
 
-    const handleFilterProviders = (e) => {
+    const handleFilterDonationType = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
         setDataTypes(e.target.value)
         console.log(e.target.value)
@@ -254,7 +254,7 @@ export default function Projects() {
                                         placeholder="State"
                                         className={`${styles.input} select`}
                                         name="donationTypeId"
-                                        onChange={handleFilterProviders}
+                                        onChange={handleFilterDonationType}
                                         value={formData.donationTypeId}
                                     >
                                         <option className={styles.option}> نوع التبرع</option>
