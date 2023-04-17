@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react'
 import styles from './Projects.module.css'
 import './Projects.css'
 import HeaderTitle from '../HeaderTitle/HeaderTitle'
-import CardJson from '../../Data/Card.json'
 import { useTranslation } from 'react-i18next'
 import 'bootstrap/dist/css/bootstrap.css';
 import CardCase from './../Card/Card'
@@ -28,6 +27,7 @@ export default function Projects() {
         descriptionEn: '',
         descriptionAr: '',
         totalPrice: '',
+        paiedAmount: '',
         caseTypeId: '',
         donationTypeId: '',
 
@@ -76,6 +76,9 @@ export default function Projects() {
         if (formData.totalPrice === '') {
             err.totalPrice = "المبلغ المراد تجميعه مطلوب"
         }
+        if (formData.paiedAmount === '') {
+            err.paiedAmount = "المبلغ الذي تم تجميعه مطلوب"
+        }
         if (formData.caseType === '') {
             err.caseType = "يرجي اختيار نوع الحالة"
         }
@@ -91,6 +94,7 @@ export default function Projects() {
     addNewCase.append("description_ar", formData.descriptionAr);
     addNewCase.append("description_en", formData.descriptionEn);
     addNewCase.append("initial_amount", formData.totalPrice);
+    addNewCase.append("paied_amount", formData.paiedAmount);
     addNewCase.append("image", formData.img);
     addNewCase.append("donationtype_id", formData.donationTypeId);
     addNewCase.append("category_id", formData.caseTypeId);
@@ -110,7 +114,7 @@ export default function Projects() {
             .then(response => {
                 toast.success(response.data.message)
                 setShow(true);
-
+                console.log(response)
             }
             ).catch((err) => { console.log(err) })
 
@@ -192,9 +196,15 @@ export default function Projects() {
                                     </Form.Text>
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control name="totalPrice" className={`${styles.input}`} placeholder=" المبلغ المراد تجميعة " onChange={onChangeHandler} value={formData.totalPrice} />
+                                    <Form.Control name="totalPrice" type='number' className={`${styles.input}`} placeholder=" المبلغ المراد تجميعة " onChange={onChangeHandler} value={formData.totalPrice} />
                                     <Form.Text className={`${styles.msErr}`}>
                                         {formError.totalPrice}
+                                    </Form.Text>
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                    <Form.Control name="paiedAmount" type='number' className={`${styles.input}`} placeholder="المبلغ الذي تم تجميعه" onChange={onChangeHandler} value={formData.paiedAmount} />
+                                    <Form.Text className={`${styles.msErr}`}>
+                                        {formError.paied_amount}
                                     </Form.Text>
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -207,7 +217,7 @@ export default function Projects() {
                                     >
                                         <option className={styles.option}>نوع الحالة</option>
                                         {dataCases && dataCases.map(category =>
-                                            <option className={styles.option} value={category.id}>{category.name_ar}</option>
+                                            <option className={styles.option} value={category.id} key={category.id}>{category.name_ar}</option>
                                         )}
                                     </select>
                                     <Form.Text className={`${styles.msErr}`}>
@@ -224,7 +234,7 @@ export default function Projects() {
                                     >
                                         <option className={styles.option}> نوع التبرع</option>
                                         {dataTypes && dataTypes.map(type =>
-                                            <option className={styles.option} value={type.id} >{type.name_ar}</option>
+                                            <option className={styles.option} value={type.id} key={type.id} >{type.name_ar}</option>
                                         )}
                                     </select>
                                     <Form.Text className={`${styles.msErr}`}>
