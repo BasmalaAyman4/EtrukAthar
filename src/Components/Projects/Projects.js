@@ -13,17 +13,37 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 import { ToastContainer } from "react-toastify";
 function MyVerticallyCenteredModal(props) {
-
+    const [token, setToken] = useState(localStorage.getItem("token"))
     const [dataCases, setDataCases] = useState([]);
     const [dataTypes, setDataTypes] = useState([]);
     const [formData, setFormData] = useState({
-        title: '',
-        img: "",
-        description: '',
+        titleAr: '',
+        titleEn: '',
+        img: '',
+        descriptionEn: '',
+        descriptionAr: '',
         totalPrice: '',
         caseTypeId: '',
         donationTypeId: '',
+   
     })
+    useEffect(() => {
+
+        axios.get("http://otrok.invoacdmy.com/api/dashboard/donationtype/index")
+            .then(response => {
+                setDataTypes(response.data.Donationtypes)
+            }
+
+            ).catch((err) => { console.log(err) })
+
+        axios.get("http://otrok.invoacdmy.com/api/dashboard/category/index")
+            .then(response => {
+                setDataCases(response.data.Categories)
+            }
+
+            ).catch((err) => { console.log(err) })
+
+    }, [])
     const addFile = useRef(null)
     const addFileInput = useRef(null)
     const imageContentRef = useRef(null);
@@ -77,39 +97,46 @@ function MyVerticallyCenteredModal(props) {
         setFormError({ ...err })
 
     }
-    const reqAddCase = {
-        name_ar: formData.title,
-        name_en: formData.title,
-        description_ar: formData.description,
-        description_en: formData.description,
-        initial_amount: formData.totalPrice,
-        image: formData.img,
-        donationtype_id: formData.donationTypeId,
-        category_id: formData.caseTypeId
-    }
+    // const reqAddCase = {
+    //     name_ar: formData.title,
+    //     name_en: formData.title,
+    //     description_ar: formData.description,
+    //     description_en: formData.description,
+    //     initial_amount: formData.totalPrice,
+    //     image: formData.img,
+    //     donationtype_id: formData.donationTypeId,
+    //     category_id: formData.caseTypeId
+    // }
 
     const addNewCase = new FormData();
-    addNewCase.append("name_ar", formData.title);
-    addNewCase.append("name_en", formData.title);
-    addNewCase.append("description_ar", formData.description);
-    addNewCase.append("description_en", formData.description);
+    addNewCase.append("name_ar", formData.titleAr);
+    addNewCase.append("name_en", formData.titleEn);
+    addNewCase.append("description_ar", formData.descriptionAr);
+    addNewCase.append("description_en", formData.descriptionEn);
     addNewCase.append("initial_amount", formData.totalPrice);
     addNewCase.append("image", formData.img);
     addNewCase.append("donationtype_id", formData.donationTypeId);
     addNewCase.append("category_id", formData.caseTypeId);
-    const [token, setToken] = useState(localStorage.getItem("token"))
+  
     const onSubmitHandler = (e) => {
+
+        console.log(formData)
+        console.log(token)
         const toastId = toast.loading("انتظر قليلا")
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         e.preventDefault()
         errorAddCase()
-        axios.post(("http://otrok.invoacdmy.com/api/user/case/store", { headers: { "Authorization": ` ${token}` } }), addNewCase)
+        axios.post("http://otrok.invoacdmy.com/api/user/case/store",addNewCase,{ 
+            headers: {
+             "Authorization": `Bearer ${token}`, 
+            "Content-Type": "multipart/form-data"
+        }
+        })
             .then(response => {
                 toast.success(response.data.message)
-
             }
             ).catch((err) => { console.log(err) })
-        console.log(reqAddCase)
+   
     }
     /*     useEffect(() => {
             if (image) {
@@ -123,23 +150,7 @@ function MyVerticallyCenteredModal(props) {
             }
         }, [image]) */
 
-    useEffect(() => {
 
-        axios.get("http://otrok.invoacdmy.com/api/dashboard/donationtype/index")
-            .then(response => {
-                setDataTypes(response.data.Donationtypes)
-            }
-
-            ).catch((err) => { console.log(err) })
-
-        axios.get("http://otrok.invoacdmy.com/api/dashboard/category/index")
-            .then(response => {
-                setDataCases(response.data.Categories)
-            }
-
-            ).catch((err) => { console.log(err) })
-
-    }, [])
     return (
         <Modal
             {...props}
@@ -174,13 +185,25 @@ function MyVerticallyCenteredModal(props) {
                             }
                         </div>
                         <Form.Group className="mb-3" controlId="formBasicEmail" >
-                            <Form.Control name="title" className={`${styles.input}`} placeholder=" عنوان للحالة" onChange={onChangeHandler} value={formData.title} />
+                            <Form.Control name="titleAr" className={`${styles.input}`} placeholder="    عنوان للحالة بالعربية" onChange={onChangeHandler} value={formData.titleAr} />
                             <Form.Text className={`${styles.msErr}`}>
                                 {formError.title}
                             </Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicEmail" >
-                            <Form.Control as="textarea" rows="3" name="description" className={`${styles.textArea}`} placeholder="نبذة مختصرة عن الحالة" onChange={onChangeHandler} value={formData.description} />
+                            <Form.Control name="titleEn" className={`${styles.input}`} placeholder="    عنوان للحالة بالانجيزية" onChange={onChangeHandler} value={formData.titleEn} />
+                            <Form.Text className={`${styles.msErr}`}>
+                                {formError.title}
+                            </Form.Text>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicEmail" >
+                            <Form.Control as="textarea" rows="3" name="descriptionEn" className={`${styles.textArea}`} placeholder="بالانجليزيه نبذة مختصرة عن الحالة" onChange={onChangeHandler} value={formData.descriptionEn} />
+                            <Form.Text className={`${styles.msErr}`}>
+                                {formError.description}
+                            </Form.Text>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicEmail" >
+                            <Form.Control as="textarea" rows="3" name="descriptionAr" className={`${styles.textArea}`} placeholder=" عربي نبذة مختصرة عن الحالة"  onChange={onChangeHandler} value={formData.descriptionAr} />
                             <Form.Text className={`${styles.msErr}`}>
                                 {formError.description}
                             </Form.Text>
