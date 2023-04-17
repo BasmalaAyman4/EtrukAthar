@@ -16,6 +16,20 @@ export default function Projects() {
     const [dataCases, setDataCases] = useState([]);
     const [dataTypes, setDataTypes] = useState([]);
     const [data, setData] = useState([]);
+    const [filterLink, setfilterLink] = useState('')
+
+    //    const [providersFilter,setProvidersFilter]=useState([])
+
+    const handleFilterProviders = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value })
+        setDataTypes(e.target.value)
+        console.log(e.target.value)
+        e.target.value === '' ?
+            setfilterLink("http://otrok.invoacdmy.com/api/user/case/category/2?lang=ar")
+            :
+            setfilterLink(`http://otrok.invoacdmy.com/api/user/case/category/${e.target.value}?lang=ar`)
+
+    }
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -120,6 +134,17 @@ export default function Projects() {
 
     }
     useEffect(() => {
+
+        axios.get(filterLink)
+            .then(response => {
+                setDataTypes(response.data)
+                console.log(response.data)
+            })
+            .catch((err) => { console.log(err) })
+
+    }, [filterLink])
+    useEffect(() => {
+
         axios.get("http://otrok.invoacdmy.com/api/dashboard/donationtype/index")
             .then(response => {
                 setDataTypes(response.data.Donationtypes)
@@ -229,7 +254,7 @@ export default function Projects() {
                                         placeholder="State"
                                         className={`${styles.input} select`}
                                         name="donationTypeId"
-                                        onChange={onChangeHandler}
+                                        onChange={handleFilterProviders}
                                         value={formData.donationTypeId}
                                     >
                                         <option className={styles.option}> نوع التبرع</option>
