@@ -61,8 +61,9 @@ export default function Login() {
               await delay(7000);
            
           if(localStorage.getItem("token")){
-              window.location.reload();
               navigate("/")
+              window.location.reload();
+              
           }else {
               navigate("/login") 
           }

@@ -342,7 +342,7 @@ export default function Projects() {
 
                     </div>
                 </div>
-
+                <ToastContainer />
             </section>
         </>
     )
