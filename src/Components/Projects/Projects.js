@@ -11,25 +11,59 @@ import Form from 'react-bootstrap/Form';
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import { ToastContainer } from "react-toastify";
+import Cookies from 'js-cookie'
 export default function Projects() {
     const { t } = useTranslation()
     const [dataCases, setDataCases] = useState([]);
-    const [dataTypes, setDataTypes] = useState([]);
+    const [dataCategories, setDataCategories] = useState([]);
     const [data, setData] = useState([]);
     const [filterLink, setfilterLink] = useState('')
 
-    //    const [providersFilter,setProvidersFilter]=useState([])
-
+       const [providersFilter,setProvidersFilter]=useState([])
+       const currentLanguageCode = Cookies.get('i18next') || 'en'
+   
     const handleFilterDonationType = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value })
-        setDataTypes(e.target.value)
-        console.log(e.target.value)
+       
+    
+        console.log(e.target.value,"category")
         e.target.value === '' ?
-            setfilterLink("http://otrok.invoacdmy.com/api/user/case/category/2?lang=ar")
+        
+            setfilterLink(`http://otrok.invoacdmy.com/api/user/case/index?lang=${currentLanguageCode}`)
             :
-            setfilterLink(`http://otrok.invoacdmy.com/api/user/case/category/${e.target.value}?lang=ar`)
+            setfilterLink(`http://otrok.invoacdmy.com/api/user/case/category/${e.target.value}?lang=${currentLanguageCode}`)
 
     }
+    useEffect(() => {
+       
+       
+        axios.get(`http://otrok.invoacdmy.com/api/user/case/index?lang=${currentLanguageCode}`)
+            .then(response => {
+                setDataCases(response.data.cases)
+                console.log(response.data.cases,'cases')
+            }
+            ).catch((err) => { console.log(err) })
+
+    }, [])
+
+    useEffect(() => {
+       
+       
+        axios.get(filterLink)
+            .then(response => {
+                setDataCases(response.data.cases)
+                console.log(response.data.cases,'cases')
+            }
+            ).catch((err) => { console.log(err) })
+
+        axios.get(`http://otrok.invoacdmy.com/api/user/category/index?lang=${currentLanguageCode}`)
+            .then(response => {
+                setDataCategories(response.data.Categories)
+            }
+            ).catch((err) => { console.log(err) })
+
+    }, [currentLanguageCode,filterLink])
+
+ 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -74,6 +108,7 @@ export default function Projects() {
 
         setFormData({ ...formData, [e.target.name]: e.target.value })
         console.log(formData, "form")
+        console.log(formData.paiedAmount)
     }
     function errorAddCase() {
         let err = {}
@@ -113,6 +148,7 @@ export default function Projects() {
     addNewCase.append("donationtype_id", formData.donationTypeId);
     addNewCase.append("category_id", formData.caseTypeId);
     const onSubmitHandler = (e) => {
+        console.log(formData.donationTypeId)
         console.log(formData)
         console.log(token)
         const toastId = toast.loading("...انتظر قليلا")
@@ -127,40 +163,12 @@ export default function Projects() {
         })
             .then(response => {
                 toast.success(response.data.message)
-                setShow(true);
                 console.log(response)
             }
-            ).catch((err) => { console.log(err) })
+            ).catch((err) => {toast.error(err.response.data.message) })
 
     }
-    useEffect(() => {
-
-        axios.get(filterLink)
-            .then(response => {
-                setDataTypes(response.data)
-                console.log(response.data)
-            })
-            .catch((err) => { console.log(err) })
-
-    }, [filterLink])
-    useEffect(() => {
-
-        axios.get("http://otrok.invoacdmy.com/api/dashboard/donationtype/index")
-            .then(response => {
-                setDataTypes(response.data.Donationtypes)
-            }
-            ).catch((err) => { console.log(err) })
-        axios.get("http://otrok.invoacdmy.com/api/dashboard/category/index")
-            .then(response => {
-                setDataCases(response.data.Categories)
-            }
-            ).catch((err) => { console.log(err) })
-        axios.get("http://otrok.invoacdmy.com/api/dashboard/case/index")
-            .then(response => {
-                setData(response.data.cases)
-            }
-            ).catch((err) => { console.log(err) })
-    }, [])
+  
     return (
         <>
             <section className={`${styles.projects}`}>
@@ -241,20 +249,20 @@ export default function Projects() {
                                         value={formData.caseTypeId}
                                     >
                                         <option className={styles.option}>نوع الحالة</option>
-                                        {dataCases && dataCases.map(category =>
-                                            <option className={styles.option} value={category.id} key={category.id}>{category.name_ar}</option>
+                                        {dataCategories && dataCategories.map(category =>
+                                            <option className={styles.option} value={category.id} key={category.id}>{category.name}</option>
                                         )}
                                     </select>
                                     <Form.Text className={`${styles.msErr}`}>
                                         {formError.caseType}
                                     </Form.Text>
                                 </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicPassword">
+                                {/* <Form.Group className="mb-3" controlId="formBasicPassword">
                                     <select
                                         placeholder="State"
                                         className={`${styles.input} select`}
                                         name="donationTypeId"
-                                        onChange={handleFilterDonationType}
+                                        onChange={onChangeHandler}
                                         value={formData.donationTypeId}
                                     >
                                         <option className={styles.option}> نوع التبرع</option>
@@ -265,7 +273,7 @@ export default function Projects() {
                                     <Form.Text className={`${styles.msErr}`}>
                                         {formError.donationType}
                                     </Form.Text>
-                                </Form.Group>
+                                </Form.Group> */}
                                 <Button type="submit" className={styles.signup__btn} onClick={handleClose} >
                                     اضافة الان
                                 </Button>
@@ -280,24 +288,30 @@ export default function Projects() {
                             <fieldset className={`${styles.category}`}>
                                 <h4 className='side-filter__item-header-title'> {t("انواع الحالات")} </h4>
                                 <div class="radio-item-container">
-                                    {dataCases && dataCases.map(category =>
+                                <div class="radio-item">
+                                            <label className='label_radio' for=''>
+                                                <input type="radio"  id='' name="caseCategory" value='' onChange={handleFilterDonationType} />
+                                                <span> {t("جميع الحالات")} </span>
+                                            </label>
+                                        </div>
+                                    {dataCategories && dataCategories.map(category =>
                                         <div class="radio-item">
                                             <label className='label_radio' for={category.id}>
-                                                <input type="radio" id={category.id} name="flavor" value={category.name_ar} />
-                                                <span> {category.name_ar} </span>
+                                                <input type="radio" id={category.id} name="caseCategory" value={category.id} onChange={handleFilterDonationType} />
+                                                <span> {category.name} </span>
                                             </label>
                                         </div>
                                     )}
 
                                 </div>
                                 <h4 className='side-filter__item-header-title pb-3'>{t("انواع التبرع")}</h4>
-
+{/* 
                                 {dataTypes && dataTypes.map(type => (
                                     <div class="form-group ">
                                         <input class="form-group_checklist" type="checkbox" id={type.name_ar} />
                                         <label class="form-group_checklist_label" for={type.name_ar}>{type.name_ar}</label>
                                     </div>
-                                ))}
+                                ))} */}
 
 
 
@@ -305,16 +319,17 @@ export default function Projects() {
                         </div>
                         <div className='col-lg-10 col-md-12 col-sm-12'>
                             <div className={`${styles.projects__body}`}>
-                                {data && data.map(casesCard =>
-                                    <CardCase id={casesCard.id} photo={casesCard.image} title={casesCard.name_ar} para={casesCard.description_ar} progress={((casesCard.paied_amount * 100) / casesCard.initial_amount)} totalPrice={casesCard.initial_amount} numOfDonates={casesCard.paied_amount} />
+                                {dataCases && dataCases.map(caseCard =>
+                                    <CardCase id={caseCard.id} photo={caseCard.image} title={caseCard.name} para={caseCard.description} progress={((caseCard.paied_amount * 100) / caseCard.initial_amount)} totalPrice={caseCard.initial_amount} numOfDonates={caseCard.paied_amount} />
                                 )}
                             </div>
                         </div>
 
                     </div>
                 </div>
-                <ToastContainer />
+        
             </section>
+            <ToastContainer />
         </>
     )
 }
