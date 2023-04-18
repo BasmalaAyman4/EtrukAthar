@@ -36,28 +36,27 @@ export default function Projects() {
     useEffect(() => {
        
        
-        axios.get(`http://otrok.invoacdmy.com/api/user/case/index?lang=${currentLanguageCode}`)
+        axios.get(`http://otrok.invoacdmy.com/api/user/category/index?lang=${currentLanguageCode}`)
             .then(response => {
-                setDataCases(response.data.cases)
-                console.log(response.data.cases,'cases')
+                setDataCategories(response.data.Categories)
             }
             ).catch((err) => { console.log(err) })
 
-    }, [])
+
+        axios.get(`http://otrok.invoacdmy.com/api/user/case/index?lang=${currentLanguageCode}`)
+            .then(response => {
+                setDataCases(response.data.cases)
+            }
+            ).catch((err) => { console.log(err) })
+
+    }, [currentLanguageCode])
 
     useEffect(() => {
-       
        
         axios.get(filterLink)
             .then(response => {
                 setDataCases(response.data.cases)
                 console.log(response.data.cases,'cases')
-            }
-            ).catch((err) => { console.log(err) })
-
-        axios.get(`http://otrok.invoacdmy.com/api/user/category/index?lang=${currentLanguageCode}`)
-            .then(response => {
-                setDataCategories(response.data.Categories)
             }
             ).catch((err) => { console.log(err) })
 
