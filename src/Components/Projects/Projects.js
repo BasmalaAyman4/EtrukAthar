@@ -21,11 +21,10 @@ export default function Projects() {
     //    const [providersFilter,setProvidersFilter]=useState([])
 
     const handleFilterDonationType = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value })
-        setDataTypes(e.target.value)
-        console.log(e.target.value)
+        setDataCases(e.target.value)
+        console.log(e.target.value, "category")
         e.target.value === '' ?
-            setfilterLink("http://otrok.invoacdmy.com/api/user/case/category/2?lang=ar")
+            setfilterLink("http://otrok.invoacdmy.com/api/user/case/index?lang=ar")
             :
             setfilterLink(`http://otrok.invoacdmy.com/api/user/case/category/${e.target.value}?lang=ar`)
 
@@ -137,8 +136,7 @@ export default function Projects() {
 
         axios.get(filterLink)
             .then(response => {
-                setDataTypes(response.data)
-                console.log(response.data)
+                setData(response.data.cases)
             })
             .catch((err) => { console.log(err) })
 
@@ -207,6 +205,7 @@ export default function Projects() {
                                     <Form.Text className={`${styles.msErr}`}>
                                         {formError.title}
                                     </Form.Text>
+
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formBasicEmail" >
                                     <Form.Control as="textarea" rows="3" name="descriptionEn" className={`${styles.textArea}`} placeholder="بالانجليزيه نبذة مختصرة عن الحالة" onChange={onChangeHandler} value={formData.descriptionEn} />
@@ -229,7 +228,7 @@ export default function Projects() {
                                 <Form.Group className="mb-3" controlId="formBasicEmail" >
                                     <Form.Control name="paiedAmount" type='number' className={`${styles.input}`} placeholder="المبلغ الذي تم تجميعه" onChange={onChangeHandler} value={formData.paiedAmount} />
                                     <Form.Text className={`${styles.msErr}`}>
-                                        {formError.paied_amount}
+                                        {formError.paiedAmount}
                                     </Form.Text>
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -254,7 +253,7 @@ export default function Projects() {
                                         placeholder="State"
                                         className={`${styles.input} select`}
                                         name="donationTypeId"
-                                        onChange={handleFilterDonationType}
+                                        onChange={onChangeHandler}
                                         value={formData.donationTypeId}
                                     >
                                         <option className={styles.option}> نوع التبرع</option>
@@ -283,7 +282,7 @@ export default function Projects() {
                                     {dataCases && dataCases.map(category =>
                                         <div class="radio-item">
                                             <label className='label_radio' for={category.id}>
-                                                <input type="radio" id={category.id} name="flavor" value={category.name_ar} />
+                                                <input type="radio" id={category.id} name="flavor" value={category.id} onChange={handleFilterDonationType} />
                                                 <span> {category.name_ar} </span>
                                             </label>
                                         </div>
