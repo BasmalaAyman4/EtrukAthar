@@ -26,9 +26,7 @@ export default function Events() {
 
                     <div className={`${style.eventsStyle}`}>
 
-                        <div className={`${style.search}`}>
-                            <input className={`${style.searchbox}`} type="text" name="serach" placeholder={t("البحث في الأحداث...")} />
-                            <a className={`${style.search__link}`} href="/">{t("بحث")}</a>
+                        <div>
                         </div>
 
                         <div className={`${style.events__view}`}>

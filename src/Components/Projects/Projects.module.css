@@ -2,6 +2,7 @@
         font-family: "Changa-Regular", sans-serif !important;
         display: flex;
         flex-direction: column;
+        margin-bottom: 20%;
 }
 body[dir="ltr"] .projects_dir{
     direction: rtl;
