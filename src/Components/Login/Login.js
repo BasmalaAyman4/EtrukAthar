@@ -48,22 +48,23 @@ export default function Login() {
     }
 
     const reqSignUpData = {
-        email: formData.email,
-        password: formData.password,
-
-    }
-
-    const delay = ms => new Promise(res => setTimeout(res, ms));
-    const handleRedirect = async () => {
-        await delay(7000);
-
-        if (localStorage.getItem("token")) {
-            window.location.reload();
-            navigate("/")
-        } else {
-            navigate("/login")
-        }
-    }
+        email: formData.email ,
+        password: formData.password ,
+       
+      }
+      
+      const delay = ms => new Promise(res => setTimeout(res, ms));
+      const handleRedirect = async () => {
+              await delay(7000);
+           
+          if(localStorage.getItem("token")){
+              navigate("/")
+              window.location.reload();
+              
+          }else {
+              navigate("/login") 
+          }
+       }
 
 
 

@@ -5,6 +5,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import { useTranslation } from 'react-i18next';
 export default function Card(props) {
     const { t } = useTranslation()
+     console.log(props.numOfDonates)
     return (
         <>
 
