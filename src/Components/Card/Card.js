@@ -5,7 +5,6 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import { useTranslation } from 'react-i18next';
 export default function Card(props) {
     const { t } = useTranslation()
-     console.log(props.numOfDonates)
     return (
         <>
 
@@ -13,7 +12,7 @@ export default function Card(props) {
                 <div className={`${styles.cardFig}`}>
                     <img src={props.photo} alt="" className={`${styles.figImg}`} />
                     <div className={`${styles.cardLink}`}>
-                        <a href="/card-details" className={`${styles.cardDonate}`}>للمزيد من التفاصيل </a>
+                        <a href="/card-details/:id" className={`${styles.cardDonate}`}>للمزيد من التفاصيل </a>
                     </div>
                 </div>
                 <div className={`${styles.cardContent}`}>

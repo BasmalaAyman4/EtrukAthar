@@ -16,34 +16,36 @@ export default function Projects() {
     const { t } = useTranslation()
     const [dataCases, setDataCases] = useState([]);
     const [dataCategories, setDataCategories] = useState([]);
-    const [data, setData] = useState([]);
+    const [dataType, setDataType] = useState([]);
     const [filterLink, setfilterLink] = useState('')
 
-    const [providersFilter, setProvidersFilter] = useState([])
     const currentLanguageCode = Cookies.get('i18next') || 'en'
 
-    const handleFilterDonationType = (e) => {
-
-
+    const handleFilterCategoryType = (e) => {
         console.log(e.target.value, "category")
         e.target.value === '' ?
-
-            setfilterLink(`http://otrok.invoacdmy.com/api/user/case/index?lang=${currentLanguageCode}`)
+            setfilterLink(`https://otrok.invoacdmy.com/api/user/case/index?lang=${currentLanguageCode}`)
             :
-            setfilterLink(`http://otrok.invoacdmy.com/api/user/case/category/${e.target.value}?lang=${currentLanguageCode}`)
+            setfilterLink(`https://otrok.invoacdmy.com/api/user/case/category/${e.target.value}?lang=${currentLanguageCode}`)
 
     }
     useEffect(() => {
 
 
-        axios.get(`http://otrok.invoacdmy.com/api/user/category/index?lang=${currentLanguageCode}`)
+        axios.get(`https://otrok.invoacdmy.com/api/user/category/index?lang=${currentLanguageCode}`)
             .then(response => {
                 setDataCategories(response.data.Categories)
             }
             ).catch((err) => { console.log(err) })
 
+        axios.get(`https://otrok.invoacdmy.com/api/dashboard/donationtype/index`)
+            .then(response => {
+                setDataType(response.data.Donationtypes)
+            }
+            ).catch((err) => { console.log(err) })
 
-        axios.get(`http://otrok.invoacdmy.com/api/user/case/index?lang=${currentLanguageCode}`)
+
+        axios.get(`https://otrok.invoacdmy.com/api/user/case/index?lang=${currentLanguageCode}`)
             .then(response => {
                 setDataCases(response.data.cases)
             }
@@ -154,7 +156,7 @@ export default function Projects() {
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         e.preventDefault()
         errorAddCase()
-        axios.post("http://otrok.invoacdmy.com/api/user/case/store", addNewCase, {
+        axios.post("https://otrok.invoacdmy.com/api/user/case/store", addNewCase, {
             headers: {
                 "Authorization": `Bearer ${token}`,
                 "Content-Type": "multipart/form-data"
@@ -257,7 +259,7 @@ export default function Projects() {
                                         {formError.caseType}
                                     </Form.Text>
                                 </Form.Group>
-                                {/* <Form.Group className="mb-3" controlId="formBasicPassword">
+                                <Form.Group className="mb-3" controlId="formBasicPassword">
                                     <select
                                         placeholder="State"
                                         className={`${styles.input} select`}
@@ -266,14 +268,14 @@ export default function Projects() {
                                         value={formData.donationTypeId}
                                     >
                                         <option className={styles.option}> نوع التبرع</option>
-                                        {dataTypes && dataTypes.map(type =>
+                                        {dataType && dataType.map(type =>
                                             <option className={styles.option} value={type.id} key={type.id} >{type.name_ar}</option>
                                         )}
                                     </select>
                                     <Form.Text className={`${styles.msErr}`}>
                                         {formError.donationType}
                                     </Form.Text>
-                                </Form.Group> */}
+                                </Form.Group>
                                 <Button type="submit" className={styles.signup__btn} onClick={handleClose} >
                                     اضافة الان
                                 </Button>
@@ -290,14 +292,14 @@ export default function Projects() {
                                 <div class="radio-item-container">
                                     <div class="radio-item">
                                         <label className='label_radio' for=''>
-                                            <input type="radio" id='' name="caseCategory" value='' onChange={handleFilterDonationType} />
+                                            <input type="radio" id='' name="caseCategory" value='' onChange={handleFilterCategoryType} />
                                             <span> {t("جميع الحالات")} </span>
                                         </label>
                                     </div>
                                     {dataCategories && dataCategories.map(category =>
                                         <div class="radio-item">
                                             <label className='label_radio' for={category.id}>
-                                                <input type="radio" id={category.id} name="caseCategory" value={category.id} onChange={handleFilterDonationType} />
+                                                <input type="radio" id={category.id} name="caseCategory" value={category.id} onChange={handleFilterCategoryType} />
                                                 <span> {category.name} </span>
                                             </label>
                                         </div>
@@ -305,13 +307,13 @@ export default function Projects() {
 
                                 </div>
                                 <h4 className='side-filter__item-header-title pb-3'>{t("انواع التبرع")}</h4>
-                                {/* 
-                                {dataTypes && dataTypes.map(type => (
+
+                                {dataType && dataType.map(type => (
                                     <div class="form-group ">
-                                        <input class="form-group_checklist" type="checkbox" id={type.name_ar} />
-                                        <label class="form-group_checklist_label" for={type.name_ar}>{type.name_ar}</label>
+                                        <input class="form-group_checklist" type="checkbox" id={type.name_ar} value={type.id} />
+                                        <label class="form-group_checklist_label" for={type.name_ar} value={type.id}>{type.name_ar}</label>
                                     </div>
-                                ))} */}
+                                ))}
 
                             </fieldset>
                         </div>

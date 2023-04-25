@@ -105,7 +105,7 @@ export default function SignUp() {
     setTimeout(() => { toast.dismiss(toastId); }, 1000);
     e.preventDefault()
     handleSigupUserErrors()
-    axios.post(`http://otrok.invoacdmy.com/api/register`, reqSignUpData)
+    axios.post(`https://otrok.invoacdmy.com/api/register`, reqSignUpData)
       .then((response) => {
         localStorage.setItem("token", response.data.token)
         toast.success("Successfully registered!")

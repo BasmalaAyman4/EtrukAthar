@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Container } from 'react-bootstrap'
 import style from './ProjectsDetails.module.css'
 import './projectDetails.css'
@@ -29,11 +29,22 @@ import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import axios from 'axios'
+import { useParams } from 'react-router-dom';
 export default function ProjectsDetails() {
     const [formData, setFormData] = useState({
         phone: ''
     })
+    const casesId = useParams()
+    console.log(casesId.id)
+    useEffect(() => {
+        axios.get(`https://otrok.invoacdmy.com/api/user/case/show/${casesId.id}?lang=ar`)
+            .then((response) => {
+                console.log(response.data.case)
+                setFormData(response.data.case)
+            }).catch((err) => { console.log(err) })
 
+    }, [])
     const [priceShow, setPriceshow] = useState("");
     function clickPrice(price) {
         setPriceshow("")
@@ -54,7 +65,7 @@ export default function ProjectsDetails() {
                     <Col sm={12} xl={8} dir='rtl' >
 
                         <div className={`${style.cardDetails__body}`}>
-                            <h3 className={`${style.cardDetails__title}`}>دفء الحياة 11</h3>
+                            <h3 className={`${style.cardDetails__title}`}>{formData.name}</h3>
                             <p className={`${style.cardDetails__para}`}>{t("مشروع رقم")}</p>
                             <hr />
                         </div>
@@ -292,36 +303,36 @@ export default function ProjectsDetails() {
                         </Form>
                     </aside> */}
                         {/* <aside dir='rtl' className={`${style.aside}`}>
-                        <button className={`${style.cardDetails__btn}`}>
-                            {t("تطوع الان   للحالات عبر موقعنا ")}
-                        </button>
-                        <Form>
-                            <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                <Form.Control type='name' name="name" className={`${style.input}`} placeholder={t("  اسم المستخدم ")} required />
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                <Form.Control type='email' name="email" className={`${style.input}`} placeholder={t("    البريد الالكتروني")} required />
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                <Form.Control type='text' name="city" className={`${style.input}`} placeholder={t("العنوان")} required />
-                            </Form.Group>
-                            <PhoneInput
-                                defaultCountry="EG"
-                                international
-                                error={formData.phone ? (isValidPhoneNumber(formData.phone) ? undefined : 'Invalid phone number') : 'Phone number required'}
-                                value={formData.phone}
-                                name="phone"
-                                onChange={onChangeHandlerPhone}
-                                className={` ${style.PhoneInputInput} ${style.PhoneInput}  ${style.input}`}
-                                required />
-                            <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                <Form.Control as="textarea" rows="3" name="help" className={`${style.textArea}`} placeholder={t("بماذا يمكنك المساعدة")} />
-                            </Form.Group>
-                            <Button type="submit" className={style.signup__btn}>
-                                تبرع الان
-                            </Button>
-                        </Form>
-                    </aside> */}
+                            <button className={`${style.cardDetails__btn}`}>
+                                {t("تطوع الان   للحالات عبر موقعنا ")}
+                            </button>
+                            <Form>
+                                <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                    <Form.Control type='name' name="name" className={`${style.input}`} placeholder={t("  اسم المستخدم ")} required />
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                    <Form.Control type='email' name="email" className={`${style.input}`} placeholder={t("    البريد الالكتروني")} required />
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                    <Form.Control type='text' name="city" className={`${style.input}`} placeholder={t("العنوان")} required />
+                                </Form.Group>
+                                <PhoneInput
+                                    defaultCountry="EG"
+                                    international
+                                    error={formData.phone ? (isValidPhoneNumber(formData.phone) ? undefined : 'Invalid phone number') : 'Phone number required'}
+                                    value={formData.phone}
+                                    name="phone"
+                                    onChange={onChangeHandlerPhone}
+                                    className={` ${style.PhoneInputInput} ${style.PhoneInput}  ${style.input}`}
+                                    required />
+                                <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                    <Form.Control as="textarea" rows="3" name="help" className={`${style.textArea}`} placeholder={t("بماذا يمكنك المساعدة")} />
+                                </Form.Group>
+                                <Button type="submit" className={style.signup__btn}>
+                                    تطوع الان
+                                </Button>
+                            </Form>
+                        </aside>*/}
                         {/*  <aside dir='rtl' className={`${style.aside}`}>
                         <button className={`${style.cardDetails__btn}`}>
                             {t("تبرع الان   للحالات عبر موقعنا ")}

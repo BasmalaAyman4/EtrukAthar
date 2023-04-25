@@ -48,23 +48,23 @@ export default function Login() {
     }
 
     const reqSignUpData = {
-        email: formData.email ,
-        password: formData.password ,
-       
-      }
-      
-      const delay = ms => new Promise(res => setTimeout(res, ms));
-      const handleRedirect = async () => {
-              await delay(7000);
-           
-          if(localStorage.getItem("token")){
-              navigate("/")
-              window.location.reload();
-              
-          }else {
-              navigate("/login") 
-          }
-       }
+        email: formData.email,
+        password: formData.password,
+
+    }
+
+    const delay = ms => new Promise(res => setTimeout(res, ms));
+    const handleRedirect = async () => {
+        await delay(7000);
+
+        if (localStorage.getItem("token")) {
+            navigate("/")
+            window.location.reload();
+
+        } else {
+            navigate("/login")
+        }
+    }
 
 
 
@@ -74,7 +74,7 @@ export default function Login() {
         e.preventDefault()
         handleErrors()
         if (userType === '1') {
-            axios.post(`http://otrok.invoacdmy.com/api/login`, reqSignUpData)
+            axios.post(`https://otrok.invoacdmy.com/api/login`, reqSignUpData)
                 .then((response) => {
                     localStorage.setItem("token", response.data.token)
                     toast.success("Successfully Logged!")
@@ -84,7 +84,7 @@ export default function Login() {
                     toast.error(err.response.data.message)
                 });
         } else {
-            axios.post(`http://otrok.invoacdmy.com/api/login`, reqSignUpData)
+            axios.post(`https://otrok.invoacdmy.com/api/login`, reqSignUpData)
                 .then((response) => {
                     localStorage.setItem("token", response.data.token)
                     toast.success("Successfully Logged!")

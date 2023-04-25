@@ -22,7 +22,7 @@ export default function Router() {
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/charitySign-up" element={<CharitySignUp />} />
         <Route path="/cases" element={<Projects />} />
-        <Route path="/card-details" element={<CardDetails />} />
+        <Route path="/card-details/:id" element={<CardDetails />} />
         <Route path="/askForVoluntary" element={<AskForVoluntary />} />
         <Route path="/event" element={<Events />} />
         <Route path="/volunteerForm" element={<VolunteerForm />} />
