@@ -3,6 +3,7 @@ import './Card.css'
 import styles from './Card.module.css'
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 export default function Card(props) {
     const { t } = useTranslation()
     return (
@@ -12,7 +13,7 @@ export default function Card(props) {
                 <div className={`${styles.cardFig}`}>
                     <img src={props.photo} alt="" className={`${styles.figImg}`} />
                     <div className={`${styles.cardLink}`}>
-                        <a href="/card-details/:id" className={`${styles.cardDonate}`}>للمزيد من التفاصيل </a>
+                        <Link to={`/card-details/${props.id}`} className={`${styles.cardDonate}`}>للمزيد من التفاصيل </Link>
                     </div>
                 </div>
                 <div className={`${styles.cardContent}`}>

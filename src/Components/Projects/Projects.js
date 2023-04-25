@@ -320,6 +320,7 @@ export default function Projects() {
                         <div className='col-lg-10 col-md-12 col-sm-12'>
                             <div className={`${styles.projects__body}`}>
                                 {dataCases && dataCases.map(caseCard =>
+                                     
                                     <CardCase id={caseCard.id} photo={caseCard.image} title={caseCard.name} para={caseCard.description} progress={((caseCard.paied_amount * 100) / caseCard.initial_amount)} totalPrice={caseCard.initial_amount} numOfDonates={caseCard.paied_amount} />
                                 )}
                             </div>
