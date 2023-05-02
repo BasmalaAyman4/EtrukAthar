@@ -60,9 +60,15 @@ export default function Events() {
                             <Calendar
                                 className={`${style.CalendarStyle}`}
                                 dateCellRender={(date) => {
-                                    if (new Date(date).getDate() === 28 && new Date(date).getMonth() === 1) {
-                                        return <p className={`${style.hint}`}> انشاء قرية الحياه </p>
-                                    }
+                                    event&&event.map((event)=>(
+                                    
+                                       new Date(date).getDate() === moment(event.start_date).format("Do") && new Date(date).getMonth() === moment(event.start_date).format("MMM") ?
+                                        <p className={`${style.hint}`}>   {event.name_ar} </p> 
+                                        :
+                                        null
+                                        
+                                    ))
+                                 
                                 }} />
                         </div>
                         <div className={`${style.otherEvent}`}>
