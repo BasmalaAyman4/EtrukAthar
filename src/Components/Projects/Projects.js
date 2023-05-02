@@ -12,62 +12,50 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 import { ToastContainer } from "react-toastify";
 import Cookies from 'js-cookie'
+import imgNull from '../../assets/images/eae946efbbf74117a65d488206a09b63.png'
 export default function Projects() {
     const { t } = useTranslation()
     const [dataCases, setDataCases] = useState([]);
     const [dataCategories, setDataCategories] = useState([]);
     const [dataType, setDataType] = useState([]);
     const [filterLink, setfilterLink] = useState('')
-
     const currentLanguageCode = Cookies.get('i18next') || 'en'
-
     const handleFilterCategoryType = (e) => {
         console.log(e.target.value, "category")
         e.target.value === '' ?
             setfilterLink(`https://otrok.invoacdmy.com/api/user/case/index?lang=${currentLanguageCode}`)
             :
             setfilterLink(`https://otrok.invoacdmy.com/api/user/case/category/${e.target.value}?lang=${currentLanguageCode}`)
-
     }
     useEffect(() => {
-
-
         axios.get(`https://otrok.invoacdmy.com/api/user/category/index?lang=${currentLanguageCode}`)
             .then(response => {
                 setDataCategories(response.data.Categories)
             }
             ).catch((err) => { console.log(err) })
-
         axios.get(`https://otrok.invoacdmy.com/api/dashboard/donationtype/index`)
             .then(response => {
                 setDataType(response.data.Donationtypes)
             }
             ).catch((err) => { console.log(err) })
-
-
         axios.get(`https://otrok.invoacdmy.com/api/user/case/index?lang=${currentLanguageCode}`)
             .then(response => {
                 setDataCases(response.data.cases)
             }
             ).catch((err) => { console.log(err) })
-
     }, [currentLanguageCode])
-
     useEffect(() => {
-
         axios.get(filterLink)
             .then(response => {
                 setDataCases(response.data.cases)
                 console.log(response.data.cases, 'cases')
             }
             ).catch((err) => { console.log(err) })
-
     }, [currentLanguageCode, filterLink])
-
-
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const [active, setActive] = useState('')
     const [token, setToken] = useState(localStorage.getItem("token"))
     const [formData, setFormData] = useState({
         titleAr: '',
@@ -79,7 +67,6 @@ export default function Projects() {
         paiedAmount: '',
         caseTypeId: '',
         donationTypeId: '',
-
     })
     const addFile = useRef(null)
     const addFileInput = useRef(null)
@@ -169,7 +156,11 @@ export default function Projects() {
             ).catch((err) => { toast.error(err.response.data.message) })
 
     }
-
+    const donationAmount = (e) => {
+        const donAmount = e.target.value;
+        setActive(donAmount)
+        setFormData({ ...formData, [e.target.name]: e.target.value })
+    }
     return (
         <>
             <section className={`${styles.projects}`}>
@@ -195,7 +186,7 @@ export default function Projects() {
                                         imageUrl == null ?
                                             <>
                                                 <div ref={addFile} onClick={() => { handleLogo() }}>
-                                                    <img className={`${styles.img}`} ref={imageFirmRef} src={formData.img} alt="" />
+                                                    <img className={`${styles.img}`} ref={imageFirmRef} src={imgNull} alt="" />
                                                 </div>
                                                 {/* {errors.Logo && <span className="error-message ">{errors.Logo}</span>} */}
                                             </>
@@ -230,18 +221,7 @@ export default function Projects() {
                                         {formError.description}
                                     </Form.Text>
                                 </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control name="totalPrice" type='number' className={`${styles.input}`} placeholder=" المبلغ المراد تجميعة " onChange={onChangeHandler} value={formData.totalPrice} />
-                                    <Form.Text className={`${styles.msErr}`}>
-                                        {formError.totalPrice}
-                                    </Form.Text>
-                                </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control name="paiedAmount" type='number' className={`${styles.input}`} placeholder="المبلغ الذي تم تجميعه" onChange={onChangeHandler} value={formData.paiedAmount} />
-                                    <Form.Text className={`${styles.msErr}`}>
-                                        {formError.paiedAmount}
-                                    </Form.Text>
-                                </Form.Group>
+
                                 <Form.Group className="mb-3" controlId="formBasicPassword">
                                     <select
                                         placeholder="State"
@@ -264,7 +244,7 @@ export default function Projects() {
                                         placeholder="State"
                                         className={`${styles.input} select`}
                                         name="donationTypeId"
-                                        onChange={onChangeHandler}
+                                        onChange={donationAmount}
                                         value={formData.donationTypeId}
                                     >
                                         <option className={styles.option}> نوع التبرع</option>
@@ -274,6 +254,46 @@ export default function Projects() {
                                     </select>
                                     <Form.Text className={`${styles.msErr}`}>
                                         {formError.donationType}
+                                    </Form.Text>
+                                </Form.Group>
+                                {
+                                    active === "5" && (
+                                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                                            <select
+                                                placeholder="furniture"
+                                                className={`${styles.input} select`}
+                                                name="donationTypeId"
+                                            >
+                                                <option className={styles.option}> نوع الاثاث</option>
+                                                <option className={styles.option}> كؤاسي</option>
+                                                <option className={styles.option}> تلاجات  </option>
+                                                <option className={styles.option}> تلفزيونات</option>
+                                                <option className={styles.option}>بوتجازات</option>
+                                            </select>
+                                        </Form.Group>
+                                    )
+                                }
+                                {
+                                    active === "4" && (
+                                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                                            <select
+                                                placeholder="furniture"
+                                                className={`${styles.input} select`}
+                                                name="donationTypeId"
+                                            >
+                                                <option className={styles.option}> نوع الملابس</option>
+                                                <option className={styles.option}> فساتين</option>
+                                                <option className={styles.option}> بناطيل  </option>
+                                                <option className={styles.option}> جواكت</option>
+                                                <option className={styles.option}>طرح</option>
+                                            </select>
+                                        </Form.Group>
+                                    )
+                                }
+                                <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                    <Form.Control name="totalPrice" type='number' className={`${styles.input}`} placeholder=" العدد المراد تجميعة " onChange={onChangeHandler} value={formData.totalPrice} />
+                                    <Form.Text className={`${styles.msErr}`}>
+                                        {formError.totalPrice}
                                     </Form.Text>
                                 </Form.Group>
                                 <Button type="submit" className={styles.signup__btn} onClick={handleClose} >
@@ -320,7 +340,6 @@ export default function Projects() {
                         <div className='col-lg-10 col-md-12 col-sm-12'>
                             <div className={`${styles.projects__body}`}>
                                 {dataCases && dataCases.map(caseCard =>
-                                     
                                     <CardCase id={caseCard.id} photo={caseCard.image} title={caseCard.name} para={caseCard.description} progress={((caseCard.paied_amount * 100) / caseCard.initial_amount)} totalPrice={caseCard.initial_amount} numOfDonates={caseCard.paied_amount} />
                                 )}
                             </div>

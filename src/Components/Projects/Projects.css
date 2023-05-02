@@ -227,4 +227,7 @@ fieldset input[type="radio"]:checked + span > .icon {
 	border-width: 0 2px 2px 0;
 	transform: rotate(45deg);
   }
- 
+ .modal-content{
+	width: 800px !important;
+	margin-left: -40% !important;
+ }

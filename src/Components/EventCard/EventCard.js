@@ -4,7 +4,7 @@ import style from './EventCard.module.css'
 export default function EventCard(props) {
     return (
         <>
-            <Link to='/card-details' className={`${style.link}`}>
+            <Link to='/card-details' className={`${style.link}`} id={`${props.id}`}>
                 <div className={`${style.eventCard}`}>
                     <div className={`${style.event__date}`}>
                         <h2> {props.month}</h2>
