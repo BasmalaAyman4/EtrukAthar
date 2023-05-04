@@ -11,6 +11,9 @@ import AskForVoluntary from "../Components/AskForVoluntary/AskForVoluntary";
 import CharitySignUp from "../Components/CharitySignUp/CharitySignUp";
 import Events from "../Pages/Events";
 import VolunteerForm from "../Components/VolunteerForm/VolunteerForm";
+import EventDetails from "../Components/EventDetails/EventDetails";
+import CharitiesView from "../Components/Charities/CharitiesView";
+import CharityDetails from "../Components/CharityDetails/CharityDetails";
 export default function Router() {
   const authContext = useContext(AuthContext);
   return (
@@ -25,7 +28,10 @@ export default function Router() {
         <Route path="/card-details/:id" element={<CardDetails />} />
         <Route path="/askForVoluntary" element={<AskForVoluntary />} />
         <Route path="/event" element={<Events />} />
+        <Route path="/event-details/:id" element={<EventDetails />} />
         <Route path="/volunteerForm" element={<VolunteerForm />} />
+        <Route path="/charities" element={<CharitiesView />} />
+        <Route path="/charity-details" element={<CharityDetails />} />
       </Routes>
     </>
   )

@@ -27,12 +27,12 @@ export default function Events() {
 
     });
 
-    const dateIn = moment("03-03-2023");
-
-    const month = dateIn.format('M');
-    const day = dateIn.format('D');
 
 
+    /*     const dateIn = moment("2023-03-02");
+    
+        const month = dateIn.format('M');
+        const day = dateIn.format('D'); */
 
     return (
         <>
@@ -60,15 +60,9 @@ export default function Events() {
                             <Calendar
                                 className={`${style.CalendarStyle}`}
                                 dateCellRender={(date) => {
-                                    event&&event.map((event)=>(
-                                    
-                                       new Date(date).getDate() === moment(event.start_date).format("Do") && new Date(date).getMonth() === moment(event.start_date).format("MMM") ?
-                                        <p className={`${style.hint}`}>   {event.name_ar} </p> 
-                                        :
-                                        null
-                                        
-                                    ))
-                                 
+                                    if (new Date(date).getDate() === new Date("2023-02-28").getDate() && new Date(date).getMonth() === new Date("2023-02-28").getMonth()) {
+                                        return <p className={`${style.hint}`}>{event[0].name_ar} </p>
+                                    }
                                 }} />
                         </div>
                         <div className={`${style.otherEvent}`}>

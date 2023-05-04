@@ -1,0 +1,123 @@
+.row{
+    margin-top: 50px !important;
+    border-left: 2px solid #c2956E;
+    border-right: 2px solid #c2956E;
+    font-family: "Changa-Regular", sans-serif !important;
+}
+.imge{
+    width: 100%;
+    border-right: 3px solid #c2956E;
+}
+.rowBody{
+        margin-top: 70px;
+        margin-left: 30px;
+}
+.rowTitle{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.rowskew{
+    background-color: #c2956E;
+    width: 30%;
+    padding: 5px 15px;
+    position: relative;
+}
+.rowskew::after {
+    content: "";
+    position: absolute;
+    background-color: #fff;
+    width: 25px;
+    height: 25px;
+    transform: rotate(40deg);
+    -webkit-transform: rotate(40deg);
+    -moz-transform: rotate(40deg);
+    -ms-transform: rotate(40deg);
+    -o-transform: rotate(40deg);
+    top: 18px;
+    right: 175px;
+}
+.rowskew::before{
+    content: "";
+    position: absolute;
+    background-color: #fff;
+    width: 25px;
+    height: 25px;
+    transform: rotate(40deg);
+    -webkit-transform: rotate(40deg);
+    -moz-transform: rotate(40deg);
+    -ms-transform: rotate(40deg);
+    -o-transform: rotate(40deg);
+    top: 15px;
+    right: -19px;
+}
+.rowPara{
+   line-height: 32px;
+   font-size: 17px;
+}
+.refugee{
+    color: #a87b54;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+}
+.socialIcon{
+    font-size: 20px;
+    display: flex;
+}
+.socialIcon .fa {
+    width: 40px;
+    height: 28px;
+    color: #FFF;
+    padding-top: 12px;
+    transition: all ease 0.5s;
+    -moz-transition: all ease 0.5s;
+    -webkit-transition: all ease 0.5s;
+    -o-transition: all ease 0.5s;
+}
+.socialIcon svg:hover {
+    transform: scale(1.2, 1.2);
+    -moz-transform: scale(1.2, 1.2);
+    -webkit-transform: scale(1.2, 1.2);
+    -o-transform: scale(1.2, 1.2);
+    transition: all ease 0.5s;
+    -moz-transition: all ease 0.5s;
+    -webkit-transition: all ease 0.5s;
+    -o-transition: all ease 0.5s;
+}
+
+.socialIcon .facebook:hover {
+    color: #3b5998;
+}
+
+.socialIcon .twitter:hover {
+    color: #1da1f2;
+}
+
+.socialIcon .whatsapp:hover {
+    color: #25D366;
+}
+
+.socialIcon .instagram:hover {
+    color: #f77737;
+}
+.join{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+.member{
+    margin-right: 30px;
+    font-size: 17px;
+}
+.member span{
+    color: #c2956E;
+}
+.btn{
+    width: 95%;
+    margin-top: 30px;
+    padding: 10px;
+    background-color: #E5D1B8;
+    border: 1px solid #E5D1B8;
+    color: #2B2129;
+    font-size: 17px;
+    font-weight: bold;
+}

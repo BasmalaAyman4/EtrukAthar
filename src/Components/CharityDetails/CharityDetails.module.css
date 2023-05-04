@@ -1,0 +1,177 @@
+.ch{
+width: 100%;
+}
+.about{
+    margin-top: 70px !important;
+    font-family: "Changa-SemiBold";
+}
+.imgAbout{
+    height: 500px;
+    width: 80%;
+}
+.aboutusTitle{
+    color: #EF8451;
+    font-family: "Changa-Regular";
+}
+.aboutTitle{
+    color: #354F74;
+    width: 70%;
+    margin-bottom: 20px;
+}
+.aboutPara{
+    font-family: "Changa-Regular";
+    width: 80%;
+    font-size: 20px;
+}
+.aboutTake{
+    color: #354F74;
+}
+.checkList{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.checkList div{
+    margin-bottom: 10px;
+}
+.check {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    appearance: none;
+    background-color: #bbb;
+    transition: all .3s;
+top: 5px;
+margin-right: 5px;
+}
+
+.check::before {
+    content: '';
+    position: absolute;
+    border: solid #fff;
+    display: block;
+    width: .3em;
+    height: .6em;
+    border-width: 0 .2em .2em 0;
+    z-index: 1;
+    opacity: 0;
+    left: 8px;
+    top: 4px;
+}
+.check:checked {
+    background-color: #EF8451;
+}
+.check:checked::before {
+    opacity: 1;
+    transform: rotate(405deg);
+}
+.causes{
+    margin-top: 70px !important;
+        font-family: "Changa-SemiBold";
+        text-align: center;
+}
+.globalCauses{
+    color: #EF8451;
+    margin-bottom: 15px;
+}
+.causesTitle{
+    color: #354F74;
+    margin-bottom: 10px;
+}
+.causesPara{
+font-family: "Changa-Regular";
+font-size: 17px;
+}
+.donation{
+    display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin: 100px 200px;
+        gap: 5%;
+}
+.donationType{
+            background-color: #F9F9F9;
+            width: 250px;
+            display: flex;
+            flex-direction: column;
+            border-radius:20px ;
+            -webkit-border-radius:20px ;
+            -moz-border-radius:20px ;
+            -ms-border-radius:20px ;
+            -o-border-radius:20px ;
+}
+.donationType img{
+            text-align: center;
+            margin: auto !important;
+            padding: 20px;
+
+}
+.donationType p{
+    margin: auto;
+   margin-top: -10px;
+   padding-bottom: 20px;
+    font-family: "Changa-SemiBold";
+    color: #354F74;
+}
+.card {
+    padding: 10px;
+    max-width: 400px;
+    height: 500px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    background-color: rgb(255, 255, 255);
+font-family: "Changa-SemiBold";
+}
+
+.content {
+    margin-top: 1rem;
+}
+
+.content .header {
+    margin-top: 0.5rem;
+}
+
+.image img {
+    width: 100%;
+    height: 200px;
+    border-radius: 4px;
+    padding: 9px;
+}
+
+.tag {
+    text-transform: capitalize;
+    background-color: #FDE4DD;
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: #777;
+    margin:  5px;
+}
+
+.title {
+    display: block;
+    padding-bottom: 5px;
+    padding-top: 14px;
+    color: #354F74;
+}
+.money{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    margin-top: 20px;
+}
+.line{
+    margin-left: 70px;
+    margin-right: -80px;
+    margin-top: -27px;
+}
+.moneyTitle{
+    color: #354F74;
+}
+.caseBtn{
+    background-color: #fff;
+    border: 1px solid #EF8451;
+    color: #EF8451;
+    padding: 10px 20px;
+}
+.project{
+    display: flex;
+    justify-content: space-between;
+}

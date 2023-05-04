@@ -175,7 +175,7 @@ export default function NavbarMenu() {
                                     <NavLink to="/" className={`${styles["main-nav__link"]} main-nav__link`}>{t("الرئيسية")}</NavLink>
                                     <NavLink to="/cases" className={`${styles.mainNav__link} main-nav__link`}> {t("الحالات")}</NavLink>
                                     <NavLink to="/event" className={`${styles.mainNav__link} main-nav__link `}><MdNotificationsActive className='event' />{t(" المناسبات")}</NavLink>
-                                    <NavLink to="/acution" className={`${styles.mainNav__link} main-nav__link`}>{t("جمعيات  خيرية")} </NavLink>
+                                    <NavLink to="/charities" className={`${styles.mainNav__link} main-nav__link`}>{t("جمعيات  خيرية")} </NavLink>
                                     <NavLink to="/acution" className={`${styles.mainNav__link} main-nav__link`}>{t("تواصل معنا")} </NavLink>
                                     <NavLink to="/box" className={`${styles.mainNav__link} main-nav__link`}> {t("صندوق علمني ")}</NavLink>
 

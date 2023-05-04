@@ -1,0 +1,77 @@
+
+.charitiesLanding{
+    background-image: url("../../assets/images/Group-9.png");
+    padding-top: 10vw;
+        padding-bottom: 5vw;
+        background-color: #f5f3ee !important;
+        display: flex;
+        flex-direction: column;
+}
+.charityBody{
+    background-color: #fff;
+    margin: auto;
+    padding:  60px !important;
+    border-radius: 26px;
+    overflow: hidden;
+    text-align: center;
+    -webkit-border-radius: 26px;
+    -moz-border-radius: 26px;
+    -ms-border-radius: 26px;
+    -o-border-radius: 26px;
+    font-family: "Changa-SemiBold";
+   
+}
+.charityTitle{
+    margin-bottom: 40px;
+    color: #C2956E;
+}
+.charityPara,
+.charityDisc{
+margin-bottom: 20px;
+font-size: 17px;
+font-family: "Changa-Regular";
+}
+.charitybtn{
+    background-color: #C2956E;
+    border: 1px solid #C2956E;
+    padding: 10px 30px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    margin-top: 15px;
+}
+.charitiesName{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+   gap: 2%;
+    margin-top: 100px;
+}
+.charitiesName .imgView {
+    background-color: #C2956E;
+    display: flex;
+    flex-direction: column;
+    border-radius: 50px;
+    width: 300px;
+}
+.imgee {
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    text-align: center;
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    padding: 20px;
+}
+.imgPara{
+    margin: auto;
+    font-family: "Changa-SemiBold";
+    margin: 20px 70px;
+}
+ .imgPara:hover{
+    color: #C2956E;
+}
