@@ -123,7 +123,6 @@ export default function Projects() {
             err.donationType = ' يرجي اختيار نوع التبرع';
         }
         setFormError({ ...err })
-
     }
     const addNewCase = new FormData();
     addNewCase.append("name_ar", formData.titleAr);
