@@ -6,7 +6,7 @@
 
 .home-header__info{
     position: absolute;
-    top: 60%;
+    top: 45%;
     z-index: 1000;
     left: 50%;
     transform: translateX(-50%);
@@ -80,18 +80,7 @@
 
   
 }
-@media (max-width:2560px) {
-     /*.home-header__info{
-        position: absolute;
-        top: 38%;
-        z-index: 1000;
-        left: 50%;
-        transform: translateX(-50%);
-        color: #ffffff;
-        font-family: "Changa-SemiBold";
-        width: 100%;
-        } */
-}
+
 @media (max-width:1440px) {
     /* .home-header__info{
         position: absolute;
@@ -105,7 +94,7 @@
         } */
 }
 @media (max-width:1024px) {
-    .home-header__info{
+    /* .home-header__info{
         position: absolute;
         top: 70%;
         z-index: 1000;
@@ -114,7 +103,7 @@
         color: #ffffff;
         font-family: "Changa-SemiBold";
         width: 100%;
-        }
+        } */
 }
 @media (max-width:992px) {
     /* .home-header__info{
