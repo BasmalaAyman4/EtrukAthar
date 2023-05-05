@@ -451,6 +451,9 @@ export default function ProjectsDetails() {
                                 <Form.Group className="mb-3" controlId="formBasicEmail" >
                                     <Form.Control type='text' name="address" className={`${style.input}`} placeholder={t("العنوان")} onChange={onChangeHandler} value={donateData.address} required />
                                 </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                    <Form.Control type='text' name="amount" className={`${style.input}`} placeholder={t("am")} onChange={onChangeHandler} value={donateData.amount} required />
+                                </Form.Group>
                                 <PhoneInput
                                     defaultCountry="EG"
                                     international
