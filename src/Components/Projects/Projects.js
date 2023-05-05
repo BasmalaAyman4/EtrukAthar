@@ -308,15 +308,15 @@ export default function Projects() {
                         <div className='col-lg-2 col-md-12 col-sm-12 category'>
                             <fieldset className={`${styles.category}`}>
                                 <h4 className='side-filter__item-header-title'> {t("انواع الحالات")} </h4>
-                                <div class="radio-item-container">
-                                    <div class="radio-item">
+                                <div className="radio-item-container">
+                                    <div className="radio-item">
                                         <label className='label_radio' for=''>
                                             <input type="radio" id='' name="caseCategory" value='' onChange={handleFilterCategoryType} />
                                             <span> {t("جميع الحالات")} </span>
                                         </label>
                                     </div>
                                     {dataCategories && dataCategories.map(category =>
-                                        <div class="radio-item">
+                                        <div className="radio-item">
                                             <label className='label_radio' for={category.id}>
                                                 <input type="radio" id={category.id} name="caseCategory" value={category.id} onChange={handleFilterCategoryType} />
                                                 <span> {category.name} </span>
@@ -328,9 +328,9 @@ export default function Projects() {
                                 <h4 className='side-filter__item-header-title pb-3'>{t("انواع التبرع")}</h4>
 
                                 {dataType && dataType.map(type => (
-                                    <div class="form-group ">
-                                        <input class="form-group_checklist" type="checkbox" id={type.name_ar} value={type.id} />
-                                        <label class="form-group_checklist_label" for={type.name_ar} value={type.id}>{type.name_ar}</label>
+                                    <div className="form-group ">
+                                        <input className="form-group_checklist" type="checkbox" id={type.name_ar} value={type.id} />
+                                        <label className="form-group_checklist_label" for={type.name_ar} value={type.id}>{type.name_ar}</label>
                                     </div>
                                 ))}
 
