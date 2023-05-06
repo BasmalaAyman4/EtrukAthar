@@ -92,6 +92,7 @@ export default function EditProfile() {
         })
 
     }
+
     const storeProfile = new FormData();
     storeProfile.append("name", formData.name);
     storeProfile.append("email", formData.email);
