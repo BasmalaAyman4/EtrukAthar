@@ -11,6 +11,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Container } from 'react-bootstrap';
 import CardCase from './../Card/Card'
+import { Link } from 'react-router-dom';
+import UseCard from '../UserCart/UserCart';
+import UserCart from '../UserCart/UserCart';
 export default function EditProfile() {
     const [token, setToken] = useState(localStorage.getItem("token"))
     const [dataCases, setDataCases] = useState([]);
@@ -225,8 +228,12 @@ export default function EditProfile() {
                     </Row>
                     <Row className={`${style.row}`}>
                         <Col sm={9} className={`${style.card}`}>
+                 
                             {dataDonation && dataDonation.map(donationCard =>
-                                <CardCase id={donationCard.id} photo={donationCard.image} title={donationCard.name} para={donationCard.description} progress={((donationCard.paied_amount * 100) / donationCard.initial_amount)} totalPrice={donationCard.initial_amount} numOfDonates={donationCard.paied_amount} />
+                            <>
+                                <UserCart id={donationCard.id} photo={donationCard.image} title={donationCard.name} para={donationCard.description} progress={((donationCard.paied_amount * 100) / donationCard.initial_amount)} totalPrice={donationCard.initial_amount} numOfDonates={donationCard.paied_amount} />
+                            
+                            </>
                             )}
                         </Col>
                         <Col className={`${style.case}`} sm={3}>: الحالات التي تمت التبرع بها بواسطتك    </Col>

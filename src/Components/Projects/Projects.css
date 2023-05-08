@@ -159,11 +159,13 @@ fieldset input[type="radio"]:checked + span > .icon {
 	position: relative;
 	cursor: pointer;
 	margin-left: 19px;
+	font-family:  "Changa-Regular" ;
   }
   body[dir="ltr"] .form-group .form-group_checklist_label {
 	position: relative;
 	cursor: pointer;
 	margin-right: 19px;
+	font-family:  "Changa-Regular" ;
   }
  body[dir="rtl"] .form-group .form-group_checklist_label:before {
 	content:'';
@@ -227,7 +229,10 @@ fieldset input[type="radio"]:checked + span > .icon {
 	border-width: 0 2px 2px 0;
 	transform: rotate(45deg);
   }
- .modal-content{
-	width: 800px !important;
-	margin-left: -40% !important;
+ /* .modal-content{
+	width: 100% !important;
+
+ } */
+ .modal-dialog{
+	width: 1000px !important;
  }
