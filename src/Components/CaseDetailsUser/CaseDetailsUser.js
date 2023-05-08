@@ -1,7 +1,9 @@
+
+
 import React, { useState, useEffect } from 'react'
 import { Button, Container } from 'react-bootstrap'
-import style from './ProjectsDetails.module.css'
-import './projectDetails.css'
+import style from './../ProjectsDetails/ProjectsDetails.module.css'
+import './../ProjectsDetails/projectDetails.css'
 import { FaCcPaypal, FaCcMastercard, FaWhatsapp, FaTwitter, FaFacebook, FaTelegram, FaNewspaper, FaProjectDiagram } from "react-icons/fa";
 import { BiDollar } from "react-icons/bi";
 import NumericInput from 'react-numeric-input';
@@ -28,11 +30,11 @@ import 'react-phone-number-input/style.css'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import axios from 'axios'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify'
 import { ToastContainer } from "react-toastify";
 import moment from 'moment'
-export default function ProjectsDetails() {
+export default function CaseDetailsUser() {
     const [token, setToken] = useState(localStorage.getItem("token"))
     const [formData, setFormData] = useState({})
     const casesId = useParams()
@@ -201,6 +203,7 @@ export default function ProjectsDetails() {
                     <Col sm={12} xl={8} dir='rtl' >
 
                         <div className={`${style.cardDetails__body}`}>
+                         
                             <h3 className={`${style.cardDetails__title}`}>{formData.name}</h3>
                             <p className={`${style.cardDetails__para}`}>{t("مشروع رقم")}</p>
                             <hr />
@@ -281,8 +284,11 @@ export default function ProjectsDetails() {
 
                     </Col>
                     <Col sm={12} xl={4}>
-
+                    <button className={`${style.cardDetails__btn}`}>
+                               تعديل 
+                            </button>
                         {formData.donationtype_id === "1" ? <aside dir='rtl' className={`${style.aside}`}>
+                  
                             <button className={`${style.cardDetails__btn}`}>
                                 {t("تبرع الان   للحالات عبر موقعنا ")}
                             </button>
