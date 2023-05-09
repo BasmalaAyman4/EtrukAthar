@@ -72,8 +72,8 @@ export default function NavbarMenu() {
                         <nav className={`${styles.navLink__header}`}>
                             {token ? <Link to="/" className={`px-3 pt-2 ${styles.header__link}`} onClick={logout}>{t("تسجيل خروج")}</Link> : <Link to="/login" className={`px-3 pt-2 ${styles.header__link}`} > {t("تسجيل الدخول")}</Link>}
                             {token ? <Link to="/edit-profile" className={`px-3 pt-2 ${styles.header__link}`}> {t("تعديل حسابي")}</Link> : <Link to="/sign-up" className={`px-3 pt-2 ${styles.header__link}`}> {t("تسجيل")}</Link>}
-                            <Link to="" className={`px-3 pt-2 ${styles.header__link}`}> {t("حاسبة الزكاة")} </Link>
-                            <Link to="/askForVoluntary" className={`px-3 pt-2 ${styles.header__link}`}>{t( "تطوع معنا")} </Link>
+                            <Link to="/Zakat" className={`px-3 pt-2 ${styles.header__link}`}> {t("حاسبة الزكاة")} </Link>
+                            <Link to="/askForVoluntary" className={`px-3 pt-2 ${styles.header__link}`}>{t("تطوع معنا")} </Link>
 
                             {languages.map(({ code, name }, index) => (
                                 <Link
@@ -139,7 +139,7 @@ export default function NavbarMenu() {
                                         </li>
 
                                         <li>
-                                            <NavLink className="nav-link" to="/" href="index.html">{t("حاسبة الزكاة")}   </NavLink>
+                                            <NavLink className="nav-link" to="/Zakat" href="index.html">{t("حاسبة الزكاة")}   </NavLink>
                                         </li>
                                         <li>
                                             <NavLink className="nav-link" to="/askForVoluntary" href="index.html"> {t("  تطوع معنا ")}</NavLink>

@@ -1,0 +1,140 @@
+
+.zakat{
+    margin: 50px 100px;
+    font-family: "Changa-SemiBold";
+    text-align: right;
+}
+.zakatTitle{
+    border-right: 10px solid #EF8451 ;
+    padding-right: 10px;
+}
+.zakatPara{
+    font-family: "Changa-Regular";
+    margin-left: 15%;
+    margin-top: 30px;
+    width: 80%;
+    margin-bottom: 100px;
+}
+.zaka{
+    background-color: #fff;
+    box-shadow: 0 0 4px 0 #696969da;
+    padding: 10px 30px;
+    position: sticky;
+    top: 30px;
+}
+.zakatValue__body{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+}
+.zakatValue__btn{
+    width: 100%;
+    border: 1px solid #EF8451;
+    background-color: #EF8451;
+    padding: 10px 30px;
+    color: #fff;
+   margin-top: 10px;
+}
+
+.group{
+    padding:0 30px;
+    margin-bottom: 30px;
+}
+.input {
+    font-size: 16px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 550px;
+    border: none;
+    border-bottom: 1px solid #e6a384;
+    background: transparent;
+    text-align: right;
+    font-family: "Changa-Regular";
+}
+.dahab{
+    width: 400px;
+}
+.input:focus {
+    outline: none;
+}
+
+label {
+font-family: "Changa-Regular";
+color: #333;
+}
+
+.input:focus~label,
+.input:valid~label {
+    top: -20px;
+    font-size: 14px;
+    color: #5264AE;
+}
+.zakat__cart{
+    margin-bottom: 30px;
+}
+.zakat__cart,
+.zakatHeader__cart{
+    background-color: #fff;
+    box-shadow: 0 0 4px 0 #696969da;
+}
+.zakatHeader__cart{
+    padding: 10px 20px 2px ;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+.zakatBody__cart{
+    display: flex;
+    direction: rtl;
+}
+.zakatMoney__cart{
+    margin-right: 25px;
+    text-align: center;
+}
+
+@media (max-width:767px) {
+    .zakat{
+        margin: 50px 0;
+    }
+        .input {
+            width: 150px;
+        }
+                .zakatMoney__cart{
+                    display: none;
+                }
+}
+@media (min-width:768px) and (max-width:991px) {
+    .input {
+        width: 250px;
+    }
+}
+@media (max-width: 1090px){ 
+    .zaka {
+    position: fixed;
+    padding: 15px;
+    top: auto;
+    bottom: 0px;
+    left: 28px;
+    width: 90%;
+}
+.input {
+    width: 300px;
+}
+.dahab{
+    width: 200px;
+}
+}
+@media (min-width: 1091px) and (max-width:1335px) {
+
+    .input {
+        width: 370px;
+    }
+
+    .dahab {
+        width: 200px;
+    }
+}

@@ -52,7 +52,7 @@ export default function Events() {
                         <div className={`${active ? style.upcomingEvent : style.none}`}>
                             <h2 className={`${style.upcomingEvent__title}`}><RxCounterClockwiseClock /> {t("الاحداث القادمة")}</h2>
                             {event && event.map(eventCard =>
-                                <EventCard id={eventCard.id} month={moment(eventCard.start_date).format("MMM")} day={moment(eventCard.start_date).format("Do")} title={eventCard.name_ar} time={`(${moment(eventCard.start_time, ["HH:mm"]).format("hh:mm a")}) الي ( ${moment(eventCard.end_time, ["HH:mm"]).format("hh:mm a")} )`} />
+                                <EventCard id={eventCard.id} month={moment(eventCard.start_date).format("MMM")} day={moment(eventCard.start_date).format("Do")} title={eventCard.name} time={`(${moment(eventCard.start_time, ["HH:mm"]).format("hh:mm a")}) الي ( ${moment(eventCard.end_time, ["HH:mm"]).format("hh:mm a")} )`} />
                             )}
                         </div>
                         <div className={`${active ? style.none : style.upcomingEvent}`}>
