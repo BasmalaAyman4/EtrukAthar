@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import style from "./CharityDetails.module.css"
 import ch from "../../assets/images/charity.jpeg"
 import Container from 'react-bootstrap/Container';
@@ -13,8 +13,20 @@ import food from "../../assets/images/food.PNG"
 import edu from "../../assets/images/edu.PNG"
 import don from "../../assets/images/don2.jpg"
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import axios from 'axios'
 export default function CharityDetails() {
+    const carityId = useParams()
+    const [carityData, setCarityData] = useState({})
+    useEffect(() => {
+        axios.get(`https://otrok.invoacdmy.com/api/user/charity/show/${carityId.id}`)
+            .then((response) => {
+                setCarityData(response.data.charity)
+
+            }).catch((err) => { console.log(err) })
+    }, [])
+
     return (
         <>
             <section>
@@ -25,9 +37,9 @@ export default function CharityDetails() {
                     <Row className={`${style.about}`}>
                         <Col><img src={v} alt="" className={`${style.imgAbout}`} /></Col>
                         <Col>
-                            <h2 className={`${style.aboutusTitle}`}>About Us</h2>
+                            <h2 className={`${style.aboutusTitle}`}>{carityData.name} Us</h2>
                             <div>
-                                <h1 className={`${style.aboutTitle}`}>We work for poor people to give them a happy life</h1>
+                                <h1 className={`${style.aboutTitle}`}>{carityData.name} work for poor people to give them a happy life</h1>
                                 <p className={`${style.aboutPara}`}>The SpreadLove non-profit organization and its board are work for the people who are struggling in their daily life activities.</p>
                                 <h2 className={`${style.aboutTake}`}>We takes various donations:</h2>
                                 <div className={`${style.checkList}`}>

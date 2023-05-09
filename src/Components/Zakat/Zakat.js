@@ -59,7 +59,7 @@ export default function Zakat() {
                                         <div className={`${style.group}`}>
                                             <label>قيمة المال الذي املكة</label>
                                             <input required="" type="text" name="money" className={`${style.input}`} placeholder='القيمة هنا' value={zakat.money}
-                                                onChange={onChangeHandler} /> {zakat.money >= 20 ? <p>jsdnkj</p> : ""}
+                                                onChange={onChangeHandler} /> {/* {zakat.money >= 20 ? <p>jsdnkj</p> : ""} */}
                                         </div>
                                         <div className={`${style.zakatMoney__cart}`}>
                                             <p>العملة</p>
