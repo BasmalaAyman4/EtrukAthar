@@ -34,11 +34,16 @@ import { Link, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify'
 import { ToastContainer } from "react-toastify";
 import moment from 'moment'
+import EditCase from '../EditCase/EditCase';
 export default function CaseDetailsUser() {
     const [token, setToken] = useState(localStorage.getItem("token"))
     const [formData, setFormData] = useState({})
     const casesId = useParams()
     const [priceShow, setPriceshow] = useState("");
+    
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     function clickPrice(price) {
         setPriceshow("")
         setPriceshow(price)
@@ -238,9 +243,13 @@ export default function CaseDetailsUser() {
                                         <span>Twitter</span>
                                     </button>
                                 </Col>
-                            </Row>
-                        </div>
 
+                            </Row>
+                            <button onClick={handleShow} className={`${style.cardDetails__btn}`} >
+                                 تعديل الحاله
+                             </button>
+                        </div>
+                         <EditCase show={show} onHide={handleClose} setShow={setShow} />
                         <Player className={`${style.video}`} src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" poster={img1} />
                         <div className={`${style.modal__collect}`}><p className={`${style.paypal__para}`}> {t(" تبرعك هو أملهم و نجاحهم, فكن عونا لهم ")}</p></div>
                         <div >
@@ -284,13 +293,11 @@ export default function CaseDetailsUser() {
 
                     </Col>
                     <Col sm={12} xl={4}>
-                    <button className={`${style.cardDetails__btn}`}>
-                               تعديل 
-                            </button>
+             
                         {formData.donationtype_id === "1" ? <aside dir='rtl' className={`${style.aside}`}>
                   
                             <button className={`${style.cardDetails__btn}`}>
-                                {t("تبرع الان   للحالات عبر موقعنا ")}
+                                {t("تبرع الان للحالات عبر موقعنا ")}
                             </button>
                             <NumericInput value={priceShow ? priceShow : 20.00} className={`${style.price__input}`} /><BiDollar className={`${style.price__icon}`} value={donateData.amoutDescriptipn} />
                             <div className={`${style.price__choose}`}>

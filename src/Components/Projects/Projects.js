@@ -100,7 +100,7 @@ export default function Projects() {
                 <Button onClick={handleShow} className={`${styles.donate__link}`}>
                     {t(" اضافة حالة لصندوق الحالات")}
                 </Button>
-                <AddCase show={show} onHide={handleClose} setShow={setShow}/>
+                <AddCase show={show} onHide={handleClose} setShow={setShow} />
                 <div className="container">
                     <p className={`${styles.donate__para}`}>{t("نواظب على التنقيب عن مستلزمات المجتمع، ساعين لأجل توفير مشاريع من شأنها تلبية متطلباتهم، وتوفير حياةٍ كريمة لكلّ من تكبّد ويلاتُ الحرب")}</p>
                     <div className={`${styles.projects_dir} row`}>

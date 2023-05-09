@@ -28,7 +28,7 @@ export default function Router() {
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/charitySign-up" element={<CharitySignUp />} />
         <Route path="/cases" element={<Projects />} />
-        <Route path="/card-details/:id" element={<CardDetails />} />
+        <Route  path="/card-details/:id" element={<CardDetails />} />
         <Route path="/askForVoluntary" element={<AskForVoluntary />} />
         <Route path="/event" element={<Events />} />
         <Route path="/event-details/:id" element={<EventDetails />} />
@@ -36,7 +36,7 @@ export default function Router() {
         <Route path="/charities" element={<CharitiesView />} />
         <Route path="/charity-details" element={<CharityDetails />} />
         <Route path="/edit-profile" element={<EditProfile />} />
-        <Route path="/case-user-details/:id" element={<CaseDetailsUser />} />
+        <Route path="/userCase/:id" element={<CaseDetailsUser />} />
       </Routes>
     </>
   )

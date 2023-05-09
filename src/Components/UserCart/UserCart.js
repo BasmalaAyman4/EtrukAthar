@@ -13,7 +13,7 @@ export default function UserCart(props) {
                 <div className={`${styles.cardFig}`}>
                     <img src={props.photo} alt="" className={`${styles.figImg}`} />
                     <div className={`${styles.cardLink}`}>
-                        <Link to={`/case-user-details/${props.id}`} className={`${styles.cardDonate}`}>للمزيد من التفاصيل </Link>
+                        <Link to={`/userCase/${props.id}`} className={`${styles.cardDonate}`}>للمزيد من التفاصيل </Link>
                     </div>
                 </div>
                 <div className={`${styles.cardContent}`}>

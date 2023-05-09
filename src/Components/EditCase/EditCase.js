@@ -1,5 +1,6 @@
+import React from 'react'
 import Cookies from 'js-cookie'
-import React, { useEffect, useRef, useState } from 'react'
+import  { useEffect, useRef, useState } from 'react'
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import styles from '../../Components/Projects/Projects.module.css'
@@ -10,9 +11,11 @@ import '../../Components/Projects/Projects.css'
 import plus from "./../../assets/icons/+.svg"
 import minus from "./../../assets/icons/mi.svg"
 import axios from 'axios';
-const AddCase = ({show,setShow}) => {
+import { useParams } from 'react-router-dom';
+const EditCase = ({show,setShow}) => {
     const [dataCategories, setDataCategories] = useState([]);
     const [dataType, setDataType] = useState([]);
+    const updateId = useParams()
     const currentLanguageCode = Cookies.get('i18next') || 'en'
     const [token, setToken] = useState(localStorage.getItem("token"))
     const [formData, setFormData] = useState({
@@ -35,6 +38,9 @@ const AddCase = ({show,setShow}) => {
         amountItem:""
     }])
     const handleClose = () => setShow(false);
+    
+    const [arrayGenderEn,setArrayGenderEn] = useState([])
+    const [arraySeasonEn,setArraySeasonEn] = useState([])
      useEffect(() => {
         axios.get(`https://otrok.invoacdmy.com/api/user/category/index?lang=${currentLanguageCode}`)
             .then(response => {
@@ -46,6 +52,39 @@ const AddCase = ({show,setShow}) => {
                 setDataType(response.data.Donationtypes)
             }
             ).catch((err) => { console.log(err) })
+        console.log(updateId.id)
+            axios.get(`https://otrok.invoacdmy.com/api/user/case/show/update/${updateId.id}`)
+            .then((response) => {
+                 console.log(response)
+                setFormData({
+                    titleAr: response.data.case.name_ar,
+                    titleEn: response.data.case.name_en,
+                    img: response.data.case.image,
+                    descriptionEn: response.data.case.description_en,
+                    descriptionAr: response.data.case.description_ar,
+                    totalPrice: response.data.case.initial_amount,
+                    caseTypeId: response.data.case.category_id,
+                    donationTypeId: response.data.case.donationtype_id,
+                    statusCase: response.data.case.status,
+                    numberOfPeople:  response.data.case.initial_amount,
+                    numberOfVolunteers: response.data.case.initial_amount,
+                    numberOfCartons: response.data.case.initial_amount
+                })
+                if(response.data.case.donationtype_id === '4'){
+                setArrayGenderEn(response.data.case.gender_en.split(","))
+                setArraySeasonEn(response.data.case.type_en.split(","))
+                setCheckedEnKind(response.data.case.gender_en.split(","))
+                setCheckedEnSeasons(response.data.case.type_en.split(","))
+                }
+                if(response.data.case.donationtype_id === '5'){
+                    setDataFurniture(response.data.case.item)
+                    console.log(response.data.case.item)
+                    response.data.case.item.map((item,index)=>{
+                     document.getElementById(`ar-${index}`).value = item.name_ar
+                    })
+                }
+            }).catch((err) => { console.log(err) })
+
 
     }, [currentLanguageCode])
 
@@ -375,7 +414,7 @@ const AddCase = ({show,setShow}) => {
                                         imageUrl == null ?
                                             <>
                                                 <div ref={addFile} onClick={() => { handleLogo() }}>
-                                                    <img className={`${styles.img}`} ref={imageFirmRef} src={imgNull} alt="" />
+                                                    <img className={`${styles.img}`} ref={imageFirmRef} src={formData.img} alt="" />
                                                 </div>
                                              
                                             </>
@@ -626,4 +665,4 @@ const AddCase = ({show,setShow}) => {
   )
 }
 
-export default AddCase
+export default EditCase
