@@ -24,12 +24,23 @@ export default function Card(props) {
                             {/* <span className={`${styles.b}`}>{props.progress} %</span> */}
                         </div>
                         <div className={`${styles.don}`}>
+                        {props.donationType === "1" ? 
+                            <div className="">  تم جمع المبلغ  :  {props.numOfDonates} </div>
+                            : 
+                            null 
+                            }
                             {props.donationType === "2" ? 
                             <div className="">عدد المطوعين :  {props.numOfDonates} </div>
                             : 
                             null 
                             }
-                            <div className="">العدد المطلوب :{props.totalPrice}  </div>
+                              {props.donationType === "3" ? 
+                            <div className="">عدد الكارتين :  {props.numOfDonates} </div>
+                            : 
+                            null 
+                            }
+                            
+                            <div className=""> المطلوب :{props.totalPrice}  </div>
                         </div>
                     </div>
                 </div>
