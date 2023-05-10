@@ -19,14 +19,32 @@ import axios from 'axios'
 export default function CharityDetails() {
     const carityId = useParams()
     const [carityData, setCarityData] = useState({})
+    const [categoryData, setCategoryData] = useState([])
+    const [caseData, setCaseData] = useState([])
+    const [eventData, setEventData] = useState([])
     useEffect(() => {
         axios.get(`https://otrok.invoacdmy.com/api/user/charity/show/${carityId.id}`)
             .then((response) => {
                 setCarityData(response.data.charity)
 
             }).catch((err) => { console.log(err) })
-    }, [])
 
+        axios.get(`http://otrok.invoacdmy.com/api/dashboard/category/index`)
+            .then((response) => {
+                setCategoryData(response.data.Categories)
+            }).catch((err) => { console.log(err) })
+
+        axios.get(`https://otrok.invoacdmy.com/api/user/charity/cases/1`)
+            .then((response) => {
+                setCaseData(response.data.cases)
+            }).catch((err) => { console.log(err) })
+
+        axios.get(`https://otrok.invoacdmy.com/api/user/charity/events/1?lang=ar`)
+            .then((response) => {
+                setEventData(response.data.result)
+            }).catch((err) => { console.log(err) })
+    }, [])
+    console.log(categoryData)
     return (
         <>
             <section>
@@ -77,6 +95,14 @@ export default function CharityDetails() {
                         <p className={`${style.causesPara}`}>Here are some of categories which sector we work regularly</p>
                     </div>
                     <div className={`${style.donation}`}>
+                        {categoryData && categoryData.map(category =>
+                            <Link>
+                                <div className={`${style.donationType}`}>
+                                    <img src={volunteer} alt="" />
+                                    <p>{category.name_en}</p>
+                                </div>
+                            </Link>
+                        )}
                         <Link>
                             <div className={`${style.donationType}`}>
                                 <img src={volunteer} alt="" />
@@ -120,97 +146,63 @@ export default function CharityDetails() {
                         <p className={`${style.causesPara}`}>Here are some urgnt ongoing project which need to complete very soon</p>
                     </div>
                     <div className={`${style.project}`}>
-                        <div className={`${style.card}`}>
-                            <div className={`${style.header}`}>
-                                <div className={`${style.image}`}>
-                                    <img src={don} alt="" />
-                                    <span className={`${style.tag}`}>Top Education</span>
+                        {caseData && caseData.map(caseCard =>
+                            <div className={`${style.card}`}>
+                                <div className={`${style.header}`}>
+                                    <div className={`${style.image}`}>
+                                        <img src={caseCard.image} alt="" />
+                                        <span className={`${style.tag}`}>{caseCard.category.name_en}</span>
+                                    </div>
                                 </div>
+                                <div className={`${style.info}`}>
+                                    <a href="#" class="block">
+                                        <h4 className={`${style.title}`}>{caseCard.name}</h4>
+                                    </a>
+                                    <ProgressBar now={((caseCard.paied_amount * 100) / caseCard.initial_amount)} className={`${style.prog}`} label={`${((caseCard.paied_amount * 100) / caseCard.initial_amount)}%`} />
+                                </div>
+                                <div className={`${style.money}`}>
+                                    <div>
+                                        <p>Goal</p>
+                                        <p className={`${style.moneyTitle}`}>{caseCard.initial_amount}</p><hr className={`${style.line}`} />
+
+                                    </div>
+                                    <div>
+                                        <p>Raised</p>
+                                        <p className={`${style.moneyTitle}`}>{caseCard.paied_amount} </p><hr className={`${style.line}`} />
+                                    </div>
+                                    <div>
+                                        <p>Remain</p>
+                                        <p className={`${style.moneyTitle}`}>{caseCard.remaining_amount}</p>
+                                    </div>
+                                </div>
+                                <button className={`${style.caseBtn}`}>View Details</button>
                             </div>
-                            <div className={`${style.info}`}>
-                                <a href="#" class="block">
-                                    <h4 className={`${style.title}`}>Ensure child education in local area </h4>
-                                </a>
-                                <ProgressBar now="50" className={`${style.prog}`} label="50%" />
-                            </div>
-                            <div className={`${style.money}`}>
-                                <div>
-                                    <p>Goal</p>
-                                    <p className={`${style.moneyTitle}`}>$70.000</p><hr className={`${style.line}`} />
+                        )}
+                    </div>
+                    <div className={`${style.causes}`}>
+                        <h2 className={`${style.globalCauses}`}>Our Blog</h2>
+                        <h1 className={`${style.causesTitle}`}>News and Happiness </h1>
+                        <p className={`${style.causesPara}`}>Here are some urgnt ongoing project which need to complete very soon</p>
+                    </div>
+                    <div className={`${style.project}`}>
+                        {eventData && eventData.map(eventCard =>
+                            <div className={`${style.card} ${style.event}`}>
+                                <div className={`${style.header}`}>
+                                    <div className={`${style.image}`}>
+                                        <img src={eventCard.image} alt="" />
+                                        <span className={`${style.tag}`}>{eventCard.start_date}</span>
+                                    </div>
+                                </div>
+                                <div className={`${style.info}`}>
+                                    <a href="#" class="block">
+                                        <h4 className={`${style.title}`}>{eventCard.name}</h4>
+                                    </a>
 
                                 </div>
-                                <div>
-                                    <p>Raised</p>
-                                    <p className={`${style.moneyTitle}`}>$35.000 </p><hr className={`${style.line}`} />
-                                </div>
-                                <div>
-                                    <p>Remain</p>
-                                    <p className={`${style.moneyTitle}`}>$35.000</p>
-                                </div>
-                            </div>
-                            <button className={`${style.caseBtn}`}>View Details</button>
-                        </div>
-                        <div className={`${style.card}`}>
-                            <div className={`${style.header}`}>
-                                <div className={`${style.image}`}>
-                                    <img src={don} alt="" />
-                                    <span className={`${style.tag}`}>Relief Food</span>
-                                </div>
-                            </div>
-                            <div className={`${style.info}`}>
-                                <a href="#" class="block">
-                                    <h4 className={`${style.title}`}>Ensure child education in local area </h4>
-                                </a>
-                                <ProgressBar now="50" className={`${style.prog}`} label="50%" />
-                            </div>
-                            <div className={`${style.money}`}>
-                                <div>
-                                    <p>Goal</p>
-                                    <p className={`${style.moneyTitle}`}>$70.000</p><hr className={`${style.line}`} />
 
-                                </div>
-                                <div>
-                                    <p>Raised</p>
-                                    <p className={`${style.moneyTitle}`}>$35.000 </p><hr className={`${style.line}`} />
-                                </div>
-                                <div>
-                                    <p>Remain</p>
-                                    <p className={`${style.moneyTitle}`}>$35.000</p>
-                                </div>
+                                <button className={`${style.caseBtn}`}>Read More </button>
                             </div>
-                            <button className={`${style.caseBtn}`}>View Details</button>
-                        </div>
-                        <div className={`${style.card}`}>
-                            <div className={`${style.header}`}>
-                                <div className={`${style.image}`}>
-                                    <img src={don} alt="" />
-                                    <span className={`${style.tag}`}>Orphan Support</span>
-                                </div>
-                            </div>
-                            <div className={`${style.info}`}>
-                                <a href="#" class="block">
-                                    <h4 className={`${style.title}`}>Ensure child education in local area </h4>
-                                </a>
-                                <ProgressBar now="50" className={`${style.prog}`} label="50%" />
-                            </div>
-                            <div className={`${style.money}`}>
-                                <div>
-                                    <p>Goal</p>
-                                    <p className={`${style.moneyTitle}`}>$70.000</p><hr className={`${style.line}`} />
-
-                                </div>
-                                <div>
-                                    <p>Raised</p>
-                                    <p className={`${style.moneyTitle}`}>$35.000 </p><hr className={`${style.line}`} />
-                                </div>
-                                <div>
-                                    <p>Remain</p>
-                                    <p className={`${style.moneyTitle}`}>$35.000</p>
-                                </div>
-                            </div>
-                            <button className={`${style.caseBtn}`}>View Details</button>
-                        </div>
-
+                        )}
                     </div>
                 </Container>
             </section>

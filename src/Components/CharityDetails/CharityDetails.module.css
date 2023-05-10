@@ -120,6 +120,9 @@ font-size: 17px;
     background-color: rgb(255, 255, 255);
 font-family: "Changa-SemiBold";
 }
+.event{
+    height: 400px;
+}
 
 .content {
     margin-top: 1rem;
@@ -172,6 +175,7 @@ font-family: "Changa-SemiBold";
     padding: 10px 20px;
 }
 .project{
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 2%;
 }
