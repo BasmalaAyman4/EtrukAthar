@@ -10,7 +10,33 @@ export default function Zakat() {
         building: ''
 
     });
-
+    /*     const [zakat, setZakat] = useState({
+            money: '',
+            gold21: '',
+            gold24: '',
+            zakaMoney: ''
+    
+        });
+        const storeZakat = new FormData();
+        storeZakat.append("money", zakat.money);
+        storeZakat.append("price_gold21", zakat.gold21);
+        storeZakat.append("price_gold24", zakat.gold24);
+        useEffect(() => {
+            axios.post("https://otrok.invoacdmy.com/api/user/zakat/calculate", storeZakat, {
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                }
+            })
+                .then(response => {
+                    setZakat({
+                        money: response.data.money,
+                        zakaMoney: response.data.zakat_money
+                    })
+                }
+                ).catch((err) => { console.log(err.response.data.message) })
+    
+        }, [])
+        console.log(zakat) */
     const onChangeHandler = e => {
 
         setZakat({ ...zakat, [e.target.name]: e.target.value })

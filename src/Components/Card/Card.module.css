@@ -1,6 +1,6 @@
 .card {
     border: 1px solid #eee;
-    width: 100%;
+    width: 100% !important;
     height: 480px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -80,6 +80,10 @@
     margin: 10px;
     font-family: "Changa-Regular";
     font-size: 15px;
+/*     width:50%;
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis; */
 }
 
 .prog {

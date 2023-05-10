@@ -59,8 +59,12 @@ export default function ProjectsDetails() {
         numberOfCartons:''
        
     })
-    const date = moment(donateData.dateSend).format()
-    
+    const formatDate = (dateStr) => {
+        const [year, month, day] = dateStr.split('-');
+        let newDate = `${year}-${month}-${day}`;
+        return newDate;
+    };
+    const date = formatDate(donateData.dateSend)
     useEffect(() => {
         axios.get(`https://otrok.invoacdmy.com/api/user/case/show/${casesId.id}?lang=ar`)
             .then((response) => {
@@ -217,12 +221,6 @@ export default function ProjectsDetails() {
         setDonateData({ ...donateData, phone: data })
     }
     const { t } = useTranslation()
-    /*     const formatDate = (dateStr) => {
-        const [year, month, day] = dateStr.split('-');
-        let newDate = `${year}-${day}-${month}`;
-        return newDate;
-    };
-    formatDate(donateData.expiry) */
     return (
         <>
 
