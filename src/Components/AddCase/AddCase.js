@@ -13,6 +13,7 @@ import axios from 'axios';
 const AddCase = ({show,setShow}) => {
     const [dataCategories, setDataCategories] = useState([]);
     const [dataType, setDataType] = useState([]);
+    const handleClose = () => setShow(false);
     const currentLanguageCode = Cookies.get('i18next') || 'en'
     const [token, setToken] = useState(localStorage.getItem("token"))
     const [formData, setFormData] = useState({
@@ -34,7 +35,7 @@ const AddCase = ({show,setShow}) => {
         nameArItem:"",
         amountItem:""
     }])
-    const handleClose = () => setShow(false);
+ 
      useEffect(() => {
         axios.get(`https://otrok.invoacdmy.com/api/user/category/index?lang=${currentLanguageCode}`)
             .then(response => {
@@ -349,7 +350,7 @@ const AddCase = ({show,setShow}) => {
         }
       })
         .then(response => {
-          toast.success(response.data.message)
+          toast.success('تم اضافه الحاله بنجاح .. رجاء الانتظار حتي التأكد من البيانات و يتم قبولها من قِبلنا ')
           console.log(response)
         }
         ).catch((err) => { toast.error(err.response.data.message) })
