@@ -138,3 +138,7 @@ color: #333;
         width: 200px;
     }
 }
+.err{
+    margin-top: 15px;
+    color: rgb(141, 15, 15);
+}

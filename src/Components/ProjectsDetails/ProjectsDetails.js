@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Button, Container } from 'react-bootstrap'
 import style from './ProjectsDetails.module.css'
 import './projectDetails.css'
-import { FaCcPaypal, FaCcMastercard, FaWhatsapp, FaTwitter, FaFacebook, FaTelegram, FaNewspaper, FaProjectDiagram } from "react-icons/fa";
+import { FaCcMastercard, FaWhatsapp, FaTwitter, FaFacebook, FaTelegram, FaNewspaper, FaProjectDiagram } from "react-icons/fa";
 import { BiDollar } from "react-icons/bi";
 import NumericInput from 'react-numeric-input';
 import ProgressBar from 'react-bootstrap/ProgressBar';
@@ -31,7 +31,6 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify'
 import { ToastContainer } from "react-toastify";
-import moment from 'moment'
 export default function ProjectsDetails() {
     const [token, setToken] = useState(localStorage.getItem("token"))
     const [formData, setFormData] = useState({})
