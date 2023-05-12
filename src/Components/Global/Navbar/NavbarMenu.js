@@ -145,7 +145,7 @@ export default function NavbarMenu() {
                                             <NavLink className="nav-link" to="/askForVoluntary" href="index.html"> {t("  تطوع معنا ")}</NavLink>
                                         </li>
                                         <li>
-                                            <NavLink className="nav-link" to="/" href="index.html"> {t("  تواصل معنا ")}</NavLink>
+                                            <NavLink className="nav-link" to="/acution" href="index.html"> {t(" المزادات ")}</NavLink>
                                         </li>
                                         <li>
                                             <NavLink className="nav-link" to="/sign-up" href="index.html"> {t("تسجيل")}  </NavLink>
@@ -176,7 +176,7 @@ export default function NavbarMenu() {
                                     <NavLink to="/cases" className={`${styles.mainNav__link} main-nav__link`}> {t("الحالات")}</NavLink>
                                     <NavLink to="/event" className={`${styles.mainNav__link} main-nav__link `}><MdNotificationsActive className='event' />{t(" المناسبات")}</NavLink>
                                     <NavLink to="/charities" className={`${styles.mainNav__link} main-nav__link`}>{t("جمعيات  خيرية")} </NavLink>
-                                    <NavLink to="/acution" className={`${styles.mainNav__link} main-nav__link`}>{t("تواصل معنا")} </NavLink>
+                                    <NavLink to="/acution" className={`${styles.mainNav__link} main-nav__link`}>{t("المزادات")} </NavLink>
                                     <NavLink to="/box" className={`${styles.mainNav__link} main-nav__link`}> {t("صندوق علمني ")}</NavLink>
 
 
