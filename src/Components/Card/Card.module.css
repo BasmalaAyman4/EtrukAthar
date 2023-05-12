@@ -1,4 +1,16 @@
-.card {
+body[dir="rtl"] .card {
+    border: 1px solid #eee;
+    width: 100% !important;
+    max-width: 490px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px; 
+    margin-bottom: 20px;
+    direction: ltr;
+ 
+}
+body[dir="ltr"] .card {
     border: 1px solid #eee;
     width: 100% !important;
     height: 480px;
@@ -7,6 +19,7 @@
     -ms-border-radius: 10px;
     -o-border-radius: 10px; 
     margin-bottom: 20px;
+    direction: rtl;
  
 }
 .figImg {
@@ -74,12 +87,14 @@
     font-family: "Changa-SemiBold";
     margin-right: 10px;
     margin-top: 10px;
+    padding: 10px ;
 }
 
 .cardContentPara {
     margin: 10px;
     font-family: "Changa-Regular";
     font-size: 15px;
+    
 /*     width:50%;
     white-space: pre;
     overflow: hidden;
@@ -95,7 +110,7 @@
 }
 
 .bar {
-    margin: 20px 10px;
+    margin: 20px 25px;
     position: relative;
 }
 
@@ -112,7 +127,7 @@
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
-    left: 35%;
+
     top: -100%;
     color: #fff;
 }

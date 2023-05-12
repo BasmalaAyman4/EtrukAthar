@@ -387,3 +387,15 @@ font-family: "Changa-Regular" !important;
     padding: 0 !important;
     margin-bottom: 10px;
 }
+.add-uncle-button {
+    margin-top: 0px !important;
+    border: 0 !important;
+    background-color: transparent !important;
+    font-family: "Changa-Regular" !important;
+    font-weight: 500 !important;
+    font-size: 15px !important;
+    line-height: 30px !important;
+    color: #252525c9 !important;
+    float: left;
+    
+  }

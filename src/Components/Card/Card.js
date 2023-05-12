@@ -4,8 +4,11 @@ import styles from './Card.module.css'
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import Cookies from 'js-cookie';
+
 export default function Card(props) {
     const { t } = useTranslation()
+    const currentLanguageCode = Cookies.get('i18next') || 'en'
     return (
         <>
 
@@ -20,11 +23,11 @@ export default function Card(props) {
                     <h3 class={`${styles.cardContentTitle}`}>{props.title}</h3>
                     <p className={`${styles.cardContentPara}`}> {props.para}</p>
                     <div className={`${styles.all}`}>
-                        <div className={`${styles.bar}`}><ProgressBar now={props.progress} className={`${styles.prog}`} label={`${props.progress}%`} />
-                            {/* <span className={`${styles.b}`}>{props.progress} %</span> */}
+                        <div className={`${styles.bar}`}><ProgressBar now={props.progress} className={`${styles.prog}`} />
+                            <span  style={currentLanguageCode === 'ar' ? {  right :  `calc(${props.progress}% - 20px)`} :{  left :  `calc(${props.progress}% - 23px)`} } className={`${styles.b}`}>{props.progress} %</span>
                         </div>
                         <div className={`${styles.don}`}>
-                        {props.donationType === "1" ? 
+                            {props.donationType === "1" ? 
                             <div className="">  تم جمع المبلغ  :  {props.numOfDonates} </div>
                             : 
                             null 
@@ -34,12 +37,21 @@ export default function Card(props) {
                             : 
                             null 
                             }
-                              {props.donationType === "3" ? 
+                            {props.donationType === "3" ? 
                             <div className="">عدد الكارتين :  {props.numOfDonates} </div>
                             : 
                             null 
                             }
-                            
+                            {props.donationType === "4" ? 
+                            <div className="">عدد الافراد:  {props.numOfDonates} </div>
+                            : 
+                            null 
+                            }
+                              {props.donationType === "5" ? 
+                            <div className="">عدد العناصر:  {props.numOfDonates} </div>
+                            : 
+                            null 
+                            }
                             <div className=""> المطلوب :{props.totalPrice}  </div>
                         </div>
                     </div>

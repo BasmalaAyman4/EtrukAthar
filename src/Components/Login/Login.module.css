@@ -2,7 +2,7 @@
     display: flex;
     text-align: center;
     background-color: #2A6355;
-
+    font-family: "Changa-Regular" !important;
    min-height: 700px;
 }
 .login__header-image img{
@@ -138,15 +138,18 @@ body[dir="ltr"] .input::placeholder{
 
 .log__btn {
     width: 100%;
+    font-family: "Changa-Regular" !important;
 }
 
 .forgetLine {
     margin-bottom: 20px;
+    font-family: "Changa-Regular" !important;
 }
 
 .log__link {
     color: #333333;
     text-decoration: none;
+    font-family: "Changa-Regular" !important;
 }
 
 .log__link:hover {
@@ -157,7 +160,7 @@ body[dir="ltr"] .input::placeholder{
     list-style: none;
     display: flex;
     justify-content: space-around;
-
+    
     padding: 0 !important;
     margin-top: 10px !important;
     
@@ -175,6 +178,7 @@ body[dir="ltr"] .input::placeholder{
     width: 190px;
     height: 50px;
     margin-top: 10px;
+    font-family: "Changa-Regular" !important;
 }
 .user__link{
 background-color: #246d57da;
@@ -189,6 +193,7 @@ background-color: #246d57da;
     width: 190px;
     height: 50px;
     margin-top: 10px;
+    font-family: "Changa-Regular" !important;
     
 }
 
@@ -202,6 +207,7 @@ background-color: #246d57da;
 }
 .login__header-display {
     display: block !important ;
+    font-family: "Changa-Regular" !important;
 }
 @media (max-width:992px) {
 /* .login__header-display {
