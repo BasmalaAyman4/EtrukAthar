@@ -7,3 +7,36 @@
     -o-border-radius: 10px;
     height: 15px;
 }
+.skelecton_image{
+    width: 100% !important;
+    height: 250px !important;
+     border-radius: 8px 8px 0px 0px !important;
+    -webkit-border-radius: 8px 8px 0px 0px !important; 
+    -moz-border-radius: 8px 8px 0px 0px !important;
+    -ms-border-radius: 8px 8px 0px 0px !important;  
+    -o-border-radius: 8px 8px 0px 0px !important;
+}
+.skeleton-title{
+
+   padding: 3px !important;
+   margin: 10px;
+   width: 70% !important;
+   
+}
+.skeleton-para{
+   
+ 
+    width: 80% !important;
+    padding: 7px;
+    margin: 10px;
+}
+.skeleton-prog{
+    height: 15px;
+    width: 90% !important;
+    margin: 10px;
+}
+.skeleton-don{
+    width: 90% !important;
+    margin: 10px;
+    height: 20px ;
+}

@@ -83,6 +83,8 @@ body[dir="rtl"] .icon{
 }
 .price__choose{
     margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr) 
 }
 .price__btn{
     margin-left: 10px;

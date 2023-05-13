@@ -1,14 +1,22 @@
 .projects{
-        font-family: "Changa-Regular", sans-serif !important;
+        font-family: "Changa-Regular";
         display: flex;
         flex-direction: column;
-        margin-bottom: 20%;
+        margin-bottom: 100px;
+        /* min-height: 1500px !important; */
+        overflow-y: hidden;
+     
+
 }
 body[dir="ltr"] .projects_dir{
     direction: rtl;
+    margin-bottom: 100px;
+
 }
 body[dir="rtl"] .projects_dir{
     direction: ltr;
+     margin-bottom: 100px;
+ 
 }
 .donate__link{
     margin: auto;
@@ -38,10 +46,11 @@ body[dir="rtl"] .projects_dir{
     display: grid;
     grid-template-columns: repeat(2,1fr);
     margin-top: 50px;
-    direction: rtl;
-    margin-bottom: 70px;
-    gap: 2% !important;
+
+    margin-bottom: 150px;
+    gap: 1% !important;
 }
+
 @media (max-width:767px) {
     .projects__body{
         display: block;
@@ -56,7 +65,7 @@ body[dir="rtl"] .projects_dir{
     .projects__body {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 2%;
+        gap: 1%;
     }
 }
 @media (min-width: 1200px) {
@@ -67,8 +76,9 @@ body[dir="rtl"] .projects_dir{
     }
 }
 .img {
-    width: 300px;
+    width: 200px;
     height: 200px;
+    border-radius: 5px !important;
 }
 
 .fileImg {

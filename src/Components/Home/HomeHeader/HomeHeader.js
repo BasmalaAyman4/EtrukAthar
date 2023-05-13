@@ -29,8 +29,8 @@ const HomeHeader = () => {
           <img src={img1} className={styles.blur} alt="" />
           <div className={`${styles['home-header__info']} text-center`}>
           <div className='container'>
-            <h2>{t("مهما كان تبرعك صغيراً")}</h2>
-            <p className='mb-5'>{t("مهما كان تبرعك صغيراً")}</p>
+            <h2>{t("اترك أثرا هو هدفنا")}</h2>
+            <p className='mb-5'>{t(" فكن معنا لترك أثرا جميلا في العالم")}</p>
             <div className='row '>
             <div className={`col-lg-6 col-sm-12 mb-5  ${styles['text-algin-style_white-btn']} `}>
                   <Link to="" className={`${styles["home-header__btn_white"]} ` }>{t("ملف الشفافيه")}</Link>
@@ -45,8 +45,8 @@ const HomeHeader = () => {
         </SwiperSlide>
         <SwiperSlide className={`${styles.swiperHeader}`}><img src={img2} className={styles.blur} alt="" />   <div className={`${styles['home-header__info']} text-center`}>
           <div className='container'>
-            <h2>{t("مهما كان تبرعك صغيراً")}</h2>
-            <p className='mb-5'>{t("مهما كان تبرعك صغيراً")}</p>
+          <h2>{t("اترك أثرا هو هدفنا")}</h2>
+            <p className='mb-5'>{t(" فكن معنا لترك أثرا جميلا في العالم")}</p>
             <div className='row '>
             <div className={`col-lg-6 col-sm-12 mb-5  ${styles['text-algin-style_white-btn']} `}>
                   <Link to="" className={`${styles["home-header__btn_white"]} ` }>{t("ملف الشفافيه")}</Link>

@@ -13,6 +13,7 @@
     "جمعيات  خيرية":"Charities",
     "صندوق علمني ":"Teach Me Fund",
     " من نحن": "who are we",
+     "تعديل حسابي" :"Edit Profile",
     "كيف اتبرع ؟ ":" How to donate",
     "حاسبة الزكاة":"Zakat Calculator",
     "تسجيل":"sign up",
@@ -25,7 +26,7 @@
    "ملف الشفافيه":"Donor Wall",
    "مجموعة ":"Etruk Athr",
    " اترك أثراً ":"Volunteering Group",
-   ". مجموعة هذه حياتي التطوعية ، مجموعة شبابية تعنى برفع سوية المجتمع والعمل التطوعي":"Etruk Athar Volunteering Group, a youth group concerned with raising the level of society and volunteer work.",
+   ". مجموعة   اترك اثرا ، مجموعة شبابية تعنى برفع سوية المجتمع والعمل التطوعي":"Etruk Athar Volunteering Group, a youth group concerned with raising the level of society and volunteer work.",
    ".أسست عام 2020 في مصر ومرخصة سنة 2023 كـ شركة غير ربحية ، وكجمعية خيرية في سويسرا 2023 ، وتوسعت أنشطة عملها ل تركيا و الداخل السوري":"It was established in 2022 in Egypt and licensed in 2023 as a non-profit company, and as a charitable association in Switzerland in 2023, and its work activities have expanded to Turkey and Syria.",
    "التعريف بالمجموعة":"About Us",
     "ابتسم":"Smail",
@@ -136,19 +137,13 @@
    "انواع التبرع":"Types of Donation",
    "كلمة المرور الجديدة":"New Password",
    "جميع الحالات":"All Cases",
-   "تم جمع المبلغ" : "collected money",
-   
-
-
-   
-     
     "احسب زكاتك مع مؤسسة اترك أثرا":"Calculate your zakat with Etruk Athra Foundation",
     "كيف تحسب زكاتك؟ حاسبة الزكاة على موقع مؤسسة اترك أثرا، تمكنك من حساب قيمة الزكاة الخاصة بك بعد كتابة المال أو المبلغ الذي تملكه بعد تحقق نصاب الزكاة، وكما يمكنك أيضاً من حساب قيمة زكاة الذهب من خلال إدخال مقدار الذهب وبالتالي تتعرف على قيمة الزكاة الواجبة عليها. وتقوم مؤسسة اترك أثرا بصرف زكاة المال الخاصة بك في مصارف الزكاة الشرعية. * يرجى التواصل مع جهة أو دار فتوى شرعية حتى تتحقق من شروط وضوابط الزكاة الواجبة.":"How do you calculate your zakat? The Zakat Calculator on the Etruk Athra Foundation website enables you to calculate the value of your Zakat after writing the money or the amount you own after achieving the Zakat Nisab. Etruk Athra Foundation disburses your zakat money in the legal zakat banks. * Please contact a legal fatwa agency or house in order to verify the conditions and controls of the due zakat.",
     "قيمة الزكاة":"The amount of zakat",
     "زكاة المال":"Money Zakat",
     "زكاة الدهب":"Gold Zakat",
     "إجمالي مبلغ الزكاة":"The total amount of zakat",
-    "تبرع الآن":"Donate now",
+   
     "قيمة المال الذي أملكه":"The amount of the money I have",
     "القيمة هنا":"the amount here",
     "العملة":"The currency",
@@ -158,7 +153,7 @@
     "وحدة القياس":"measruing unit",
     "الجرام":"Gram",
     "وزن الذهب الذي تملكه من عيار 24":"The weight of gold you own karat 24",
-     "شارك":"Share",
+  
     "منضم بالفعل":"Already Joined",
     "انضم للحملة":"Join The Campaign",
      "القضايا العالمية":"Global Causes",
@@ -186,12 +181,30 @@
     "تريد أن تصبح منتظم؟":"Want to become a regular?",
     "ابقى على تواصل":"Get In Touch",
     "تطوع معنا لمساعدة الآخرين":"Volunteer with us to help others",
-    "اترك أثرا هو هدفنا .. فكن معنا لترك أثرا جميلا في العالم.":"Leave a mark is our goal .. So be with us to leave a beautiful mark in the world.",
+    "اترك أثراً هو هدفنا .. فكن معنا لترك أثرا جميلا في العالم.":"Leave Ather is our goal .. So be with us to leave a beautiful mark in the world.",
     "للتطوع ، قم بتسجيل بياناتك:":"To volunteer, register your information:",
     "تطوع الآن":"Volunteer Now"  ,
      "يجب ادخال مبلغ اكبر من  ":"An amount greater than  must be entered ",
      "  لحساب زكاة المال":"to calculate zakat money",
      "نحن منظمة خيرية عالمية":"We are world wide charity organization",
      "نحن نستجيب للمساعدات الطارئة عند الحاجة وندعم العائلات التي فقدت منازلها بسبب النزاع.":"We are responding with emergency assistance where needed and supporting families who have lost their homes due to conflict.",
-     "انضم إلينا":"Join with us"
+     "انضم إلينا":"Join with us",
+    "اترك أثرا هو هدفنا":"Leave Ather is our goal",
+    " فكن معنا لترك أثرا جميلا في العالم":" So be with us to leave a beautiful mark in the world.",
+    "تم جمع المبلغ" : "collected money",
+   "جميع الأنواع":"All Types",
+   "المزادات":"Acutions",
+    "المطلوب":"requried",
+    "عدد المطوعين":"collected Volunteers",
+    "عدد الكارتين":"collected cartoons",
+    "عدد الافراد" :"collected for people",
+   "عدد الاثاث":"collected Items",
+   "تم تسجيل الدخول بنجاح":"Successfully Logged!",
+   "فئات":"Categories Of Cases",
+   " اضافة حالة لصندوق الحالات": " Add New Case ",
+   "المبلغ المجموع للحالات":"Total number of collected money ",
+   "للمزيد من التفاصيل ":"For More Details"
+   
+   
+
 }
