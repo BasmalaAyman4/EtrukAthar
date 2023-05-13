@@ -252,3 +252,6 @@ fieldset input[type="radio"]:checked + span > .icon {
 	gap: 1%;
 	margin-bottom: 50px;
   }
+.btn-close{
+	margin: initial !important;
+}
