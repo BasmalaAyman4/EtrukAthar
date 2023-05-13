@@ -10,6 +10,8 @@ import i18next from 'i18next';
 import HttpApi from 'i18next-http-backend';
 import { initReactI18next } from 'react-i18next';
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-loading-skeleton/dist/skeleton.css'
+import { SkeletonTheme } from 'react-loading-skeleton';
 i18next
  .use(initReactI18next)
  .use(LanguageDetector)
@@ -32,7 +34,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+      <SkeletonTheme baseColor="#ebebeb" highlightColor="#f5f5f5">
       <App />
+      </SkeletonTheme>
+
     </BrowserRouter>
   </React.StrictMode>
 );

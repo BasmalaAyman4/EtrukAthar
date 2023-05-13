@@ -10,8 +10,8 @@ export default function Footer() {
     const { t } = useTranslation()
     return (
         <>
-            <MDBFooter className='text-center text-lg-start text-muted f'>
-                <section className='d-flex justify-content-center  p-4 border-bottom'>
+            <MDBFooter className='text-center text-lg-start text-muted f  '>
+                <section className='d-flex justify-content-center mt-5 p-4 border-bottom'>
 
 
                     <div className='social-icon text-center'>

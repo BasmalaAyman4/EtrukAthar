@@ -1,26 +1,46 @@
-import React from 'react'
-import './App.css';
+import React, { useEffect, useState } from 'react'
 import Navbar from './Components/Global/Navbar/NavbarMenu'
 import Footer from './Components/Global/Footer/Footer'
 import Router from './Router/Router';
-import { AuthProvider } from './Components/Context/AuthContext';
+
 import DonateNow from './Components/Global/DonateNow/DonateNow'
+import { AuthProvider } from './Components/Context/AuthContext';
+import Loading from './Components/Loading/Loading';
 
-function App() {
-  return (
-    <>
-      <Navbar />
-      <DonateNow />
-      <Router />
-      <Footer />
-    </>
-  );
-}
 
-function AppWithStore() {
-  return (<AuthProvider>
-    <App />
-  </AuthProvider>);
-}
 
-export default AppWithStore;
+  function App() {
+    const [IsLoading,setIsLoading] = useState(false)
+    useEffect(()=>{
+      setIsLoading(true)
+      setTimeout(()=>{
+        setIsLoading(false)
+      },2000)
+    },[])
+  
+    return (
+      <div className="App">
+      {IsLoading?
+        <Loading />
+        :
+        <>
+          <Navbar />
+          <DonateNow />
+          <Router />
+          <Footer />
+        </>
+      }
+      </div>
+    );
+  }
+  
+  function AppWithStore() {
+    return (
+      
+    <AuthProvider>
+      <App />
+    </AuthProvider>
+    );
+  }
+  
+  export default AppWithStore;

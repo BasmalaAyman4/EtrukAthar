@@ -77,7 +77,7 @@ export default function Login() {
             axios.post(`https://otrok.invoacdmy.com/api/login`, reqSignUpData)
                 .then((response) => {
                     localStorage.setItem("token", response.data.token)
-                    toast.success("Successfully Logged!")
+                    toast.success(t("تم تسجيل الدخول بنجاح"))
                     handleRedirect()
                 })
                 .catch((err) => {
@@ -87,7 +87,7 @@ export default function Login() {
             axios.post(`https://otrok.invoacdmy.com/api/login`, reqSignUpData)
                 .then((response) => {
                     localStorage.setItem("token", response.data.token)
-                    toast.success("Successfully Logged!")
+                    toast.success( "تم تسجيل الدخول بنجاح")
                     handleRedirect()
                 })
                 .catch((err) => {

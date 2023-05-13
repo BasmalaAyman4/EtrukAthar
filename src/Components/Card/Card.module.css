@@ -1,7 +1,7 @@
 body[dir="rtl"] .card {
     border: 1px solid #eee;
     width: 100% !important;
-    max-width: 490px;
+    height: 490px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
@@ -21,6 +21,26 @@ body[dir="ltr"] .card {
     margin-bottom: 20px;
     direction: rtl;
  
+}
+.card:hover{ animation: move .5s infinite alternate; 
+}
+@keyframes move {
+    0% {
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -o-transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-10px);
+        -webkit-transform: translateY(-10px);
+        -moz-transform: translateY(-10px);
+        -ms-transform: translateY(-10px);
+        -o-transform: translateY(-10px);
+}
+
 }
 .figImg {
     width: 100%;
@@ -88,6 +108,10 @@ body[dir="ltr"] .card {
     margin-right: 10px;
     margin-top: 10px;
     padding: 10px ;
+    white-space: nowrap; 
+    width: 250px; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
 }
 
 .cardContentPara {
@@ -95,10 +119,11 @@ body[dir="ltr"] .card {
     font-family: "Changa-Regular";
     font-size: 15px;
     
-/*     width:50%;
-    white-space: pre;
+    white-space: nowrap; 
+    width: 250px; 
     overflow: hidden;
-    text-overflow: ellipsis; */
+    text-overflow: ellipsis; 
+    
 }
 
 .prog {
@@ -127,7 +152,7 @@ body[dir="ltr"] .card {
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
-
+    font-family: "Changa-Regular";
     top: -100%;
     color: #fff;
 }

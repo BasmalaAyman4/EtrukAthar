@@ -9,6 +9,7 @@ import { Button } from 'react-bootstrap';
 import '../../Components/Projects/Projects.css'
 import plus from "./../../assets/icons/+.svg"
 import minus from "./../../assets/icons/mi.svg"
+import MultiImageInput from "react-multiple-image-input";
 import axios from 'axios';
 const AddCase = ({show,setShow}) => {
     const [dataCategories, setDataCategories] = useState([]);
@@ -28,7 +29,8 @@ const AddCase = ({show,setShow}) => {
         statusCase :'',
         numberOfPeople:'',
         numberOfVolunteers:'',
-        numberOfCartons:''
+        numberOfCartons:'',
+        file:''
     })
     const [dataFurniture,setDataFurniture] = useState([{
         nameEnItem:"",
@@ -65,7 +67,18 @@ const AddCase = ({show,setShow}) => {
         setDataFurniture(data)
       }
     
-
+      let previewUploadFile = (e) => {   
+        let file = e.target.files[0];
+        if(!file){
+          return;
+        }
+         setFormData(prevValue=>{ 
+          return{
+            ...prevValue,
+            file : file
+          } 
+        })
+      }
     const addFile = useRef(null)
     const addFileInput = useRef(null)
     const imageContentRef = useRef(null);
@@ -74,52 +87,65 @@ const AddCase = ({show,setShow}) => {
         let inputFileEvent = document.querySelector(".input-file-js")
         inputFileEvent.click()
     }
-    const [imageUrl, setImage] = useState(null)
+    const [imageUrl, setImage] = useState([])
+    const [fileImage,setFileImages] = useState()
+    let images = [];
     let previewUploadImage = (e) => {
-        let file = e.target.files[0];
-        if (!file) {
+        let files = e.target.files
+        setFileImages(e.target.files)
+      
+        if (!files) {
             return;
         }
-        let preViewLink = URL.createObjectURL(file);
-        setImage(preViewLink)
+    
+    let ImagesArray = Object.entries(e.target.files).map((e) =>
+      URL.createObjectURL(e[1])
+    );
+    console.log(ImagesArray);
+    setImage([...imageUrl, ...ImagesArray]);
+    
+    
+      
         setFormData(prevValue => {
             return {
                 ...prevValue,
-                'img': file
+                'img': files
             }
         })
+        console.log(images,'images')
+        console.log(formData)
     }
    
     const onChangeHandler = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
     const [formError, setFormError] = useState({})
-    function errorAddCase() {
-        let err = {}
+    // function errorAddCase() {
+    //     let err = {}
 
-        if (formData.title === '') {
-            err.title = 'عنوان الحالة مطلوب';
-        }
-        if (formData.img === '') {
-            err.img = "يرجي اختيار صوره للحالة";
-        }
-        if (formData.description === '') {
-            err.description = "نبذه مختصره عن الحالة مطلوبه";
-        }
-        if (formData.totalPrice === '') {
-            err.totalPrice = "المبلغ المراد تجميعه مطلوب"
-        }
-        if (formData.paiedAmount === '') {
-            err.paiedAmount = "المبلغ الذي تم تجميعه مطلوب"
-        }
-        if (formData.caseType === '') {
-            err.caseType = "يرجي اختيار نوع الحالة"
-        }
-        if (formData.donationType === '') {
-            err.donationType = ' يرجي اختيار نوع التبرع';
-        }
-        setFormError({ ...err })
-    }
+    //     if (formData.title === '') {
+    //         err.title = 'عنوان الحالة مطلوب';
+    //     }
+    //     if (formData.img === '') {
+    //         err.img = "يرجي اختيار صوره للحالة";
+    //     }
+    //     if (formData.description === '') {
+    //         err.description = "نبذه مختصره عن الحالة مطلوبه";
+    //     }
+    //     if (formData.totalPrice === '') {
+    //         err.totalPrice = "المبلغ المراد تجميعه مطلوب"
+    //     }
+    //     if (formData.paiedAmount === '') {
+    //         err.paiedAmount = "المبلغ الذي تم تجميعه مطلوب"
+    //     }
+    //     if (formData.caseType === '') {
+    //         err.caseType = "يرجي اختيار نوع الحالة"
+    //     }
+    //     if (formData.donationType === '') {
+    //         err.donationType = ' يرجي اختيار نوع التبرع';
+    //     }
+    //     setFormError({ ...err })
+    // }
     
     const [checkedEnKind, setCheckedEnKind] = useState([]);
 
@@ -161,10 +187,17 @@ const AddCase = ({show,setShow}) => {
     addNewCase.append("name_en", formData.titleEn);
     addNewCase.append("description_ar", formData.descriptionAr);
     addNewCase.append("description_en", formData.descriptionEn);
-    addNewCase.append("image", formData.img);
+    if(fileImage){
+
+       [...fileImage].forEach((item,index) => {
+         addNewCase.append("images[]", item);
+    
+       })
+     }
     addNewCase.append("donationtype_id", formData.donationTypeId);
     addNewCase.append("category_id", formData.caseTypeId);
     addNewCase.append("status", formData.statusCase);
+    addNewCase.append("file", formData.file);
      if(formData.donationTypeId === "1"){
       addNewCase.append("initial_amount", formData.totalPrice);
      }
@@ -312,7 +345,12 @@ const AddCase = ({show,setShow}) => {
         value1: "fan"
        },
       ]
-  
+    
+  function deleteFile(e) {
+    e.preventDefault()
+   setImage([])
+  }
+
     const [arOptionValue,setArOptionValue] = useState()
     function handleFurnitureChange(index, event){
   
@@ -371,9 +409,10 @@ const AddCase = ({show,setShow}) => {
                                 <div className='text-center'>
                                     <input className={`${styles.fileImg}  input-file-js`} ref={(e) => {
                                         addFileInput.current = e
-                                    }} id="input-file" name="img" type="file" onChange={(e) => { previewUploadImage(e) }} />
+                                    }} id="input-file" multiple  name="img" type="file" onChange={(e) => { previewUploadImage(e) }} />
+                                    
                                     {
-                                        imageUrl == null ?
+                                        imageUrl.length === 0 ?
                                             <>
                                                 <div ref={addFile} onClick={() => { handleLogo() }}>
                                                     <img className={`${styles.img}`} ref={imageFirmRef} src={imgNull} alt="" />
@@ -381,11 +420,27 @@ const AddCase = ({show,setShow}) => {
                                              
                                             </>
                                             :
-                                            <div ref={addFile} onClick={() => { handleLogo() }}>
-                                                <img className={`${styles.img}`} ref={imageContentRef} src={imageUrl} alt="" />
+                                            
+                                            <div className='case_images'>  
+                                                    {imageUrl.length > 0 &&
+                                                      imageUrl.map((item, index) => {
+                                                        return (
+                                                          <div   ref={addFile} onClick={() => { handleLogo() }}  key={item}>
+                                                            <img  className={`${styles.img}`} ref={imageContentRef} src={item} alt="" />
+                                                          
+                                                          </div>
+                                                        );
+                                                      })}
+                                                        <button className='btn' type="button" onClick={(e) => deleteFile(e)}>
+                                                                    delete
+                                                          </button>
                                             </div>
+                                            
                                     }
+                                            
+                                            
                                 </div>
+
                                 <Form.Group className="mb-3" controlId="formBasicEmail" >
                                     <Form.Control name="titleAr" className={`${styles.input}`} placeholder="    اسم الحالة بالعربية" onChange={onChangeHandler} value={formData.titleAr} />
                                     <Form.Text className={`${styles.msErr}`}>
@@ -399,20 +454,33 @@ const AddCase = ({show,setShow}) => {
                                     </Form.Text>
 
                                 </Form.Group>
+                                <Form.Group className="mb-3" controlId="" >
+                                       
+                                       <Form.Control 
+                                       name="file"
+                                       className={`${styles.input}`} 
+                                       placeholder="الملف الملحق"
+                                       type='file' 
+                                       ref={(e)=>{addFileInput.current = e}} 
+                                       onChange={(e)=>{previewUploadFile(e)}} 
+                                   />
+                                      
+                                   </Form.Group>
                                 <Form.Group className="mb-3" controlId="formBasicEmail" >
                                     <Form.Control as="textarea" rows="3" name="descriptionAr" className={`${styles.textArea}`} placeholder="نبذه مختصره عن الحاله بالعربية" onChange={onChangeHandler} value={formData.descriptionAr} />
                                     <Form.Text className={`${styles.msErr}`}>
                                         {formError.description}
                                     </Form.Text>
                                 </Form.Group>
-
+ 
                                 <Form.Group className="mb-3" controlId="formBasicEmail" >
                                     <Form.Control as="textarea" rows="3" name="descriptionEn" className={`${styles.textArea}`} placeholder="نبذه مختصره عن الحاله بالانجليزية"  onChange={onChangeHandler} value={formData.descriptionEn} />
                                     <Form.Text className={`${styles.msErr}`}>
                                         {formError.description}
                                     </Form.Text>
                                 </Form.Group>
-                              
+                             
+
                                 <Form.Group className="mb-3" controlId="formBasicPassword">
                                     <select
                                         placeholder="State"

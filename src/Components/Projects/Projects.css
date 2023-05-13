@@ -233,6 +233,22 @@ fieldset input[type="radio"]:checked + span > .icon {
 	width: 100% !important;
 
  } */
- .modal-dialog{
+ /* .modal-dialog{
 	width: 1000px !important;
- }
+ } */
+ .myForm {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+  }
+  
+  .border.rounded.img-preview {
+	width: 100px;
+	height: 100px;
+  }
+  .case_images{
+	display: grid;
+	grid-template-columns: repeat(3,1fr);
+	gap: 1%;
+	margin-bottom: 50px;
+  }
