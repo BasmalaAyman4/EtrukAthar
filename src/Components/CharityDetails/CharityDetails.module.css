@@ -12,6 +12,21 @@ width: 100%;
 .aboutusTitle{
     color: #EF8451;
     font-family: "Changa-Regular";
+    
+}
+body[dir="ltr"] .aboutusTitle {
+    margin-right: 30%;
+}
+body[dir="rtl"] .aboutusTitle {
+    margin-left: 30%;
+}
+body[dir="ltr"] .aboutTitle,
+body[dir="ltr"] .aboutusTitle{
+    direction: rtl;
+}
+body[dir="rtl"] .aboutTitle,
+body[dir="rtl"] .aboutusTitle {
+    direction: ltr;
 }
 .aboutTitle{
     color: #354F74;
@@ -22,6 +37,7 @@ width: 100%;
     font-family: "Changa-Regular";
     width: 80%;
     font-size: 20px;
+    margin-bottom: 70px;
 }
 .aboutTake{
     color: #354F74;
@@ -87,6 +103,12 @@ font-size: 17px;
         grid-template-columns: repeat(3, 1fr);
         margin: 100px 200px;
         gap: 5%;
+}
+body[dir="ltr"] .donation{
+    direction: rtl;
+}
+body[dir="rtl"] .donation {
+    direction: ltr;
 }
 .donationType{
             background-color: #F9F9F9;

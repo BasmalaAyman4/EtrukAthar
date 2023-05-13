@@ -1,27 +1,32 @@
-.row{
+.row {
     margin-top: 50px !important;
     border-left: 2px solid #c2956E;
     border-right: 2px solid #c2956E;
     font-family: "Changa-Regular", sans-serif !important;
 }
-.imge{
+
+.imge {
     width: 100%;
     border-right: 3px solid #c2956E;
 }
-.rowBody{
-        margin-top: 70px;
-        margin-left: 30px;
+
+.rowBody {
+    margin-top: 70px;
+    margin-left: 30px;
 }
-.rowTitle{
+
+.rowTitle {
     text-transform: uppercase;
     font-weight: bold;
 }
-.rowskew{
+
+.rowskew {
     background-color: #c2956E;
     width: 30%;
     padding: 5px 15px;
     position: relative;
 }
+
 .rowskew::after {
     content: "";
     position: absolute;
@@ -36,7 +41,8 @@
     top: 18px;
     right: 175px;
 }
-.rowskew::before{
+
+.rowskew::before {
     content: "";
     position: absolute;
     background-color: #fff;
@@ -50,26 +56,32 @@
     top: 15px;
     right: -19px;
 }
-.rowPara{
-   line-height: 32px;
-   font-size: 17px;
+
+.rowPara {
+    line-height: 32px;
+    font-size: 17px;
 }
-.refugee{
+
+.refugee {
     color: #a87b54;
     text-transform: uppercase;
     margin-bottom: 50px;
 }
-.socialIcon{
+
+.socialIcon {
     font-size: 20px;
 }
-body[dir="rtl"] .socialIcon{
+
+body[dir="rtl"] .socialIcon {
     display: flex;
     flex-direction: row-reverse;
 }
+
 body[dir="ltr"] .socialIcon {
     display: flex;
     flex-direction: row-reverse;
 }
+
 .socialIcon .fa {
     width: 40px;
     height: 28px;
@@ -80,6 +92,7 @@ body[dir="ltr"] .socialIcon {
     -webkit-transition: all ease 0.5s;
     -o-transition: all ease 0.5s;
 }
+
 .socialIcon svg:hover {
     transform: scale(1.2, 1.2);
     -moz-transform: scale(1.2, 1.2);
@@ -106,31 +119,36 @@ body[dir="ltr"] .socialIcon {
 .socialIcon .instagram:hover {
     color: #f77737;
 }
+
 /* .join{
     display: flex;
     justify-content: space-between;
     text-align: center;
 } */
-body[dir="rtl"] .join{
-display: flex;
+body[dir="rtl"] .join {
+    display: flex;
     justify-content: space-between;
     flex-direction: row-reverse;
     text-align: center;
 }
+
 body[dir="ltr"] .join {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     text-align: center;
 }
-.member{
+
+.member {
     margin-right: 30px;
     font-size: 17px;
 }
-.member span{
+
+.member span {
     color: #c2956E;
 }
-.btn{
+
+.btn {
     width: 95%;
     margin-top: 30px;
     padding: 10px;

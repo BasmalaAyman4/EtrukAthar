@@ -41,6 +41,16 @@
     padding:0 30px;
     margin-bottom: 30px;
 }
+body[dir="rtl"] .group{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+body[dir="ltr"] .group {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+}
 .input {
     font-size: 16px;
     padding: 10px 10px 10px 5px;
@@ -49,7 +59,6 @@
     border: none;
     border-bottom: 1px solid #e6a384;
     background: transparent;
-    text-align: right;
     font-family: "Changa-Regular";
 }
 .dahab{
@@ -62,14 +71,10 @@
 label {
 font-family: "Changa-Regular";
 color: #333;
+text-align: left;
 }
 
-.input:focus~label,
-.input:valid~label {
-    top: -20px;
-    font-size: 14px;
-    color: #5264AE;
-}
+
 .zakat__cart{
     margin-bottom: 30px;
 }
@@ -87,9 +92,27 @@ color: #333;
     -ms-border-radius: 3px;
     -o-border-radius: 3px;
 }
-.zakatBody__cart{
+body[dir="rtl"] .zakatHeader__cart,
+body[dir="rtl"] .zakatValue,
+body[dir="rtl"] .label,
+body[dir="rtl"] .input{
+    text-align: left;
+}
+
+body[dir="ltr"] .zakatHeader__cart,
+body[dir="ltr"] .zakatValue,
+body[dir="ltr"] .label,
+body[dir="ltr"] .input {
+    text-align: right;
+}
+
+body[dir="rtl"] .zakatBody__cart{
+display: flex;
+flex-direction: row-reverse;
+}
+body[dir="ltr"] .zakatBody__cart {
     display: flex;
-    direction: rtl;
+    flex-direction: row-reverse;
 }
 .zakatMoney__cart{
     margin-right: 25px;

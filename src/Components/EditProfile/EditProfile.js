@@ -12,19 +12,20 @@ import Col from 'react-bootstrap/Col';
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import UserCart from '../UserCart/UserCart';
+import imgNull from '../../assets/images/eae946efbbf74117a65d488206a09b63.png'
 export default function EditProfile() {
     const [token, setToken] = useState(localStorage.getItem("token"))
     const [dataCases, setDataCases] = useState([]);
     const [dataDonation, setDataDonation] = useState([]);
     const { t } = useTranslation()
     const [formData, setFormData] = useState({
-        personalPhoto: '',
-        name: '',
+        img: '',
+        nameEn: '',
         email: '',
         phone: '',
         address: '',
         gender: '',
-        age: ''
+        age: '',
 
     })
     useEffect(() => {
@@ -36,11 +37,11 @@ export default function EditProfile() {
         })
             .then((response) => {
                 setFormData({
-                    name: response.data.user.name,
+                    nameEn: response.data.user.name_en,
                     email: response.data.user.email,
                     address: "",
                     phone: response.data.user.phone,
-                    gender: response.data.user.gender
+                    gender: response.data.user.gender,
                 })
             }).catch((err) => { console.log(err) })
 
@@ -88,18 +89,18 @@ export default function EditProfile() {
         setFormData(prevValue => {
             return {
                 ...prevValue,
-                'personalPhoto': file
+                'img': file
             }
         })
 
     }
 
     const storeProfile = new FormData();
-    storeProfile.append("name", formData.name);
+    storeProfile.append("name_en", formData.nameEn);
     storeProfile.append("email", formData.email);
     storeProfile.append("address", formData.address);
     storeProfile.append("phone", formData.phone);
-    storeProfile.append("image", formData.personalPhoto);
+    storeProfile.append("image", formData.img);
     storeProfile.append("gender", formData.gender);
     const onSubmitHandler = (e) => {
         const toastId = toast.loading("...انتظر قليلا")
@@ -137,25 +138,17 @@ export default function EditProfile() {
                     <p className={style.loginPara}>تعديل الحساب</p>
                     <div >
                         <Form >
-                            <div>
-                                <input className={`${style.fileImg}  input-file-js`}
-                                    ref={(e) => { addFileInput.current = e }}
-                                    id="input-file"
-                                    name="personalPhoto"
-                                    type="file"
-                                    onChange={(e) => { previewUploadImage(e) }} />
+                            <div className={`${style.im} text-center`}>
+                                <input className={`${style.fileImg}  input-file-js`} ref={(e) => {
+                                    addFileInput.current = e
+                                }} id="input-file" name="img" type="file" onChange={(e) => { previewUploadImage(e) }} />
                                 {
                                     imageUrl == null ?
                                         <>
-                                            {formData.personalPhoto ?
-                                                <div ref={addFile} onClick={() => { handleLogo() }}>
-                                                    <img className={`${style.img}`} ref={imageFirmRef} src={formData?.personalPhoto} alt="" />
-                                                </div>
-                                                :
-                                                <div className={`${style.logo}`} ref={addFile} onClick={() => { handleLogo() }}>
-                                                    <button className={`${style.btnImg}`}> + اضافه صوره </button>
-                                                </div>
-                                            }
+                                            <div ref={addFile} onClick={() => { handleLogo() }}>
+                                                <img className={`${style.img}`} ref={imageFirmRef} src={imgNull} alt="" />
+                                            </div>
+
                                         </>
                                         :
                                         <div ref={addFile} onClick={() => { handleLogo() }}>
@@ -164,10 +157,11 @@ export default function EditProfile() {
                                 }
                             </div>
 
+
                             <div className={style.userName}>
 
                                 <Form.Group className="mb-3" controlId="name" >
-                                    <Form.Control name="name" className={`${style.input}`} placeholder={t("اسم المستخدم")} onChange={onChangeHandler} value={formData.name} />
+                                    <Form.Control name="nameEn" className={`${style.input}`} placeholder={t("اسم المستخدم")} onChange={onChangeHandler} value={formData.nameEn} />
 
                                 </Form.Group>
 
@@ -226,12 +220,12 @@ export default function EditProfile() {
                     </Row>
                     <Row className={`${style.row}`}>
                         <Col sm={9} className={`${style.card}`}>
-                 
+
                             {dataDonation && dataDonation.map(donationCard =>
-                            <>
-                                <UserCart id={donationCard.id} photo={donationCard.image} title={donationCard.name} para={donationCard.description} progress={((donationCard.paied_amount * 100) / donationCard.initial_amount)} totalPrice={donationCard.initial_amount} numOfDonates={donationCard.paied_amount} />
-                            
-                            </>
+                                <>
+                                    <UserCart id={donationCard.id} photo={donationCard.image} title={donationCard.name} para={donationCard.description} progress={((donationCard.paied_amount * 100) / donationCard.initial_amount)} totalPrice={donationCard.initial_amount} numOfDonates={donationCard.paied_amount} />
+
+                                </>
                             )}
                         </Col>
                         <Col className={`${style.case}`} sm={3}>: الحالات التي تمت التبرع بها بواسطتك    </Col>

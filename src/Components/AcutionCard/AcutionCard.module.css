@@ -16,6 +16,7 @@
     background: #fff;
     padding: 0.5em;
     padding-bottom: 3.4em;
+    margin-bottom: 40px;
     
 }
 .card:hover{ animation: move 1s infinite alternate; 

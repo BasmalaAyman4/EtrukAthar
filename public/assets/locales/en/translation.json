@@ -144,7 +144,7 @@
      
     "احسب زكاتك مع مؤسسة اترك أثرا":"Calculate your zakat with Etruk Athra Foundation",
     "كيف تحسب زكاتك؟ حاسبة الزكاة على موقع مؤسسة اترك أثرا، تمكنك من حساب قيمة الزكاة الخاصة بك بعد كتابة المال أو المبلغ الذي تملكه بعد تحقق نصاب الزكاة، وكما يمكنك أيضاً من حساب قيمة زكاة الذهب من خلال إدخال مقدار الذهب وبالتالي تتعرف على قيمة الزكاة الواجبة عليها. وتقوم مؤسسة اترك أثرا بصرف زكاة المال الخاصة بك في مصارف الزكاة الشرعية. * يرجى التواصل مع جهة أو دار فتوى شرعية حتى تتحقق من شروط وضوابط الزكاة الواجبة.":"How do you calculate your zakat? The Zakat Calculator on the Etruk Athra Foundation website enables you to calculate the value of your Zakat after writing the money or the amount you own after achieving the Zakat Nisab. Etruk Athra Foundation disburses your zakat money in the legal zakat banks. * Please contact a legal fatwa agency or house in order to verify the conditions and controls of the due zakat.",
-    "قيمة الزكاة:":"The amount of zakat",
+    "قيمة الزكاة":"The amount of zakat",
     "زكاة المال":"Money Zakat",
     "زكاة الدهب":"Gold Zakat",
     "إجمالي مبلغ الزكاة":"The total amount of zakat",
@@ -171,7 +171,7 @@
     "الغارمين":"Al Gharemeen",
     "العمل معا":"work together",
     "نحن نعمل من أجل الفقراء لمنحهم حياة سعيدة.":"We work for the poor to give them a happy life.",
-    ":نأخذ أنواعًا مختلفة من التبرعات:":"We take different types of donations:",
+    ":نأخذ أنواعًا مختلفة من التبرعات":"We take different types of donations:",
     "التبرع بالطعام":"Food Donation",
     "التبرع بالمال":"Money Donation",
     "التبرع بالملابس":"Clothes Donation",
@@ -188,5 +188,10 @@
     "تطوع معنا لمساعدة الآخرين":"Volunteer with us to help others",
     "اترك أثرا هو هدفنا .. فكن معنا لترك أثرا جميلا في العالم.":"Leave a mark is our goal .. So be with us to leave a beautiful mark in the world.",
     "للتطوع ، قم بتسجيل بياناتك:":"To volunteer, register your information:",
-    "تطوع الآن":"Volunteer Now"  
+    "تطوع الآن":"Volunteer Now"  ,
+     "يجب ادخال مبلغ اكبر من  ":"An amount greater than  must be entered ",
+     "  لحساب زكاة المال":"to calculate zakat money",
+     "نحن منظمة خيرية عالمية":"We are world wide charity organization",
+     "نحن نستجيب للمساعدات الطارئة عند الحاجة وندعم العائلات التي فقدت منازلها بسبب النزاع.":"We are responding with emergency assistance where needed and supporting families who have lost their homes due to conflict.",
+     "انضم إلينا":"Join with us"
 }

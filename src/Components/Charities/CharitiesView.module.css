@@ -28,6 +28,7 @@
 .charityPara,
 .charityDisc{
 margin-bottom: 20px;
+
 font-size: 17px;
 font-family: "Changa-Regular";
 }
@@ -43,10 +44,18 @@ font-family: "Changa-Regular";
     margin-top: 15px;
 }
 .charitiesName{
-    display: grid;
+/*     display: grid;
     grid-template-columns: repeat(3,1fr);
-   gap: 2%;
+   gap: 2%; */
     margin-top: 100px;
+    margin-bottom: 100px;
+    text-align: center;
+}
+body[dir="rtl"] .charitiesName{
+   direction: ltr;
+}
+body[dir="ltr"] .charitiesName {
+    direction: rtl;
 }
 .charitiesName .imgView {
     background-color: #C2956E;
@@ -68,10 +77,13 @@ font-family: "Changa-Regular";
     padding: 20px;
 }
 .imgPara{
-    margin: auto;
     font-family: "Changa-SemiBold";
-    margin: 20px 70px;
+    margin-top: 20px;
+   
 }
  .imgPara:hover{
     color: #C2956E;
+}
+.colCharity{
+    margin-bottom: 50px;
 }

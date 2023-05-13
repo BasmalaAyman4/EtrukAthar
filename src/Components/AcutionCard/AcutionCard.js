@@ -1,10 +1,42 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import style from "./AcutionCard.module.css"
 import { Link } from 'react-router-dom'
 import one from "../../assets/images/details2.jpeg"
 import two from "../../assets/images/details3.jpeg"
 import { AiFillEye, AiOutlineSearch, AiOutlineHeart } from "react-icons/ai";
-export default function AcutionCard() {
+export default function AcutionCard(props) {
+    const [timerDays, setTimerDays] = useState('00');
+    const [timerHours, setTimerHours] = useState('00');
+    const [timerMinutes, setTimerMinutes] = useState('00');
+    const [timerSeconds, setTimerSeconds] = useState('00');
+    let interval = useRef();
+    const startTimer = () => {
+        const countdownDate = new Date('May 30 , 2023 00:00:00').getTime();
+        interval = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)));
+            const minutes = Math.floor((distance % (1000 * 60 * 60) / (1000 * 60)));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if (distance < 0) {
+                clearInterval(interval.current)
+            } else {
+                setTimerDays(days);
+                setTimerHours(hours);
+                setTimerMinutes(minutes);
+                setTimerSeconds(seconds);
+            }
+        }, 1000);
+    }
+    useEffect(() => {
+        startTimer();
+        return () => {
+            clearInterval(interval.current);
+        }
+    })
+
     return (
         <>
 
@@ -27,11 +59,34 @@ export default function AcutionCard() {
                                     <a href=""><AiOutlineHeart className={`${style.icon}`} /></a>
                                 </div>
                             </div>
+                            <div className={`${style.acutionCountdown}`}>
+                                <div className={`${style.countdown}`}>
+                                    <div>
+                                        <p>{timerDays}</p>
+                                        <span>Days</span>
+                                    </div>
+                                    <span className={`${style.countdown__dot}`}> : </span>
+                                    <div>
+                                        <p>{timerHours}</p>
+                                        <span>Hours</span>
+                                    </div>
+                                    <span className={`${style.countdown__dot}`}> : </span>
+                                    <div>
+                                        <p>{timerMinutes}</p>
+                                        <span>Minutes</span>
+                                    </div>
+                                    <span className={`${style.countdown__dot}`}> : </span>
+                                    <div>
+                                        <p>{timerSeconds}</p>
+                                        <span>Seconds</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className={`${style.cardBody}`}>
-                        <h4 className={`${style.card__title}`}>Orange Fiat 500</h4>
-                        <p className={`${style.card__acution}`}>Acution Ended</p>
+                        <h4 className={`${style.card__title}`}>{props.title}</h4>
+                        <p className={`${style.card__acution}`}>{props.bid}</p>
                     </div>
                 </div>
             </Link>

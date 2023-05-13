@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import style from './EventDetails.module.css'
+import style from "./CharityEventDetails.module.css"
 import imge from "../../assets/images/b.jpg"
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
@@ -11,13 +11,14 @@ import { FaFacebook, FaTwitter, FaWhatsapp, FaInstagram } from "react-icons/fa";
 import { toast } from 'react-toastify'
 import { ToastContainer } from "react-toastify";
 import { useTranslation } from 'react-i18next'
-export default function EventDetails() {
+
+export default function CharityEventDetails() {
     const { t } = useTranslation()
     const [eventDetails, setEventDetails] = useState({})
     const eventsId = useParams()
     const [token, setToken] = useState(localStorage.getItem("token"))
     useEffect(() => {
-        axios.get(`https://otrok.invoacdmy.com/api/user/event/show/${eventsId.id}`)
+        axios.get(`https://otrok.invoacdmy.com/api/user/event/show/${eventsId.id}?lang=ar`)
             .then((response) => {
                 setEventDetails(response.data.event)
             }).catch((err) => { console.log(err) })

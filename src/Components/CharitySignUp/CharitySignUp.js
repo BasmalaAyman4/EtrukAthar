@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import style from "./charitySignUp.module.css"
 import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import imgNull from '../../assets/images/eae946efbbf74117a65d488206a09b63.png'
 export default function CharitySignUp() {
     const { t } = useTranslation()
     const validname = /^[A-Za-z]+$/;
@@ -16,9 +17,10 @@ export default function CharitySignUp() {
     const validPass = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
-        name: '',
+        nameEn: '',
+        nameAr: "",
         email: '',
-        phone: '',
+        img: '',
         password: '',
         confirmPassword: '',
         address: ''
@@ -65,17 +67,41 @@ export default function CharitySignUp() {
         setFormData({ ...formData, phone: data })
         console.log(formData)
     }
-
-
-    const reqSignUpData = {
-        email: formData.email,
-        name: formData.name,
-        address: formData.address,
-        password: formData.password,
-        password_confirmation: formData.confirmPassword,
-        phone: formData.phone,
-        user_type: "2"
+    const addFile = useRef(null)
+    const addFileInput = useRef(null)
+    const imageContentRef = useRef(null);
+    const imageFirmRef = useRef(null);
+    function handleLogo() {
+        let inputFileEvent = document.querySelector(".input-file-js")
+        inputFileEvent.click()
     }
+    const [imageUrl, setImage] = useState(null)
+    let previewUploadImage = (e) => {
+        let file = e.target.files[0];
+        if (!file) {
+            return;
+        }
+        let preViewLink = URL.createObjectURL(file);
+        setImage(preViewLink)
+        setFormData(prevValue => {
+            return {
+                ...prevValue,
+                'img': file
+            }
+        })
+    }
+    console.log(formData.img)
+    const reqSignUpData = new FormData();
+    reqSignUpData.append("name_ar", formData.nameAr);
+    reqSignUpData.append("name_en", formData.nameEn);
+    reqSignUpData.append("address", formData.address);
+    reqSignUpData.append("email", formData.email);
+    reqSignUpData.append("password", formData.password);
+    reqSignUpData.append("password_confirmation", formData.confirmPassword);
+    reqSignUpData.append("phone", formData.phone);
+    reqSignUpData.append("image", formData.img);
+    reqSignUpData.append("user_type", "2");
+
     const [show, setShow] = useState(false);
     const handleClick = () => setShow(!show);
 
@@ -91,7 +117,7 @@ export default function CharitySignUp() {
         }
     }
 
-
+    console.log(reqSignUpData, "lll")
 
     const onSubmitHandler = (e) => {
 
@@ -126,16 +152,42 @@ export default function CharitySignUp() {
                                     <h2 className={style.signup__title}>{t("تسجيل حساب جمعية خيرية ")}</h2>
                                     <p className={style.signup__para}> {t("هل انت متبرع ؟")} <a href='/sign-up'>{t("انشاء حساب مستخدم ")}</a></p>
                                     <hr />
+
                                     <Form onSubmit={onSubmitHandler} >
+                                        <div ref={addFile} onClick={() => { handleLogo() }}>
+                                            <img className={`${style.img}`} ref={imageContentRef} src={imageUrl} alt="" />
+                                        </div>
                                         <div className={style.userName}>
 
                                             <Form.Group className="mb-3" controlId="name" >
-                                                <Form.Control name="name" className={`${style.input}`} placeholder={t("اسم الجمعية")} onChange={onChangeHandler} value={formData.name} />
+                                                <Form.Control name="nameAr" className={`${style.input}`} placeholder={t("اسم الجمعية بالعربي")} onChange={onChangeHandler} value={formData.nameAr} />
                                                 <Form.Text className={`${style.msErr}`}>
                                                     {formError.name}
                                                 </Form.Text>
                                             </Form.Group>
+                                            <Form.Group className="mb-3" controlId="name" >
+                                                <Form.Control name="nameEn" className={`${style.input}`} placeholder={t("اسم الجمعية بالانجليزي")} onChange={onChangeHandler} value={formData.nameEn} />
+                                                <Form.Text className={`${style.msErr}`}>
+                                                    {formError.name}
+                                                </Form.Text>
+                                            </Form.Group>
+                                            <div className='text-center'>
+                                                <input className={`${style.input} ${style.im}  input-file-js`} ref={(e) => {
+                                                    addFileInput.current = e
+                                                }} id="input-file" name="img" type="file" onChange={(e) => { previewUploadImage(e) }} />
+                                                {
+                                                    imageUrl == null ?
+                                                        <>
+                                                            <div ref={addFile} onClick={() => { handleLogo() }}>
+                                                            </div>
 
+                                                        </>
+                                                        :
+                                                        <div ref={addFile} onClick={() => { handleLogo() }}>
+
+                                                        </div>
+                                                }
+                                            </div>
                                             <Form.Group className="mb-3" controlId="email">
                                                 <Form.Control name="email" autoComplete="off" className={`${style.input}`} placeholder={t(" البريد الإلكتروني")} onChange={onChangeHandler} value={formData.email} />
                                                 <Form.Text className={`${style.msErr}`}>

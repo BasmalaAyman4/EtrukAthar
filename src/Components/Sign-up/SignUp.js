@@ -24,7 +24,7 @@ export default function SignUp() {
   const validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   const validPass = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
   const [formData, setFormData] = useState({
-    name: '',
+    nameEn: '',
     email: '',
     phone: '',
     gender: '',
@@ -77,7 +77,7 @@ export default function SignUp() {
 
   const reqSignUpData = {
     email: formData.email,
-    name: formData.name,
+    name_en: formData.nameEn,
     gender: formData.gender,
     password: formData.password,
     password_confirmation: formData.confirmPassword,
@@ -136,7 +136,7 @@ export default function SignUp() {
                   <div className={style.userName}>
 
                     <Form.Group className="mb-3" controlId="name" >
-                      <Form.Control name="name" className={`${style.input}`} placeholder={t("اسم المستخدم")} onChange={onChangeHandler} value={formData.name} />
+                      <Form.Control name="nameEn" className={`${style.input}`} placeholder={t("اسم المستخدم")} onChange={onChangeHandler} value={formData.nameEn} />
                       <Form.Text className={`${style.msErr}`}>
                         {formError.name}
                       </Form.Text>
