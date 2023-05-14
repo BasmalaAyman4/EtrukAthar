@@ -21,14 +21,8 @@ export default function AcutionCard() {
     useEffect(() => {
         axios.get(`https://otrok.invoacdmy.com/api/user/mazad/index?lang=ar`)
             .then((response) => {
-                setDataAcution({
-                    name: response.data.cases.name,
-                    description: response.data.cases.description,
-                    date: response.data.cases.end_date,
-                    time: response.data.cases.end_time,
-                    price: response.data.cases.current_price,
-                })
-                console.log(response.data.cases.id)
+                setDataAcution(response.data.cases)
+                console.log(response.data.cases,'aaa')
             }).catch((err) => { console.log(err) })
 
     }, [])
@@ -69,7 +63,7 @@ export default function AcutionCard() {
         <>
             <div>
                 {dataAcution && dataAcution.map(acutionCard =>
-                    /*   <Link to='/acution-details'> */
+                       <Link to='/acution-details'> 
                     <div className={`${style.card}`}>
                         <div className={`${style.image}`}>
                             <div className={`${style.flipCard}`}>
@@ -115,11 +109,11 @@ export default function AcutionCard() {
                         </div>
                         <div className={`${style.cardBody}`}>
                             <h4 className={`${style.card__title}`}>{acutionCard.name}</h4>
-                            <p className={`${style.card__acution}`}>{acutionCard.price}</p>
+                            <p className={`${style.card__acution}`}>{acutionCard.description}</p>
                         </div>
                     </div>
-                    /*   </Link> */
-                )}
+                     </Link> 
+                 )} 
                 <div>
 
                 </div>
