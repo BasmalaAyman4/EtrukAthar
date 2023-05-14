@@ -89,7 +89,7 @@ const AddCase = ({show,setShow}) => {
     }
     const [imageUrl, setImage] = useState([])
     const [fileImage,setFileImages] = useState()
-    let images = [];
+
     let previewUploadImage = (e) => {
         let files = e.target.files
         setFileImages(e.target.files)
@@ -112,7 +112,7 @@ const AddCase = ({show,setShow}) => {
                 'img': files
             }
         })
-        console.log(images,'images')
+ 
         console.log(formData)
     }
    

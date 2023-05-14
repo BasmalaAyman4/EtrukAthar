@@ -213,7 +213,7 @@ export default function EditProfile() {
                     <Row className={`${style.row}`}>
                         <Col sm={9} className={`${style.card}`}>
                             {dataCases && dataCases.map(caseCard =>
-                                <UserCart id={caseCard.id} photo={caseCard.image} title={caseCard.name_ar} para={caseCard.description_ar} progress={((caseCard.paied_amount * 100) / caseCard.initial_amount)} totalPrice={caseCard.initial_amount} numOfDonates={caseCard.paied_amount} />
+                                <UserCart id={caseCard.id} status={caseCard.status} reason_reject_ar={caseCard.reason_reject_ar} photo={caseCard.image} title={caseCard.name_ar} para={caseCard.description_ar} progress={((caseCard.paied_amount * 100) / caseCard.initial_amount)} totalPrice={caseCard.initial_amount} numOfDonates={caseCard.paied_amount} />
                             )}
                         </Col>
                         <Col className={`${style.case}`} sm={3}>: الحالات التي تمت اضافتها بواسطتك    </Col>

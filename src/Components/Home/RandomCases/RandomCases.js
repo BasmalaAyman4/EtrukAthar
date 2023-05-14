@@ -58,8 +58,7 @@ const RandomCases = () => {
       >
        {randomCases&&randomCases.map(item=>(
         <SwiperSlide>
-            <Card id={item.id} donationType={item.donationtype_id} photo={item.image} title={item.name} para={item.description} progress={((item.paied_amount * 100) / item.initial_amount)} totalPrice={item.initial_amount} numOfDonates={item.paied_amount} 
-               
+            <Card id={item.id} donationType={item.donationtype_id} photo={item.image} title={item.name} para={item.description} progress={((item.paied_amount * 100) / item.initial_amount)} totalPrice={item.initial_amount} numOfDonates={item.paied_amount}    
             />
         </SwiperSlide>
         ))}

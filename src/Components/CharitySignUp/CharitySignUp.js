@@ -154,9 +154,15 @@ export default function CharitySignUp() {
                                     <hr />
 
                                     <Form onSubmit={onSubmitHandler} >
+                                        {/* {imageUrl === null ? 
+                                            <div ref={addFile} onClick={() => { handleLogo() }}>
+                                            <img className={`${style.img}`} ref={imageContentRef} src={imgNull} alt="" />
+                                        </div>
+                                        : */}
                                         <div ref={addFile} onClick={() => { handleLogo() }}>
                                             <img className={`${style.img}`} ref={imageContentRef} src={imageUrl} alt="" />
                                         </div>
+                                         
                                         <div className={style.userName}>
 
                                             <Form.Group className="mb-3" controlId="name" >
