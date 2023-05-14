@@ -11,13 +11,7 @@ export default function AcutionCard() {
     const [timerHours, setTimerHours] = useState('00');
     const [timerMinutes, setTimerMinutes] = useState('00');
     const [timerSeconds, setTimerSeconds] = useState('00');
-    const [dataAcution, setDataAcution] = useState({
-        name: '',
-        description: '',
-        date: '',
-        time: '',
-        price: '',
-    })
+    const [dataAcution, setDataAcution] = useState([])
     useEffect(() => {
         axios.get(`https://otrok.invoacdmy.com/api/user/mazad/index?lang=ar`)
             .then((response) => {
@@ -62,8 +56,8 @@ export default function AcutionCard() {
     return (
         <>
             <div>
-                {dataAcution && dataAcution.map(acutionCard =>
-                       <Link to='/acution-details'> 
+                {dataAcution && dataAcution.map((acutionCard,index) =>(
+                       <Link to='/acution-details' > 
                     <div className={`${style.card}`}>
                         <div className={`${style.image}`}>
                             <div className={`${style.flipCard}`}>
@@ -113,7 +107,7 @@ export default function AcutionCard() {
                         </div>
                     </div>
                      </Link> 
-                 )} 
+                ))} 
                 <div>
 
                 </div>
