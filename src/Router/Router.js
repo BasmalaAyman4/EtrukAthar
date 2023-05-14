@@ -43,7 +43,7 @@ export default function Router() {
         <Route path="/userCase/:id" element={<CaseDetailsUser />} />
         <Route path="/Zakat" element={<Zakat />} />
         <Route path="/acution" element={<Acution />} />
-        <Route path="/acution-details" element={<AcutionDetails />} />
+        <Route path="/acution-details/:id" element={<AcutionDetails />} />
         <Route path="/charity-details/:id/charityCase-details/:id" element={<CharityCaseDetails />} />
         <Route path="/charity-details/:id/charityEvent-details/:id" element={<CharityEventDetails />} />
       </Routes>
