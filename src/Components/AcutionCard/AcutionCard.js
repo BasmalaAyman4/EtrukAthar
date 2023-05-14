@@ -7,49 +7,49 @@ import { AiFillEye, AiOutlineSearch, AiOutlineHeart } from "react-icons/ai";
 import moment from 'moment';
 import axios from 'axios';
 export default function AcutionCard() {
-    const [timerDays, setTimerDays] = useState('00');
-    const [timerHours, setTimerHours] = useState('00');
-    const [timerMinutes, setTimerMinutes] = useState('00');
-    const [timerSeconds, setTimerSeconds] = useState('00');
-    const [dataAcution, setDataAcution] = useState({
-        name: '',
-        description: '',
-        date: '',
-        time: '',
-        price: '',
-    })
+    const [timerDays, setTimerDays] = useState([]);
+    const [timerHours, setTimerHours] = useState([]);
+    const [timerMinutes, setTimerMinutes] = useState([]);
+    const [timerSeconds, setTimerSeconds] = useState([]);
+    const [dataAcution, setDataAcution] = useState([])
     useEffect(() => {
         axios.get(`https://otrok.invoacdmy.com/api/user/mazad/index?lang=ar`)
             .then((response) => {
                 setDataAcution(response.data.cases)
-                console.log(response.data.cases,'aaa')
             }).catch((err) => { console.log(err) })
-
     }, [])
 
-    let interval = useRef();
-    const f = `${dataAcution.time}`
-    const d = `${dataAcution.date}`;
-    const momentt = moment(d).format('LL')
-    const final = momentt + " " + f
+    const timeAndDate = []
+    dataAcution && dataAcution.map(acutionCard =>
+        timeAndDate.push(new Date(moment(acutionCard.end_date).format('LL') + " " + acutionCard.end_time).getTime() - new Date().getTime())
+    )
 
+    let interval = useRef();
     const startTimer = () => {
-        const countdownDate = new Date(final).getTime();
         interval = setInterval(() => {
+            /*             const t = `${dataAcution.end_time}`
+                        const d = `${dataAcution.end_date}`;
+                        const all = moment(d).format('LL')
+                        const final = all + " " + t 
+                        const countdownDate = new Date(final).getTime();
             const now = new Date().getTime();
             const distance = countdownDate - now;
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)));
             const minutes = Math.floor((distance % (1000 * 60 * 60) / (1000 * 60)));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);*/
+            const d = timeAndDate.map(x => Math.floor(x / (1000 * 60 * 60 * 24)));
+            const h = timeAndDate.map(x => Math.floor((x % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))));
+            const m = timeAndDate.map(x => Math.floor((x % (1000 * 60 * 60) / (1000 * 60))));
+            const s = timeAndDate.map(x => Math.floor((x % (1000 * 60)) / 1000));
 
-            if (distance < 0) {
+            if (timeAndDate < 0) {
                 clearInterval(interval.current)
             } else {
-                setTimerDays(days);
-                setTimerHours(hours);
-                setTimerMinutes(minutes);
-                setTimerSeconds(seconds);
+                setTimerDays(d);
+                setTimerHours(h);
+                setTimerMinutes(m);
+                setTimerSeconds(s);
             }
         }, 1000);
     }
@@ -61,59 +61,60 @@ export default function AcutionCard() {
     })
     return (
         <>
-            <div>
+            <div className={`${style.AcutionCards}`}>
                 {dataAcution && dataAcution.map(acutionCard =>
-                       <Link to='/acution-details'> 
-                    <div className={`${style.card}`}>
-                        <div className={`${style.image}`}>
-                            <div className={`${style.flipCard}`}>
-                                <div className={`${style.flipCard__inner}`}>
-                                    <div className={`${style.flipCard__front}`}>
-                                        <img src={one} alt="" />
-                                    </div>
-                                    <div className={`${style.flipCard__back}`}>
-                                        <img src={two} alt="" />
-                                    </div>
-                                </div>
-                                <div className={`${style.acutionIcons}`}>
-                                    <div className={`${style.icons}`}>
-                                        <a href=""><AiFillEye className={`${style.icon}`} /></a>
-                                        <a href=""><AiOutlineSearch className={`${style.icon}`} /></a>
-                                        <a href=""><AiOutlineHeart className={`${style.icon}`} /></a>
-                                    </div>
-                                </div>
-                                <div className={`${style.acutionCountdown}`}>
-                                    <div className={`${style.countdown}`}>
-                                        <div>
-                                            <p>{timerDays}</p>
-                                            <span>Days</span>
+                    <Link to='/acution-details'>
+                        <div className={`${style.card}`}>
+                            <div className={`${style.image}`}>
+                                <div className={`${style.flipCard}`}>
+                                    <div className={`${style.flipCard__inner}`}>
+                                        <div className={`${style.flipCard__front}`}>
+                                            <img src={one} alt="" />
                                         </div>
-                                        <span className={`${style.countdown__dot}`}> : </span>
-                                        <div>
-                                            <p>{timerHours}</p>
-                                            <span>Hours</span>
+                                        <div className={`${style.flipCard__back}`}>
+                                            <img src={two} alt="" />
                                         </div>
-                                        <span className={`${style.countdown__dot}`}> : </span>
-                                        <div>
-                                            <p>{timerMinutes}</p>
-                                            <span>Minutes</span>
+                                    </div>
+                                    <div className={`${style.acutionIcons}`}>
+                                        <div className={`${style.icons}`}>
+                                            <a href="/"><AiFillEye className={`${style.icon}`} /></a>
+                                            <a href="/"><AiOutlineSearch className={`${style.icon}`} /></a>
+                                            <a href="/"><AiOutlineHeart className={`${style.icon}`} /></a>
                                         </div>
-                                        <span className={`${style.countdown__dot}`}> : </span>
-                                        <div>
-                                            <p>{timerSeconds}</p>
-                                            <span>Seconds</span>
+                                    </div>
+                                    <div className={`${style.acutionCountdown}`}>
+                                        <div className={`${style.countdown}`}>
+
+                                            <div>
+                                                <p></p>
+                                                <span>Days</span>
+                                            </div>
+                                            <span className={`${style.countdown__dot}`}> : </span>
+                                            <div>
+                                                <p></p>
+                                                <span>Hours</span>
+                                            </div>
+                                            <span className={`${style.countdown__dot}`}> : </span>
+                                            <div>
+                                                <p></p>
+                                                <span>Minutes</span>
+                                            </div>
+                                            <span className={`${style.countdown__dot}`}> : </span>
+                                            <div>
+                                                <p></p>
+                                                <span>Seconds</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div className={`${style.cardBody}`}>
+                                <h4 className={`${style.card__title}`}>{acutionCard.name}</h4>
+                                <p className={`${style.card__acution}`}>{acutionCard.description}</p>
+                            </div>
                         </div>
-                        <div className={`${style.cardBody}`}>
-                            <h4 className={`${style.card__title}`}>{acutionCard.name}</h4>
-                            <p className={`${style.card__acution}`}>{acutionCard.description}</p>
-                        </div>
-                    </div>
-                     </Link> 
-                 )} 
+                    </Link>
+                )}
                 <div>
 
                 </div>

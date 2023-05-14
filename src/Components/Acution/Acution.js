@@ -73,7 +73,13 @@ export default function Acution() {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
     const addNewAcution = new FormData();
-    addNewAcution.append("images[]", formData.img);
+    if (fileImage) {
+
+        [...fileImage].forEach((item, index) => {
+            addNewAcution.append("images[]", item);
+
+        })
+    }
     addNewAcution.append("name_ar", formData.titleAr);
     addNewAcution.append("name_en", formData.titleEn);
     addNewAcution.append("description_en", formData.descriptionEn);
