@@ -26,6 +26,10 @@ export default function Acution() {
         img: '',
         descriptionEn: '',
         descriptionAr: '',
+        dateSend: '',
+        timeSend: '',
+        price: '',
+        mazad: ''
     })
     const addFile = useRef(null)
     const addFileInput = useRef(null)
@@ -68,15 +72,38 @@ export default function Acution() {
     const onChangeHandler = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
-    const [formError, setFormError] = useState({})
+    const addNewAcution = new FormData();
+    addNewAcution.append("images[]", formData.img);
+    addNewAcution.append("name_ar", formData.titleAr);
+    addNewAcution.append("name_en", formData.titleEn);
+    addNewAcution.append("description_en", formData.descriptionEn);
+    addNewAcution.append("description_ar", formData.descriptionAr);
+    addNewAcution.append("starting_price", formData.price);
+    addNewAcution.append("mazad_amount", formData.mazad);
+    addNewAcution.append("end_date", formData.dateSend);
+    addNewAcution.append("end_time", formData.timeSend);
     const onSubmitHandler = (e) => {
 
         const toastId = toast.loading("please wait ... ")
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         e.preventDefault()
-
+        axios.post("https://otrok.invoacdmy.com/api/user/mazad/store", addNewAcution, {
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "multipart/form-data"
+            }
+        })
+            .then(response => {
+                toast.success('تم اضافه المزاد بنجاح .. رجاء الانتظار حتي التأكد من البيانات و يتم قبولها من قِبلنا ')
+                console.log(response)
+            }
+            ).catch((err) => { toast.error(err.response.data.message) })
 
     }
+    console.log(formData.dateSend)
+    /*    const input = "2020/08/19"
+       const [year, month, day] = input.split('-')
+       console.log(`${year}-${month}-${day}`) */
     return (
         <>
             <section className={`${style.acutions}`}>
@@ -126,26 +153,32 @@ export default function Acution() {
                                                             delete
                                                         </button>
                                                     </div>
-
                                             }
-
-
                                         </div>
-
                                         <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                            <Form.Control name="titleAr" className={`${style.input}`} placeholder="    اسم الحالة بالعربية" onChange={onChangeHandler} value={formData.titleAr} />
+                                            <Form.Control name="titleAr" className={`${style.input}`} placeholder="    اسم المزاد بالعربية" onChange={onChangeHandler} value={formData.titleAr} />
                                         </Form.Group>
                                         <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                            <Form.Control name="titleEn" className={`${style.input}`} placeholder="    اسم الحالة بالانجيزية" onChange={onChangeHandler} value={formData.titleEn} />
-                                        </Form.Group>
-
-                                        <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                            <Form.Control as="textarea" rows="3" name="descriptionAr" className={`${style.textArea}`} placeholder="نبذه مختصره عن الحاله بالعربية" onChange={onChangeHandler} value={formData.descriptionAr} />
-
+                                            <Form.Control name="titleEn" className={`${style.input}`} placeholder="    اسم المزاد بالانجيزية" onChange={onChangeHandler} value={formData.titleEn} />
                                         </Form.Group>
 
                                         <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                            <Form.Control as="textarea" rows="3" name="descriptionEn" className={`${style.textArea}`} placeholder="نبذه مختصره عن الحاله بالانجليزية" onChange={onChangeHandler} value={formData.descriptionEn} />
+                                            <Form.Control as="textarea" rows="3" name="descriptionAr" className={`${style.textArea}`} placeholder="نبذه مختصره عن المزاد بالعربية" onChange={onChangeHandler} value={formData.descriptionAr} />
+                                        </Form.Group>
+                                        <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                            <Form.Control as="textarea" rows="3" name="descriptionEn" className={`${style.textArea}`} placeholder="نبذه مختصره عن المزاد بالانجليزية" onChange={onChangeHandler} value={formData.descriptionEn} />
+                                        </Form.Group>
+                                        <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                            <Form.Control name="price" className={`${style.input}`} placeholder=" السعر الذي يبدأ به المزاد" onChange={onChangeHandler} value={formData.price} />
+                                        </Form.Group>
+                                        <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                            <Form.Control name="mazad" className={`${style.input}`} placeholder=" السعر الذي يزيد به المزاد" onChange={onChangeHandler} value={formData.mazad} />
+                                        </Form.Group>
+                                        <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                            <Form.Control type='date' name="dateSend" className={`${style.input}`} onChange={onChangeHandler} value={formData.dateSend} />
+                                        </Form.Group>
+                                        <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                            <Form.Control name="timeSend" className={`${style.input}`} onChange={onChangeHandler} value={formData.timeSend} />
                                         </Form.Group>
                                         <Button type="submit" className={style.signup__btn} >
                                             اضافة الان
@@ -159,7 +192,9 @@ export default function Acution() {
                     </div>
                     <Container>
                         <div className={`${style.AcutionCards}`}>
-                            <AcutionCard
+
+                            <AcutionCard />
+                            {/*  <AcutionCard
                                 title="Orange Fiat 500"
                                 bid="Current Bid: $500,000.00" />
                             <AcutionCard
@@ -173,15 +208,13 @@ export default function Acution() {
                                 bid="Current Bid: $500,000.00" />
                             <AcutionCard
                                 title="Orange Fiat 500"
-                                bid="Current Bid: $500,000.00" />
-                            <AcutionCard
-                                title="Orange Fiat 500"
-                                bid="Current Bid: $500,000.00" />
+                                bid="Current Bid: $500,000.00" /> */}
 
 
                         </div>
                     </Container>
                 </div>
+                <ToastContainer />
             </section>
 
         </>
