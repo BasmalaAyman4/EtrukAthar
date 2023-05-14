@@ -18,47 +18,53 @@ export default function AcutionCard() {
                 setDataAcution(response.data.cases)
             }).catch((err) => { console.log(err) })
     }, [])
-
     const timeAndDate = []
     dataAcution && dataAcution.map(acutionCard =>
-        timeAndDate.push(new Date(moment(acutionCard.end_date).format('LL') + " " + acutionCard.end_time).getTime() - new Date().getTime())
+        timeAndDate.push(new Date(moment(acutionCard?.end_date).format('LL') + " " + acutionCard?.end_time).getTime() - new Date().getTime())
+    
     )
+     
+     const d = timeAndDate.map(x => Math.floor(x / (1000 * 60 * 60 * 24)));
+     const h = timeAndDate.map(x => Math.floor((x % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))));
+    const m = timeAndDate.map(x => Math.floor((x % (1000 * 60 * 60) / (1000 * 60))));
+    const s = timeAndDate.map(x => Math.floor((x % (1000 * 60)) / 1000));
+    
+     console.log(timeAndDate,d,h,m,s)
+    // let interval = useRef();
+    // const startTimer = () => {
+    //     interval = setInterval(() => {
+    //         /*             const t = `${dataAcution.end_time}`
+    //                     const d = `${dataAcution.end_date}`;
+    //                     const all = moment(d).format('LL')
+    //                     const final = all + " " + t 
+    //                     const countdownDate = new Date(final).getTime();
+    //         const now = new Date().getTime();
+    //         const distance = countdownDate - now;
+    //         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    //         const hours = Math.floor((distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)));
+    //         const minutes = Math.floor((distance % (1000 * 60 * 60) / (1000 * 60)));
+    //         const seconds = Math.floor((distance % (1000 * 60)) / 1000);*/
+    //         const d = timeAndDate.map(x => Math.floor(x / (1000 * 60 * 60 * 24)));
+    //         const h = timeAndDate.map(x => Math.floor((x % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))));
+    //         const m = timeAndDate.map(x => Math.floor((x % (1000 * 60 * 60) / (1000 * 60))));
+    //         const s = timeAndDate.map(x => Math.floor((x % (1000 * 60)) / 1000));
 
-    let interval = useRef();
-    const startTimer = () => {
-        interval = setInterval(() => {
-            /*             const t = `${dataAcution.end_time}`
-                        const d = `${dataAcution.end_date}`;
-                        const all = moment(d).format('LL')
-                        const final = all + " " + t 
-                        const countdownDate = new Date(final).getTime();
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)));
-            const minutes = Math.floor((distance % (1000 * 60 * 60) / (1000 * 60)));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);*/
-            const d = timeAndDate.map(x => Math.floor(x / (1000 * 60 * 60 * 24)));
-            const h = timeAndDate.map(x => Math.floor((x % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))));
-            const m = timeAndDate.map(x => Math.floor((x % (1000 * 60 * 60) / (1000 * 60))));
-            const s = timeAndDate.map(x => Math.floor((x % (1000 * 60)) / 1000));
-
-            if (timeAndDate < 0) {
-                clearInterval(interval.current)
-            } else {
-                setTimerDays(d);
-                setTimerHours(h);
-                setTimerMinutes(m);
-                setTimerSeconds(s);
-            }
-        }, 1000);
-    }
-    useEffect(() => {
-        startTimer();
-        return () => {
-            clearInterval(interval.current);
-        }
-    })
+    //         if (timeAndDate < 0) {
+    //             clearInterval(interval.current)
+    //         } else {
+    //             setTimerDays(d);
+    //             setTimerHours(h);
+    //             setTimerMinutes(m);
+    //             setTimerSeconds(s);
+    //         }
+    //     }, 1000);
+    // }
+    // useEffect(() => {
+    //     startTimer();
+    //     return () => {
+    //         clearInterval(interval.current);
+    //     }
+    // })
     return (
         <>
             <div className={`${style.AcutionCards}`}>
