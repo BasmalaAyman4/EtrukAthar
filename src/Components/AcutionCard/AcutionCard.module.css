@@ -19,26 +19,7 @@
     margin-bottom: 40px;
     
 }
-.card:hover{ animation: move 1s infinite alternate; 
-}
-@keyframes move {
-    0% {
-        transform: translateY(0);
-        -webkit-transform: translateY(0);
-        -moz-transform: translateY(0);
-        -ms-transform: translateY(0);
-        -o-transform: translateY(0);
-    }
 
-    100% {
-        transform: translateY(-25px);
-        -webkit-transform: translateY(-25px);
-        -moz-transform: translateY(-25px);
-        -ms-transform: translateY(-25px);
-        -o-transform: translateY(-25px);
-}
-
-}
 .card__title {
     font-family: "Changa-SemiBold";
     position: absolute;

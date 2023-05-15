@@ -18,9 +18,7 @@ export default function AcutionCard() {
     const timeAndDate = []
     dataAcution && dataAcution.map(acutionCard =>
         timeAndDate.push(new Date(moment(acutionCard?.end_date).format('LL') + " " + acutionCard?.end_time).getTime() - new Date().getTime())
-
     )
-
     const [timeArr, setTimeArr] = useState([])
     let interval = useRef();
     const startTimer = () => {
@@ -29,7 +27,6 @@ export default function AcutionCard() {
             const h = timeAndDate.map(x => Math.floor((x % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))));
             const m = timeAndDate.map(x => Math.floor((x % (1000 * 60 * 60) / (1000 * 60))));
             const s = timeAndDate.map(x => Math.floor((x % (1000 * 60)) / 1000));
-
             let time = d.map((day, index_value) => {
                 return {
                     day: day,
@@ -39,8 +36,6 @@ export default function AcutionCard() {
                 };
             });
             setTimeArr(time)
-
-
         }, 1000);
     }
     useEffect(() => {
@@ -54,7 +49,6 @@ export default function AcutionCard() {
 
             <div className={`${style.AcutionCards}`}>
                 {timeArr && timeArr.map((time, index) =>
-
                     <>
                         {dataAcution && dataAcution.map(acutionCard => (
                             <Link to={`acution-details/${acutionCard.id}`}>
@@ -78,7 +72,6 @@ export default function AcutionCard() {
                                             </div>
                                             <div className={`${style.acutionCountdown}`}>
                                                 <div className={`${style.countdown}`}>
-
                                                     <>
                                                         <div>
                                                             <p>{time?.day}</p>

@@ -28,9 +28,26 @@ export default function AcutionDetails() {
     const [timerSeconds, setTimerSeconds] = useState('00');
     const [active, setActive] = useState("description")
     const [mazadDetails, setMazadDetails] = useState({})
+    const [status, setStatus] = useState('accepted')
+    const [a, setA] = useState({
+        stat: 'finished'
+    })
+    const changeStatus = new FormData();
+    changeStatus.append("status", a.stat);
     const showActive = (view) => {
         setActive(view)
     }
+
+
+    useEffect(() => {
+        if (new Date(moment(mazadDetails.end_date).format('LL') + " " + mazadDetails.end_time).getTime() === new Date().getTime()) {
+            return axios.post(`https://otrok.invoacdmy.com/api/dashboard/mazad/update/${mazadId.id}?status=accepted`, changeStatus)
+                .then(response => {
+                    console.log(response.data.acution.status)
+                }
+                ).catch((err) => { console.log(err) })
+        }
+    }, [])
 
 
     let interval = useRef();
@@ -77,9 +94,6 @@ export default function AcutionDetails() {
             .then((response) => {
                 setMazadDetails(response.data.mazad)
             }).catch((err) => { console.log(err) })
-
-
-
     }, [])
     const num = mazadDetails.mazad_amount
 
