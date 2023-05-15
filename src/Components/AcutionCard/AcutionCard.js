@@ -23,52 +23,60 @@ export default function AcutionCard() {
         timeAndDate.push(new Date(moment(acutionCard?.end_date).format('LL') + " " + acutionCard?.end_time).getTime() - new Date().getTime())
     
     )
-     
-     const d = timeAndDate.map(x => Math.floor(x / (1000 * 60 * 60 * 24)));
-     const h = timeAndDate.map(x => Math.floor((x % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))));
-    const m = timeAndDate.map(x => Math.floor((x % (1000 * 60 * 60) / (1000 * 60))));
-    const s = timeAndDate.map(x => Math.floor((x % (1000 * 60)) / 1000));
-    
-     console.log(timeAndDate,d,h,m,s)
-    // let interval = useRef();
-    // const startTimer = () => {
-    //     interval = setInterval(() => {
-    //         /*             const t = `${dataAcution.end_time}`
-    //                     const d = `${dataAcution.end_date}`;
-    //                     const all = moment(d).format('LL')
-    //                     const final = all + " " + t 
-    //                     const countdownDate = new Date(final).getTime();
-    //         const now = new Date().getTime();
-    //         const distance = countdownDate - now;
-    //         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    //         const hours = Math.floor((distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)));
-    //         const minutes = Math.floor((distance % (1000 * 60 * 60) / (1000 * 60)));
-    //         const seconds = Math.floor((distance % (1000 * 60)) / 1000);*/
-    //         const d = timeAndDate.map(x => Math.floor(x / (1000 * 60 * 60 * 24)));
-    //         const h = timeAndDate.map(x => Math.floor((x % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))));
-    //         const m = timeAndDate.map(x => Math.floor((x % (1000 * 60 * 60) / (1000 * 60))));
-    //         const s = timeAndDate.map(x => Math.floor((x % (1000 * 60)) / 1000));
+ 
+    const [timeArr,setTimeArr] = useState([])
+    let interval = useRef();
+    const startTimer = () => {
+        interval = setInterval(() => {
+            /*             const t = `${dataAcution.end_time}`
+                        const d = `${dataAcution.end_date}`;
+                        const all = moment(d).format('LL')
+                        const final = all + " " + t 
+                        const countdownDate = new Date(final).getTime();
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)));
+            const minutes = Math.floor((distance % (1000 * 60 * 60) / (1000 * 60)));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);*/
+            const d = timeAndDate.map(x => Math.floor(x / (1000 * 60 * 60 * 24)));
+            const h = timeAndDate.map(x => Math.floor((x % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))));
+            const m = timeAndDate.map(x => Math.floor((x % (1000 * 60 * 60) / (1000 * 60))));
+            const s = timeAndDate.map(x => Math.floor((x % (1000 * 60)) / 1000));
 
-    //         if (timeAndDate < 0) {
-    //             clearInterval(interval.current)
-    //         } else {
-    //             setTimerDays(d);
-    //             setTimerHours(h);
-    //             setTimerMinutes(m);
-    //             setTimerSeconds(s);
-    //         }
-    //     }, 1000);
-    // }
-    // useEffect(() => {
-    //     startTimer();
-    //     return () => {
-    //         clearInterval(interval.current);
-    //     }
-    // })
+            let time = d.map((day, index_value) => {
+                return {
+                    day: day,
+                    hour: h[index_value],
+                    min: m[index_value],
+                    sec: s[index_value],
+                };
+            });
+            setTimeArr(time)
+            // console.log(timeArr,'arr')
+
+            if (timeAndDate < 0) {
+                clearInterval(interval.current)
+            } else {
+                setTimerDays(d);
+                setTimerHours(h);
+                setTimerMinutes(m);
+                setTimerSeconds(s);
+            }
+        }, 1000);
+    }
+    useEffect(() => {
+        startTimer();
+        return () => {
+            clearInterval(interval.current);
+        }
+    })
     return (
         <>
             <div className={`${style.AcutionCards}`}>
                 {dataAcution && dataAcution.map(acutionCard =>
+                    <>
+                    {timeArr && timeArr.map((time,index) =>(
                     <Link to='/acution-details'>
                         <div className={`${style.card}`}>
                             <div className={`${style.image}`}>
@@ -90,26 +98,29 @@ export default function AcutionCard() {
                                     </div>
                                     <div className={`${style.acutionCountdown}`}>
                                         <div className={`${style.countdown}`}>
-
-                                            <div>
-                                                <p></p>
+                                        
+                                        <>
+                                             <div>
+                                                <p>{time?.day}</p>
                                                 <span>Days</span>
                                             </div>
                                             <span className={`${style.countdown__dot}`}> : </span>
                                             <div>
-                                                <p></p>
+                                                <p>{time?.hour}</p>
                                                 <span>Hours</span>
                                             </div>
                                             <span className={`${style.countdown__dot}`}> : </span>
                                             <div>
-                                                <p></p>
+                                                <p>{time?.min}</p>
                                                 <span>Minutes</span>
                                             </div>
                                             <span className={`${style.countdown__dot}`}> : </span>
                                             <div>
-                                                <p></p>
+                                                <p>{time?.sec}</p>
                                                 <span>Seconds</span>
                                             </div>
+                                        </>
+                                    
                                         </div>
                                     </div>
                                 </div>
@@ -119,7 +130,10 @@ export default function AcutionCard() {
                                 <p className={`${style.card__acution}`}>{acutionCard.description}</p>
                             </div>
                         </div>
+                     
                     </Link>
+                    ))}
+                    </>
                 )}
                 <div>
 
