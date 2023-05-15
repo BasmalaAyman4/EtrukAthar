@@ -11,25 +11,31 @@ import { Link } from 'react-router-dom';
 import { AiFillEye, AiOutlineHeart, AiOutlineUser, AiOutlineSearch } from "react-icons/ai";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import moment from 'moment';
 import "./acution.css";
 import { CiLocationOn } from "react-icons/ci";
 import { DataGrid } from "@mui/x-data-grid";
 import { userColumns, userRows } from "../DataAcutionHistory";
 import AcutionCard from '../AcutionCard/AcutionCard';
+import { useParams } from 'react-router-dom';
+import axios from 'axios'
 export default function AcutionDetails() {
+    const mazadId = useParams()
     const [count, setCount] = useState(0);
     const [timerDays, setTimerDays] = useState('00');
     const [timerHours, setTimerHours] = useState('00');
     const [timerMinutes, setTimerMinutes] = useState('00');
     const [timerSeconds, setTimerSeconds] = useState('00');
     const [active, setActive] = useState("description")
+    const [mazadDetails, setMazadDetails] = useState({})
     const showActive = (view) => {
         setActive(view)
-
     }
+
+
     let interval = useRef();
     const startTimer = () => {
-        const countdownDate = new Date('May 30 , 2023 00:00:00').getTime();
+        const countdownDate = new Date(moment(mazadDetails.end_date).format('LL') + " " + mazadDetails.end_time).getTime();
         interval = setInterval(() => {
             const now = new Date().getTime();
             const distance = countdownDate - now;
@@ -68,12 +74,20 @@ export default function AcutionDetails() {
 
 
     ];
+    useEffect(() => {
+        axios.get(`https://otrok.invoacdmy.com/api/user/mazad/show/${mazadId.id}`)
+            .then((response) => {
+                setMazadDetails(response.data.mazad)
+            }).catch((err) => { console.log(err) })
+
+
+    }, [])
     return (
         <>
             <section className={`${style.acutionDetails}`}>
                 <Container>
                     <div className={`${style.acutionDetails__body}`}>
-                        <h5 className={`${style.acutionDetails__title}`}><Link to="/acution" className={`${style.acution}`}>Acutions</Link> / Orange Fiat 500</h5>
+                        <h5 className={`${style.acutionDetails__title}`}><Link to="/acution" className={`${style.acution}`}>Acutions</Link> / {mazadDetails.name_en}</h5>
                         <h2>Orange Fiat 500</h2>
                         <p className={`${style.acutionDetails__para}`}> <AiFillEye /> 1.586 Views</p>
                     </div>

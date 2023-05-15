@@ -21,7 +21,7 @@ export default function AcutionCard() {
     const timeAndDate = []
     dataAcution && dataAcution.map(acutionCard =>
         timeAndDate.push(new Date(moment(acutionCard?.end_date).format('LL') + " " + acutionCard?.end_time).getTime() - new Date().getTime())
-    
+
     )
  
     const [timeArr,setTimeArr] = useState([])
