@@ -19,6 +19,7 @@ import { userColumns, userRows } from "../DataAcutionHistory";
 import AcutionCard from '../AcutionCard/AcutionCard';
 import { useParams } from 'react-router-dom';
 import axios from 'axios'
+import { toast } from 'react-toastify';
 export default function AcutionDetails() {
     const mazadId = useParams()
     const [count, setCount] = useState(0);
@@ -28,25 +29,24 @@ export default function AcutionDetails() {
     const [timerSeconds, setTimerSeconds] = useState('00');
     const [active, setActive] = useState("description")
     const [mazadDetails, setMazadDetails] = useState({})
-    const [a, setA] = useState({
-        stat: 'finished'
-    })
-    const changeStatus = new FormData();
-    changeStatus.append("status", a.stat);
+    const [increment, setIncrement] = useState(0)
+    const [timeOver, setTimeOver] = useState(false)
     const showActive = (view) => {
         setActive(view)
     }
 
     useEffect(() => {
-        if (new Date(moment(mazadDetails.end_date).format('LL') + " " + mazadDetails.end_time).getTime() === new Date().getTime()) {
-            return axios.post(`https://otrok.invoacdmy.com/api/dashboard/mazad/update/${mazadId.id}?status=accepted`, changeStatus)
-                .then(response => {
-                    console.log(response.data.acution.status)
-                }
-                ).catch((err) => { console.log(err) })
-        }
-    }, [])
+        axios.get(`https://otrok.invoacdmy.com/api/user/mazad/show/${mazadId.id}`)
+            .then((response) => {
+                setMazadDetails(response.data.mazad)
+                setCount(Number(response.data.mazad.starting_price))
+                setIncrement(Number(response.data.mazad.mazad_amount))
 
+            }).catch((err) => { console.log(err) })
+
+        console.log(count)
+
+    }, [])
 
     let interval = useRef();
     const startTimer = () => {
@@ -59,9 +59,12 @@ export default function AcutionDetails() {
             const minutes = Math.floor((distance % (1000 * 60 * 60) / (1000 * 60)));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            if (distance < 0) {
+            if (distance <= 0) {
+
+                setTimeOver(true)
                 clearInterval(interval.current)
             } else {
+                setTimeOver(false)
                 setTimerDays(days);
                 setTimerHours(hours);
                 setTimerMinutes(minutes);
@@ -69,31 +72,39 @@ export default function AcutionDetails() {
             }
         }, 1000);
     }
+
+
+    function handleStatus() {
+
+        const timeStatus = new FormData();
+        timeStatus.append("status", 'finished');
+        axios.post(`https://otrok.invoacdmy.com/api/dashboard/mazad/update/${mazadId.id}`, timeStatus, {
+            headers: {
+
+                "Content-Type": "multipart/form-data"
+            }
+        }).then(response => {
+            console.log(response)
+        }
+        ).catch((err) => { toast.error(err.response.data.message) })
+    }
+    if (timeOver === true) {
+        handleStatus()
+    }
     useEffect(() => {
         startTimer();
         return () => {
             clearInterval(interval.current);
         }
     })
-    /*     const incrementCount = () => {
-            setCount(count + mazadDetails.mazad_amount);
-        } 
-    const decrementCount = () => {
-        setCount(count - mazadDetails.mazad_amount);
-    }*/
+
     const rows = [
         { id: 1, date: 'May 9, 2023 9:28 am', bid: '$500', user: 'admin' },
         { id: 2, date: 'May 8, 2023 9:28 am', bid: '$500', user: 'admin' },
         { id: 3, date: 'May 7, 2023 9:28 am', bid: '$500', user: 'admin' },
         { id: 4, date: 'May 6, 2023 9:28 am', bid: '$500', user: 'admin' },
     ];
-    useEffect(() => {
-        axios.get(`https://otrok.invoacdmy.com/api/user/mazad/show/${mazadId.id}`)
-            .then((response) => {
-                setMazadDetails(response.data.mazad)
-            }).catch((err) => { console.log(err) })
-    }, [])
-    const num = mazadDetails.mazad_amount
+
 
     return (
         <>
@@ -152,9 +163,9 @@ export default function AcutionDetails() {
                                 <p className={`${style.acutionTime__para}`}>Acution ends: May 30,2023 12:00 am</p>
                                 <div className={`${style.bid}`} >
                                     <div className={`${style.price}`} >
-                                        <button onClick={() => setCount(count + num)} className={`${style.increment__btn}`} >+</button>
+                                        <button onClick={() => setCount(count + increment)} className={`${style.increment__btn}`} >+</button>
                                         {count}
-                                        <button onClick={() => setCount(count - num)} className={`${style.decrement__btn}`}>-</button>
+                                        <button onClick={() => setCount(count - increment)} className={`${style.decrement__btn}`}>-</button>
                                     </div>
                                     <Link to="" className={`${style.bid__btn}`}>BID</Link>
                                     <AiFillEye className={`${style.bid__icon}`} />
