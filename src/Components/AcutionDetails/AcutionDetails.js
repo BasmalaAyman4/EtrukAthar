@@ -28,7 +28,6 @@ export default function AcutionDetails() {
     const [timerSeconds, setTimerSeconds] = useState('00');
     const [active, setActive] = useState("description")
     const [mazadDetails, setMazadDetails] = useState({})
-    const [status, setStatus] = useState('accepted')
     const [a, setA] = useState({
         stat: 'finished'
     })
@@ -37,7 +36,6 @@ export default function AcutionDetails() {
     const showActive = (view) => {
         setActive(view)
     }
-
 
     useEffect(() => {
         if (new Date(moment(mazadDetails.end_date).format('LL') + " " + mazadDetails.end_time).getTime() === new Date().getTime()) {
