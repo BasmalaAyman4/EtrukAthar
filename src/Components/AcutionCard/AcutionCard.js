@@ -53,7 +53,7 @@ export default function AcutionCard() {
         <>
 
             <div className={`${style.AcutionCards}`}>
-                {timeArr && timeArr.map((time, index) =>
+                {/* {timeArr && timeArr.map((time, index) => */}
 
                     <>
                         {dataAcution && dataAcution.map(acutionCard => (
@@ -76,8 +76,8 @@ export default function AcutionCard() {
                                                     <a href="/"><AiOutlineHeart className={`${style.icon}`} /></a>
                                                 </div>
                                             </div>
-                                            <div className={`${style.acutionCountdown}`}>
-                                                <div className={`${style.countdown}`}>
+                                            {/* <div className={`${style.acutionCountdown}`}>
+                                                 <div className={`${style.countdown}`}>
 
                                                     <>
                                                         <div>
@@ -101,8 +101,8 @@ export default function AcutionCard() {
                                                         </div>
                                                     </>
 
-                                                </div>
-                                            </div>
+                                                </div> 
+                                            </div> */}
                                         </div>
                                     </div>
                                     <div className={`${style.cardBody}`}>
@@ -114,7 +114,7 @@ export default function AcutionCard() {
                             </Link>
                         ))}
                     </>
-                )}
+                {/* )} */}
                 <div>
 
                 </div>

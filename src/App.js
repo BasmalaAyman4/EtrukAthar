@@ -3,7 +3,7 @@ import Navbar from './Components/Global/Navbar/NavbarMenu'
 import Footer from './Components/Global/Footer/Footer'
 import Router from './Router/Router';
 
-import DonateNow from './Components/Global/DonateNow/DonateNow'
+// import DonateNow from './Components/Global/DonateNow/DonateNow'
 import { AuthProvider } from './Components/Context/AuthContext';
 import Loading from './Components/Loading/Loading';
 
@@ -25,7 +25,7 @@ import Loading from './Components/Loading/Loading';
         :
         <>
           <Navbar />
-          <DonateNow />
+          {/* <DonateNow /> */}
           <Router />
           <Footer />
         </>
