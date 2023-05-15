@@ -60,12 +60,12 @@ export default function AcutionDetails() {
             clearInterval(interval.current);
         }
     })
-    const incrementCount = () => {
-        setCount(count + 5);
-    }
+    /*     const incrementCount = () => {
+            setCount(count + mazadDetails.mazad_amount);
+        } 
     const decrementCount = () => {
-        setCount(count - 5);
-    }
+        setCount(count - mazadDetails.mazad_amount);
+    }*/
     const rows = [
         { id: 1, date: 'May 9, 2023 9:28 am', bid: '$500', user: 'admin' },
         { id: 2, date: 'May 8, 2023 9:28 am', bid: '$500', user: 'admin' },
@@ -82,6 +82,8 @@ export default function AcutionDetails() {
 
 
     }, [])
+    const num = mazadDetails.mazad_amount
+
     return (
         <>
             <section className={`${style.acutionDetails}`}>
@@ -139,9 +141,9 @@ export default function AcutionDetails() {
                                 <p className={`${style.acutionTime__para}`}>Acution ends: May 30,2023 12:00 am</p>
                                 <div className={`${style.bid}`} >
                                     <div className={`${style.price}`} >
-                                        <button onClick={incrementCount} className={`${style.increment__btn}`} >+</button>
+                                        <button onClick={() => setCount(count + num)} className={`${style.increment__btn}`} >+</button>
                                         {count}
-                                        <button onClick={decrementCount} className={`${style.decrement__btn}`}>-</button>
+                                        <button onClick={() => setCount(count - num)} className={`${style.decrement__btn}`}>-</button>
                                     </div>
                                     <Link to="" className={`${style.bid__btn}`}>BID</Link>
                                     <AiFillEye className={`${style.bid__icon}`} />
