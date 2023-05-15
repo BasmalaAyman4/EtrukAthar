@@ -73,10 +73,11 @@ export default function AcutionCard() {
     })
     return (
         <>
+         {timeArr && timeArr.map((time,index) =>(
             <div className={`${style.AcutionCards}`}>
                 {dataAcution && dataAcution.map(acutionCard =>
                     <>
-                    {timeArr && timeArr.map((time,index) =>(
+                
                     <Link to='/acution-details'>
                         <div className={`${style.card}`}>
                             <div className={`${style.image}`}>
@@ -136,7 +137,7 @@ export default function AcutionCard() {
                     </>
                 )}
                 <div>
-
+                ))}
                 </div>
             </div>
         </>
