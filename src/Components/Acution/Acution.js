@@ -53,7 +53,7 @@ export default function Acution() {
         let ImagesArray = Object.entries(e.target.files).map((e) =>
             URL.createObjectURL(e[1])
         );
-        console.log(ImagesArray);
+        // console.log(ImagesArray);
         setImage([...imageUrl, ...ImagesArray]);
         setFormData(prevValue => {
             return {
@@ -61,8 +61,8 @@ export default function Acution() {
                 'img': files
             }
         })
-        console.log(images, 'images')
-        console.log(formData)
+        /*   console.log(images, 'images')
+          console.log(formData) */
     }
     function deleteFile(e) {
         e.preventDefault()
@@ -101,12 +101,12 @@ export default function Acution() {
         })
             .then(response => {
                 toast.success('تم اضافه المزاد بنجاح .. رجاء الانتظار حتي التأكد من البيانات و يتم قبولها من قِبلنا ')
-                console.log(response)
+                /*   console.log(response) */
             }
             ).catch((err) => { toast.error(err.response.data.message) })
 
     }
-    console.log(formData.dateSend)
+    // console.log(formData.dateSend)
     /*    const input = "2020/08/19"
        const [year, month, day] = input.split('-')
        console.log(`${year}-${month}-${day}`) */
