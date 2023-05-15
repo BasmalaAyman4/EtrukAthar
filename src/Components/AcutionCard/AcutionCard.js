@@ -7,10 +7,7 @@ import { AiFillEye, AiOutlineSearch, AiOutlineHeart } from "react-icons/ai";
 import moment from 'moment';
 import axios from 'axios';
 export default function AcutionCard() {
-    const [timerDays, setTimerDays] = useState([]);
-    const [timerHours, setTimerHours] = useState([]);
-    const [timerMinutes, setTimerMinutes] = useState([]);
-    const [timerSeconds, setTimerSeconds] = useState([]);
+   
     const [dataAcution, setDataAcution] = useState([])
     useEffect(() => {
         axios.get(`https://otrok.invoacdmy.com/api/user/mazad/index?lang=ar`)
@@ -28,17 +25,7 @@ export default function AcutionCard() {
     let interval = useRef();
     const startTimer = () => {
         interval = setInterval(() => {
-            /*             const t = `${dataAcution.end_time}`
-                        const d = `${dataAcution.end_date}`;
-                        const all = moment(d).format('LL')
-                        const final = all + " " + t 
-                        const countdownDate = new Date(final).getTime();
-            const now = new Date().getTime();
-            const distance = countdownDate - now;
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)));
-            const minutes = Math.floor((distance % (1000 * 60 * 60) / (1000 * 60)));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);*/
+           
             const d = timeAndDate.map(x => Math.floor(x / (1000 * 60 * 60 * 24)));
             const h = timeAndDate.map(x => Math.floor((x % (1000 * 60 * 60 * 24) / (1000 * 60 * 60))));
             const m = timeAndDate.map(x => Math.floor((x % (1000 * 60 * 60) / (1000 * 60))));
@@ -53,16 +40,8 @@ export default function AcutionCard() {
                 };
             });
             setTimeArr(time)
-            // console.log(timeArr,'arr')
+           
 
-            if (timeAndDate < 0) {
-                clearInterval(interval.current)
-            } else {
-                setTimerDays(d);
-                setTimerHours(h);
-                setTimerMinutes(m);
-                setTimerSeconds(s);
-            }
         }, 1000);
     }
     useEffect(() => {
@@ -73,11 +52,10 @@ export default function AcutionCard() {
     })
     return (
         <>
-         {timeArr && timeArr.map((time,index) =>(
             <div className={`${style.AcutionCards}`}>
                 {dataAcution && dataAcution.map(acutionCard =>
                     <>
-                
+                    {timeArr && timeArr.map((time,index) =>(
                     <Link to='/acution-details'>
                         <div className={`${style.card}`}>
                             <div className={`${style.image}`}>
@@ -137,7 +115,7 @@ export default function AcutionCard() {
                     </>
                 )}
                 <div>
-                ))}
+
                 </div>
             </div>
         </>
