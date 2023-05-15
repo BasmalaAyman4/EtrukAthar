@@ -71,14 +71,13 @@ export default function AcutionDetails() {
         { id: 2, date: 'May 8, 2023 9:28 am', bid: '$500', user: 'admin' },
         { id: 3, date: 'May 7, 2023 9:28 am', bid: '$500', user: 'admin' },
         { id: 4, date: 'May 6, 2023 9:28 am', bid: '$500', user: 'admin' },
-
-
     ];
     useEffect(() => {
         axios.get(`https://otrok.invoacdmy.com/api/user/mazad/show/${mazadId.id}`)
             .then((response) => {
                 setMazadDetails(response.data.mazad)
             }).catch((err) => { console.log(err) })
+
 
 
     }, [])
