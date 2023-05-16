@@ -6,7 +6,7 @@ import one from "../../assets/images/one.jpg"
 import two from "../../assets/images/two.jpg"
 import three from "../../assets/images/thee.jpg"
 import four from "../../assets/images/four.jpg"
-import { Container, Form, ToastContainer } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AiFillEye, AiOutlineHeart, AiOutlineUser, AiOutlineSearch } from "react-icons/ai";
 import Row from 'react-bootstrap/Row';
@@ -19,7 +19,7 @@ import { userColumns, userRows } from "../DataAcutionHistory";
 import AcutionCard from '../AcutionCard/AcutionCard';
 import { useParams } from 'react-router-dom';
 import axios from 'axios'
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 export default function AcutionDetails() {
     const mazadId = useParams()
     const [count, setCount] = useState(0);
@@ -63,7 +63,7 @@ export default function AcutionDetails() {
             const minutes = Math.floor((distance % (1000 * 60 * 60) / (1000 * 60)));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            if (distance <= 0) {
+            if (distance === 0) {
 
                 setTimeOver(true)
                 clearInterval(interval.current)
@@ -88,13 +88,14 @@ export default function AcutionDetails() {
                 "Content-Type": "multipart/form-data"
             }
         }).then(response => {
-            console.log(response)
+           
         }
         ).catch((err) => { toast.error(err.response.data.message) })
     }
     if (timeOver === true) {
         handleStatus()
     }
+
     useEffect(() => {
         startTimer();
         return () => {
@@ -108,23 +109,33 @@ export default function AcutionDetails() {
         { id: 3, date: 'May 7, 2023 9:28 am', bid: '$500', user: 'admin' },
         { id: 4, date: 'May 6, 2023 9:28 am', bid: '$500', user: 'admin' },
     ];
-    const addBid = new FormData();
-    addBid.append("vendor_paid", count);
+    const delay = ms => new Promise(res => setTimeout(res, ms));
+    const handleReload = async () => {
+        await delay(7000);
+            window.location.reload();
+    }
+
     const incrementBid = () => {
+
+        const addBid = new FormData();
+        addBid.append("vendor_paid", count);
+
         const toastId = toast.loading("...انتظر قليلا")
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
+
         axios.post(`https://otrok.invoacdmy.com/api/user/mazad/increment/${mazadId.id}`, addBid, {
             headers: {
                 "Authorization": `Bearer ${token}`,
-                "Content-Type": "multipart/form-data"
+              "Content-Type": "multipart/form-data"
             }
-        }).then(response => {
-            toast.success('تمت العملية بنجاح')
-            console.log(response.data)
-            console.log(count)
-        }
-        ).catch((err) => { toast.error(err.response.data.message) })
-
+          })
+            .then(response => {
+              toast.success('تمت العملية بنجاح')
+              handleReload()
+              
+            }
+            ).catch((err) => toast.error(err.response.data.message) )
+      
     }
     return (
         <>
@@ -237,6 +248,7 @@ export default function AcutionDetails() {
                         <AcutionCard />
                         <AcutionCard />
                     </div>
+             
                 </Container>
                 <ToastContainer />
             </section>
