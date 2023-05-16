@@ -198,25 +198,7 @@ export default function Acution() {
                     </div>
                     <Container>
                         <div className={`${style.AcutionCards}`}>
-
                             <AcutionCard />
-                            {/*  <AcutionCard
-                                title="Orange Fiat 500"
-                                bid="Current Bid: $500,000.00" />
-                            <AcutionCard
-                                title="Orange Fiat 500"
-                                bid="Current Bid: $500,000.00" />
-                            <AcutionCard
-                                title="Orange Fiat 500"
-                                bid="Current Bid: $500,000.00" />
-                            <AcutionCard
-                                title="Orange Fiat 500"
-                                bid="Current Bid: $500,000.00" />
-                            <AcutionCard
-                                title="Orange Fiat 500"
-                                bid="Current Bid: $500,000.00" /> */}
-
-
                         </div>
                     </Container>
                 </div>
