@@ -6,7 +6,7 @@ import one from "../../assets/images/one.jpg"
 import two from "../../assets/images/two.jpg"
 import three from "../../assets/images/thee.jpg"
 import four from "../../assets/images/four.jpg"
-import { Container, Form, ToastContainer } from 'react-bootstrap';
+import { Container, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AiFillEye, AiOutlineHeart, AiOutlineUser, AiOutlineSearch } from "react-icons/ai";
 import Row from 'react-bootstrap/Row';
@@ -19,7 +19,7 @@ import { userColumns, userRows } from "../DataAcutionHistory";
 import AcutionCard from '../AcutionCard/AcutionCard';
 import { useParams } from 'react-router-dom';
 import axios from 'axios'
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 export default function AcutionDetails() {
     const mazadId = useParams()
     const [count, setCount] = useState(0);
@@ -29,6 +29,8 @@ export default function AcutionDetails() {
     const [timerSeconds, setTimerSeconds] = useState('00');
     const [active, setActive] = useState("description")
     const [mazadDetails, setMazadDetails] = useState({})
+    const [mazadHistory, setMazadHistory] = useState({})
+    const [vendor, setVendorName] = useState({})
     const [increment, setIncrement] = useState(0)
     const [timeOver, setTimeOver] = useState(false)
     const [token, setToken] = useState(localStorage.getItem("token"))
@@ -43,6 +45,12 @@ export default function AcutionDetails() {
                 setCount(Number(response.data.mazad.starting_price))
                 setIncrement(Number(response.data.mazad.mazad_amount))
 
+            }).catch((err) => { console.log(err) })
+
+        axios.get(`https://otrok.invoacdmy.com/api/user/mazad/history/${mazadId.id}`)
+            .then((response) => {
+                setMazadHistory(response.data.history)
+                setVendorName(response.data.users)
             }).catch((err) => { console.log(err) })
 
 
@@ -101,13 +109,6 @@ export default function AcutionDetails() {
             clearInterval(interval.current);
         }
     })
-
-    const rows = [
-        { id: 1, date: 'May 9, 2023 9:28 am', bid: '$500', user: 'admin' },
-        { id: 2, date: 'May 8, 2023 9:28 am', bid: '$500', user: 'admin' },
-        { id: 3, date: 'May 7, 2023 9:28 am', bid: '$500', user: 'admin' },
-        { id: 4, date: 'May 6, 2023 9:28 am', bid: '$500', user: 'admin' },
-    ];
     const addBid = new FormData();
     addBid.append("vendor_paid", count);
     const incrementBid = () => {
@@ -215,7 +216,7 @@ export default function AcutionDetails() {
                     <div className={`${active === "history" ? style.acution__info__body : style.none}`}>
                         <DataGrid
 
-                            rows={rows}
+                            rows={mazadHistory + vendor}
                             columns={userColumns}
                             initialState={{
                                 pagination: {
@@ -226,6 +227,7 @@ export default function AcutionDetails() {
                             }}
                             pageSizeOptions={[5]}
                             disableRowSelectionOnClick
+                            getRowId={(row) => row.vendor_paid + row.vendor_id}
                         />
                     </div>
                     <div className={`${active === "info" ? style.acution__info__body : style.none}`}>
