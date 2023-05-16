@@ -90,7 +90,7 @@
     transform: rotateY(180deg);
 }
 
-.acutionIcons {
+.acutionEnded {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -132,23 +132,16 @@
     font-family: "Changa-SemiBold";
 }
 
-.icons {
-    display: flex;
-    flex-direction: column;
-}
 
-.icon {
 
-    color: #EF8451;
-    background-color: #fff;
-    margin-bottom: 2px;
-
-    padding: 10px;
-    border-radius: 50px;
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    -ms-border-radius: 50px;
-    -o-border-radius: 50px;
+.ended {
+    font-family: "Changa-Regular";
+    font-size: 20px;
+            background-color: #FDE4DD;
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: #777;
+            margin: 5px;
 }
 
 .icon:hover {

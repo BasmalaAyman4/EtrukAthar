@@ -1,21 +1,25 @@
+
 export const userColumns = [
 
     {
+        field: "id",
+        headerName: "ID",
+        width: 200,
+    },
+    {
         field: "vendor_paid_time",
         headerName: "Date",
-        width: 500,
+        width: 300,
     },
-
-
     {
         field: "vendor_paid",
         headerName: "Bid ",
-        width: 400,
+        width: 300,
     },
     {
-        field: "vendor_id",
-        headerName: "id ",
-        width: 200,
+        field: "user_name",
+        headerName: "User Name",
+        width: 400,
     }
 
 

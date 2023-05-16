@@ -39,6 +39,7 @@ import minus from "./../../assets/icons/mi.svg"
 export default function ProjectsDetails() {
     const [token, setToken] = useState(localStorage.getItem("token"))
     const [formData, setFormData] = useState([])
+    const [image, setImage] = useState([]);
     const [items, setItems] = useState({})
     const casesId = useParams()
     const [priceShow, setPriceshow] = useState("");
@@ -64,16 +65,19 @@ export default function ProjectsDetails() {
         dateSend: '',
         amoutDescriptipn: 'جنيه',
         numberOfCartons: '',
-        numberOfPeople: ''
-
+        numberOfPeople: '',
+        visaName: '',
+        Cnn: '',
+        verificationCode: '',
+        visaDate: '',
     })
-
 
     useEffect(() => {
         axios.get(`https://otrok.invoacdmy.com/api/user/case/show/${casesId.id}?lang=ar`)
             .then((response) => {
                 setFormData(response.data.case)
                 setItems(response.data.items)
+                setImage(response.data.case.caseimage)
             }).catch((err) => { console.log(err) })
     }, [])
 
@@ -200,6 +204,10 @@ export default function ProjectsDetails() {
     }
     if (formData.donationtype_id === '1') {
         storeDonate.append("date_to_send", donateData.dateSend.slice(0, 10));
+        storeDonate.append("name", donateData.visaName);
+        storeDonate.append("cnn", donateData.Cnn);
+        storeDonate.append("verification_code", donateData.verificationCode);
+        storeDonate.append("date", donateData.visaDate.slice(0, 10));
     }
     if (formData.donationtype_id === "5") {
         dataFurniture.map((item, index) => {
@@ -213,7 +221,8 @@ export default function ProjectsDetails() {
     }
 
     storeDonate.append("casee_id", casesId.id);
-    storeDonate.append("donationtype_id", formData.donationtype_id);
+    storeDonate.append("donationtype_id", donateData.donationtype_id);
+
     const onSubmitHandler = (e) => {
         const toastId = toast.loading("...انتظر قليلا")
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
@@ -226,6 +235,7 @@ export default function ProjectsDetails() {
                 }
             }).then(response => {
                 toast.success('تمت العملية بنجاح')
+                console.log(response.data.message)
             }
             ).catch((err) => { toast.error(err.response.data.message) })
         } else {
@@ -239,6 +249,21 @@ export default function ProjectsDetails() {
                 }
                 ).catch((err) => { toast.error(err.response.data.message) })
         }
+    }
+    const onClickHandler = (e) => {
+        const toastId = toast.loading("...انتظر قليلا")
+        setTimeout(() => { toast.dismiss(toastId); }, 1000);
+        e.preventDefault()
+        axios.post("https://otrok.invoacdmy.com/api/user/donation/store/payment", storeDonate, {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        })
+            .then(response => {
+                toast.success('تمت العملية بنجاح')
+            }
+            ).catch((err) => { toast.error(err.response.data.message) })
+
     }
     const onSubmitHandlerVolunteer = (e) => {
         const toastId = toast.loading("...انتظر قليلا")
@@ -355,12 +380,12 @@ export default function ProjectsDetails() {
 
                         <div className={`${style.cardDetails__body}`}>
                             <h3 className={`${style.cardDetails__title}`}>{formData.name}</h3>
-                            <p className={`${style.cardDetails__para}`}>{t("مشروع رقم")}</p>
+                            <p className={`${style.cardDetails__para}`}>{t("مشروع رقم")} {formData.id}</p>
                             <hr />
                         </div>
                         <div className={`${style.collect}`}>
-                            <p className={`${style.collect__para}`}>{t("تم جمع ")}<bold className={`${style.bold}`}>42.512$</bold> {t("من اصل")} 50$ </p>
-                            <ProgressBar now={88} className={`${style.progress} `} />
+                            <p className={`${style.collect__para}`}>{t("تم جمع ")}<bold className={`${style.bold}`}>{formData.paied_amount}</bold> {t("من اصل")} {formData.initial_amount}</p>
+                            <ProgressBar now={((formData.paied_amount * 100) / formData.initial_amount)} className={`${style.progress} `} />
                         </div>
                         <div className={`${style.cardDetails__icon}`}>
                             <Row>
@@ -390,8 +415,6 @@ export default function ProjectsDetails() {
                                 </Col>
                             </Row>
                         </div>
-
-                        <Player className={`${style.video}`} src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" poster={img1} />
                         <div className={`${style.modal__collect}`}><p className={`${style.paypal__para}`}> {t(" تبرعك هو أملهم و نجاحهم, فكن عونا لهم ")}</p></div>
                         <div >
                             <p className={`${style.details__para}`}>لا يعلمون من الشتاء سوى رجفة أطراف أطفالهم وتجمّدها، ولا من الأمطار والثلوج سوى غرق الخيام وسقوطها فوق رؤوسهم، فلا مأوى يحميهم من برد الشتاء، ولا جدار يُخفّف عنهم قسوته.</p>
@@ -409,28 +432,11 @@ export default function ProjectsDetails() {
                                 clickable: true,
                             }}
                             modules={[Autoplay, Pagination]}
-
                         >
-                            <SwiperSlide><img src={details1} alt='' className={`${style.imgSwiper}`} /></SwiperSlide>
-                            <SwiperSlide><img src={details2} alt='' className={`${style.imgSwiper}`} /></SwiperSlide>
-                            <SwiperSlide><img src={details3} alt='' className={`${style.imgSwiper}`} /></SwiperSlide>
-
+                            {image && image.map((imgSrc, index) => (<SwiperSlide><img src={imgSrc.image} key={index} alt='' className={`${style.imgSwiper}`} /></SwiperSlide>))}
                         </Swiper>
-                        <div className={`${style.modal__collect}`}><p className={`${style.paypal__para}`}>  <FaNewspaper className={`${style.icon__new}`} />{t(" أخبار المشروع")}</p></div>
-                        <div className={`${style.projectNews}`}>
-                            <p className={`${style.paypal__para}`}>2022-12-01</p>
-                            <p className={`${style.paypal__para}`}>{t("قمنا بإطلاق حملتنا التبرعية - دفء الحياة 11 - وكلنا أمل أنكم ستكونون بجانب من يحتاج لدعمكم.")}</p>
-                        </div>
-                        <div className={`${style.modal__collect}`}><p className={`${style.paypal__para}`}>  <FaProjectDiagram className={`${style.icon__new}`} />  {t("مشاريع ذات صلة ")}</p></div>
-                        <div className={`${style.newProject}`}>
-                            <div className={`${style.newProject__img}`}><img alt='' src={new1} className={`${style.newImg}`} /></div>
-                            <div className={`${style.newProject__body}`}>
-                                <h3 className={`${style.newProject__title}`}>قرية بسمة أمل</h3>
-                                <p className={`${style.collect__para}`}>{t("تم جمع ")}<bold className={`${style.bold}`}>42.512$</bold> {t("من اصل")} 50$ </p>
-                                <ProgressBar now={10} className={`${style.progress} ${style.progress__new} `} />
-                                <Button className={`${style.newProject__btn}`}>{t("ادعم المشروع")}</Button>
-                            </div>
-                        </div>
+
+
 
                     </Col>
                     <Col sm={12} xl={4}>
@@ -475,20 +481,22 @@ export default function ProjectsDetails() {
                                             <Accordion.Body>
 
                                                 <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                                    <Form.Control type='number' name="numbercard" className={`${style.input}`} placeholder={t(" رقم البطاقه الائتمانيه")} onChange={onChangeHandler} value={donateData.numbercard} />
+                                                    <Form.Control type='number' name="verificationCode" className={`${style.input}`} placeholder={t(" رقم البطاقه الائتمانيه")} onChange={onChangeHandler} value={donateData.verificationCode} />
                                                 </Form.Group>
                                                 <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                                    <Form.Control type='name' name="namecard" className={`${style.input}`} placeholder={t("  اسم البطاقة الائتمانية")} onChange={onChangeHandler} value={donateData.namecard} />
+                                                    <Form.Control type='name' name="visaName" className={`${style.input}`} placeholder={t("  اسم البطاقة الائتمانية")} onChange={onChangeHandler} value={donateData.visaName} />
                                                 </Form.Group>
                                                 <div className={`${style.cvc}`}>
                                                     <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                                        <Form.Control type='date' name="expiry" className={`${style.input}`} placeholder={t(" expiration date")} />
+                                                        <Form.Control type='date' name="visaDate" className={`${style.input}`} placeholder={t(" expiration date")} onChange={onChangeHandler} value={donateData.visaDate} />
                                                     </Form.Group>
                                                     <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                                        <Form.Control name="cvc" type="number" className={`${style.input}`} placeholder={t("كود التحقق من البطاقة ")} onChange={onChangeHandler} value={donateData.cvc} />
+                                                        <Form.Control name="Cnn" type="number" className={`${style.input}`} placeholder={t("كود التحقق من البطاقة ")} onChange={onChangeHandler} value={donateData.Cnn} />
                                                     </Form.Group>
                                                 </div>
-
+                                                <Button type="submit" onClick={onClickHandler} className={style.signup__btn}>
+                                                    تبرع الان
+                                                </Button>
                                             </Accordion.Body>
                                         </Accordion.Item>
                                         <Accordion.Item eventKey="1">

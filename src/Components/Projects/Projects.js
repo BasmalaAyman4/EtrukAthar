@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './Projects.module.css'
 import './Projects.css'
 import HeaderTitle from '../HeaderTitle/HeaderTitle'
@@ -21,100 +21,98 @@ export default function Projects() {
     const [dataCategories, setDataCategories] = useState([]);
     const [dataType, setDataType] = useState([]);
     const currentLanguageCode = Cookies.get('i18next') || 'en'
-    const [donationtypeId,setDonationId] = useState('')
+    const [donationtypeId, setDonationId] = useState('')
     const [isLoading, setIsLoading] = useState(true);
-    const[categoryId,setCategoryId] = useState('')
+    const [categoryId, setCategoryId] = useState('')
 
     const handleFilterCategoryType = (e) => {
-        setCategoryId(e.target.value)         
+        setCategoryId(e.target.value)
     }
-    const handleFilterDonationType = (e) =>{
+    const handleFilterDonationType = (e) => {
         setDonationId(e.target.value)
-    }   
-
-
+    }
+    console.log(dataType, "jjj")
 
     useEffect(() => {
         setIsLoading(true)
-        setTimeout(()=>{
-        axios.get(`https://otrok.invoacdmy.com/api/user/category/index?lang=${currentLanguageCode}`)
-            .then(response => {
-                setDataCategories(response.data.Categories)
-                setIsLoading(false)  
-            }
-            ).catch((err) => { console.log(err) })
-        axios.get(`https://otrok.invoacdmy.com/api/dashboard/donationtype/index`)
-            .then(response => {
-                setDataType(response.data.Donationtypes)
-                  setIsLoading(false)  
-            }
-            ).catch((err) => { console.log(err) })
-        axios.get(`https://otrok.invoacdmy.com/api/user/case/index?lang=${currentLanguageCode}`)
-            .then(response => {
-                setDataCases(response.data.cases)
-                setIsLoading(false)  
-            }
-            ).catch((err) => {
-                 console.log(err) 
-                setIsLoading(false) 
-            })
-        },500)
+        setTimeout(() => {
+            axios.get(`https://otrok.invoacdmy.com/api/user/category/index?lang=${currentLanguageCode}`)
+                .then(response => {
+                    setDataCategories(response.data.Categories)
+                    setIsLoading(false)
+                }
+                ).catch((err) => { console.log(err) })
+            axios.get(`http://otrok.invoacdmy.com/api/user/donation//donation/types?lang=ar`)
+                .then(response => {
+                    setDataType(response.data.Donationtypes)
+                    console.log(response.data.Donationtypes, "jjj")
+                    setIsLoading(false)
+                }
+                ).catch((err) => { console.log(err) })
+            axios.get(`https://otrok.invoacdmy.com/api/user/case/index?lang=${currentLanguageCode}`)
+                .then(response => {
+                    setDataCases(response.data.cases)
+                    setIsLoading(false)
+                }
+                ).catch((err) => {
+                    console.log(err)
+                    setIsLoading(false)
+                })
+        }, 500)
     }, [currentLanguageCode])
 
 
     useEffect(() => {
         setIsLoading(true)
 
-        if (categoryId !=='' && donationtypeId === '')
-        {
+        if (categoryId !== '' && donationtypeId === '') {
             axios.get(`https://otrok.invoacdmy.com/api/user/case/category/${categoryId}?lang=${currentLanguageCode}`)
-            .then(response => {
-                setDataCases(response.data.cases)
-                setIsLoading(false)  
-            }
-            ).catch((err) => {
-                 console.log(err)
-                 setIsLoading(false)
-            })
+                .then(response => {
+                    setDataCases(response.data.cases)
+                    setIsLoading(false)
+                }
+                ).catch((err) => {
+                    console.log(err)
+                    setIsLoading(false)
+                })
 
         }
-        if (categoryId ==='' && donationtypeId !== '')
-        {
+        if (categoryId === '' && donationtypeId !== '') {
             axios.get(`https://otrok.invoacdmy.com/api/user/case/donation/${donationtypeId}?lang=${currentLanguageCode}`)
-            .then(response => {
-                setDataCases(response.data.cases)  
-                setIsLoading(false)
-            }
-            ).catch((err) => {
-                 console.log(err)
-                 setIsLoading(false)
-                 })
+                .then(response => {
+                    setDataCases(response.data.cases)
+                    setIsLoading(false)
+                }
+                ).catch((err) => {
+                    console.log(err)
+                    setIsLoading(false)
+                })
         }
-        if(categoryId !=='' && donationtypeId !== ''){
-        axios.get(`https://otrok.invoacdmy.com/api/user/case/category/donation/${categoryId}/${donationtypeId}?lang=${currentLanguageCode}`)
-            .then(response => {
-                setDataCases(response.data.cases)
-                setIsLoading(false)
-              
-            }
-            ).catch((err) => { 
-                
-                console.log(err)
-                setIsLoading(false)
-             })
+        if (categoryId !== '' && donationtypeId !== '') {
+            axios.get(`https://otrok.invoacdmy.com/api/user/case/category/donation/${categoryId}/${donationtypeId}?lang=${currentLanguageCode}`)
+                .then(response => {
+                    setDataCases(response.data.cases)
+                    setIsLoading(false)
+
+                }
+                ).catch((err) => {
+
+                    console.log(err)
+                    setIsLoading(false)
+                })
         }
-        if(categoryId ==='' && donationtypeId === ''){
+        if (categoryId === '' && donationtypeId === '') {
             axios.get(`https://otrok.invoacdmy.com/api/user/case/index?lang=${currentLanguageCode}`)
-            .then(response => {
-                setDataCases(response.data.cases)
-                setIsLoading(false)
-              
-            }
-            ).catch((err) =>
-             { console.log(err)
-                setIsLoading(false)
-             }
-            )
+                .then(response => {
+                    setDataCases(response.data.cases)
+                    setIsLoading(false)
+
+                }
+                ).catch((err) => {
+                    console.log(err)
+                    setIsLoading(false)
+                }
+                )
         }
     }, [currentLanguageCode, donationtypeId, categoryId])
 
@@ -125,7 +123,7 @@ export default function Projects() {
 
 
 
-    
+
     return (
         <>
             <section className={`${styles.projects} mb-5 pb-5`}>
@@ -136,7 +134,7 @@ export default function Projects() {
                 </Button>
                 <div>
 
-</div>
+                </div>
                 <AddCase show={show} onHide={handleClose} setShow={setShow} />
                 <div className="container mb-5">
                     <p className={`${styles.donate__para}`}>{t("نواظب على التنقيب عن مستلزمات المجتمع، ساعين لأجل توفير مشاريع من شأنها تلبية متطلباتهم، وتوفير حياةٍ كريمة لكلّ من تكبّد ويلاتُ الحرب")}</p>
@@ -163,57 +161,57 @@ export default function Projects() {
                                 </div>
                                 <h4 className='side-filter__item-header-title pb-3'>{t("انواع التبرع")}</h4>
                                 <div className="radio-item">
-                                        <label className='label_radio' for=''>
-                                            <input type="radio" id='' name="caseTypeId" value='' onChange={handleFilterDonationType} />
-                                            <span> {t("جميع الأنواع")} </span>
-                                        </label>
-                                    </div>
-                                    {currentLanguageCode === 'ar' ?
+                                    <label className='label_radio' for=''>
+                                        <input type="radio" id='' name="caseTypeId" value='' onChange={handleFilterDonationType} />
+                                        <span> {t("جميع الأنواع")} </span>
+                                    </label>
+                                </div>
+                                {currentLanguageCode === 'ar' ?
                                     <>
-                                {dataType && dataType.map(type => (
-                                    <div className="radio-item">
-                                    <label className='label_radio' for={type.name_en}>
-                                        <input type="radio"  name="caseTypeId"  id={type.name_en} value={type.id} onChange={handleFilterDonationType} />
-                                        <span> {type.name_ar} </span>
-                                    </label>
-                                </div>
-                                  
-                                ))}
-                                </>
-                                :
-                                <>
-                                {dataType && dataType.map(type => (
-                                    <div className="radio-item">
-                                    <label className='label_radio' for={type.name_en}>
-                                        <input type="radio"  name="caseTypeId"  id={type.name_en} value={type.id} onChange={handleFilterDonationType} />
-                                        <span> {type.name_en} </span>
-                                    </label>
-                                </div>
-                                  
-                                ))}
-                                </>
-}
+                                        {dataType && dataType.map(type => (
+                                            <div className="radio-item">
+                                                <label className='label_radio' for={type.name}>
+                                                    <input type="radio" name="caseTypeId" id={type.name} value={type.id} onChange={handleFilterDonationType} />
+                                                    <span> {type.name} </span>
+                                                </label>
+                                            </div>
+
+                                        ))}
+                                    </>
+                                    :
+                                    <>
+                                        {dataType && dataType.map(type => (
+                                            <div className="radio-item">
+                                                <label className='label_radio' for={type.name}>
+                                                    <input type="radio" name="caseTypeId" id={type.name} value={type.id} onChange={handleFilterDonationType} />
+                                                    <span> {type.name} </span>
+                                                </label>
+                                            </div>
+
+                                        ))}
+                                    </>
+                                }
                             </fieldset>
                         </div>
 
                         <div className='col-lg-10 col-md-12 col-sm-12 mb-5'>
                             <div className='row mt-5'>
                                 {dataCases && dataCases.map(caseCard =>
-                                <div className='col-lg-4' key={caseCard?.id}>
-                                    
-                                            <CardCase 
-                                            id={caseCard?.id} 
+                                    <div className='col-lg-4' key={caseCard?.id}>
+
+                                        <CardCase
+                                            id={caseCard?.id}
                                             donationType={caseCard?.donationtype_id}
-                                            photo={caseCard?.caseimage[0]?.image} 
-                                            title={caseCard?.name} 
-                                            para={caseCard?.description} 
-                                            progress={((caseCard?.paied_amount * 100) / caseCard?.initial_amount)} 
+                                            photo={caseCard?.caseimage[0]?.image}
+                                            title={caseCard?.name}
+                                            para={caseCard?.description}
+                                            progress={((caseCard?.paied_amount * 100) / caseCard?.initial_amount)}
                                             totalPrice={caseCard?.initial_amount} numOfDonates={caseCard?.paied_amount} />
-                            
-                                </div>
-                                        )}
+
+                                    </div>
+                                )}
                             </div>
-                        
+
                         </div>
                     </div>
                 </div>

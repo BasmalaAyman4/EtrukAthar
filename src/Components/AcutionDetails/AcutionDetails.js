@@ -29,8 +29,11 @@ export default function AcutionDetails() {
     const [timerSeconds, setTimerSeconds] = useState('00');
     const [active, setActive] = useState("description")
     const [mazadDetails, setMazadDetails] = useState({})
+    const [mazadImage, setMazadUmage] = useState([])
     const [mazadHistory, setMazadHistory] = useState({})
-    const [vendor, setVendorName] = useState({})
+    const [vendorName, setVendorName] = useState('')
+    const [vendorEmail, setVedorEmail] = useState('')
+    const [moreFromVendor, setMoreFromVendor] = useState([])
     const [increment, setIncrement] = useState(0)
     const [timeOver, setTimeOver] = useState(false)
     const [token, setToken] = useState(localStorage.getItem("token"))
@@ -38,28 +41,32 @@ export default function AcutionDetails() {
         setActive(view)
     }
 
+
     useEffect(() => {
         axios.get(`https://otrok.invoacdmy.com/api/user/mazad/show/${mazadId.id}`)
             .then((response) => {
                 setMazadDetails(response.data.mazad)
-                setCount(Number(response.data.mazad.starting_price))
+                setCount(Number(response.data.mazad.current_price))
                 setIncrement(Number(response.data.mazad.mazad_amount))
+                setMazadUmage(response.data.mazad.mazadimage)
+                setVendorName(response.data.the_owner_name)
+                setVedorEmail(response.data.the_owner_email)
 
             }).catch((err) => { console.log(err) })
 
         axios.get(`https://otrok.invoacdmy.com/api/user/mazad/history/${mazadId.id}`)
             .then((response) => {
                 setMazadHistory(response.data.history)
-                setVendorName(response.data.users)
             }).catch((err) => { console.log(err) })
 
-
-
+        axios.get(`https://otrok.invoacdmy.com/api/user/mazad/othermazad/${mazadId.id}`)
+            .then((response) => {
+                setMoreFromVendor(response.data.others)
+            }).catch((err) => { console.log(err) })
     }, [])
+
     const date = moment(mazadDetails.end_date).format('LL')
     const none = (new Date(moment(mazadDetails.end_date).format('LL') + " " + mazadDetails.end_time).getTime()) - (new Date().getTime());
-
-
     let interval = useRef();
     const startTimer = () => {
         const countdownDate = new Date(moment(mazadDetails.end_date).format('LL') + " " + mazadDetails.end_time).getTime();
@@ -96,7 +103,7 @@ export default function AcutionDetails() {
                 "Content-Type": "multipart/form-data"
             }
         }).then(response => {
-           
+
         }
         ).catch((err) => { toast.error(err.response.data.message) })
     }
@@ -110,23 +117,14 @@ export default function AcutionDetails() {
             clearInterval(interval.current);
         }
     })
-
-    const rows = [
-        { id: 1, date: 'May 9, 2023 9:28 am', bid: '$500', user: 'admin' },
-        { id: 2, date: 'May 8, 2023 9:28 am', bid: '$500', user: 'admin' },
-        { id: 3, date: 'May 7, 2023 9:28 am', bid: '$500', user: 'admin' },
-        { id: 4, date: 'May 6, 2023 9:28 am', bid: '$500', user: 'admin' },
-    ];
     const delay = ms => new Promise(res => setTimeout(res, ms));
     const handleReload = async () => {
         await delay(7000);
-            window.location.reload();
+        window.location.reload();
     }
-
+    const addBid = new FormData();
+    addBid.append("vendor_paid", count);
     const incrementBid = () => {
-
-        const addBid = new FormData();
-        addBid.append("vendor_paid", count);
 
         const toastId = toast.loading("...انتظر قليلا")
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
@@ -134,18 +132,20 @@ export default function AcutionDetails() {
         axios.post(`https://otrok.invoacdmy.com/api/user/mazad/increment/${mazadId.id}`, addBid, {
             headers: {
                 "Authorization": `Bearer ${token}`,
-              "Content-Type": "multipart/form-data"
+                "Content-Type": "multipart/form-data"
             }
-          })
+        })
             .then(response => {
-              
-              toast.success('تمت العملية بنجاح')
-              handleReload()
-              
+                toast.success('تمت العملية بنجاح')
+                handleReload()
+                console.log(response.data.vendor_paid)
+
             }
-            ).catch((err) => toast.error(err.response.data.message) )
-      
+            ).catch((err) => toast.error(err.response.data.message))
+
     }
+
+
     return (
         <>
             <section className={`${style.acutionDetails}`}>
@@ -159,18 +159,12 @@ export default function AcutionDetails() {
                         <Col className={`${style.images}`}>
 
                             <Carousel autoPlay interval="1000" transitionTime="1000" >
-                                <div>
-                                    <img src={one} className={`${style.image}`} />
-                                </div>
-                                <div>
-                                    <img src={two} className={`${style.image}`} />
-                                </div>
-                                <div>
-                                    <img src={three} className={`${style.image}`} />
-                                </div>
-                                <div>
-                                    <img src={four} className={`${style.image}`} />
-                                </div>
+                                {mazadImage && mazadImage.map((imgSrc, index) => (
+                                    <div>
+                                        <img src={imgSrc.image} className={`${style.image}`} key={index} />
+                                    </div>
+                                ))}
+
                             </Carousel>
 
                         </Col>
@@ -234,8 +228,7 @@ export default function AcutionDetails() {
                     </div>
                     <div className={`${active === "history" ? style.acution__info__body : style.none}`}>
                         <DataGrid
-
-                            rows={mazadHistory + vendor}
+                            rows={mazadHistory}
                             columns={userColumns}
                             initialState={{
                                 pagination: {
@@ -246,19 +239,49 @@ export default function AcutionDetails() {
                             }}
                             pageSizeOptions={[5]}
                             disableRowSelectionOnClick
-                            getRowId={(row) => row.vendor_paid + row.vendor_id}
+                            getRowId={(row) => row.id}
                         />
                     </div>
                     <div className={`${active === "info" ? style.acution__info__body : style.none}`}>
-                        <p className={`${style.info__para}`}> <AiOutlineUser className={`${style.info__icon}`} /> Vendor : <span>Basmala</span> </p>
-                        <p className={`${style.info__para}`}> <CiLocationOn className={`${style.info__icon}`} /> Address: <span> Helwan</span> </p>
+                        <p className={`${style.info__para}`}> <AiOutlineUser className={`${style.info__icon}`} /> Vendor : <span>{vendorName}</span> </p>
+                        <p className={`${style.info__para}`}> <CiLocationOn className={`${style.info__icon}`} /> Email: <span> {vendorEmail}</span> </p>
                     </div>
                     <div className={`${active === "vendor" ? style.vendor__body : style.none}`}>
-                        <AcutionCard />
-                        <AcutionCard />
-                        <AcutionCard />
+                        {moreFromVendor && moreFromVendor.map(acutionCard => (
+                            <Link to={`acution-details/${acutionCard.id}`}>
+                                <Col className={`${style.card}`}  >
+                                    <div className={`${style.image}`}>
+                                        <div className={`${style.flipCard}`}>
+                                            <div className={`${style.flipCard__inner}`}>
+                                                <div className={`${style.flipCard__front}`}>
+                                                    <img src={acutionCard.mazadimage[0]?.image} alt="" />
+                                                </div>
+                                                <div className={`${style.flipCard__back}`}>
+                                                    <img src={acutionCard.mazadimage[1]?.image} alt="" />
+                                                </div>
+                                            </div>
+                                            <div className={`${style.acutionEnded}`}>
+                                                <div >
+                                                    {((new Date(moment(acutionCard.end_date).format('LL') + " " + acutionCard.end_time).getTime()) - (new Date().getTime())) < 0
+                                                        ?
+                                                        <p className={`${style.ended}`}>Acution Ended</p>
+                                                        :
+                                                        ""
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className={`${style.cardBody}`}>
+                                        <h4 className={`${style.card__title}`}>{acutionCard.name}</h4>
+                                        <p className={`${style.card__acution}`}> current Baid : {acutionCard.current_price}</p>
+                                    </div>
+                                </Col>
+                            </Link>
+                        ))}
+
                     </div>
-             
+
                 </Container>
                 <ToastContainer />
             </section>

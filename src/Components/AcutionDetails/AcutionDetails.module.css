@@ -214,3 +214,227 @@ font-family: "Changa-SemiBold";
     border: none;
     width: 50px;
 }
+/*------------------------------------------*/
+.AcutionCards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 70px;
+    gap: 2%;
+}
+
+.card {
+    position: relative;
+    width: 400px;
+    height: 520px;
+    box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 120ms;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    padding: 0.5em;
+    padding-bottom: 3.4em;
+    margin-bottom: 40px;
+
+}
+
+.card__title {
+    font-family: "Changa-SemiBold";
+    position: absolute;
+    left: 40%;
+    bottom: 30px;
+    font-weight: 400;
+    color: #000;
+}
+
+.card__acution {
+    position: absolute;
+    left: 30%;
+    bottom: -5px;
+    color: #000;
+    font-family: "Changa-Regular";
+}
+
+.card:active {
+    transform: scale(0.98);
+}
+
+
+.image {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.flipCard {
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    perspective: 1000px;
+    font-family: sans-serif;
+}
+
+.flipCard__inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flipCard:hover .flipCard__inner {
+    transform: rotateY(180deg);
+}
+
+.flipCard__front,
+.flipCard__back {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flipCard__back img,
+.flipCard__front img {
+    width: 382px;
+    height: 435px;
+}
+
+.flipCard__back {
+    transform: rotateY(180deg);
+}
+
+.acutionEnded {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0%;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 35px;
+}
+
+.acutionCountdown {
+    position: absolute;
+    top: 70%;
+    left: 10px;
+    color: #777;
+    border: 2px solid #fff;
+    padding: 10px 0px 5px 20px;
+    display: flex;
+    background-color: #fff;
+}
+
+.countdown {
+    display: flex;
+    justify-content: space-around;
+}
+
+.countdown__body {
+    display: flex;
+    flex-direction: column;
+}
+
+.countdown__dot {
+    margin-right: 30px;
+}
+
+.countdown div {
+    text-align: center;
+    margin: auto;
+    margin-right: 10px;
+    font-family: "Changa-SemiBold";
+}
+
+
+
+.ended {
+    font-family: "Changa-Regular";
+    font-size: 20px;
+    background-color: #FDE4DD;
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: #777;
+    margin: 5px;
+}
+
+.icon:hover {
+    color: #fff;
+    background-color: #EF8451;
+}
+
+@media (max-width:767px) {
+    .AcutionCards {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card {
+        width: 350px;
+        margin: 20px auto;
+    }
+
+    .flipCard__back img,
+    .flipCard__front img {
+        width: 335px;
+        height: 435px;
+    }
+
+    .countdown__dot {
+        margin-right: 15px;
+    }
+}
+
+@media (min-width:768px) and (max-width:1200px) {
+    .AcutionCards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2%;
+    }
+
+    .card {
+        width: 350px;
+        margin: 20px auto;
+    }
+
+    .flipCard__back img,
+    .flipCard__front img {
+        width: 335px;
+        height: 435px;
+    }
+
+    .countdown__dot {
+        margin-right: 15px;
+    }
+}
+
+@media (min-width:1201px) and (max-width:1300px) {
+    .AcutionCards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2%;
+    }
+
+    .card {
+        width: 350px;
+        margin: 20px auto;
+    }
+
+    .flipCard__back img,
+    .flipCard__front img {
+        width: 335px;
+        height: 435px;
+    }
+
+    .countdown__dot {
+        margin-right: 15px;
+    }
+}
+
+.end {
+    font-size: 30px;
+}
