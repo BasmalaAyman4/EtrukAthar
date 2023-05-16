@@ -96,13 +96,14 @@ export default function AcutionDetails() {
                 "Content-Type": "multipart/form-data"
             }
         }).then(response => {
-            console.log(response)
+
         }
         ).catch((err) => { toast.error(err.response.data.message) })
     }
     if (timeOver === true) {
         handleStatus()
     }
+
     useEffect(() => {
         startTimer();
         return () => {
@@ -120,16 +121,19 @@ export default function AcutionDetails() {
         addBid.append("vendor_paid", count);
         const toastId = toast.loading("...انتظر قليلا")
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
+
         axios.post(`https://otrok.invoacdmy.com/api/user/mazad/increment/${mazadId.id}`, addBid, {
             headers: {
                 "Authorization": `Bearer ${token}`,
                 "Content-Type": "multipart/form-data"
             }
-        }).then(response => {
-            toast.success('تمت العملية بنجاح')
-            handleReload()
-        }
-        ).catch((err) => { toast.error(err.response.data.message) })
+        })
+            .then(response => {
+                toast.success('تمت العملية بنجاح')
+                handleReload()
+
+            }
+            ).catch((err) => toast.error(err.response.data.message))
 
     }
 
@@ -246,6 +250,7 @@ export default function AcutionDetails() {
                         <AcutionCard />
                         <AcutionCard />
                     </div>
+
                 </Container>
                 <ToastContainer />
             </section>
