@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     margin-top: 70px;
+    gap: 2%;
 }
 .card {
     position: relative;
@@ -23,7 +24,7 @@
 .card__title {
     font-family: "Changa-SemiBold";
     position: absolute;
-    left: 25%;
+    left: 40%;
     bottom: 30px;
     font-weight: 400;
     color: #000;
@@ -221,4 +222,7 @@
     .countdown__dot {
         margin-right: 15px;
     }
+}
+.end{
+    font-size: 30px;
 }

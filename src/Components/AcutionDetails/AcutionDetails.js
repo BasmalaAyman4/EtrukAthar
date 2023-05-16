@@ -6,7 +6,7 @@ import one from "../../assets/images/one.jpg"
 import two from "../../assets/images/two.jpg"
 import three from "../../assets/images/thee.jpg"
 import four from "../../assets/images/four.jpg"
-import { Container } from 'react-bootstrap';
+import { Container, Form, ToastContainer } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AiFillEye, AiOutlineHeart, AiOutlineUser, AiOutlineSearch } from "react-icons/ai";
 import Row from 'react-bootstrap/Row';
@@ -31,6 +31,7 @@ export default function AcutionDetails() {
     const [mazadDetails, setMazadDetails] = useState({})
     const [increment, setIncrement] = useState(0)
     const [timeOver, setTimeOver] = useState(false)
+    const [token, setToken] = useState(localStorage.getItem("token"))
     const showActive = (view) => {
         setActive(view)
     }
@@ -44,9 +45,12 @@ export default function AcutionDetails() {
 
             }).catch((err) => { console.log(err) })
 
-        console.log(count)
+
 
     }, [])
+    const date = moment(mazadDetails.end_date).format('LL')
+    const none = (new Date(moment(mazadDetails.end_date).format('LL') + " " + mazadDetails.end_time).getTime()) - (new Date().getTime());
+
 
     let interval = useRef();
     const startTimer = () => {
@@ -104,8 +108,24 @@ export default function AcutionDetails() {
         { id: 3, date: 'May 7, 2023 9:28 am', bid: '$500', user: 'admin' },
         { id: 4, date: 'May 6, 2023 9:28 am', bid: '$500', user: 'admin' },
     ];
+    const addBid = new FormData();
+    addBid.append("vendor_paid", count);
+    const incrementBid = () => {
+        const toastId = toast.loading("...انتظر قليلا")
+        setTimeout(() => { toast.dismiss(toastId); }, 1000);
+        axios.post(`https://otrok.invoacdmy.com/api/user/mazad/increment/${mazadId.id}`, addBid, {
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "multipart/form-data"
+            }
+        }).then(response => {
+            toast.success('تمت العملية بنجاح')
+            console.log(response.data)
+            console.log(count)
+        }
+        ).catch((err) => { toast.error(err.response.data.message) })
 
-
+    }
     return (
         <>
             <section className={`${style.acutionDetails}`}>
@@ -137,37 +157,45 @@ export default function AcutionDetails() {
                         <Col>
                             <div className={`${style.desc__body}`}>
                                 <p className={`${style.desc__para}`}>Samsung Galaxy S9 smartphone was launched in March 2018. The phone comes with a 5.80-inch touchscreen display with a resolution of 1440 pixels by 2960 pixels at a PPI of 568 pixels per inch. Samsung Galaxy S9 price in India starts from Rs. 51,990.</p>
-                                <h3 className={`${style.desc__paid}`}>Current bid: <span className={`${style.desc__price}`}>$150,000,000,004.00 </span></h3>
+                                <h3 className={`${style.desc__paid}`}>Current bid: <span className={`${style.desc__price}`}>${mazadDetails.current_price} </span></h3>
                             </div>
                             <div className={`${style.acutionTime}`}>
                                 <p className={`${style.acutionTime__para}`}>Item condition: Used</p>
-                                <p className={`${style.acutionTime__para}`}>Time Left: </p>
-                                <div className={`${style.countdown}`}>
-                                    <div className={`${style.countdownTime}`}>
-                                        <p>{timerDays}</p>
-                                        <span>Days</span>
+                                {none < 0 ? <p className={`${style.n}`} >Acution Ended</p> : <p className={`${style.acutionTime__para}`}>Time Left: </p>}
+                                {none < 0 ?
+                                    ""
+                                    :
+
+                                    <div className={`${style.countdown}`} >
+                                        <div className={`${style.countdownTime}`}>
+                                            <p>{timerDays}</p>
+                                            <span>Days</span>
+                                        </div>
+                                        <div className={`${style.countdownTime}`}>
+                                            <p>{timerHours}</p>
+                                            <span>Hours</span>
+                                        </div>
+                                        <div className={`${style.countdownTime}`}>
+                                            <p>{timerMinutes}</p>
+                                            <span>Minutes</span>
+                                        </div>
+                                        <div className={`${style.countdownTime}`}>
+                                            <p>{timerSeconds}</p>
+                                            <span>Seconds</span>
+                                        </div>
                                     </div>
-                                    <div className={`${style.countdownTime}`}>
-                                        <p>{timerHours}</p>
-                                        <span>Hours</span>
-                                    </div>
-                                    <div className={`${style.countdownTime}`}>
-                                        <p>{timerMinutes}</p>
-                                        <span>Minutes</span>
-                                    </div>
-                                    <div className={`${style.countdownTime}`}>
-                                        <p>{timerSeconds}</p>
-                                        <span>Seconds</span>
-                                    </div>
-                                </div>
-                                <p className={`${style.acutionTime__para}`}>Acution ends: May 30,2023 12:00 am</p>
+                                }
+
+                                <p className={`${style.acutionTime__para}`}>Acution ends: {date} {mazadDetails.end_time}</p>
                                 <div className={`${style.bid}`} >
+
                                     <div className={`${style.price}`} >
                                         <button onClick={() => setCount(count + increment)} className={`${style.increment__btn}`} >+</button>
-                                        {count}
+                                        <input value={count} className={`${style.count}`} />
                                         <button onClick={() => setCount(count - increment)} className={`${style.decrement__btn}`}>-</button>
                                     </div>
-                                    <Link to="" className={`${style.bid__btn}`}>BID</Link>
+                                    <button className={`${style.bid__btn}`} onClick={incrementBid}>BID</button>
+
                                     <AiFillEye className={`${style.bid__icon}`} />
                                     <AiOutlineHeart className={`${style.bid__icon}`} />
                                 </div>
@@ -210,6 +238,7 @@ export default function AcutionDetails() {
                         <AcutionCard />
                     </div>
                 </Container>
+                <ToastContainer />
             </section>
         </>
     )

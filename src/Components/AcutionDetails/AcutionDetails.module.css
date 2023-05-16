@@ -206,3 +206,11 @@ font-family: "Changa-SemiBold";
         gap: 2%;
     }
 }
+.n{
+    color: rgb(141, 12, 12);
+    font-size: 30px;
+}
+.count{
+    border: none;
+    width: 50px;
+}
