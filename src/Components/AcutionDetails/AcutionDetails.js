@@ -71,7 +71,7 @@ export default function AcutionDetails() {
             const minutes = Math.floor((distance % (1000 * 60 * 60) / (1000 * 60)));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            if (distance <= 0) {
+            if (distance === 0) {
 
                 setTimeOver(true)
                 clearInterval(interval.current)
@@ -109,9 +109,15 @@ export default function AcutionDetails() {
             clearInterval(interval.current);
         }
     })
-    const addBid = new FormData();
-    addBid.append("vendor_paid", count);
+    const delay = ms => new Promise(res => setTimeout(res, ms));
+    const handleReload = async () => {
+        await delay(7000);
+        window.location.reload();
+    }
+
     const incrementBid = () => {
+        const addBid = new FormData();
+        addBid.append("vendor_paid", count);
         const toastId = toast.loading("...انتظر قليلا")
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         axios.post(`https://otrok.invoacdmy.com/api/user/mazad/increment/${mazadId.id}`, addBid, {
@@ -121,12 +127,13 @@ export default function AcutionDetails() {
             }
         }).then(response => {
             toast.success('تمت العملية بنجاح')
-            console.log(response.data)
-            console.log(count)
+            handleReload()
         }
         ).catch((err) => { toast.error(err.response.data.message) })
 
     }
+
+
     return (
         <>
             <section className={`${style.acutionDetails}`}>
@@ -216,7 +223,7 @@ export default function AcutionDetails() {
                     <div className={`${active === "history" ? style.acution__info__body : style.none}`}>
                         <DataGrid
 
-                            rows={mazadHistory + vendor}
+                            rows={mazadHistory}
                             columns={userColumns}
                             initialState={{
                                 pagination: {
@@ -227,7 +234,7 @@ export default function AcutionDetails() {
                             }}
                             pageSizeOptions={[5]}
                             disableRowSelectionOnClick
-                            getRowId={(row) => row.vendor_paid + row.vendor_id}
+                            getRowId={(row) => row.vendor_paid}
                         />
                     </div>
                     <div className={`${active === "info" ? style.acution__info__body : style.none}`}>

@@ -39,11 +39,14 @@ export default function AcutionCard() {
                                                 <img src={acutionCard.mazadimage[1]?.image} alt="" />
                                             </div>
                                         </div>
-                                        <div className={`${style.acutionIcons}`}>
-                                            <div className={`${style.icons}`}>
-                                                <a href="/"><AiFillEye className={`${style.icon}`} /></a>
-                                                <a href="/"><AiOutlineSearch className={`${style.icon}`} /></a>
-                                                <a href="/"><AiOutlineHeart className={`${style.icon}`} /></a>
+                                        <div className={`${style.acutionEnded}`}>
+                                            <div >
+                                                {((new Date(moment(acutionCard.end_date).format('LL') + " " + acutionCard.end_time).getTime()) - (new Date().getTime())) < 0
+                                                    ?
+                                                    <p className={`${style.ended}`}>Acution Ended</p>
+                                                    :
+                                                    ""
+                                                }
                                             </div>
                                         </div>
 
