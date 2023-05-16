@@ -130,7 +130,7 @@ export default function AcutionDetails() {
 
         const toastId = toast.loading("...انتظر قليلا")
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
-
+        console.log(count)
         axios.post(`https://otrok.invoacdmy.com/api/user/mazad/increment/${mazadId.id}`, addBid, {
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -138,6 +138,7 @@ export default function AcutionDetails() {
             }
           })
             .then(response => {
+              
               toast.success('تمت العملية بنجاح')
               handleReload()
               
