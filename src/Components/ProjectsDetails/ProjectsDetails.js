@@ -41,6 +41,7 @@ export default function ProjectsDetails() {
     const [formData, setFormData] = useState([])
     const [image, setImage] = useState([]);
     const [items, setItems] = useState({})
+    const [donationType,setDonationType] = useState()
     const casesId = useParams()
     const [priceShow, setPriceshow] = useState("");
     const { t } = useTranslation()
@@ -78,6 +79,7 @@ export default function ProjectsDetails() {
                 setFormData(response.data.case)
                 setItems(response.data.items)
                 setImage(response.data.case.caseimage)
+                setDonationType(response.data.case.donationtype_id)
             }).catch((err) => { console.log(err) })
     }, [])
 
@@ -178,7 +180,8 @@ export default function ProjectsDetails() {
     storeDonate.append("address", donateData.address);
     storeDonate.append("city", donateData.city);
     storeDonate.append("date_to_send", donateData.dateSend.slice(0, 10));
-
+    storeDonate.append("city", donateData.city);
+    storeDonate.append("donationtype_id", donationType);
     if (formData.donationtype_id === '2') {
         storeDonate.append("amount", donateData.numberOfVoulenteers);
     }
@@ -204,10 +207,7 @@ export default function ProjectsDetails() {
     }
     if (formData.donationtype_id === '1') {
         storeDonate.append("date_to_send", donateData.dateSend.slice(0, 10));
-        storeDonate.append("name", donateData.visaName);
-        storeDonate.append("cnn", donateData.Cnn);
-        storeDonate.append("verification_code", donateData.verificationCode);
-        storeDonate.append("date", donateData.visaDate.slice(0, 10));
+       
     }
     if (formData.donationtype_id === "5") {
         dataFurniture.map((item, index) => {
@@ -221,7 +221,7 @@ export default function ProjectsDetails() {
     }
 
     storeDonate.append("casee_id", casesId.id);
-    storeDonate.append("donationtype_id", donateData.donationtype_id);
+    // storeDonate.append("donationtype_id", donateData.donationtype_id);
 
     const onSubmitHandler = (e) => {
         const toastId = toast.loading("...انتظر قليلا")
@@ -251,6 +251,10 @@ export default function ProjectsDetails() {
         }
     }
     const onClickHandler = (e) => {
+        storeDonate.append("name", donateData.visaName);
+        storeDonate.append("cnn", donateData.Cnn);
+        storeDonate.append("verification_code", donateData.verificationCode);
+        storeDonate.append("date", donateData.visaDate.slice(0, 10));
         const toastId = toast.loading("...انتظر قليلا")
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         e.preventDefault()

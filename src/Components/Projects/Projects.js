@@ -42,10 +42,10 @@ export default function Projects() {
                     setIsLoading(false)
                 }
                 ).catch((err) => { console.log(err) })
-            axios.get(`http://otrok.invoacdmy.com/api/user/donation//donation/types?lang=ar`)
+            axios.get(`https://otrok.invoacdmy.com/api/user/donation/donation/types?lang=ar`)
                 .then(response => {
                     setDataType(response.data.Donationtypes)
-                    console.log(response.data.Donationtypes, "jjj")
+                    console.log(response.data, "jjj")
                     setIsLoading(false)
                 }
                 ).catch((err) => { console.log(err) })
