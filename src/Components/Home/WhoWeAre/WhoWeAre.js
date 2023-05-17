@@ -12,9 +12,9 @@ const WhoWeAre = () => {
     const { t } = useTranslation()
     return (
         <>
-             
+
             <section className={`${styles['who-we-are']} mt-5 mb-5`}>
-           
+
                 <div className='container'>
 
                     <div className='row'>

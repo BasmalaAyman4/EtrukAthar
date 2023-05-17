@@ -1,85 +1,114 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from "./HomeCounting.module.css"
-import { useSpring ,animated } from 'react-spring'  
-import { t } from 'i18next';
-import { useTranslation } from 'react-i18next';
-function Number({n}){
-    const {number } = useSpring({
-        from: {number :0},
-        number :n ,
-        delay :200,
-        config: { mass:1 ,tension:20,friction:10},
-    });
-    return <animated.div>{number.to((n)=> n.toFixed(0))}</animated.div>
+import { useSpring, animated } from 'react-spring'
 
+import { useTranslation } from 'react-i18next';
+import axios from 'axios'
+
+function Number({ n }) {
+    const { number } = useSpring({
+        from: { number: 0 },
+        number: n,
+        delay: 200,
+        config: { mass: 1, tension: 20, friction: 10 },
+    });
+    return <animated.div>{number.to((n) => (+n).toFixed())}</animated.div>
 }
 const HomeCounting = () => {
+    const [moneyDonate, setMoneyDonate] = useState('')
+    const [countCases, setCountCases] = useState('')
+    const [countEvent, setCountEvent] = useState('')
+    const [countCharity, setCountCharity] = useState('')
+    useEffect(() => {
+        axios.get("https://otrok.invoacdmy.com/api/user/donation/money")
+            .then((response) => {
+                setMoneyDonate(response.data.sum)
+
+            }).catch((err) => { console.log(err) })
+        axios.get("https://otrok.invoacdmy.com/api/user/case/index?lang=en")
+            .then((response) => {
+                setCountCases(response.data.count)
+
+            }).catch((err) => { console.log(err) })
+        axios.get("https://otrok.invoacdmy.com/api/user/event/index?lang=ar")
+            .then((response) => {
+                setCountEvent(response.data.count)
+
+            }).catch((err) => { console.log(err) })
+        axios.get("https://otrok.invoacdmy.com/api/user/charity/index?lang=ar")
+            .then((response) => {
+                setCountCharity(response.data.count)
+
+            }).catch((err) => { console.log(err) })
+    }, [])
+    console.log(typeof (n), "l")
+
     const { t } = useTranslation()
-  return (
-    <section className={`${styles["home-counting"]} mt-5 `}>
-    <div className={`${styles["home-counting__container"]} mt-5 `}>
-        <div className={`${styles["home-counting__content"]} `}>
-            <div className='container'>
-                <div className='row'>
-                    <div className='col-lg-3 col-md-6 col-sm-12'>
-                        <div className='d-flex justify-content-center align-items-center'>
-                            <big className={`${styles["home-counting__plus"]} `}>+</big>
-                            <h3 className={`${styles["home-counting__number"]} `}>
-                        
-                                <Number n={1} />
+    return (
+        <section className={`${styles["home-counting"]} mt-5 `}>
+            <div className={`${styles["home-counting__container"]} mt-5 `}>
+                <div className={`${styles["home-counting__content"]} `}>
+                    <div className='container'>
+                        <div className='row'>
+                            <div className='col-lg-3 col-md-6 col-sm-12'>
+                                <div className='d-flex justify-content-center align-items-center'>
+                                    <big className={`${styles["home-counting__plus"]} `}>+</big>
+                                    <h3 className={`${styles["home-counting__number"]} `}>
 
-                            </h3>
-                        
-                        </div>
-                        <p className={`${styles["home-counting__pragraph"]} `} >{t(" مشروع تم إنجازه")}</p>
-                    </div>
-                    <div className='col-lg-3 col-md-6 col-sm-12'>
-                        <div className='d-flex justify-content-center align-items-center'>
-                            <big className={`${styles["home-counting__plus"]} `}>+</big>
-                            <h3 className={`${styles["home-counting__number"]} `}>
-                        
-                                <Number n={605} />
+                                        <Number n={countCases} />
 
-                            </h3>
-                        
-                        </div>
-                        <p className={`${styles["home-counting__pragraph"]} `} > {t(" حالة تم دعمها ")}</p>
-                    </div>
-                    <div className='col-lg-3 col-md-6 col-sm-12'>
-                        <div className='d-flex justify-content-center align-items-center'>
-                            <big className={`${styles["home-counting__plus"]} `}>+</big>
-                            <h3 className={`${styles["home-counting__number"]} `}>
-                        
-                                <Number n={147} />
+                                    </h3>
 
-                            </h3>
-                        
-                        </div>
-                        <p className={`${styles["home-counting__pragraph"]} `} >
-                            {t( "حملة تم إنجازها")}
-                        </p>
-                    </div>
-                    <div className='col-lg-3 col-md-6 col-sm-12'>
-                        <div className='d-flex justify-content-center align-items-center'>
-                            <big className={`${styles["home-counting__plus"]} `}>+</big>
-                            <h3 className={`${styles["home-counting__number"]} `}>
-                        
-                                <Number n={77} />
+                                </div>
+                                <p className={`${styles["home-counting__pragraph"]} `} >{t(" مشروع تم إنجازه")}</p>
+                            </div>
+                            <div className='col-lg-3 col-md-6 col-sm-12'>
+                                <div className='d-flex justify-content-center align-items-center'>
+                                    <big className={`${styles["home-counting__plus"]} `}>+</big>
+                                    <h3 className={`${styles["home-counting__number"]} `}>
 
-                            </h3>
-                        
+                                        <Number n={moneyDonate} />
+
+                                    </h3>
+
+                                </div>
+                                <p className={`${styles["home-counting__pragraph"]} `} > {t(" حالة تم دعمها ")}</p>
+                            </div>
+                            <div className='col-lg-3 col-md-6 col-sm-12'>
+                                <div className='d-flex justify-content-center align-items-center'>
+                                    <big className={`${styles["home-counting__plus"]} `}>+</big>
+                                    <h3 className={`${styles["home-counting__number"]} `}>
+
+                                        <Number n={countEvent} />
+
+                                    </h3>
+
+                                </div>
+                                <p className={`${styles["home-counting__pragraph"]} `} >
+                                    {t("حملة تم إنجازها")}
+                                </p>
+                            </div>
+                            <div className='col-lg-3 col-md-6 col-sm-12'>
+                                <div className='d-flex justify-content-center align-items-center'>
+                                    <big className={`${styles["home-counting__plus"]} `}>+</big>
+                                    <h3 className={`${styles["home-counting__number"]} `}>
+
+                                        <Number n={countCharity} />
+
+                                    </h3>
+
+                                </div>
+                                <p className={`${styles["home-counting__pragraph"]} `} >
+                                    {t("جمعيات تمت بواسطتنا")}
+                                </p>
+                            </div>
+
                         </div>
-                        <p className={`${styles["home-counting__pragraph"]} `} >
-                         {t("مشروع تم إنجازه")}
-                        </p>
                     </div>
-                    
                 </div>
             </div>
-         </div>
-         </div>
-    </section>
-  )
+        </section>
+    )
 }
 
 export default HomeCounting

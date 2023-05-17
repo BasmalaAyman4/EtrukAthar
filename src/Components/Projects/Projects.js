@@ -205,7 +205,7 @@ export default function Projects() {
                                             photo={caseCard?.caseimage[0]?.image}
                                             title={caseCard?.name}
                                             para={caseCard?.description}
-                                            progress={((caseCard?.paied_amount * 100) / caseCard?.initial_amount)}
+                                            progress={((caseCard?.paied_amount * 100) / caseCard?.initial_amount).toFixed(0)}
                                             totalPrice={caseCard?.initial_amount} numOfDonates={caseCard?.paied_amount} />
 
                                     </div>

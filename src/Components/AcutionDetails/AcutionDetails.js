@@ -51,6 +51,7 @@ export default function AcutionDetails() {
                 setMazadUmage(response.data.mazad.mazadimage)
                 setVendorName(response.data.the_owner_name)
                 setVedorEmail(response.data.the_owner_email)
+                console.log(response.data.mazad, "kk")
 
             }).catch((err) => { console.log(err) })
 

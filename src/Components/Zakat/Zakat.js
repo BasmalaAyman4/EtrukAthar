@@ -4,6 +4,7 @@ import { Container } from 'react-bootstrap'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useTranslation } from 'react-i18next'
+
 export default function Zakat() {
     const { t } = useTranslation()
     const [zakat, setZakat] = useState({
