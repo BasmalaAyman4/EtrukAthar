@@ -37,7 +37,7 @@ const WhoWeAre = () => {
                         </div>
                         <div className='col-lg-8 col-sm-12'>
                             <div className='row'>
-                                <div className='col-lg-4 col-sm-12 mb-5'>
+                                <div className=' col-lg-4 col-sm-12 mb-5'>
                                     <div className={`${styles["who-we-are__img-container"]}`}>
                                         <img src={img1} className={`${styles['who-we-are__img']}`} alt="" />
                                         <div className={`${styles['who-we-are__img-info']}`}>
@@ -47,13 +47,10 @@ const WhoWeAre = () => {
                                 </div>
                                 <div className='col-lg-4 col-sm-12 '>
                                     <div className={`${styles["who-we-are__img-container_modify"]}`}>
-
                                         <img src={img2} className={`${styles['who-we-are__img']}`} alt="" />
-
                                         <div className={`${styles['who-we-are__img-info_modify']}`}>
                                             <h4 className={`${styles['who-we-are__img-info-h2-modify']} `}>{t("شارك")}</h4>
                                         </div>
-
                                     </div>
                                 </div>
                                 <div className='col-lg-4 col-sm-12'>
