@@ -21,6 +21,7 @@
     padding: 10px 30px;
     position: sticky;
     top: 30px;
+    padding-bottom: 30px;
 }
 .zakatValue__body{
     display: flex;
@@ -28,13 +29,16 @@
     align-items: center;
     text-align: left;
 }
+.zakatValue__total{
+    margin-bottom: 70px;
+}
 .zakatValue__btn{
     width: 100%;
     border: 1px solid #EF8451;
     background-color: #EF8451;
     padding: 10px 30px;
     color: #fff;
-   margin-top: 10px;
+    
 }
 
 .group{

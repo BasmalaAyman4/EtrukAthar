@@ -41,6 +41,7 @@ export default function CharityDetails() {
         axios.get(`https://otrok.invoacdmy.com/api/user/charity/cases/${carityId.id}`)
             .then((response) => {
                 setCaseData(response.data.cases)
+                console.log(response.data.cases.caseimage, "jjjj")
             }).catch((err) => { console.log(err) })
 
         axios.get(`https://otrok.invoacdmy.com/api/user/charity/events/${carityId.id}?lang=ar`)
@@ -111,7 +112,7 @@ export default function CharityDetails() {
                                 <div className={`${style.card}`}>
                                     <div className={`${style.header}`}>
                                         <div className={`${style.image}`}>
-                                            <img src={caseCard.image} alt="" />
+                                            <img src={caseCard.caseimage[0]?.image} alt="" />
                                             <span className={`${style.tag}`}>{caseCard.category.name_en}</span>
                                         </div>
                                     </div>

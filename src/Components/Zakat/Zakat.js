@@ -4,6 +4,7 @@ import { Container } from 'react-bootstrap'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom';
 
 export default function Zakat() {
     const { t } = useTranslation()
@@ -44,10 +45,10 @@ export default function Zakat() {
                                     <hr />
                                     <div className={`${style.zakatValue__body}`}>
                                         <p>{zakat.money <= (zakat.zakagold21 * 87.48) ? ((zakat.gold21 * 2635 * 2.5) / 100) + ((zakat.gold24 * 2635 * 2.5) / 100) : ((zakat.money * 2.5) / 100) + ((zakat.gold21 * 2635 * 2.5) / 100) + ((zakat.gold24 * 2635 * 2.5) / 100)} ج.م</p>
-                                        <p>{t("إجمالي مبلغ الزكاة")}</p>
+                                        <p className={`${style.zakatValue__total}`}>{t("إجمالي مبلغ الزكاة")}</p>
                                     </div>
                                 </div>
-                                <button className={`${style.zakatValue__btn}`}> {t("تبرع الآن")}</button>
+                                <a className={`${style.zakatValue__btn}`} href="/cases"> {t("تبرع الآن")}</a>
                             </div>
                         </Col>
                         <Col lg={8} md={12} xs={12}>

@@ -13,6 +13,7 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import imgNull from '../../assets/images/eae946efbbf74117a65d488206a09b63.png'
+import { BsQuestionCircle } from "react-icons/bs";
 export default function Acution() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -130,7 +131,7 @@ export default function Acution() {
                             <Modal.Body >
                                 {!token ? <p className={`${style.para}`}> يجب تسجيل دخول لاضافة حالة  <a href='/login' className={`${style.link}`}> تسجل دخول</a></p> :
                                     <Form onSubmit={onSubmitHandler}>
-                                        <div className='text-center'>
+                                        <div className='text-center mb-3'>
                                             <input className={`${style.fileImg}  input-file-js`} ref={(e) => {
                                                 addFileInput.current = e
                                             }} id="input-file" multiple name="img" type="file" onChange={(e) => { previewUploadImage(e) }} />
@@ -184,7 +185,9 @@ export default function Acution() {
                                             <Form.Control type='date' name="dateSend" className={`${style.input}`} onChange={onChangeHandler} value={formData.dateSend} />
                                         </Form.Group>
                                         <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                            <Form.Control name="timeSend" className={`${style.input}`} onChange={onChangeHandler} value={formData.timeSend} />
+                                            <Form.Control name="timeSend" className={`${style.input} ${style.question}`} onChange={onChangeHandler} value={formData.timeSend} placeholder="الوقت لانهاء المزاد  " />
+                                            <p className={` ${style.questionMark}`}><BsQuestionCircle /></p>
+                                            <p className={` ${style.questionMark__para}`}>الوقت المشابهه لوقت الادخال 14:00:00</p>
                                         </Form.Group>
                                         <Button type="submit" className={style.signup__btn} >
                                             اضافة الان
