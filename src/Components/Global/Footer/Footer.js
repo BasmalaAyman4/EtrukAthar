@@ -4,8 +4,7 @@ import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-k
 import { FaFacebook, FaLinkedin, FaGoogle, FaTwitter, FaWhatsapp, FaGithub, FaHome, FaEnvelope, FaPhone, FaPrint, FaYoutube, FaInstagram } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-
-
+import QR from "../../../assets/icons/frame.svg"
 export default function Footer() {
     const { t } = useTranslation()
     return (
@@ -53,27 +52,30 @@ export default function Footer() {
 
 
 
-                            <MDBCol md="2" lg="2" xl="2" className='mx-auto mb-4'>
-                                <h6 className='footer__h6 text-uppercase fw-bold mb-4'>{t("روابط مفيدة")} </h6>
+
+
+                            <MDBCol md="3" lg="2" xl="2" className='mx-auto mb-4'>
+                                <h6 className='footer__h6 text-uppercase fw-bold mb-4'>{t("روابط مفيدة")}</h6>
                                 <hr />
                                 <p>
-                                    <Link to='#!' className='text-reset footer__link'>
-                                        {t("سياسه الاستخدام")}
+                                    <Link to='/cases' className='text-reset footer__link'>
+                                        {t("الحالات")}
+                                    </Link>
+                                </p>
+
+                                <p>
+                                    <Link to='/event' className='text-reset footer__link'>
+                                        {t(" المناسبات")}
                                     </Link>
                                 </p>
                                 <p>
-                                    <Link to='#!' className='text-reset footer__link'>
-                                        {t("سياسة الخصوصية")}
+                                    <Link to='/charities' className='text-reset footer__link'>
+                                        {t(" الجمعيات الخيرية")}
                                     </Link>
                                 </p>
                                 <p>
-                                    <Link to='#!' className='text-reset footer__link'>
-                                        {t("سياسه جمع التبرعات")}
-                                    </Link>
-                                </p>
-                                <p>
-                                    <Link to='#!' className='text-reset footer__link'>
-                                        {t("كيف اتبرع ؟ ")}
+                                    <Link to='/acution' className='text-reset footer__link'>
+                                        {t(" المزادات")}
                                     </Link>
                                 </p>
                                 <p>
@@ -81,52 +83,7 @@ export default function Footer() {
                                         {t("تطوع معنا")}
                                     </Link>
                                 </p>
-                            </MDBCol>
 
-                            <MDBCol md="3" lg="2" xl="2" className='mx-auto mb-4'>
-                                <h6 className='footer__h6 text-uppercase fw-bold mb-4'>{t("روابط مفيدة")}</h6>
-                                <hr />
-                                <p>
-                                    <Link to='#!' className='text-reset footer__link'>
-                                        {t("المشاريع")}
-                                    </Link>
-                                </p>
-
-                                <p>
-                                    <Link to='#!' className='text-reset footer__link'>
-                                        {t(" حالات إنسانية")}
-                                    </Link>
-                                </p>
-                                <p>
-                                    <Link to='#!' className='text-reset footer__link'>
-                                        {t(" حالات طبية")}
-                                    </Link>
-                                </p>
-                                <p>
-                                    <Link to='#!' className='text-reset footer__link'>
-                                        {t(" كفالة يتيم")}
-                                    </Link>
-                                </p>
-                                <p>
-                                    <Link to='#!' className='text-reset footer__link'>
-                                        {t("كفالة أسرة")}
-                                    </Link>
-                                </p>
-                                <p>
-                                    <Link to='#!' className='text-reset footer__link'>
-                                        {t(" المناسبات")}
-                                    </Link>
-                                </p>
-                                <p>
-                                    <Link to='#!' className='text-reset footer__link'>
-                                        {t("صندوق علمني ")}
-                                    </Link>
-                                </p>
-                                <p>
-                                    <Link to='#!' className='text-reset footer__link'>
-                                        {t("ملف الشفافيه")}
-                                    </Link>
-                                </p>
                             </MDBCol>
                             <MDBCol md="4" lg="3" xl="3" className='mx-auto mb-md-0 mb-4'>
                                 <h6 className='footer__h6 text-uppercase fw-bold mb-4' >{t("كن علي تواصل معنا")}</h6>
@@ -146,6 +103,10 @@ export default function Footer() {
                                 <p className='footer__contact-us_p'>
                                     + 01 234 567 89 <FaPrint className="me-3" />
                                 </p>
+                            </MDBCol>
+                            <MDBCol md="2" lg="2" xl="2" className='mx-auto mb-4'>
+                                <img alt="" src={QR} className='QR' />
+
                             </MDBCol>
 
 
