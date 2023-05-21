@@ -129,9 +129,9 @@ export default function NavbarMenu() {
                                             <NavLink className="nav-link" to="/event" href="index.html">{t(" المناسبات")}</NavLink>
                                         </li>
                                         <li>
-                                            <NavLink className="nav-link" to="/" href="index.html">   {t("جمعيات  خيرية")}</NavLink>
+                                            <NavLink className="nav-link" to="/charities" href="index.html">   {t("جمعيات  خيرية")}</NavLink>
                                         </li>
-                                    
+
                                         <li>
                                             <NavLink className="nav-link" to="/" href="index.html">{t("صندوق علمني ")} </NavLink>
                                         </li>
@@ -145,33 +145,33 @@ export default function NavbarMenu() {
                                         <li>
                                             <NavLink className="nav-link" to="/acution" href="index.html"> {t("المزادات")}</NavLink>
                                         </li>
-                                        {token?
-                                        <>
-                                      
-                                      <li>
-                                          <NavLink className="nav-link"  to="/edit-profile" href="index.html"> {t("تعديل حسابي")} </NavLink>
-                                      </li>
-                                      </>
-                                        :
-                                        <>
-                                        <li>
-                                            <NavLink className="nav-link"  to="/sign-up" href="index.html"  onClick={logout}>{t("تسجيل")}</NavLink>
-                                        </li>
-                                        </>
+                                        {token ?
+                                            <>
+
+                                                <li>
+                                                    <NavLink className="nav-link" to="/edit-profile" href="index.html"> {t("تعديل حسابي")} </NavLink>
+                                                </li>
+                                            </>
+                                            :
+                                            <>
+                                                <li>
+                                                    <NavLink className="nav-link" to="/sign-up" href="index.html" onClick={logout}>{t("تسجيل")}</NavLink>
+                                                </li>
+                                            </>
                                         }
-                                        {!token?
-                                        <>
-                                      
-                                      <li>
-                                          <NavLink className="nav-link" to="/login" href="index.html"> {t("تسجيل الدخول")}  </NavLink>
-                                      </li>
-                                      </>
-                                        :
-                                        <>
-                                        <li>
-                                            <NavLink className="nav-link" to="/" href="index.html"  onClick={logout}>{t("تسجيل خروج")}</NavLink>
-                                        </li>
-                                        </>
+                                        {!token ?
+                                            <>
+
+                                                <li>
+                                                    <NavLink className="nav-link" to="/login" href="index.html"> {t("تسجيل الدخول")}  </NavLink>
+                                                </li>
+                                            </>
+                                            :
+                                            <>
+                                                <li>
+                                                    <NavLink className="nav-link" to="/" href="index.html" onClick={logout}>{t("تسجيل خروج")}</NavLink>
+                                                </li>
+                                            </>
                                         }
                                     </ul>
 
