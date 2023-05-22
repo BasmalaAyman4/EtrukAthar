@@ -34,13 +34,18 @@
 }
 .zakatValue__btn{
     width: 100%;
-    border: 1px solid #EF8451;
-    background-color: #EF8451;
-    padding: 10px 30px;
-    color: #fff;
-    
+    border: 1px solid #EF8451 !important ;
+    background-color: #EF8451 !important;
+    padding: 10px 30px !important;
+    color: #fff !important; 
 }
-
+.zakatValue__btn:hover {
+    width: 100%;
+    border: 1px solid #EF8451 !important;
+    background-color: #fff !important;
+    padding: 10px 30px !important;
+    color: #EF8451 !important;
+}
 .group{
     padding:0 30px;
     margin-bottom: 30px;

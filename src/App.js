@@ -6,21 +6,26 @@ import Router from './Router/Router';
 // import DonateNow from './Components/Global/DonateNow/DonateNow'
 import { AuthProvider } from './Components/Context/AuthContext';
 import Loading from './Components/Loading/Loading';
+import { useLocation } from 'react-router-dom';
 
 
 
-  function App() {
-    const [IsLoading,setIsLoading] = useState(false)
-    useEffect(()=>{
-      setIsLoading(true)
-      setTimeout(()=>{
-        setIsLoading(false)
-      },2000)
-    },[])
-  
-    return (
-      <div className="App">
-      {IsLoading?
+function App() {
+  const location = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [location])
+  const [IsLoading, setIsLoading] = useState(false)
+  useEffect(() => {
+    setIsLoading(true)
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 2000)
+  }, [])
+
+  return (
+    <div className="App">
+      {IsLoading ?
         <Loading />
         :
         <>
@@ -30,17 +35,17 @@ import Loading from './Components/Loading/Loading';
           <Footer />
         </>
       }
-      </div>
-    );
-  }
-  
-  function AppWithStore() {
-    return (
-      
+    </div>
+  );
+}
+
+function AppWithStore() {
+  return (
+
     <AuthProvider>
       <App />
     </AuthProvider>
-    );
-  }
-  
-  export default AppWithStore;
+  );
+}
+
+export default AppWithStore;

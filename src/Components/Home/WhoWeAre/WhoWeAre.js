@@ -6,7 +6,7 @@ import img2 from './../../../assets/images/who-we-are2.jpg'
 import img3 from './../../../assets/images/who-we-are3.jpg'
 import { useTranslation } from 'react-i18next'
 import { Player } from 'video-react';
-import etruk from "./../../../assets/videos/VID_20230406221832.mp4"
+import etruk from "./../../../assets/videos/Vid 20230406221832.mp4"
 import img4 from "./../../../assets/images/9eed201930ce4a42bdddf8e2adcede32.jpg"
 import { useSpring, animated, config } from 'react-spring';
 import styled from "styled-components";
@@ -99,7 +99,7 @@ const WhoWeAre = () => {
                             </div>
                         </div>
                     </div>
-                    <div className={`${styles[`v`]}`}><Player src={etruk} className={`${styles[`video`]}`} poster={img4} autoPlay={true} /></div>
+                    <div className={`${styles[`v`]}`}><Player src={etruk} className={`${styles[`video`]}`} poster={img4} autoPlay={false} /></div>
                 </div>
 
             </section>

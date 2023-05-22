@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { TbBuildingWarehouse, TbUserPlus } from "react-icons/tb";
 
 export default function Login() {
     const [userType, setUserType] = useState("1")
@@ -87,7 +88,7 @@ export default function Login() {
             axios.post(`https://otrok.invoacdmy.com/api/login`, reqSignUpData)
                 .then((response) => {
                     localStorage.setItem("token", response.data.token)
-                    toast.success( "تم تسجيل الدخول بنجاح")
+                    toast.success("تم تسجيل الدخول بنجاح")
                     handleRedirect()
                 })
                 .catch((err) => {
@@ -116,10 +117,10 @@ export default function Login() {
                                     <hr />
                                     <ul className={`${style.userLog__list}`}>
                                         <li className={`${style.userLog__item}`} onClick={() => { setUserType('1') }} >
-                                            <button type='button' className={`${userType === '1' ? style.userLog__link : style.user__link}`} >{t("مستخدم")}</button>
+                                            <button type='button' className={`${userType === '1' ? style.user__link : style.userLog__link}`} > {t(" مستخدم")} <TbUserPlus className={`${style.iLog}`} /></button>
                                         </li>
                                         <li className={`${style.userLog__item}  `} onClick={() => { setUserType('2') }} >
-                                            <button type='button' className={`${userType === '2' ? style.userLog__link : style.user__link}`} >{t("جمعية ")}</button>
+                                            <button type='button' className={`${userType === '2' ? style.user__link : style.userLog__link}`} >{t(" جمعية ")}  <TbBuildingWarehouse className={`${style.iLog}`} /></button>
                                         </li>
                                     </ul>
                                     <div className={style.userName}>

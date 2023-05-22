@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import style from "./Zakat.module.css"
-import { Container } from 'react-bootstrap'
+import { Container, Button } from 'react-bootstrap'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 export default function Zakat() {
     const { t } = useTranslation()
     const [zakat, setZakat] = useState({
@@ -16,11 +16,13 @@ export default function Zakat() {
 
 
     });
+    const navigate = useNavigate();
     const much = Math.floor(zakat.zakagold21 * 87.48)
     const onChangeHandler = e => {
-
         setZakat({ ...zakat, [e.target.name]: e.target.value })
-
+    }
+    const donate = () => {
+        navigate("/cases")
     }
     return (
         <>
@@ -48,7 +50,7 @@ export default function Zakat() {
                                         <p className={`${style.zakatValue__total}`}>{t("إجمالي مبلغ الزكاة")}</p>
                                     </div>
                                 </div>
-                                <a className={`${style.zakatValue__btn}`} href="/cases"> {t("تبرع الآن")}</a>
+                                <Button className={`${style.zakatValue__btn}`} onClick={donate}> {t("تبرع الآن")}</Button>
                             </div>
                         </Col>
                         <Col lg={8} md={12} xs={12}>
@@ -60,7 +62,7 @@ export default function Zakat() {
                                     <div className={`${style.zakatBody__cart}`}>
                                         <div className={`${style.group}`}>
                                             <label className={`${style.label}`}> {t("قيمة المال الذي أملكه")}</label>
-                                            <input required="" type="text" name="money" className={`${style.input}`} placeholder={t("القيمة هنا")} value={zakat.money}
+                                            <input required="" type="number" name="money" className={`${style.input}`} placeholder={t("القيمة هنا")} value={zakat.money}
                                                 onChange={onChangeHandler} />  {zakat.money <= (zakat.zakagold21 * 87.48) ? <p className={`${style.err}`}> {t("  لحساب زكاة المال")} {t("يجب ادخال مبلغ اكبر من  ")}{much}</p> : ""}
                                         </div>
                                         <div className={`${style.zakatMoney__cart}`}>
@@ -76,7 +78,7 @@ export default function Zakat() {
                                     <div className={`${style.zakatBody__cart}`}>
                                         <div className={`${style.group}`}>
                                             <label className={`${style.label}`}> {t("وزن الذهب الذي تملكه من عيار 21")}</label>
-                                            <input required="" type="text" className={`${style.input} ${style.dahab}`} placeholder={t("القيمة هنا")} name="gold21" value={zakat.gold21} onChange={onChangeHandler} />
+                                            <input required="" type="number" className={`${style.input} ${style.dahab}`} placeholder={t("القيمة هنا")} name="gold21" value={zakat.gold21} onChange={onChangeHandler} />
                                         </div>
                                         <div className={`${style.zakatMoney__cart}`}>
                                             <p>{t("قيمة الذهب اليوم")}</p>
@@ -90,7 +92,7 @@ export default function Zakat() {
                                     <div className={`${style.zakatBody__cart}`}>
                                         <div className={`${style.group}`}>
                                             <label className={`${style.label}`}>  {t("وزن الذهب الذي تملكه من عيار 24")}</label>
-                                            <input required="" type="text" className={`${style.input} ${style.dahab}`} placeholder={t("القيمة هنا")} name="gold24" value={zakat.gold24} onChange={onChangeHandler} />
+                                            <input required="" type="number" className={`${style.input} ${style.dahab}`} placeholder={t("القيمة هنا")} name="gold24" value={zakat.gold24} onChange={onChangeHandler} />
                                         </div>
                                         <div className={`${style.zakatMoney__cart}`}>
                                             <p> {t("قيمة الذهب اليوم")}</p>
