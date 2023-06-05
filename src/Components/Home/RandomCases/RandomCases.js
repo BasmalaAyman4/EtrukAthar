@@ -8,23 +8,44 @@ import "swiper/css/pagination";
 import Card from '../../Card/Card';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import Loading from '../../Loading/Loading';
 
 const RandomCases = () => {
    
   const [randomCases,setRandomCases] = useState([])
   const currentLanguageCode = Cookies.get('i18next') || 'en'
+  const [IsLoading,setIsLoading] = useState(false)
+    useEffect(()=>{
+      setIsLoading(true)
+      setTimeout(()=>{
+        setIsLoading(false)
+      },1000)
+    },[])
   
   useEffect(() => {
+    setIsLoading(true)
     axios.get(`https://otrok.invoacdmy.com/api/user/case/last?lang=${currentLanguageCode}`)
         .then(response => {
           setRandomCases(response.data.cases)
+          setIsLoading(false)
         }
-        ).catch((err) => { console.log(err) })
+        ).catch((err) => { 
+          console.log(err)
+          setIsLoading(false)
+
+          })
   
 }, [currentLanguageCode])
 
 
+
+
   return (
+    <>
+    {IsLoading?
+
+     <Loading />
+    :
     <section className={`mt-5 ${styles["roundom-cases"]}`}>
         <div className='container'>
         <Swiper
@@ -58,7 +79,7 @@ const RandomCases = () => {
       >
        {randomCases&&randomCases.map(item=>(
         <SwiperSlide>
-            <Card id={item.id} donationType={item.donationtype_id} photo={item.image} title={item.name} para={item.description} progress={((item.paied_amount * 100) / item.initial_amount)} totalPrice={item.initial_amount} numOfDonates={item.paied_amount}    
+            <Card id={item.id} donationType={item.donationtype_id} photo={item?.caseimage[0]?.image} title={item.name} para={item.description} progress={((item.paied_amount * 100) / item.initial_amount)} totalPrice={item.initial_amount} numOfDonates={item.paied_amount}    
             />
         </SwiperSlide>
         ))}
@@ -66,6 +87,8 @@ const RandomCases = () => {
       </Swiper>
       </div>
     </section>
+       }
+    </>
   )
 }
 

@@ -16,7 +16,7 @@ function Number({n}){
 const HomeCounting = () => {
     const { t } = useTranslation()
   return (
-    <section className={`${styles["home-counting"]} mt-5 `}>
+    <section className={`${styles["home-counting"]}  `}>
     <div className={`${styles["home-counting__container"]} mt-5 `}>
         <div className={`${styles["home-counting__content"]} `}>
             <div className='container'>

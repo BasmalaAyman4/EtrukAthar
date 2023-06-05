@@ -8,12 +8,12 @@ import CardCase from './../Card/Card'
 import Button from 'react-bootstrap/Button';
 import axios from 'axios'
 import Skeleton from 'react-loading-skeleton'
-
 import { ToastContainer } from "react-toastify";
 import Cookies from 'js-cookie'
-
 import AddCase from '../AddCase/AddCase'
 import Loading from '../Loading/Loading'
+
+
 
 export default function Projects() {
     const { t } = useTranslation()
@@ -24,14 +24,14 @@ export default function Projects() {
     const [donationtypeId, setDonationId] = useState('')
     const [isLoading, setIsLoading] = useState(true);
     const [categoryId, setCategoryId] = useState('')
-
+    
     const handleFilterCategoryType = (e) => {
         setCategoryId(e.target.value)
     }
     const handleFilterDonationType = (e) => {
         setDonationId(e.target.value)
     }
-    console.log(dataType, "jjj")
+    
 
     useEffect(() => {
         setIsLoading(true)
@@ -42,10 +42,9 @@ export default function Projects() {
                     setIsLoading(false)
                 }
                 ).catch((err) => { console.log(err) })
-            axios.get(`https://otrok.invoacdmy.com/api/user/donation/donation/types?lang=ar`)
+            axios.get(`https://otrok.invoacdmy.com/api/user/donation/donation/types?lang=${currentLanguageCode}`)
                 .then(response => {
                     setDataType(response.data.Donationtypes)
-                    console.log(response.data, "jjj")
                     setIsLoading(false)
                 }
                 ).catch((err) => { console.log(err) })
@@ -63,17 +62,17 @@ export default function Projects() {
 
 
     useEffect(() => {
-        setIsLoading(true)
+        
 
         if (categoryId !== '' && donationtypeId === '') {
             axios.get(`https://otrok.invoacdmy.com/api/user/case/category/${categoryId}?lang=${currentLanguageCode}`)
                 .then(response => {
                     setDataCases(response.data.cases)
-                    setIsLoading(false)
+                    
                 }
                 ).catch((err) => {
                     console.log(err)
-                    setIsLoading(false)
+                    
                 })
 
         }
@@ -81,36 +80,36 @@ export default function Projects() {
             axios.get(`https://otrok.invoacdmy.com/api/user/case/donation/${donationtypeId}?lang=${currentLanguageCode}`)
                 .then(response => {
                     setDataCases(response.data.cases)
-                    setIsLoading(false)
+                    
                 }
                 ).catch((err) => {
                     console.log(err)
-                    setIsLoading(false)
+                  
                 })
         }
         if (categoryId !== '' && donationtypeId !== '') {
             axios.get(`https://otrok.invoacdmy.com/api/user/case/category/donation/${categoryId}/${donationtypeId}?lang=${currentLanguageCode}`)
                 .then(response => {
                     setDataCases(response.data.cases)
-                    setIsLoading(false)
+                
 
                 }
                 ).catch((err) => {
 
                     console.log(err)
-                    setIsLoading(false)
+                    
                 })
         }
         if (categoryId === '' && donationtypeId === '') {
             axios.get(`https://otrok.invoacdmy.com/api/user/case/index?lang=${currentLanguageCode}`)
                 .then(response => {
                     setDataCases(response.data.cases)
-                    setIsLoading(false)
+                    
 
                 }
                 ).catch((err) => {
                     console.log(err)
-                    setIsLoading(false)
+                   
                 }
                 )
         }
@@ -126,6 +125,7 @@ export default function Projects() {
 
     return (
         <>
+        
             <section className={`${styles.projects} mb-5 pb-5`}>
 
                 <HeaderTitle title={t("الحالات")} para={t("المبلغ المجموع للحالات")} price='1.037.976.07$' />
@@ -143,80 +143,111 @@ export default function Projects() {
                             <fieldset className={`${styles.category}`}>
                                 <h4 className='side-filter__item-header-title'> {t("فئات")} </h4>
                                 <div className="radio-item-container">
+                                <>
+                                    {!isLoading? 
                                     <div className="radio-item">
                                         <label className='label_radio' for=''>
                                             <input type="radio" id='' name="caseCategory" value='' onChange={handleFilterCategoryType} />
                                             <span> {t("جميع الحالات")} </span>
                                         </label>
                                     </div>
+                                     :
+                                     <Skeleton  className={`skeleton-don`}/> 
+                                    }
+                                </> 
                                     {dataCategories && dataCategories.map(category =>
+                                    <>
+                                    {!isLoading? 
                                         <div className="radio-item">
                                             <label className='label_radio' for={category.id}>
                                                 <input type="radio" id={category.id} name="caseCategory" value={category.id} onChange={handleFilterCategoryType} />
                                                 <span> {category.name} </span>
                                             </label>
                                         </div>
+                                        
+                                         :
+                                         <Skeleton  className={`skeleton-don`}/> 
+                                    }
+                                    </>  
                                     )}
 
                                 </div>
                                 <h4 className='side-filter__item-header-title pb-3'>{t("انواع التبرع")}</h4>
-                                <div className="radio-item">
-                                    <label className='label_radio' for=''>
-                                        <input type="radio" id='' name="caseTypeId" value='' onChange={handleFilterDonationType} />
-                                        <span> {t("جميع الأنواع")} </span>
-                                    </label>
-                                </div>
-                                {currentLanguageCode === 'ar' ?
+                                <>
+                                    {!isLoading? 
+                                        <div className="radio-item">
+                                            <label className='label_radio' for=''>
+                                                <input type="radio" id='' name="caseTypeId" value='' onChange={handleFilterDonationType} />
+                                                <span> {t("جميع الأنواع")} </span>
+                                            </label>
+                                        </div>
+                                        :
+                                        <Skeleton  className={`skeleton-don`}/> 
+                                   }
+                               </>
                                     <>
                                         {dataType && dataType.map(type => (
+                                            <>
+                                             {!isLoading? 
                                             <div className="radio-item">
                                                 <label className='label_radio' for={type.name}>
                                                     <input type="radio" name="caseTypeId" id={type.name} value={type.id} onChange={handleFilterDonationType} />
                                                     <span> {type.name} </span>
-                                                </label>
+                                                </label>    
                                             </div>
-
+                                            : 
+                                            <Skeleton  className={`skeleton-don`}/> 
+                                           }
+                                        </>
                                         ))}
                                     </>
-                                    :
-                                    <>
-                                        {dataType && dataType.map(type => (
-                                            <div className="radio-item">
-                                                <label className='label_radio' for={type.name}>
-                                                    <input type="radio" name="caseTypeId" id={type.name} value={type.id} onChange={handleFilterDonationType} />
-                                                    <span> {type.name} </span>
-                                                </label>
-                                            </div>
-
-                                        ))}
-                                    </>
-                                }
+                          
                             </fieldset>
                         </div>
-
+                       
                         <div className='col-lg-10 col-md-12 col-sm-12 mb-5'>
+                             {isLoading?
+
+                                <Loading />
+                                :
+                                
                             <div className='row mt-5'>
-                                {dataCases && dataCases.map(caseCard =>
-                                    <div className='col-lg-4' key={caseCard?.id}>
+                                {dataCases.length !== 0?
+                                <>
+                                    {dataCases && dataCases.map(caseCard =>
+                                        <div className='col-lg-4' key={caseCard?.id}>
 
-                                        <CardCase
-                                            id={caseCard?.id}
-                                            donationType={caseCard?.donationtype_id}
-                                            photo={caseCard?.caseimage[0]?.image}
-                                            title={caseCard?.name}
-                                            para={caseCard?.description}
-                                            progress={((caseCard?.paied_amount * 100) / caseCard?.initial_amount)}
-                                            totalPrice={caseCard?.initial_amount} numOfDonates={caseCard?.paied_amount} />
+                                            <CardCase
+                                                id={caseCard?.id}
+                                                donationType={caseCard?.donationtype_id}
+                                                photo={caseCard?.caseimage[0]?.image}
+                                                title={caseCard?.name}
+                                                para={caseCard?.description}
+                                                progress={((caseCard?.paied_amount * 100) / caseCard?.initial_amount)}
+                                                totalPrice={caseCard?.initial_amount} numOfDonates={caseCard?.paied_amount} />
 
+                                        </div>
+                                        
+                                    )}
+                                </>
+                                :
+                                <div className='mt-5'>
+                                    <div className='d-flex'>
+                                        <h5 className='m-auto' >{t("لا توجد حالات متاحه")}</h5>
                                     </div>
-                                )}
+                                </div>
+                                }
                             </div>
+                            }
 
                         </div>
+                 
                     </div>
                 </div>
+                <ToastContainer />
             </section>
-            <ToastContainer />
+            
+    
         </>
     )
 }

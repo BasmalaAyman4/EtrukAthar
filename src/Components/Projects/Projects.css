@@ -255,3 +255,8 @@ fieldset input[type="radio"]:checked + span > .icon {
 .btn-close{
 	margin: initial !important;
 }
+.skeleton-don{
+    width: 90% !important;
+    margin: 10px;
+    height: 20px ;
+}

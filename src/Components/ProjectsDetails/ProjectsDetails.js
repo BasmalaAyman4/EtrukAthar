@@ -184,6 +184,7 @@ export default function ProjectsDetails() {
     storeDonate.append("donationtype_id", donationType);
     if (formData.donationtype_id === '2') {
         storeDonate.append("amount", donateData.numberOfVoulenteers);
+        storeDonate.append("method", "representative");
     }
     if (donateData.address && formData.donationtype_id === '1') {
         storeDonate.append("method", "representative");

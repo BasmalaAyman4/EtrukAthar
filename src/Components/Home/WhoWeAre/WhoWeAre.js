@@ -70,7 +70,7 @@ const WhoWeAre = () => {
                             </div>
                         </div>
                     </div>
-                    <div className={`${styles[`v`]}`}><Player src={etruk} className={`${styles[`video`]}`} poster={img4} autoPlay={true} /></div>
+                    <div className={`${styles[`v`]} mb-5`}><Player src={etruk} className={`${styles[`video`]}`} poster={img4} autoPlay={true} /></div>
                 </div>
 
             </section>
