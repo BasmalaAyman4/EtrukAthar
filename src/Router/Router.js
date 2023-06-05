@@ -46,6 +46,7 @@ export default function Router() {
         <Route path="/acution/acution-details/:id" element={<AcutionDetails />} />
         <Route path="/charity-details/:id/charityCase-details/:id" element={<CharityCaseDetails />} />
         <Route path="/charity-details/:id/charityEvent-details/:id" element={<CharityEventDetails />} />
+
       </Routes>
     </>
   )
