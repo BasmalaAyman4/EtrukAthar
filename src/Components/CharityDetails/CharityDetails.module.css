@@ -97,6 +97,7 @@ margin-right: 5px;
 .causesPara{
 font-family: "Changa-Regular";
 font-size: 17px;
+margin-bottom: 50px;
 }
 .donation{
     display: grid;
@@ -198,6 +199,12 @@ body[dir="rtl"] .donation {
     padding-top: 14px;
     color: #354F74;
 }
+body[dir="rtl"] .title{
+    direction: ltr;
+}
+body[dir="ltr"] .title {
+    direction: rtl;
+}
 .money{
     display: flex;
     justify-content: space-between;
@@ -218,16 +225,64 @@ body[dir="rtl"] .donation {
     color: #EF8451;
     padding: 10px 20px;
 }
+
 .caseBtn:hover {
     background-color: #EF8451;
     color: #fff;
+}
+body[dir="rtl"] .evBtn {
+    direction: ltr;
+}
+
+body[dir="ltr"] .evBtn {
+    direction: rtl;
 }
 .project{
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 2%;
 }
+body[dir="rtl"] .project {
+    direction: ltr;
+}
+
+body[dir="ltr"] .project {
+    direction: rtl;
+}
 .infoPara{
     color: #333;
     margin-bottom: 30px;
+}
+body[dir="rtl"] .infoPara {
+    direction: ltr;
+}
+
+body[dir="ltr"] .infoPara {
+    direction: rtl;
+}
+.secTwo{
+    background-color: #F5F5F5;
+    padding: 50px 0;
+    margin-top: 30px;
+}
+.causesEvent {
+   
+    font-family: "Changa-SemiBold";
+    text-align: center;
+}
+
+.globalCausesEvent {
+    color: #EF8451;
+ 
+}
+
+.causesTitleEvent {
+    color: #354F74;
+   
+}
+
+.causesParaEvent {
+    font-family: "Changa-Regular";
+    font-size: 17px;
+    margin-bottom: 50px;
 }

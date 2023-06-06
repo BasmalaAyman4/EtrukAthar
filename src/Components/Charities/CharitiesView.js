@@ -10,17 +10,18 @@ import { Col, Container, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
+import Cookies from 'js-cookie'
 export default function CharitiesView() {
     const { t } = useTranslation()
     const [dataCarity, setdataCarity] = useState([]);
-
+    const currentLanguageCode = Cookies.get('i18next') || 'en'
     useEffect(() => {
-        axios.get(`https://otrok.invoacdmy.com/api/user/charity/index`)
+        axios.get(`https://otrok.invoacdmy.com/api/user/charity/index?lang=${currentLanguageCode}`)
             .then(response => {
                 setdataCarity(response.data.charities)
             }
             ).catch((err) => { console.log(err) })
-    })
+    }, [currentLanguageCode])
     return (
         <>
             <section className={`${style.charitiesView}`}>
@@ -29,7 +30,7 @@ export default function CharitiesView() {
                         <h1 className={`${style.charityTitle}`}>{t("نحن منظمة خيرية عالمية")}</h1>
                         <p className={`${style.charityPara}`}>{t("نحن نستجيب للمساعدات الطارئة عند الحاجة وندعم العائلات التي فقدت منازلها بسبب النزاع.")}</p>
 
-                        <button className={`${style.charitybtn}`}>{t("انضم إلينا")}</button>
+                        <Link to="/sign-up" className={`${style.charitybtn}`}>{t("انضم إلينا")}</Link>
                     </div>
                 </div>
                 <Container>

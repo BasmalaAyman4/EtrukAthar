@@ -95,6 +95,15 @@
     padding: 10px 20px;
     font-size: 35px;
 }
+body[dir="rtl"] .acutionEnded {
+    left: 0;
+
+}
+
+body[dir="ltr"] .acutionEnded{
+
+right: 0;
+}
 
 .acutionCountdown {
     position: absolute;

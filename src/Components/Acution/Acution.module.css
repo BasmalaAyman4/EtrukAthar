@@ -16,6 +16,14 @@
     grid-template-columns: repeat(3,1fr);
     margin-top: 70px;
 }
+body[dir="rtl"] .AcutionCards {
+direction: ltr;
+
+}
+
+body[dir="ltr"] .AcutionCards {
+direction: rtl;
+}
 .card {
     position: relative;
     width: 400px;

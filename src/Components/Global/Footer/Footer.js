@@ -10,7 +10,7 @@ export default function Footer() {
     return (
         <>
             <MDBFooter className='text-center text-lg-start text-muted f  '>
-                <section className='d-flex justify-content-center  p-4 border-bottom'>
+                <section className='d-flex justify-content-center mt-2 p-4 border-bottom'>
 
 
                     <div className='social-icon text-center'>

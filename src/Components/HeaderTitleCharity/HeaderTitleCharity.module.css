@@ -1,0 +1,47 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    background-image: url(./../../assets/images/backcharity.png);
+    height:320px;
+    padding: 50px 0px;
+    background-size: cover;
+    background-position: center center;
+}
+
+.section__body {
+    margin: auto;
+    text-align: center;
+    color: #fff;
+}
+
+.section__title {
+    font-size: 35px;
+    position: relative;
+    margin-bottom: 30px;
+    font-family: "Changa-SemiBold";
+}
+
+.section__title::after {
+    content: '';
+    position: absolute;
+    background-color: #EF8451;
+    height: 4px;
+    width: 50px;
+    z-index: 1000;
+    bottom: -20px;
+    left: 50%;
+}
+
+.section__para {
+    font-size: 15px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    padding-top: 20px;
+    font-family: "Changa-Regular";
+}
+
+.section__price {
+    font-family: "Changa-Regular";
+    font-weight: 600;
+    color: #EF8451;
+}
