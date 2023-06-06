@@ -41,7 +41,7 @@ export default function ProjectsDetails() {
     const [formData, setFormData] = useState([])
     const [image, setImage] = useState([]);
     const [items, setItems] = useState({})
-    const [donationType,setDonationType] = useState()
+    const [donationType, setDonationType] = useState()
     const casesId = useParams()
     const [priceShow, setPriceshow] = useState("");
     const { t } = useTranslation()
@@ -208,7 +208,7 @@ export default function ProjectsDetails() {
     }
     if (formData.donationtype_id === '1') {
         storeDonate.append("date_to_send", donateData.dateSend.slice(0, 10));
-       
+
     }
     if (formData.donationtype_id === "5") {
         dataFurniture.map((item, index) => {
@@ -256,6 +256,7 @@ export default function ProjectsDetails() {
         storeDonate.append("cnn", donateData.Cnn);
         storeDonate.append("verification_code", donateData.verificationCode);
         storeDonate.append("date", donateData.visaDate.slice(0, 10));
+        storeDonate.append("donation_id", casesId.id);
         const toastId = toast.loading("...انتظر قليلا")
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         e.preventDefault()

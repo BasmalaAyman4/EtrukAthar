@@ -21,6 +21,7 @@
     padding: 10px 30px;
     position: sticky;
     top: 30px;
+    padding-bottom: 30px;
 }
 .zakatValue__body{
     display: flex;
@@ -28,15 +29,23 @@
     align-items: center;
     text-align: left;
 }
+.zakatValue__total{
+    margin-bottom: 70px;
+}
 .zakatValue__btn{
     width: 100%;
-    border: 1px solid #EF8451;
-    background-color: #EF8451;
-    padding: 10px 30px;
-    color: #fff;
-   margin-top: 10px;
+    border: 1px solid #EF8451 !important ;
+    background-color: #EF8451 !important;
+    padding: 10px 30px !important;
+    color: #fff !important; 
 }
-
+.zakatValue__btn:hover {
+    width: 100%;
+    border: 1px solid #EF8451 !important;
+    background-color: #fff !important;
+    padding: 10px 30px !important;
+    color: #EF8451 !important;
+}
 .group{
     padding:0 30px;
     margin-bottom: 30px;

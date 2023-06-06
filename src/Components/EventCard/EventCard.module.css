@@ -6,7 +6,7 @@
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
-    height: 125px;
+    height: 130px;
     margin-bottom: 20px;
     cursor: pointer;
 }
@@ -46,6 +46,11 @@ body[dir="ltr"] .eventCard__body {
 }
 .eventCard__para {
     font-size: 20px;
+    color: #8a8b8b;
+    font-weight: 300;
+}
+.eventCard__time {
+    font-size: 17px;
     color: #8a8b8b;
     font-weight: 300;
 }

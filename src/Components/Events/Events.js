@@ -54,31 +54,40 @@ export default function Events() {
                             <div className={`${active ? style.upcomingEvent : style.none}`}>
                                 <h2 className={`${style.upcomingEvent__title}`}><RxCounterClockwiseClock /> {t("الاحداث القادمة")}</h2>
                                 {event && event.map(eventCard =>
-                                    <EventCard id={eventCard.id} month={moment(eventCard.start_date).format("MMM")} day={moment(eventCard.start_date).format("Do")} title={eventCard.name} time={`(${moment(eventCard.start_time, ["HH:mm"]).format("hh:mm a")}) الي ( ${moment(eventCard.end_time, ["HH:mm"]).format("hh:mm a")} )`} />
+                                    <EventCard id={eventCard.id}
+                                        month={moment(eventCard.start_date).format("MMM")}
+                                        day={moment(eventCard.start_date).format("Do")}
+                                        title={eventCard.name}
+                                        para={eventCard.description}
+                                        time={`(${moment(eventCard.start_time, ["HH:mm"]).format("hh:mm a")}) الي ( ${moment(eventCard.end_time, ["HH:mm"]).format("hh:mm a")} )`}
+                                    />
                                 )}
                             </div>
                             <div className={`${active ? style.none : style.upcomingEvent}`}>
                                 <h2 className={`${style.upcomingEvent__title}`}><BsGrid3X3 />  {t("الاحداث القادمة")}</h2>
                                 <Row>
                                     {event && event.map(eventCard =>
-                                        <Col lg="6">
-                                            <div className={`${style.card} ${style.event}`}>
-                                                <div className={`${style.header}`}>
-                                                    <div className={`${style.image}`}>
-                                                        <img src={eventCard.image} alt="" />
-                                                        <span className={`${style.tag}`}>{eventCard.start_date}</span>
+                                        <Link to={`/event-details/${eventCard.id}`}>
+                                            <Col lg="6">
+                                                <div className={`${style.card} ${style.event}`}>
+                                                    <div className={`${style.header}`}>
+                                                        <div className={`${style.image}`}>
+                                                            <img src={eventCard.image} alt="" />
+                                                            <span className={`${style.tag}`}>{eventCard.start_date}</span>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div className={`${style.info}`}>
-                                                    <a href="#" class="block">
-                                                        <h4 className={`${style.title}`}>{eventCard.name}</h4>
-                                                    </a>
+                                                    <div className={`${style.info}`}>
+                                                        <a href="#" class="block">
+                                                            <h4 className={`${style.title}`}>{eventCard.name}</h4>
+                                                            <p>{eventCard.description}</p>
+                                                        </a>
 
-                                                </div>
+                                                    </div>
 
-                                                <button className={`${style.caseBtn}`}>Read More </button>
-                                            </div>
-                                        </Col>
+                                                    <button className={`${style.caseBtn}`}>Read More </button>
+                                                </div>
+                                            </Col>
+                                        </Link>
                                     )}
                                 </Row>
                             </div>

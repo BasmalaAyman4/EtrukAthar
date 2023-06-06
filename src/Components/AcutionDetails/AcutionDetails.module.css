@@ -438,3 +438,9 @@ font-family: "Changa-SemiBold";
 .end {
     font-size: 30px;
 }
+.para {
+    text-align: center !important;
+    padding: 10px !important;
+    font-size: 20px !important;
+    font-family: "Changa-Regular", sans-serif !important;
+}

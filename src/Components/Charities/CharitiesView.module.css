@@ -87,3 +87,11 @@ body[dir="ltr"] .charitiesName {
 .colCharity{
     margin-bottom: 50px;
 }
+.imgView:hover{
+     transition: all .2s linear;
+     transform:translateY(-20px);
+     -webkit-transform:translateY(-20px);
+     -moz-transform:translateY(-20px);
+     -ms-transform:translateY(-20px);
+     -o-transform:translateY(-20px);
+}

@@ -19,9 +19,13 @@ import { userColumns, userRows } from "../DataAcutionHistory";
 import AcutionCard from '../AcutionCard/AcutionCard';
 import { useParams } from 'react-router-dom';
 import axios from 'axios'
+import Modal from 'react-bootstrap/Modal';
 import { toast, ToastContainer } from 'react-toastify';
 export default function AcutionDetails() {
     const mazadId = useParams()
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     const [count, setCount] = useState(0);
     const [timerDays, setTimerDays] = useState('00');
     const [timerHours, setTimerHours] = useState('00');
@@ -51,6 +55,7 @@ export default function AcutionDetails() {
                 setMazadUmage(response.data.mazad.mazadimage)
                 setVendorName(response.data.the_owner_name)
                 setVedorEmail(response.data.the_owner_email)
+                console.log(response.data.mazad, "kk")
 
             }).catch((err) => { console.log(err) })
 
@@ -141,7 +146,7 @@ export default function AcutionDetails() {
                 console.log(response.data.vendor_paid)
 
             }
-            ).catch((err) => toast.error(err.response.data.message))
+            ).catch((err) => console.log(err.response.data.message))
 
     }
 
@@ -206,12 +211,32 @@ export default function AcutionDetails() {
                                     <div className={`${style.price}`} >
                                         <button onClick={() => setCount(count + increment)} className={`${style.increment__btn}`} >+</button>
                                         <input value={count} className={`${style.count}`} />
-                                        <button onClick={() => setCount(count - increment)} className={`${style.decrement__btn}`}>-</button>
+                                        <button className={`${style.decrement__btn}`}>-</button>
                                     </div>
-                                    <button className={`${style.bid__btn}`} onClick={incrementBid}>BID</button>
 
-                                    <AiFillEye className={`${style.bid__icon}`} />
-                                    <AiOutlineHeart className={`${style.bid__icon}`} />
+                                    {((new Date(moment(mazadDetails.end_date).format('LL') + " " + mazadDetails.end_time).getTime()) - (new Date().getTime())) < 0
+                                        ?
+                                        ""
+                                        :
+                                        <>
+                                            <Link variant="primary" onClick={handleShow} className={`${style.bid__btn}`}>BID </Link>
+                                            <Modal size="lg" show={show} onHide={handleClose}>
+                                                <Modal.Header closeButton>
+                                                    <Modal.Title id="contained-modal-title-vcenter">
+                                                    </Modal.Title>
+                                                </Modal.Header>
+                                                <Modal.Body >
+                                                    {!token ? <p className={`${style.para}`}> يجب تسجيل دخول لاضافة المبلغ  <a href='/login' className={`${style.link}`}> تسجل دخول</a></p>
+                                                        :
+                                                        <button className={`${style.bid__btn}`} onClick={incrementBid}>BID</button>
+                                                    }
+                                                </Modal.Body>
+                                            </Modal>
+                                        </>
+                                    }
+
+
+
                                 </div>
                             </div>
                         </Col>

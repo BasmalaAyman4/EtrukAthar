@@ -13,7 +13,8 @@ export default function EventCard(props) {
                         </div>
                         <div className={`${style.eventCard__body}`}>
                             <h4 className={`${style.eventCard__title}`}> {props.title}</h4>
-                            <p className={`${style.eventCard__para}`}> {props.time}</p>
+                            <p className={`${style.eventCard__para}`}> {props.para}</p>
+                            <span className={`${style.eventCard__time}`}> {props.time}</span>
                         </div>
 
                     </div>

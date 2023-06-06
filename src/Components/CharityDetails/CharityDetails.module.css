@@ -143,9 +143,30 @@ body[dir="rtl"] .donation {
 font-family: "Changa-SemiBold";
 }
 .event{
-    height: 400px;
+    height: 450px;
+}
+.card:hover {
+    animation: move .5s infinite alternate;
 }
 
+@keyframes move {
+    0% {
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -o-transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-10px);
+        -webkit-transform: translateY(-10px);
+        -moz-transform: translateY(-10px);
+        -ms-transform: translateY(-10px);
+        -o-transform: translateY(-10px);
+    }
+
+}
 .content {
     margin-top: 1rem;
 }
@@ -196,8 +217,16 @@ font-family: "Changa-SemiBold";
     color: #EF8451;
     padding: 10px 20px;
 }
+.caseBtn:hover {
+    background-color: #EF8451;
+    color: #fff;
+}
 .project{
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 2%;
+}
+.infoPara{
+    color: #333;
+    margin-bottom: 30px;
 }

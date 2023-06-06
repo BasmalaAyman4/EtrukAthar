@@ -217,14 +217,14 @@ export default function Projects() {
                                     {dataCases && dataCases.map(caseCard =>
                                         <div className='col-lg-4' key={caseCard?.id}>
 
-                                            <CardCase
-                                                id={caseCard?.id}
-                                                donationType={caseCard?.donationtype_id}
-                                                photo={caseCard?.caseimage[0]?.image}
-                                                title={caseCard?.name}
-                                                para={caseCard?.description}
-                                                progress={((caseCard?.paied_amount * 100) / caseCard?.initial_amount)}
-                                                totalPrice={caseCard?.initial_amount} numOfDonates={caseCard?.paied_amount} />
+                                        <CardCase
+                                            id={caseCard?.id}
+                                            donationType={caseCard?.donationtype_id}
+                                            photo={caseCard?.caseimage[0]?.image}
+                                            title={caseCard?.name}
+                                            para={caseCard?.description}
+                                            progress={((caseCard?.paied_amount * 100) / caseCard?.initial_amount).toFixed(0)}
+                                            totalPrice={caseCard?.initial_amount} numOfDonates={caseCard?.paied_amount} />
 
                                         </div>
                                         

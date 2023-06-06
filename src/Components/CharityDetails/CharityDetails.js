@@ -18,6 +18,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
 import Cookies from 'js-cookie'
+import CardCase from './../Card/Card'
 export default function CharityDetails() {
     const { t } = useTranslation()
     const carityId = useParams()
@@ -41,6 +42,7 @@ export default function CharityDetails() {
         axios.get(`https://otrok.invoacdmy.com/api/user/charity/cases/${carityId.id}`)
             .then((response) => {
                 setCaseData(response.data.cases)
+                console.log(response.data.cases.caseimage, "jjjj")
             }).catch((err) => { console.log(err) })
 
         axios.get(`https://otrok.invoacdmy.com/api/user/charity/events/${carityId.id}?lang=ar`)
@@ -108,36 +110,16 @@ export default function CharityDetails() {
                     <div className={`${style.project}`}>
                         {caseData && caseData.map(caseCard =>
                             <Link to={`charityCase-details/${caseCard.id}`}>
-                                <div className={`${style.card}`}>
-                                    <div className={`${style.header}`}>
-                                        <div className={`${style.image}`}>
-                                            <img src={caseCard.image} alt="" />
-                                            <span className={`${style.tag}`}>{caseCard.category.name_en}</span>
-                                        </div>
-                                    </div>
-                                    <div className={`${style.info}`}>
-                                        <a href="#" class="block">
-                                            <h4 className={`${style.title}`}>{caseCard.name}</h4>
-                                        </a>
-                                        <ProgressBar now={((caseCard.paied_amount * 100) / caseCard.initial_amount)} className={`${style.prog}`} label={`${((caseCard.paied_amount * 100) / caseCard.initial_amount)}%`} />
-                                    </div>
-                                    <div className={`${style.money}`}>
-                                        <div>
-                                            <p>Goal</p>
-                                            <p className={`${style.moneyTitle}`}>{caseCard.initial_amount}</p><hr className={`${style.line}`} />
+                                <CardCase
+                                    id={caseCard?.id}
+                                    donationType={caseCard?.donationtype_id}
+                                    photo={caseCard?.caseimage[0]?.image}
+                                    title={caseCard?.name}
+                                    para={caseCard?.description}
+                                    progress={((caseCard?.paied_amount * 100) / caseCard?.initial_amount).toFixed(0)}
+                                    totalPrice={caseCard?.initial_amount} numOfDonates={caseCard?.paied_amount} />
 
-                                        </div>
-                                        <div>
-                                            <p>Raised</p>
-                                            <p className={`${style.moneyTitle}`}>{caseCard.paied_amount} </p><hr className={`${style.line}`} />
-                                        </div>
-                                        <div>
-                                            <p>Remain</p>
-                                            <p className={`${style.moneyTitle}`}>{caseCard.remaining_amount}</p>
-                                        </div>
-                                    </div>
-                                    <button className={`${style.caseBtn}`}>View Details</button>
-                                </div>
+
                             </Link>
                         )}
                     </div>
@@ -159,6 +141,7 @@ export default function CharityDetails() {
                                     <div className={`${style.info}`}>
                                         <a href="#" class="block">
                                             <h4 className={`${style.title}`}>{eventCard.name}</h4>
+                                            <p className={`${style.infoPara}`}>{eventCard.description}</p>
                                         </a>
 
                                     </div>

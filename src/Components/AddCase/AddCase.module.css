@@ -1,0 +1,28 @@
+  .question {
+      position: relative;
+  }
+
+  .questionMark {
+      position: absolute;
+      right: 95%;
+      top: 42%;
+      cursor: pointer;
+  }
+  .questionMark__para{
+    background-color: aliceblue;
+    padding: 5px;
+    width: 39%;
+    text-align: center;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    position: absolute;
+        right: 55%;
+        top: 41.5%;
+        opacity: 0;
+}
+.questionMark:hover + .questionMark__para{
+    opacity: 1;
+}

@@ -37,13 +37,11 @@ import style from "./CharityCaseDetails.module.css"
 export default function CharityCaseDetails() {
     const [token, setToken] = useState(localStorage.getItem("token"))
     const [formData, setFormData] = useState([])
+    const [image, setImage] = useState([]);
     const [items, setItems] = useState({})
     const casesId = useParams()
     const [priceShow, setPriceshow] = useState("");
     const { t } = useTranslation()
-
-
-
     function clickPrice(price) {
         setPriceshow("")
         setPriceshow(price)
@@ -74,6 +72,7 @@ export default function CharityCaseDetails() {
             .then((response) => {
                 setFormData(response.data.case)
                 setItems(response.data.items)
+                setImage(response.data.case.caseimage)
             }).catch((err) => { console.log(err) })
     }, [])
 
@@ -410,9 +409,8 @@ export default function CharityCaseDetails() {
                             modules={[Autoplay, Pagination]}
 
                         >
-                            <SwiperSlide><img src={details1} alt='' className={`${style.imgSwiper}`} /></SwiperSlide>
-                            <SwiperSlide><img src={details2} alt='' className={`${style.imgSwiper}`} /></SwiperSlide>
-                            <SwiperSlide><img src={details3} alt='' className={`${style.imgSwiper}`} /></SwiperSlide>
+                            {image && image.map((imgSrc, index) => (<SwiperSlide><img src={imgSrc.image} key={index} alt='' className={`${style.imgSwiper}`} /></SwiperSlide>))}
+
 
                         </Swiper>
 
