@@ -28,9 +28,11 @@
 .charityPara,
 .charityDisc{
 margin-bottom: 20px;
-
 font-size: 17px;
 font-family: "Changa-Regular";
+}
+.charityPara{
+    margin-bottom: 40px;
 }
 .charitybtn{
     background-color: #C2956E;
@@ -41,7 +43,12 @@ font-family: "Changa-Regular";
     -moz-border-radius: 20px;
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
-    margin-top: 15px;
+    margin-top: 30px !important;
+    color: #fff;
+}
+.charitybtn:hover{
+    color: #C2956E;
+    background-color: #fff;
 }
 .charitiesName{
 /*     display: grid;

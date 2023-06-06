@@ -121,15 +121,15 @@ export default function Acution() {
 
                 <div className={`${style.acution}`}>
                     <div className={`${style.acutionBody}`}>
-                        <Link variant="primary" onClick={handleShow} className={`${style.modalAcution}`}>اضافة حالة للمزاد</Link>
+                        <Link variant="primary" onClick={handleShow} className={`${style.modalAcution}`}>{t("اضافة حالة للمزاد")}</Link>
                         <Modal size="lg" show={show} onHide={handleClose} dir={currentLanguageCode === 'ar' ? 'rtl' : 'ltr'}>
                             <Modal.Header closeButton>
                                 <Modal.Title id="contained-modal-title-vcenter">
-                                    لاضافة حالة يرجي ملئ البيانات
+                                    {t("لاضافة حالة يرجي ملئ البيانات")}
                                 </Modal.Title>
                             </Modal.Header>
                             <Modal.Body >
-                                {!token ? <p className={`${style.para}`}> يجب تسجيل دخول لاضافة حالة  <a href='/login' className={`${style.link}`}> تسجل دخول</a></p> :
+                                {!token ? <p className={`${style.para}`}> {t("يجب تسجيل دخول لاضافة حالة ")} <a href='/login' className={`${style.link}`}>{t("تسجيل دخول")}</a></p> :
                                     <Form onSubmit={onSubmitHandler}>
                                         <div className='text-center mb-3'>
                                             <input className={`${style.fileImg}  input-file-js`} ref={(e) => {
@@ -163,23 +163,23 @@ export default function Acution() {
                                             }
                                         </div>
                                         <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                            <Form.Control name="titleAr" className={`${style.input}`} placeholder="    اسم المزاد بالعربية" onChange={onChangeHandler} value={formData.titleAr} />
+                                            <Form.Control name="titleAr" className={`${style.input}`} placeholder={t("اسم المزاد بالعربية")} onChange={onChangeHandler} value={formData.titleAr} />
                                         </Form.Group>
                                         <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                            <Form.Control name="titleEn" className={`${style.input}`} placeholder="    اسم المزاد بالانجيزية" onChange={onChangeHandler} value={formData.titleEn} />
+                                            <Form.Control name="titleEn" className={`${style.input}`} placeholder={t("اسم المزاد بالانجيزية")} onChange={onChangeHandler} value={formData.titleEn} />
                                         </Form.Group>
 
                                         <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                            <Form.Control as="textarea" rows="3" name="descriptionAr" className={`${style.textArea}`} placeholder="نبذه مختصره عن المزاد بالعربية" onChange={onChangeHandler} value={formData.descriptionAr} />
+                                            <Form.Control as="textarea" rows="3" name="descriptionAr" className={`${style.textArea}`} placeholder={t("نبذه مختصره عن المزاد بالعربية")} onChange={onChangeHandler} value={formData.descriptionAr} />
                                         </Form.Group>
                                         <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                            <Form.Control as="textarea" rows="3" name="descriptionEn" className={`${style.textArea}`} placeholder="نبذه مختصره عن المزاد بالانجليزية" onChange={onChangeHandler} value={formData.descriptionEn} />
+                                            <Form.Control as="textarea" rows="3" name="descriptionEn" className={`${style.textArea}`} placeholder={t("نبذه مختصره عن المزاد بالانجليزية")} onChange={onChangeHandler} value={formData.descriptionEn} />
                                         </Form.Group>
                                         <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                            <Form.Control name="price" className={`${style.input}`} placeholder=" السعر الذي يبدأ به المزاد" onChange={onChangeHandler} value={formData.price} />
+                                            <Form.Control name="price" className={`${style.input}`} placeholder={t("السعر الذي يبدأ به المزاد")} onChange={onChangeHandler} value={formData.price} />
                                         </Form.Group>
                                         <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                            <Form.Control name="mazad" className={`${style.input}`} placeholder=" السعر الذي يزيد به المزاد" onChange={onChangeHandler} value={formData.mazad} />
+                                            <Form.Control name="mazad" className={`${style.input}`} placeholder={t("السعر الذي يزيد به المزاد")} onChange={onChangeHandler} value={formData.mazad} />
                                         </Form.Group>
                                         <Form.Group className="mb-3" controlId="formBasicEmail" >
                                             <Form.Control type='date' name="dateSend" className={`${style.input}`} onChange={onChangeHandler} value={formData.dateSend} />
@@ -187,7 +187,7 @@ export default function Acution() {
                                         <Form.Group className="mb-3" controlId="formBasicEmail" >
                                             <Form.Control name="timeSend" className={`${style.input} ${style.question}`} onChange={onChangeHandler} value={formData.timeSend} placeholder="الوقت لانهاء المزاد  " />
                                             <p className={` ${style.questionMark}`}><BsQuestionCircle /></p>
-                                            <p className={` ${style.questionMark__para}`}>الوقت المشابهه لوقت الادخال 14:00:00</p>
+                                            <p className={` ${style.questionMark__para}`}>{t("الوقت المشابهه لوقت الادخال 14:00:00")}</p>
                                         </Form.Group>
                                         <Button type="submit" className={style.signup__btn} >
                                             اضافة الان
@@ -196,7 +196,7 @@ export default function Acution() {
                                 }
                             </Modal.Body>
                         </Modal>
-                        <h2 className={`${style.acutionBody__title}`}>اخر المزادات المضافة</h2>
+                        <h2 className={`${style.acutionBody__title}`}>{t("اخر المزادات المضافة")}</h2>
                         <img alt="" src={acutionImg} className={`${style.acutionBody__img}`} />
                     </div>
                     <Container>

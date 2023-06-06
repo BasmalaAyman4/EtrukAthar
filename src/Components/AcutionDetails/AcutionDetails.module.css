@@ -7,6 +7,24 @@
     color: #bebdbd;
     font-family: "Changa-Regular";
 }
+.acution__title {
+    margin-top: 10px;
+    font-family: "Changa-Regular";
+}
+body[dir="rtl"] .acutionDetails__title {
+    direction: ltr;
+}
+
+body[dir="ltr"] .acutionDetails__title {
+    direction: rtl;
+}
+body[dir="rtl"] .acution__title {
+    direction: ltr;
+}
+
+body[dir="ltr"] .acution__title {
+    direction: rtl;
+}
 .acution{
     color:  #000 !important;
 }
@@ -23,6 +41,7 @@
 .acution__desc{
     margin-top: 50px !important;
 }
+
 .desc__body{
     font-family: "Changa-SemiBold";
         border-bottom: 1px solid #dad6d6;
@@ -31,6 +50,13 @@
 .desc__para{
     font-family: "Changa-Regular";
     font-size: 20px;
+}
+body[dir="rtl"] .desc__para {
+    direction: ltr;
+}
+
+body[dir="ltr"] .desc__para {
+    direction: rtl;
 }
 .desc__price{
 color: #EF8451;
@@ -43,6 +69,13 @@ color: #EF8451;
     color: #777;
     font-size: 17px;
     font-family: "Changa-Regular";
+}
+body[dir="rtl"] .acutionTime__para {
+    direction: ltr;
+}
+
+body[dir="ltr"] .acutionTime__para{
+    direction: rtl;
 }
 .countdown{
     display: flex;
@@ -73,7 +106,13 @@ color: #EF8451;
     -o-border-radius:5px ;
     font-family: "Changa-SemiBold";
 }
+body[dir="rtl"] .bid {
+    direction: ltr;
+}
 
+body[dir="ltr"] .bid {
+    direction: rtl;
+}
 .increment__btn,
 .decrement__btn{
    background-color: #fff;
@@ -209,6 +248,13 @@ font-family: "Changa-SemiBold";
 .n{
     color: rgb(141, 12, 12);
     font-size: 30px;
+}
+body[dir="rtl"] .n {
+    direction: ltr;
+}
+
+body[dir="ltr"] .n {
+    direction: rtl;
 }
 .count{
     border: none;
@@ -443,4 +489,11 @@ font-family: "Changa-SemiBold";
     padding: 10px !important;
     font-size: 20px !important;
     font-family: "Changa-Regular", sans-serif !important;
+}
+body[dir="rtl"] .desc__paid {
+    direction: ltr;
+}
+
+body[dir="ltr"] .desc__paid {
+    direction: rtl;
 }

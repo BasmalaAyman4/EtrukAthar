@@ -19,6 +19,7 @@ import axios from 'axios'
 import { useTranslation } from 'react-i18next'
 import Cookies from 'js-cookie'
 import CardCase from './../Card/Card'
+import HeaderTitleCharity from "../HeaderTitleCharity/HeaderTitleCharity"
 export default function CharityDetails() {
     const { t } = useTranslation()
     const carityId = useParams()
@@ -28,7 +29,7 @@ export default function CharityDetails() {
     const [eventData, setEventData] = useState([])
     const currentLanguageCode = Cookies.get('i18next') || 'en'
     useEffect(() => {
-        axios.get(`https://otrok.invoacdmy.com/api/user/charity/show/${carityId.id}`)
+        axios.get(`https://otrok.invoacdmy.com/api/user/charity/show/${carityId.id}?lang=${currentLanguageCode}`)
             .then((response) => {
                 setCarityData(response.data.charity)
 
@@ -39,29 +40,29 @@ export default function CharityDetails() {
                 setCategoryData(response.data.Categories)
             }
             ).catch((err) => { console.log(err) })
-        axios.get(`https://otrok.invoacdmy.com/api/user/charity/cases/${carityId.id}`)
+        axios.get(`https://otrok.invoacdmy.com/api/user/charity/cases/${carityId.id}?lang=${currentLanguageCode}`)
             .then((response) => {
                 setCaseData(response.data.cases)
                 console.log(response.data.cases.caseimage, "jjjj")
             }).catch((err) => { console.log(err) })
 
-        axios.get(`https://otrok.invoacdmy.com/api/user/charity/events/${carityId.id}?lang=ar`)
+        axios.get(`https://otrok.invoacdmy.com/api/user/charity/events/${carityId.id}?lang=${currentLanguageCode}`)
             .then((response) => {
                 setEventData(response.data.result)
             }).catch((err) => { console.log(err) })
-    }, [])
+    }, [currentLanguageCode])
     console.log(categoryData)
     return (
         <>
+            <HeaderTitleCharity title={t("كل عمل صالح هو عمل خيري")} para={t(" التبرع للفقراء من اجل حياتهم الافضل صحة")} />
             <section>
-                <div  >
-                    <img src={ch} alt="" className={`${style.ch}`} />
-                </div>
+
+
                 <Container>
                     <Row className={`${style.about}`}>
-                        <Col><img src={v} alt="" className={`${style.imgAbout}`} /></Col>
+                        <Col><img src={carityData.image} alt="" className={`${style.imgAbout}`} /></Col>
                         <Col>
-                            <h2 className={`${style.aboutusTitle}`}>{t("العمل معا")}</h2>
+                            <h2 className={`${style.aboutusTitle}`}>{carityData.name}</h2>
                             <div>
                                 <h1 className={`${style.aboutTitle}`}> {t("نحن نعمل من أجل الفقراء لمنحهم حياة سعيدة.")}</h1>
                                 <p className={`${style.aboutPara}`}></p>
@@ -103,9 +104,9 @@ export default function CharityDetails() {
                         )}
                     </div>
                     <div className={`${style.causes}`}>
-                        <h2 className={`${style.globalCauses}`}>Most Urgent</h2>
-                        <h1 className={`${style.causesTitle}`}>Ongoing Project </h1>
-                        <p className={`${style.causesPara}`}>Here are some urgnt ongoing project which need to complete very soon</p>
+                        <h2 className={`${style.globalCauses}`}>{t("معظم الحالات العاجلة")}</h2>
+                        <h1 className={`${style.causesTitle}`}> {t("مشاريع مستمره")} </h1>
+                        <p className={`${style.causesPara}`}>{t("بعض المشاريع الجارية العاجلة التي تحتاج إلى استكمال")}</p>
                     </div>
                     <div className={`${style.project}`}>
                         {caseData && caseData.map(caseCard =>
@@ -123,35 +124,41 @@ export default function CharityDetails() {
                             </Link>
                         )}
                     </div>
-                    <div className={`${style.causes}`}>
-                        <h2 className={`${style.globalCauses}`}>Our Blog</h2>
-                        <h1 className={`${style.causesTitle}`}>News and Happiness </h1>
-                        <p className={`${style.causesPara}`}>Here are some urgnt ongoing project which need to complete very soon</p>
-                    </div>
-                    <div className={`${style.project}`}>
-                        {eventData && eventData.map(eventCard =>
-                            <Link to={`charityEvent-details/${eventCard.id}`}>
-                                <div className={`${style.card} ${style.event}`}>
-                                    <div className={`${style.header}`}>
-                                        <div className={`${style.image}`}>
-                                            <img src={eventCard.image} alt="" />
-                                            <span className={`${style.tag}`}>{eventCard.start_date}</span>
+                </Container>
+                <div className={`${style.secTwo}`}>
+                    <Container>
+                        <div className={`${style.causesEvent}`}>
+                            <h2 className={`${style.globalCausesEvent}`}>{t("مدونتنا")}</h2>
+                            <h1 className={`${style.causesTitleEvent}`}>{t("الأخبار والسعادة")}</h1>
+                            <p className={`${style.causesParaEvent}`}>{t("بعض الأحداث الجارية العاجلة التي تحتاج إلى إكمال")}</p>
+                        </div>
+                        <div className={`${style.project}`}>
+                            {eventData && eventData.map(eventCard =>
+                                <Link to={`charityEvent-details/${eventCard.id}`}>
+                                    <div className={`${style.card} ${style.event}`}>
+                                        <div className={`${style.header}`}>
+                                            <div className={`${style.image}`}>
+                                                <img src={eventCard.image} alt="" />
+                                                <span className={`${style.tag}`}>{eventCard.start_date}</span>
+                                            </div>
+                                        </div>
+                                        <div className={`${style.info}`}>
+                                            <a href="#" class="block">
+                                                <h4 className={`${style.title}`}>{eventCard.name}</h4>
+                                                <p className={`${style.infoPara}`}>{eventCard.description}</p>
+                                            </a>
+
+                                        </div>
+                                        <div className={`${style.evBtn}`}>
+                                            <Link to={`charityEvent-details/${eventCard.id}`} className={`${style.caseBtn}`}>{t("للمزيد من التفاصيل ")} </Link>
                                         </div>
                                     </div>
-                                    <div className={`${style.info}`}>
-                                        <a href="#" class="block">
-                                            <h4 className={`${style.title}`}>{eventCard.name}</h4>
-                                            <p className={`${style.infoPara}`}>{eventCard.description}</p>
-                                        </a>
+                                </Link>
+                            )}
+                        </div>
+                    </Container>
+                </div>
 
-                                    </div>
-
-                                    <button className={`${style.caseBtn}`}>Read More </button>
-                                </div>
-                            </Link>
-                        )}
-                    </div>
-                </Container>
             </section>
         </>
     )

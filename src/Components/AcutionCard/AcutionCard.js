@@ -1,25 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react'
 import style from "./AcutionCard.module.css"
 import { Link } from 'react-router-dom'
-import one from "../../assets/images/details2.jpeg"
-import two from "../../assets/images/details3.jpeg"
-import { AiFillEye, AiOutlineSearch, AiOutlineHeart } from "react-icons/ai";
 import moment from 'moment';
 import axios from 'axios';
 import { Col, Row } from 'react-bootstrap'
+import { useTranslation } from 'react-i18next'
+import Cookies from 'js-cookie'
 export default function AcutionCard() {
-
+    const { t } = useTranslation()
     const [dataAcution, setDataAcution] = useState([])
     const [dataImage, setDataImage] = useState([])
+    const currentLanguageCode = Cookies.get('i18next') || 'en'
     useEffect(() => {
-        axios.get(`https://otrok.invoacdmy.com/api/user/mazad/index?lang=ar`)
+        axios.get(`https://otrok.invoacdmy.com/api/user/mazad/index?lang=${currentLanguageCode}`)
             .then((response) => {
                 setDataAcution(response.data.auctions)
                 console.log(response.data.auctions.mazadimage)
             }).catch((err) => { console.log(err) })
-    }, [])
-
-
+    }, [currentLanguageCode])
     return (
         <>
             <>
@@ -40,7 +38,7 @@ export default function AcutionCard() {
                                         <div >
                                             {((new Date(moment(acutionCard.end_date).format('LL') + " " + acutionCard.end_time).getTime()) - (new Date().getTime())) < 0
                                                 ?
-                                                <p className={`${style.ended}`}>Acution Ended</p>
+                                                <p className={`${style.ended}`}> {t("انتهى المزاد")}</p>
                                                 :
                                                 ""
                                             }
@@ -50,7 +48,7 @@ export default function AcutionCard() {
                             </div>
                             <div className={`${style.cardBody}`}>
                                 <h4 className={`${style.card__title}`}>{acutionCard.name}</h4>
-                                <p className={`${style.card__acution}`}> current Baid : {acutionCard.current_price}</p>
+                                <p className={`${style.card__acution}`}> {t("الدفع الحالي")} : {acutionCard.current_price}</p>
                             </div>
                         </Col>
                     </Link>

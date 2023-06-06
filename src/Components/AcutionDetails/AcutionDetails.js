@@ -21,8 +21,10 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios'
 import Modal from 'react-bootstrap/Modal';
 import { toast, ToastContainer } from 'react-toastify';
+import { useTranslation } from 'react-i18next'
 export default function AcutionDetails() {
     const mazadId = useParams()
+    const { t } = useTranslation()
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -156,9 +158,8 @@ export default function AcutionDetails() {
             <section className={`${style.acutionDetails}`}>
                 <Container>
                     <div className={`${style.acutionDetails__body}`}>
-                        <h5 className={`${style.acutionDetails__title}`}><Link to="/acution" className={`${style.acution}`}>Acutions</Link> / {mazadDetails.name_en}</h5>
-                        <h2>Orange Fiat 500</h2>
-                        <p className={`${style.acutionDetails__para}`}> <AiFillEye /> 1.586 Views</p>
+                        <h5 className={`${style.acutionDetails__title}`}><Link to="/acution" className={`${style.acution}`}>{t("المزادات")}</Link> / {mazadDetails.name_ar}</h5>
+                        <h2 className={`${style.acution__title}`}>{mazadDetails.name_ar}</h2>
                     </div>
                     <Row className={`${style.acution__desc}`}>
                         <Col className={`${style.images}`}>
@@ -175,12 +176,11 @@ export default function AcutionDetails() {
                         </Col>
                         <Col>
                             <div className={`${style.desc__body}`}>
-                                <p className={`${style.desc__para}`}>Samsung Galaxy S9 smartphone was launched in March 2018. The phone comes with a 5.80-inch touchscreen display with a resolution of 1440 pixels by 2960 pixels at a PPI of 568 pixels per inch. Samsung Galaxy S9 price in India starts from Rs. 51,990.</p>
-                                <h3 className={`${style.desc__paid}`}>Current bid: <span className={`${style.desc__price}`}>${mazadDetails.current_price} </span></h3>
+                                <p className={`${style.desc__para}`}>{mazadDetails.description_ar}</p>
+                                <h3 className={`${style.desc__paid}`}>{t("الدفع الحالي")} : <span className={`${style.desc__price}`}>${mazadDetails.current_price} </span></h3>
                             </div>
                             <div className={`${style.acutionTime}`}>
-                                <p className={`${style.acutionTime__para}`}>Item condition: Used</p>
-                                {none < 0 ? <p className={`${style.n}`} >Acution Ended</p> : <p className={`${style.acutionTime__para}`}>Time Left: </p>}
+                                {none < 0 ? <p className={`${style.n}`} > {t("انتهى المزاد")}</p> : <p className={`${style.acutionTime__para}`}> {t("الوقت المتبقي")} : </p>}
                                 {none < 0 ?
                                     ""
                                     :
@@ -188,24 +188,24 @@ export default function AcutionDetails() {
                                     <div className={`${style.countdown}`} >
                                         <div className={`${style.countdownTime}`}>
                                             <p>{timerDays}</p>
-                                            <span>Days</span>
+                                            <span> {t("ايام")}</span>
                                         </div>
                                         <div className={`${style.countdownTime}`}>
                                             <p>{timerHours}</p>
-                                            <span>Hours</span>
+                                            <span> {t("ساعات")}</span>
                                         </div>
                                         <div className={`${style.countdownTime}`}>
                                             <p>{timerMinutes}</p>
-                                            <span>Minutes</span>
+                                            <span> {t("دقائق")}</span>
                                         </div>
                                         <div className={`${style.countdownTime}`}>
                                             <p>{timerSeconds}</p>
-                                            <span>Seconds</span>
+                                            <span> {t("ثواني")}</span>
                                         </div>
                                     </div>
                                 }
 
-                                <p className={`${style.acutionTime__para}`}>Acution ends: {date} {mazadDetails.end_time}</p>
+                                <p className={`${style.acutionTime__para}`}> {date} {mazadDetails.end_time}</p>
                                 <div className={`${style.bid}`} >
 
                                     <div className={`${style.price}`} >
@@ -218,21 +218,8 @@ export default function AcutionDetails() {
                                         ?
                                         ""
                                         :
-                                        <>
-                                            <Link variant="primary" onClick={handleShow} className={`${style.bid__btn}`}>BID </Link>
-                                            <Modal size="lg" show={show} onHide={handleClose}>
-                                                <Modal.Header closeButton>
-                                                    <Modal.Title id="contained-modal-title-vcenter">
-                                                    </Modal.Title>
-                                                </Modal.Header>
-                                                <Modal.Body >
-                                                    {!token ? <p className={`${style.para}`}> يجب تسجيل دخول لاضافة المبلغ  <a href='/login' className={`${style.link}`}> تسجل دخول</a></p>
-                                                        :
-                                                        <button className={`${style.bid__btn}`} onClick={incrementBid}>BID</button>
-                                                    }
-                                                </Modal.Body>
-                                            </Modal>
-                                        </>
+
+                                        <button className={`${style.bid__btn}`} onClick={incrementBid}>{t("عطاء")}</button>
                                     }
 
 
