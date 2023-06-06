@@ -8,12 +8,13 @@ import "swiper/css/pagination";
 import Card from '../../Card/Card';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { useTranslation } from 'react-i18next';
 
 const RandomCases = () => {
 
   const [randomCases, setRandomCases] = useState([])
   const currentLanguageCode = Cookies.get('i18next') || 'en'
-
+  const { t } = useTranslation()
   useEffect(() => {
     axios.get(`https://otrok.invoacdmy.com/api/user/case/last?lang=${currentLanguageCode}`)
       .then(response => {
@@ -25,8 +26,9 @@ const RandomCases = () => {
 
 
   return (
-    <section className={`mt-5 ${styles["roundom-cases"]}`}>
-      <div className='container'>
+    <section className={` ${styles["roundom-cases"]}`}>
+      <div className='container '>
+      <h3 className={`${styles["roundom-cases__title"]} text-center `}>{t("اخر الحالات المضافه")}</h3>
         <Swiper
           spaceBetween={30}
           autoHeight={true}
@@ -57,8 +59,10 @@ const RandomCases = () => {
           className="mySwiper"
         >
           {randomCases && randomCases.map(item => (
-            <SwiperSlide>
+            randomCases.length > 0 ?
+            <SwiperSlide className='mt-5'>
               <Card id={item.id}
+               className= 'mt-5'
                 donationType={item.donationtype_id}
                 photo={item.caseimage[0]?.image}
                 title={item.name}
@@ -67,6 +71,12 @@ const RandomCases = () => {
                 totalPrice={item.initial_amount} numOfDonates={item.paied_amount}
               />
             </SwiperSlide>
+            :
+            <div className='mt-5'>
+            <div className='d-flex'>
+                <h5 className='m-auto' >{t("لا توجد حالات متاحه")}</h5>
+            </div>
+        </div>
           ))}
 
         </Swiper>

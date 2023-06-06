@@ -1,3 +1,52 @@
 .roundom-cases{
     
+    padding:30px 50px;
+}
+.roundom-cases__title{
+ font-family: "Changa-SemiBold";
+    font-size: 40px;
+    font-weight: 700;
+    
+    color: #444A54;
+    line-height: 40px;
+    margin-top: 25px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+body[dir='ltr']  .roundom-cases__title::after{
+    position: absolute;
+    content: "";
+    z-index: 1000;
+    bottom: -30px;
+    left: 58%;
+    background-color: #EF8451;
+    height: 6px;
+    width: 5%;
+    
+}
+body[dir='rtl']  .roundom-cases__title::after{
+    position: absolute;
+    content: "";
+    z-index: 1000;
+    bottom: -30px;
+    left: 38%;
+    background-color: #EF8451;
+    height: 6px;
+    width: 5%;
+    
+}
+@media (max-width:900px) {
+    .roundom-cases__title::after{
+      
+        width: 15% !important;
+        
+    }
+}
+@media (max-width:30px) {
+    .roundom-cases__title::after{
+      
+        width: 20% !important;
+        
+    }
 }

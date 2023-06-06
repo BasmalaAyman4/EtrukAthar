@@ -35,6 +35,7 @@ import { ToastContainer } from "react-toastify";
 import moment from 'moment'
 import plus from "./../../assets/icons/+.svg"
 import minus from "./../../assets/icons/mi.svg"
+import Cookies from 'js-cookie'
 
 export default function ProjectsDetails() {
     const [token, setToken] = useState(localStorage.getItem("token"))
@@ -44,11 +45,13 @@ export default function ProjectsDetails() {
     const [donationType, setDonationType] = useState()
     const casesId = useParams()
     const [priceShow, setPriceshow] = useState("");
+    const currentLanguageCode = Cookies.get('i18next') || 'en'
+
     const { t } = useTranslation()
 
     function clickPrice(price) {
-        setPriceshow("")
         setPriceshow(price)
+      
     }
     const [donateData, setDonateData] = useState({
         name: '',
@@ -74,7 +77,7 @@ export default function ProjectsDetails() {
     })
 
     useEffect(() => {
-        axios.get(`https://otrok.invoacdmy.com/api/user/case/show/${casesId.id}?lang=ar`)
+        axios.get(`https://otrok.invoacdmy.com/api/user/case/show/${casesId.id}?lang=${currentLanguageCode}`)
             .then((response) => {
                 setFormData(response.data.case)
                 setItems(response.data.items)
@@ -452,7 +455,7 @@ export default function ProjectsDetails() {
                                 <button className={`${style.cardDetails__btn}`}>
                                     {t("تبرع الان   للحالات عبر موقعنا ")}
                                 </button>
-                                <NumericInput value={priceShow ? priceShow : 20.00} className={`${style.price__input}`} /><span className={`${style.price__icon}`} value={donateData.amoutDescriptipn} >ج</span>
+                                <NumericInput max={formData.remaining_amount} min='10' value={priceShow ? priceShow : 10.00} className={`${style.price__input}`} /><span className={`${style.price__icon}`} value={donateData.amoutDescriptipn} >ج</span>
                                 <div className={`${style.price__choose}`}>
                                     <button className={`${style.price__btn}`} onClick={() => { clickPrice(10.00) }}>10.00 </button>
                                     <button className={`${style.price__btn}`} onClick={() => { clickPrice(25.00) }}>25.00</button>

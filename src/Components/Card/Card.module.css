@@ -8,6 +8,7 @@ body[dir="rtl"] .card {
     -o-border-radius: 10px; 
     margin-bottom: 20px;
     direction: ltr;
+    background-color: #fff !important;
  
 }
 body[dir="ltr"] .card {
@@ -20,7 +21,7 @@ body[dir="ltr"] .card {
     -o-border-radius: 10px; 
     margin-bottom: 20px;
     direction: rtl;
- 
+    background-color: #fff !important;
 }
 .card:hover{ animation: move .5s infinite alternate; 
 }

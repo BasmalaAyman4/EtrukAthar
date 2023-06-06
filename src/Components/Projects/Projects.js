@@ -24,7 +24,7 @@ export default function Projects() {
     const [donationtypeId, setDonationId] = useState('')
     const [isLoading, setIsLoading] = useState(true);
     const [categoryId, setCategoryId] = useState('')
-    
+    const [moneyDonate, setMoneyDonate] = useState('')
     const handleFilterCategoryType = (e) => {
         setCategoryId(e.target.value)
     }
@@ -34,6 +34,12 @@ export default function Projects() {
     
 
     useEffect(() => {
+
+            axios.get("https://otrok.invoacdmy.com/api/user/donation/money")
+                .then((response) => {
+                    setMoneyDonate(response.data.sum)
+    
+                }).catch((err) => { console.log(err) })
         setIsLoading(true)
         setTimeout(() => {
             axios.get(`https://otrok.invoacdmy.com/api/user/category/index?lang=${currentLanguageCode}`)
@@ -128,7 +134,7 @@ export default function Projects() {
         
             <section className={`${styles.projects} mb-5 pb-5`}>
 
-                <HeaderTitle title={t("الحالات")} para={t("المبلغ المجموع للحالات")} price='1.037.976.07$' />
+                <HeaderTitle title={t("الحالات")} para={t("المبلغ المجموع للحالات")} price={moneyDonate } />
                 <Button onClick={handleShow} className={`${styles.donate__link}`}>
                     {t(" اضافة حالة لصندوق الحالات")}
                 </Button>

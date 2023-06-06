@@ -150,7 +150,66 @@ body[dir='rtl'] .who-we-are__info_h3_orange::after{
     background-color: #2A6355;
 }
 @media (max-width: 991px) {
-
+    .who-we-are__img{
+        width: 100%;
+        height: 50%;
+    }
+    .who-we-are__img-info{
+        position: absolute;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        background-color: #e6860057;
+        border-radius: 40px !important ;
+    }
+    .who-we-are__img-container{
+        width: 100%;
+        height: 250px !important;
+      
+    }
+    .who-we-are__img-container_modify{
+        width: 100%;
+        height: 250px !important;
+      
+    }
+    .who-we-are__img-info_modify{
+      
+        width: 100%;
+        height: 50%;
+      ;
+    }
+    .who-we-are__img-container{
+        width: 100%;
+        height: 250px !important;
+    
+    }
+    .who-we-are__img-container_modify{
+        width: 100%;
+        height: 250px !important;
+        
+    }
+    .who-we-are__part{
+        height: 200px;
+    }
+    .who-we-are__part-center{
+        height: 110px;
+    }
+    .who-we-are__img-info-h2{
+    text-align: center;
+    margin-top: 60px;
+    color: #fff;
+    font-family: "Changa-ExtraBold";
+    font-size: 20px;
+    }
+    .who-we-are__img-info-h2-modify{
+        text-align: center ;
+        margin-top: 60px;
+        color: #fff;
+        font-family: "Changa-ExtraBold";
+        font-size: 20px;
+    }
 }
 .video{
     height: 500px !important;

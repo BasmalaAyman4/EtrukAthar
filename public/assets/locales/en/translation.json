@@ -37,11 +37,11 @@
     "حملة تم إنجازها":"Campaigns",
     "مشروع تم إنجازه":"Projects",
     "التبرعات الواردة":"Received donations",
-    "حرصاً منّا على تزويد جميع متبرعينا بجميع المعلومات حول أرصدة التبرعات الواردة وتفاصيلها نشارككم كل أرصدة التبرعات عبر ملف الشفافية":"In order to provide all our donors with all information about the balances of donations received and their details, we share with you all the balances of donations through the transparency file.",
+    "حرصاً منّا على تزويد جميع متبرعينا بجميع المعلومات حول أرصدة التبرعات الواردة وتفاصيلها نشارككم كل أرصدة التبرعات عبر ملف الشفافية":".In order to provide all our donors with all information about the balances of donations received and their details, we share with you all the balances of donations ",
     "تطوع معنا":"Become A Volunteer",
-    "نؤمن بقيمة مبادرات التطوع ودورها في تغيير الحال على أرض الواقع، كما نؤمن بطاقات شبابنا ونفتح لهم الباب لمد يد العون لغيرهم نؤمن":"We believe in the value of volunteer initiatives and their role in changing the situation on the ground. We also believe in the energies of our youth and open the door for them to extend a helping hand to others.",
+    "نؤمن بقيمة مبادرات التطوع ودورها في تغيير الحال على أرض الواقع، كما نؤمن بطاقات شبابنا ونفتح لهم الباب لمد يد العون لغيرهم نؤمن":".We believe in the value of volunteer initiatives and their role in changing situation on ground. We also believe in  energies of our youth and open the door for them ",
     "قالوا عنا":"They said about us",
-    "نظراً لوجودنا على أرض الواقع وتركنا أثراً واضحاً بفضل تبرعاتكم، نشارككم ما قالته عنا وسائل الإعلام المحلية والعالمية":"Due to our presence on the ground and leaving a clear impact thanks to your donations, we share with you what the local and international media said about us.",
+    "نظراً لوجودنا على أرض الواقع وتركنا أثراً واضحاً بفضل تبرعاتكم، نشارككم ما قالته عنا وسائل الإعلام المحلية والعالمية":".Due to our presence on the ground and leaving a clear impact thanks to your donations, we share with you what The local and international media said about us",
     "من نحن؟":"About Us ",
     "اترك أثرا , مجموعه شبابية تعني برفع سوية المجتمع و العمل التطوعي , جمعيه خيرية نحو مستقبل مشرق":" Etruk Asar volunteer group, a youth group concerned with raising the level of society and volunteering ",
     "روابط مفيدة":"Useful Links",
@@ -204,7 +204,12 @@
    " اضافة حالة لصندوق الحالات": " Add New Case ",
    "المبلغ المجموع للحالات":"Total number of collected money ",
    "للمزيد من التفاصيل ":"For More Details",
-   "لا توجد حالات متاحه":"No data available"
+   "لا توجد حالات متاحه":"No data available",
+   " مال تم جميعه":"Collected Money",
+   "اخر الحالات المضافه":"The Lastest Cases",
+   "جمعيات تتوافر لدينا ":"Charities we provide",
+   "مناسبات تم تغطيتها":"Covered Events",
+   "حالات تم إنجازها":"Done Cases "
 
    
    

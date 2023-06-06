@@ -59,7 +59,9 @@ export default function NavbarMenu() {
     }, [currentLanguage, t])
     function handleLanguage(code, index, event) {
         event.preventDefault();
-        i18next.changeLanguage(code)
+        i18next.changeLanguage(code)   
+        
+
     }
     function logout() {
         setToken(localStorage.setItem("token", ""))

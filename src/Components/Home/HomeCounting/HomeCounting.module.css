@@ -55,6 +55,17 @@
     .home-counting__container{
         padding-top: 30px !important;
         padding-bottom: 50px !important;
+        height: 430px !important;
+    }
+    .home-counting__content{
+        padding-top: 30px !important;
+        padding-bottom: 50px !important;
+    }
+}
+@media (max-width:767px) {
+    .home-counting__container{
+        padding-top: 30px !important;
+        padding-bottom: 50px !important;
         height: 750px !important;
     }
     .home-counting__content{

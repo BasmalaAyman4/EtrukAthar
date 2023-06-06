@@ -45,8 +45,8 @@ const HomeCounting = () => {
 
     const { t } = useTranslation()
     return (
-        <section className={`${styles["home-counting"]} mt-5 `}>
-            <div className={`${styles["home-counting__container"]} mt-5 `}>
+        <section className={`${styles["home-counting"]}  `}>
+            <div className={`${styles["home-counting__container"]}  `}>
                 <div className={`${styles["home-counting__content"]} `}>
                     <div className='container'>
                         <div className='row'>
@@ -60,7 +60,7 @@ const HomeCounting = () => {
                                     </h3>
 
                                 </div>
-                                <p className={`${styles["home-counting__pragraph"]} `} >{t(" مشروع تم إنجازه")}</p>
+                                <p className={`${styles["home-counting__pragraph"]} `} >{t("حالات تم إنجازها")}</p>
                             </div>
                             <div className='col-lg-3 col-md-6 col-sm-12'>
                                 <div className='d-flex justify-content-center align-items-center'>
@@ -72,7 +72,7 @@ const HomeCounting = () => {
                                     </h3>
 
                                 </div>
-                                <p className={`${styles["home-counting__pragraph"]} `} > {t(" حالة تم دعمها ")}</p>
+                                <p className={`${styles["home-counting__pragraph"]} `} > {t(" مال تم جميعه")}</p>
                             </div>
                             <div className='col-lg-3 col-md-6 col-sm-12'>
                                 <div className='d-flex justify-content-center align-items-center'>
@@ -85,7 +85,7 @@ const HomeCounting = () => {
 
                                 </div>
                                 <p className={`${styles["home-counting__pragraph"]} `} >
-                                    {t("حملة تم إنجازها")}
+                                    {t("مناسبات تم تغطيتها")}
                                 </p>
                             </div>
                             <div className='col-lg-3 col-md-6 col-sm-12'>
@@ -99,7 +99,7 @@ const HomeCounting = () => {
 
                                 </div>
                                 <p className={`${styles["home-counting__pragraph"]} `} >
-                                    {t("جمعيات تمت بواسطتنا")}
+                                    {t("جمعيات تتوافر لدينا ")}
                                 </p>
                             </div>
 

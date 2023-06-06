@@ -31,7 +31,7 @@ const WhoWeAre = () => {
     const [props3, set3] = useSpring(() => ({ xys: [0, 0, 1], config: config.default }))
     return (
         <>
-            <section className={`${styles['who-we-are']} mt-5 mb-5`}>
+            <section className={`${styles['who-we-are']} mt-5 mb-1`}>
 
                 <div className='container'>
 
@@ -55,7 +55,7 @@ const WhoWeAre = () => {
                         </div>
                         <div className='col-lg-8 col-sm-12'>
                             <div className='row'>
-                                <div className=' col-lg-4 col-sm-12 mb-5'>
+                                <div   className={`${styles['who-we-are__part']} col-lg-4 col-sm-12 `}>
                                     <StyledDiv className={`${styles["who-we-are__img-container"]}`}
                                         onMouseMove={({ clientX: x, clientY: y }) => (set({ xys: calc(x, y) }))}
                                         onMouseLeave={() => set({ xys: [0, 0, 1] })}
@@ -69,7 +69,7 @@ const WhoWeAre = () => {
                                         </div>
                                     </StyledDiv>
                                 </div>
-                                <div className='col-lg-4 col-sm-12 '>
+                                <div className={`${styles['who-we-are__part-center']} col-lg-4 col-sm-12 `}>
                                     <StyledDivThree className={`${styles["who-we-are__img-container_modify"]}`}
                                         onMouseMove={({ clientX: x, clientY: y }) => (set3({ xys: calc3(x, y) }))}
                                         onMouseLeave={() => set3({ xys: [0, 0, 1] })}
@@ -83,7 +83,7 @@ const WhoWeAre = () => {
                                         </div>
                                     </StyledDivThree>
                                 </div>
-                                <div className='col-lg-4 col-sm-12'>
+                                <div className={`${styles['who-we-are__part']} col-lg-4 col-sm-12 `}>
                                     <StyledDivTwo className={`${styles["who-we-are__img-container"]}`}
                                         onMouseMove={({ clientX: x, clientY: y }) => (set2({ xys: calc2(x, y) }))}
                                         onMouseLeave={() => set2({ xys: [0, 0, 1] })}

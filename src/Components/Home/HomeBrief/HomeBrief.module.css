@@ -1,5 +1,6 @@
 .home-brief{
     background-color: #f5f5f5;
+    padding: 30px;
 }
 .home-brief__img{
     width: 150px;
@@ -17,3 +18,16 @@
     color: #6B6B6B !important;
     font-size: 18px;
 }
+.home-brief__part{
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    padding: 50px;
+    height: fit-content;
+    transition: all .2s linear;
+    
+}
+.home-brief__part:hover{
+   
+  transform: translateY(-10px);
+} 
