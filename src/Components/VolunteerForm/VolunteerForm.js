@@ -105,12 +105,12 @@ export default function VolunteerForm() {
                 <div className={`${style.volunteer}`}>
                     <Container>
                         <Row className={`justify-content-md-center`}>
-                            <Col lg={4} >
-                                <p className={`${style.volunteerPara}`}>VOLUNTEER</p>
-                                <h1 className={`${style.volunteerTitle}`}> Become a volunteer or help out with an event</h1>
-                            </Col>
                             <Col lg={4}>
                                 <img src={volunteerImg} alt='' className={`${style.volunteerImg}`} />
+                            </Col>
+                            <Col lg={4} >
+                                <p className={`${style.volunteerPara}`}> {t("متطوع")}</p>
+                                <h1 className={`${style.volunteerTitle}`}> {t("كن متطوعًا أو ساعد في مناسبة ")}</h1>
                             </Col>
                         </Row>
                     </Container>
@@ -118,15 +118,15 @@ export default function VolunteerForm() {
                 <div className={`${style.volunteerCard}`}>
                     <Container>
                         <Row >
-                            <Col className={`${style.event} `} md={{ span: 4, offset: 1 }} >
-                                <p className={`${style.eventPara}`}>BROWSE EVENTS</p>
-                                <h1 className={`${style.volunteerTitle}  ${style.volunteerJoin}`}> Look for an event near you!</h1>
-                                <Link to='/event' className={`${style.volunteerLink} `}> VIEW EVENTS</Link>
+                            <Col className={`${style.event} `} lg={5} sm={12} >
+                                <p className={`${style.eventPara}`}>{t("تصفح المناسبات")}</p>
+                                <h1 className={`${style.volunteerTitle}  ${style.volunteerJoin}`}> {t("ابحث عن مناسبة قريبة إليك!")}</h1>
+                                <Link to='/event' className={`${style.volunteerLink} `}> {t("عرض المناسبات")}</Link>
                             </Col>
-                            <Col className={`${style.join}`} md={{ span: 4, offset: 1 }}>
-                                <p className={`${style.volunteerPara}`}>JOIN</p>
-                                <h1 className={`${style.volunteerTitle} ${style.volunteerJoin}`}>Want to become a regular?</h1>
-                                <Link to='/' className={`${style.volunteerLink} ${style.linkJoin}`}> GET IN TOUCH</Link>
+                            <Col className={`${style.join}`} lg={5} sm={12}>
+                                <p className={`${style.volunteerPara}`}>{t("انضم")}</p>
+                                <h1 className={`${style.volunteerTitle} ${style.volunteerJoin}`}>{t("تريد أن تصبح منتظم؟")}</h1>
+                                <a href='#contact' className={`${style.volunteerLink} ${style.linkJoin}`}> {t("ابقى على تواصل")}</a>
                             </Col>
                         </Row>
                     </Container>
@@ -135,14 +135,14 @@ export default function VolunteerForm() {
                     <Container>
                         <Row className={`${style.contact}`}>
                             <Col>
-                                <p className={`${style.volunteerPara}`}>CONTACT</p>
-                                <h1 >Contact us to get started</h1>
-                                <p className={`${style.formPara}`}>Praesent sapien lacus, molestie vitae arcu in, elementum congue justo. Aenean aliquam semper velit eu pretium. Suspendisse mattis luctus quam nec vehicula. Donec scelerisque tristique metus a vestibulum</p>
+                                <p className={`${style.volunteerPara}`}>{t("انضم إلينا")}</p>
+                                <h1 className={`${style.volunteerti}`}>{t("تطوع معنا لمساعدة الآخرين")}</h1>
+                                <p className={`${style.formPara}`}>{t("اترك أثراً هو هدفنا .. فكن معنا لترك أثرا جميلا في العالم.")}</p>
                                 <img src={vol} alt="" className={`${style.formImg}`} />
                             </Col>
                             <Col>
                                 <div className={`${style.contactForm}`}>
-                                    <Form onSubmit={onSubmitHandler} >
+                                    <Form onSubmit={onSubmitHandler} id="contact" >
                                         <div className={style.userName} dir='rtl'>
 
                                             <Form.Group className="mb-3" controlId="formBasicEmail" >

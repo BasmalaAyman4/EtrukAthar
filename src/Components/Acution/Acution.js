@@ -91,17 +91,17 @@ export default function Acution() {
     addNewAcution.append("end_time", formData.timeSend);
     const onSubmitHandler = (e) => {
 
-        const toastId = toast.loading("please wait ... ")
+        const toastId = toast.loading(" ... ")
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         e.preventDefault()
-        axios.post("https://otrok.invoacdmy.com/api/user/mazad/store", addNewAcution, {
+        axios.post(`https://otrok.invoacdmy.com/api/user/mazad/store?lang=${currentLanguageCode}`, addNewAcution, {
             headers: {
                 "Authorization": `Bearer ${token}`,
                 "Content-Type": "multipart/form-data"
             }
-        })
+        }, [currentLanguageCode])
             .then(response => {
-                toast.success('تم اضافه المزاد بنجاح .. رجاء الانتظار حتي التأكد من البيانات و يتم قبولها من قِبلنا ')
+                toast.success(response.data.message)
                 /*   console.log(response) */
             }
             ).catch((err) => { toast.error(err.response.data.message) })

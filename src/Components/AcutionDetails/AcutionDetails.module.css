@@ -151,6 +151,13 @@ body[dir="ltr"] .bid {
     gap: 5px;
 
 }
+body[dir="rtl"] .acution__info {
+    direction: ltr;
+}
+
+body[dir="ltr"] .acution__info {
+    direction: rtl;
+}
 .style__link{
     color: #EF8451;
     background-color: #fff;
@@ -174,12 +181,34 @@ font-family: "Changa-Regular";
     color: #fff;
 }
 .acution__info__body,
-.vendor__body{
+.vendor__body,
+.acution__info__bodyy{
     margin-top: 50px;
+}
+body[dir="rtl"] .acution__info__body {
+    direction: ltr;
+}
+
+body[dir="ltr"] .acution__info__body {
+    direction: rtl;
+}
+body[dir="rtl"] .acution__info__bodyy {
+    direction: ltr;
+}
+
+body[dir="ltr"] .acution__info__bodyy {
+    direction: ltr;
 }
 .vendor__body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+}
+body[dir="rtl"] .vendor__body {
+    direction: ltr;
+}
+
+body[dir="ltr"] .vendor__body {
+    direction: rtl;
 }
 .acution__info__para{
     font-family: "Changa-Regular";
@@ -269,37 +298,34 @@ body[dir="ltr"] .n {
 }
 
 .card {
-    position: relative;
+
     width: 400px;
-    height: 520px;
+    height: 500px;
     box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: all 120ms;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background: #fff;
     padding: 0.5em;
-    padding-bottom: 3.4em;
+
     margin-bottom: 40px;
 
 }
 
 .card__title {
     font-family: "Changa-SemiBold";
-    position: absolute;
-    left: 40%;
-    bottom: 30px;
     font-weight: 400;
     color: #000;
+    margin: 20px 0;
 }
 
 .card__acution {
-    position: absolute;
-    left: 30%;
-    bottom: -5px;
     color: #000;
     font-family: "Changa-Regular";
+    margin: auto;
 }
 
 .card:active {
@@ -362,6 +388,16 @@ body[dir="ltr"] .n {
     color: #fff;
     padding: 10px 20px;
     font-size: 35px;
+}
+
+body[dir="rtl"] .acutionEnded {
+    left: 0;
+
+}
+
+body[dir="ltr"] .acutionEnded {
+
+    right: 0;
 }
 
 .acutionCountdown {
