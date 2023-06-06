@@ -10,6 +10,7 @@ import etruk from "./../../../assets/videos/Vid 20230406221832.mp4"
 import img4 from "./../../../assets/images/9eed201930ce4a42bdddf8e2adcede32.jpg"
 import { useSpring, animated, config } from 'react-spring';
 import styled from "styled-components";
+
 const calc = (x, y) => [-(y - window.innerHeight / 2) / 20, (x - window.innerWidth / 2) / 20, 1]
 const trans = (x, y, s) => `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`
 const calc2 = (x, y) => [-(y - window.innerHeight / 4) / 40, (x - window.innerWidth / 4) / 40, 1]
@@ -49,7 +50,7 @@ const WhoWeAre = () => {
                                 <p className={`${styles["who-we-are__info_p"]} mb-5`}>
                                     {t(".أسست عام 2020 في مصر ومرخصة سنة 2023 كـ شركة غير ربحية ، وكجمعية خيرية في سويسرا 2023 ، وتوسعت أنشطة عملها ل تركيا و الداخل السوري")}
                                 </p>
-                                <Link to="" className={`${styles["who-we-are__info_btn"]} `} >{t("التعريف بالمجموعة")}</Link>
+                                <a href="#brief" className={`${styles["who-we-are__info_btn"]} `} >{t("التعريف بالمجموعة")}</a>
                             </div>
                         </div>
                         <div className='col-lg-8 col-sm-12'>

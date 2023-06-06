@@ -63,7 +63,7 @@ const RandomCases = () => {
                 photo={item.caseimage[0]?.image}
                 title={item.name}
                 para={item.description}
-                progress={((item.paied_amount * 100) / item.initial_amount)}
+                progress={((item.paied_amount * 100) / item.initial_amount).toFixed(0)}
                 totalPrice={item.initial_amount} numOfDonates={item.paied_amount}
               />
             </SwiperSlide>

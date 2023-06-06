@@ -76,14 +76,35 @@ export default function NavbarMenu() {
                             <Link to="/askForVoluntary" className={`px-3 pt-2 ${styles.header__link}`}>{t("تطوع معنا")} </Link>
 
                             {languages.map(({ code, name }, index) => (
+                                <>
+                               { currentLanguageCode === 'ar' && code === 'ar' ?
                                 <Link
                                     id={`language${index}`}
                                     key={code}
                                     onClick={(event) => { handleLanguage(code, index, event) }}
-                                    className={`px-3 pt-2 ${styles.header__link}`}
+                                    className={`px-3 pt-2 ${styles.header__link} d-none`}
                                     href="#">{name}
                                 </Link>
+                                :
+                                currentLanguageCode === 'en' && code === 'en' ?
+                                <Link
+                                id={`language${index}`}
+                                key={code}
+                                onClick={(event) => { handleLanguage(code, index, event) }}
+                                className={`px-3 pt-2 ${styles.header__link} d-none`}
+                                href="#">{name}
+                               </Link>
+                               :
+                               <Link
+                               id={`language${index}`}
+                               key={code}
+                               onClick={(event) => { handleLanguage(code, index, event) }}
+                               className={`px-3 pt-2 ${styles.header__link} `}
+                               href="#">{name}
+                              </Link>
 
+                               }
+                               </>
                             ))}
 
 

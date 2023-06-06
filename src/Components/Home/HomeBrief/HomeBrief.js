@@ -8,10 +8,10 @@ import styles from './HomeBrief.module.css'
 const HomeBrief = () => {
   const {t} = useTranslation()
   return (
-    <section className={`${styles["home-brief"]} mt-5`}>
+    <section className={`${styles["home-brief"]} `} id='brief'>
           <div className='container'>
-              <div className='row'>
-                  <div className='col-lg-4 col-sm-12'>
+              <div className='row '>
+                  <div className='col-lg-4 col-sm-12 mt-5 mb-5'>
                     <div className='text-center'>
                         <Link class="" to="">
                             <img className={`${styles["home-brief__img"]} `} src={img1} alt="" />
@@ -20,7 +20,7 @@ const HomeBrief = () => {
                         <p className={`${styles["home-brief__pragraph"]}`} >{t("حرصاً منّا على تزويد جميع متبرعينا بجميع المعلومات حول أرصدة التبرعات الواردة وتفاصيلها نشارككم كل أرصدة التبرعات عبر ملف الشفافية")}</p>
                     </div>
                   </div>
-                  <div className='col-lg-4 col-sm-12 mb-5'>
+                  <div className='col-lg-4 col-sm-12 mt-5 mb-5'>
                   <div className='text-center'> 
                         <Link class="" to="/askForVoluntary">
                             <img className={`${styles["home-brief__img"]} `} src={img2} alt="" />
@@ -29,7 +29,7 @@ const HomeBrief = () => {
                         <p className={`${styles["home-brief__pragraph"]}`} >{t("نؤمن بقيمة مبادرات التطوع ودورها في تغيير الحال على أرض الواقع، كما نؤمن بطاقات شبابنا ونفتح لهم الباب لمد يد العون لغيرهم نؤمن")}</p>
                     </div>
                   </div>
-                  <div className='col-lg-4 col-sm-12 mb-5'>
+                  <div className='col-lg-4 col-sm-12 mt-5 mb-5'>
                   <div className='text-center'>
                         <Link class="" to="">
                             <img className={`${styles["home-brief__img"]} pb-4`} src={img3} alt="" />

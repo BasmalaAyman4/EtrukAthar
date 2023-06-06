@@ -21,8 +21,9 @@ import Acution from "../Components/Acution/Acution";
 import AcutionDetails from "../Components/AcutionDetails/AcutionDetails";
 import CharityCaseDetails from "../Components/charityCaseDetails/CharityCaseDetails";
 import CharityEventDetails from "../Components/charityEventDetails/CharityEventDetails";
+
 export default function Router() {
-  const authContext = useContext(AuthContext);
+
   return (
     <>
       <Routes>
@@ -43,6 +44,7 @@ export default function Router() {
         <Route path="/userCase/:id" element={<CaseDetailsUser />} />
         <Route path="/Zakat" element={<Zakat />} />
         <Route path="/acution" element={<Acution />} />
+       
         <Route path="/acution/acution-details/:id" element={<AcutionDetails />} />
         <Route path="/charity-details/:id/charityCase-details/:id" element={<CharityCaseDetails />} />
         <Route path="/charity-details/:id/charityEvent-details/:id" element={<CharityEventDetails />} />

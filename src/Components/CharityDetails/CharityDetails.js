@@ -135,7 +135,7 @@ export default function CharityDetails() {
                                     <div className={`${style.header}`}>
                                         <div className={`${style.image}`}>
                                             <img src={eventCard.image} alt="" />
-                                            <span className={`${style.tag}`}>{eventCard.start_date}</span>
+                                            <span className={`${style.tag} `}>{eventCard.start_date}</span>
                                         </div>
                                     </div>
                                     <div className={`${style.info}`}>
