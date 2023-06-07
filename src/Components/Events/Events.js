@@ -11,7 +11,10 @@ import { Calendar } from 'antd';
 import './event.css'
 import moment from 'moment/moment'
 import axios from 'axios'
+import Cookies from 'js-cookie'
+import AnimatedPage from '../Global/AnimatedPage'
 export default function Events() {
+    const currentLanguageCode = Cookies.get('i18next') || 'en'
     const { t } = useTranslation()
     const [event, setEvent] = useState([]);
     const [active, setActive] = useState(true)
@@ -19,23 +22,15 @@ export default function Events() {
         view === "list" ? setActive(true) : setActive(false)
     }
     useEffect(() => {
-        axios.get(`https://otrok.invoacdmy.com/api/user/event/index`)
+        axios.get(`https://otrok.invoacdmy.com/api/user/event/index?lang=${currentLanguageCode}`)
             .then(response => {
                 setEvent(response.data.result)
             }
             ).catch((err) => { console.log(err) })
 
-    });
-
-
-
-    /*     const dateIn = moment("2023-03-02");
-    
-        const month = dateIn.format('M');
-        const day = dateIn.format('D'); */
-
+    }, [currentLanguageCode]);
     return (
-        <>
+        <AnimatedPage >
             <section className={`${style.events}`}>
                 <HeaderTitle title={t(" المناسبات")} para={t("المبلغ المجموع للمناسبات")} price='10.763.00$' />
                 <Container>
@@ -50,7 +45,7 @@ export default function Events() {
                     </div>
                     <Row>
                         {/* <div className={`${style.events__body}`}> */}
-                        <Col lg="7">
+                        <Col lg="8">
                             <div className={`${active ? style.upcomingEvent : style.none}`}>
                                 <h2 className={`${style.upcomingEvent__title}`}><RxCounterClockwiseClock /> {t("الاحداث القادمة")}</h2>
                                 {event && event.map(eventCard =>
@@ -65,10 +60,11 @@ export default function Events() {
                             </div>
                             <div className={`${active ? style.none : style.upcomingEvent}`}>
                                 <h2 className={`${style.upcomingEvent__title}`}><BsGrid3X3 />  {t("الاحداث القادمة")}</h2>
-                                <Row>
+                                <Row className={`${style.up}`}>
                                     {event && event.map(eventCard =>
-                                        <Link to={`/event-details/${eventCard.id}`}>
-                                            <Col lg="6">
+
+                                        <Col lg="6">
+                                            <Link to={`/event-details/${eventCard.id}`}>
                                                 <div className={`${style.card} ${style.event}`}>
                                                     <div className={`${style.header}`}>
                                                         <div className={`${style.image}`}>
@@ -79,25 +75,27 @@ export default function Events() {
                                                     <div className={`${style.info}`}>
                                                         <a href="#" class="block">
                                                             <h4 className={`${style.title}`}>{eventCard.name}</h4>
-                                                            <p>{eventCard.description}</p>
+                                                            <p className={`${style.desc}`}>{eventCard.description}</p>
                                                         </a>
 
                                                     </div>
 
-                                                    <button className={`${style.caseBtn}`}>Read More </button>
+                                                    <button className={`${style.caseBtn}`}>{t("المزيد من التفاصيل")} </button>
+
                                                 </div>
-                                            </Col>
-                                        </Link>
+                                            </Link>
+                                        </Col>
+
                                     )}
                                 </Row>
                             </div>
                         </Col>
-                        <Col lg="5">
+                        <Col lg="4">
                             <div className={`${style.otherEvent}`}>
                                 <div className={`${style.annualEvents}`}>
                                     <h2 className={`${style.annualEvents__title}`} >{t("الاحداث السنوية")}</h2>
-                                    <Link to='#' className={`${style.annualEvents__link}`}>حمله البذور و العقائق</Link>
-                                    <Link to='#' className={`${style.annualEvents__link}`}>حمله اعاله الاطفال </Link>
+                                    <Link to='#' className={`${style.annualEvents__link}`}>{t("حمله البذور و العقائق ")}</Link>
+                                    <Link to='#' className={`${style.annualEvents__link}`}>{t("حمله اعاله الاطفال ")}</Link>
                                 </div>
                                 <div className={`${style.annualEvents} ${style.otherEvents}`}>
                                     <h2 className={`${style.annualEvents__title}`} >{t("مناسبات اخري")}</h2>
@@ -111,6 +109,6 @@ export default function Events() {
                 </Container>
             </section >
 
-        </>
+        </AnimatedPage>
     )
 }

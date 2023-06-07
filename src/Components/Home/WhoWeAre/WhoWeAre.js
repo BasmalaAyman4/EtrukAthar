@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styles from "./WhoWeAre.module.css"
 import img1 from './../../../assets/images/who-we-are1.jpg'
@@ -10,7 +10,8 @@ import etruk from "./../../../assets/videos/Vid 20230406221832.mp4"
 import img4 from "./../../../assets/images/9eed201930ce4a42bdddf8e2adcede32.jpg"
 import { useSpring, animated, config } from 'react-spring';
 import styled from "styled-components";
-
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 const calc = (x, y) => [-(y - window.innerHeight / 2) / 20, (x - window.innerWidth / 2) / 20, 1]
 const trans = (x, y, s) => `perspective(600px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`
 const calc2 = (x, y) => [-(y - window.innerHeight / 4) / 40, (x - window.innerWidth / 4) / 40, 1]
@@ -25,13 +26,16 @@ const StyledDivThree = styled(animated.div)`
 height:600px`;
 
 const WhoWeAre = () => {
+    useEffect(() => {
+        Aos.init({ duration: 500 });
+    }, [])
     const { t } = useTranslation()
     const [props, set] = useSpring(() => ({ xys: [0, 0, 1], config: config.default }))
     const [props2, set2] = useSpring(() => ({ xys: [0, 0, 1], config: config.default }))
     const [props3, set3] = useSpring(() => ({ xys: [0, 0, 1], config: config.default }))
     return (
         <>
-            <section className={`${styles['who-we-are']} mt-5 mb-1`}>
+            <section className={`${styles['who-we-are']} mt-5 mb-1`} data-aos="fade-right">
 
                 <div className='container'>
 
@@ -55,7 +59,7 @@ const WhoWeAre = () => {
                         </div>
                         <div className='col-lg-8 col-sm-12'>
                             <div className='row'>
-                                <div   className={`${styles['who-we-are__part']} col-lg-4 col-sm-12 `}>
+                                <div className={`${styles['who-we-are__part']} col-lg-4 col-sm-12 `}>
                                     <StyledDiv className={`${styles["who-we-are__img-container"]}`}
                                         onMouseMove={({ clientX: x, clientY: y }) => (set({ xys: calc(x, y) }))}
                                         onMouseLeave={() => set({ xys: [0, 0, 1] })}

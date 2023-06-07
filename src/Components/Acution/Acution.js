@@ -14,6 +14,7 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import imgNull from '../../assets/images/eae946efbbf74117a65d488206a09b63.png'
 import { BsQuestionCircle } from "react-icons/bs";
+import AnimatedPage from "../Global/AnimatedPage";
 export default function Acution() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -112,7 +113,7 @@ export default function Acution() {
        const [year, month, day] = input.split('-')
        console.log(`${year}-${month}-${day}`) */
     return (
-        <>
+        <AnimatedPage >
             <section className={`${style.acutions}`}>
                 <HeaderTitle
                     title={t("المزادات")}
@@ -207,6 +208,6 @@ export default function Acution() {
                 <ToastContainer />
             </section>
 
-        </>
+        </AnimatedPage>
     )
 }

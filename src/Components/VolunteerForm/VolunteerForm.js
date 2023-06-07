@@ -12,10 +12,12 @@ import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input'
 import 'react-phone-number-input/style.css'
 import { useTranslation } from 'react-i18next';
 import axios from 'axios'
+import Cookies from 'js-cookie'
 import { toast } from 'react-toastify'
 import { ToastContainer } from "react-toastify";
 export default function VolunteerForm() {
     const [active, setActive] = useState('')
+    const currentLanguageCode = Cookies.get('i18next') || 'en'
     const [token, setToken] = useState(localStorage.getItem("token"))
     const [volunteerData, setVolunteerData] = useState({
         userName: '',
@@ -79,17 +81,17 @@ export default function VolunteerForm() {
         const toastId = toast.loading("...انتظر قليلا")
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         e.preventDefault()
-        axios.post("https://otrok.invoacdmy.com/api/user/volunteer/store/user", storeVolunteer, {
+        axios.post(`https://otrok.invoacdmy.com/api/user/volunteer/store/user?lang=${currentLanguageCode}`, storeVolunteer, {
             headers: {
                 "Authorization": `Bearer ${token}`,
                 "Content-Type": "multipart/form-data"
             }
-        })
-        axios.post("https://otrok.invoacdmy.com/api/user/volunteer/store/guest", storeVolunteer, {
+        }, [currentLanguageCode])
+        axios.post(`https://otrok.invoacdmy.com/api/user/volunteer/store/guest?lang=${currentLanguageCode}`, storeVolunteer, {
             headers: {
                 "Content-Type": "multipart/form-data"
             }
-        })
+        }, [currentLanguageCode])
             .then(response => {
                 toast.success(response.data.message)
                 console.log(storeVolunteer, "bla")

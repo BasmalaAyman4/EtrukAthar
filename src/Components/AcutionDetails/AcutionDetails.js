@@ -22,6 +22,7 @@ import axios from 'axios'
 import Modal from 'react-bootstrap/Modal';
 import { toast, ToastContainer } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
+import AnimatedPage from '../Global/AnimatedPage';
 
 export default function AcutionDetails() {
     const mazadId = useParams()
@@ -142,7 +143,7 @@ export default function AcutionDetails() {
     addBid.append("vendor_paid", count);
     const incrementBid = () => {
 
-        const toastId = toast.loading("...انتظر قليلا")
+        const toastId = toast.loading("...")
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         console.log(count)
         axios.post(`https://otrok.invoacdmy.com/api/user/mazad/increment/${mazadId.id}`, addBid, {
@@ -163,7 +164,7 @@ export default function AcutionDetails() {
 
 
     return (
-        <>
+        <AnimatedPage >
             <section className={`${style.acutionDetails}`}>
                 <Container>
                     <div className={`${style.acutionDetails__body}`}>
@@ -307,6 +308,6 @@ export default function AcutionDetails() {
                 </Container>
                 <ToastContainer />
             </section>
-        </>
+        </AnimatedPage>
     )
 }

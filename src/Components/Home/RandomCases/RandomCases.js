@@ -10,8 +10,12 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useTranslation } from 'react-i18next';
 import Loading from '../../Loading/Loading';
-
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 const RandomCases = () => {
+  useEffect(() => {
+    Aos.init({ duration: 500 });
+  }, [])
 
   const [randomCases, setRandomCases] = useState([])
   const currentLanguageCode = Cookies.get('i18next') || 'en'
@@ -36,7 +40,7 @@ const RandomCases = () => {
 
 
   return (
-    <section className={` ${styles["roundom-cases"]}`}>
+    <section className={` ${styles["roundom-cases"]}`} data-aos="fade-up">
       <div className='container '>
       <h3 className={`${styles["roundom-cases__title"]} text-center `}>{t("اخر الحالات المضافه")}</h3>
       {isLoading?
@@ -76,23 +80,23 @@ const RandomCases = () => {
                                 
           {randomCases && randomCases.map(item => (
             randomCases.length > 0 ?
-            <SwiperSlide className='mt-5'>
-              <Card id={item.id}
-               className= 'mt-5'
-                donationType={item.donationtype_id}
-                photo={item.caseimage[0]?.image}
-                title={item.name}
-                para={item.description}
-                progress={((item.paied_amount * 100) / item.initial_amount).toFixed(0)}
-                totalPrice={item.initial_amount} numOfDonates={item.paied_amount}
-              />
-            </SwiperSlide>
-            :
-            <div className='mt-5'>
-            <div className='d-flex'>
-                <h5 className='m-auto' >{t("لا توجد حالات متاحه")}</h5>
-            </div>
-        </div>
+              <SwiperSlide className='mt-5'>
+                <Card id={item.id}
+                  className='mt-5'
+                  donationType={item.donationtype_id}
+                  photo={item.caseimage[0]?.image}
+                  title={item.name}
+                  para={item.description}
+                  progress={((item.paied_amount * 100) / item.initial_amount).toFixed(0)}
+                  totalPrice={item.initial_amount} numOfDonates={item.paied_amount}
+                />
+              </SwiperSlide>
+              :
+              <div className='mt-5'>
+                <div className='d-flex'>
+                  <h5 className='m-auto' >{t("لا توجد حالات متاحه")}</h5>
+                </div>
+              </div>
           ))}
 
         </Swiper>

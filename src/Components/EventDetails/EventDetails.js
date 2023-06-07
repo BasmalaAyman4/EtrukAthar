@@ -11,34 +11,42 @@ import { FaFacebook, FaTwitter, FaWhatsapp, FaInstagram } from "react-icons/fa";
 import { toast } from 'react-toastify'
 import { ToastContainer } from "react-toastify";
 import { useTranslation } from 'react-i18next'
+import Cookies from 'js-cookie'
+import Modal from 'react-bootstrap/Modal';
 export default function EventDetails() {
     const { t } = useTranslation()
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    const currentLanguageCode = Cookies.get('i18next') || 'en'
     const [eventDetails, setEventDetails] = useState({})
+    const [eventJoin, setEventJoin] = useState('')
     const eventsId = useParams()
     const [token, setToken] = useState(localStorage.getItem("token"))
     useEffect(() => {
-        axios.get(`https://otrok.invoacdmy.com/api/user/event/show/${eventsId.id}`)
+        axios.get(`https://otrok.invoacdmy.com/api/user/event/show/${eventsId.id}?lang=${currentLanguageCode}`)
             .then((response) => {
                 setEventDetails(response.data.event)
+                setEventJoin(response.data.count_volunteers)
             }).catch((err) => { console.log(err) })
 
 
-    }, [])
+    }, [currentLanguageCode])
     const onSubmitHandler = (e) => {
         const toastId = toast.loading("...انتظر قليلا")
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         e.preventDefault()
 
-        axios.get(`https://otrok.invoacdmy.com/api/user/event/join/${eventsId.id}`, {
+        axios.get(`https://otrok.invoacdmy.com/api/user/event/join/${eventsId.id}?lang=${currentLanguageCode}`, {
             headers: {
                 "Authorization": `Bearer ${token}`,
                 "Content-Type": "multipart/form-data"
             }
-        })
+        }, [currentLanguageCode])
             .then(response => {
                 toast.success(response.data.message)
             }
-            ).catch((err) => { toast.error("يجب تسجيل الدخول اولا") })
+            ).catch((err) => { toast.error("") })
 
     }
     return (
@@ -46,16 +54,15 @@ export default function EventDetails() {
             <Container>
                 <Row className={`${style.row}`}>
                     <Col>
-                        <img alt="" src={imge} className={`${style.imge}`} />
+                        <img alt="" src={eventDetails.image} className={`${style.imge}`} />
                     </Col>
                     <Col>
                         <div className={`${style.rowBody}`}>
-                            <h1 className={`${style.rowTitle}`}> world</h1>
-                            <h1 className={`${style.rowTitle} ${style.rowskew}`}> orphan </h1>
-                            <h1 className={`${style.rowTitle}`}> day</h1>
-                            <p className={`${style.rowPara}`}>World Refugee Day is an international day designated by the United nations to honour refugees around the globe. It falls each year on June 20 and celebrates the strength and courage of people who have been forced to flee their home country to escape confict or persecution.</p>
-                            <p className={`${style.rowPara}`}>It shines a light on the rights, needs and dreams of refugees, helping to mobilize political will and resources so refugees can not only survive but also thrive.</p>
-                            <h3 className={`${style.refugee}`}>#{eventDetails.name_en}</h3>
+
+                            <h1 className={`${style.rowTitle} ${style.rowskew}`}> {eventDetails.name} </h1>
+
+                            <p className={`${style.rowPara}`}>{eventDetails.description} </p>
+
                             <div className={`${style.join}`}>
                                 <div className={`${style.socialIcon}`}>
                                     <p> :{t("شارك")}  </p>
@@ -75,10 +82,28 @@ export default function EventDetails() {
                                     </div>
                                 </div>
                                 <div className={`${style.member}`}>
-                                    <p className={`${style.memberPara}`}><span>3.109.258</span> {t("منضم بالفعل")}</p>
+                                    <p className={`${style.memberPara}`}><span>{eventJoin}</span> {t("منضم بالفعل")}</p>
                                 </div>
                             </div>
-                            <button className={`${style.btn}`} onClick={onSubmitHandler}> {t("انضم للحملة")}</button>
+
+                            {!token ?
+                                <>
+                                    <button variant="primary" onClick={handleShow} className={`${style.btn}`}> {t("انضم للحملة")}</button>
+                                    <Modal size="lg" show={show} onHide={handleClose} dir={currentLanguageCode === 'ar' ? 'rtl' : 'ltr'}>
+                                        <Modal.Header closeButton>
+                                            <Modal.Title id="contained-modal-title-vcenter">
+                                                {t("للانضمام الي الحدث الان")}
+                                            </Modal.Title>
+                                        </Modal.Header>
+                                        <Modal.Body >
+                                            <p className={`${style.para}`}> {t("يجب تسجيل للانضمام الي المناسبه ")} <a href='/login' className={`${style.link}`}>{t("تسجيل دخول")}</a></p>
+
+                                        </Modal.Body>
+                                    </Modal>
+                                </>
+                                :
+                                <button className={`${style.btn}`} onClick={onSubmitHandler}> {t("انضم للحمله الان")}</button>
+                            }
                         </div>
                     </Col>
                 </Row>

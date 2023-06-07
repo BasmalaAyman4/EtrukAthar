@@ -130,7 +130,7 @@ body[dir="ltr"] .annualEvents{
     direction: rtl;
 }
 .annualEvents__title{
-    background-color:#246d57da;
+    background-color:#EF8451;
     color: #fff;
     padding: 10px 30px;
     position: relative;
@@ -323,8 +323,8 @@ text-align: center;
 .card {
     padding: 10px;
     width: 100%;
-    height:300px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    height:400px;
+    box-shadow: 0 4px 30px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     background-color: rgb(255, 255, 255);
     font-family: "Changa-SemiBold";
 }
@@ -391,7 +391,69 @@ text-align: center;
     color: #EF8451;
     padding: 10px 20px;
 }
+
 .caseBtn:hover{
     background-color: #EF8451;
     color: #fff;
 }
+ body[dir="ltr"] .title {
+     direction: rtl;
+ }
+
+ body[dir="rtl"] .title {
+     direction: ltr;
+ }
+ body[dir="ltr"] .desc {
+     direction: rtl;
+ }
+
+ body[dir="rtl"] .desc {
+     direction: ltr;
+ }
+ body[dir="ltr"] .event {
+     direction: rtl;
+ }
+
+ body[dir="rtl"] .event {
+     direction: ltr;
+ }
+ @media (max-width:767px) {
+    .desc {
+         white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         width: 250px;
+     }
+
+     .eventCard__title {
+         white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         width: 250px;
+     }
+ }
+
+ @media (min-width:768px) and (max-width:991px) {
+    .desc {
+         white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         width: 570px;
+     }
+
+     .eventCard__title {
+         white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         width: 250px;
+     }
+ }
+
+ @media (min-width:1201px) {
+     .desc {
+         white-space: nowrap;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         width: 400px;
+     }
+ }

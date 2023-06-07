@@ -20,6 +20,7 @@ import { useTranslation } from 'react-i18next'
 import Cookies from 'js-cookie'
 import CardCase from './../Card/Card'
 import HeaderTitleCharity from "../HeaderTitleCharity/HeaderTitleCharity"
+import AnimatedPage from '../Global/AnimatedPage';
 export default function CharityDetails() {
     const { t } = useTranslation()
     const carityId = useParams()
@@ -53,7 +54,7 @@ export default function CharityDetails() {
     }, [currentLanguageCode])
     console.log(categoryData)
     return (
-        <>
+        <AnimatedPage >
             <HeaderTitleCharity title={t("كل عمل صالح هو عمل خيري")} para={t(" التبرع للفقراء من اجل حياتهم الافضل صحة")} />
             <section>
 
@@ -160,6 +161,6 @@ export default function CharityDetails() {
                 </div>
 
             </section>
-        </>
+        </AnimatedPage>
     )
 }
