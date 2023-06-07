@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import AnimatedPage from '../Global/AnimatedPage';
 export default function Zakat() {
     const { t } = useTranslation()
     const [zakat, setZakat] = useState({
@@ -25,7 +26,7 @@ export default function Zakat() {
         navigate("/cases")
     }
     return (
-        <>
+        <AnimatedPage >
             <section className={`${style.zakat}`}>
                 <Container>
                     <h1 className={`${style.zakatTitle}`}>{t("احسب زكاتك مع مؤسسة اترك أثرا")}</h1>
@@ -109,6 +110,6 @@ export default function Zakat() {
                     </Row>
                 </Container>
             </section >
-        </>
+        </AnimatedPage>
     )
 }

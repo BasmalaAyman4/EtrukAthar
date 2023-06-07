@@ -40,7 +40,7 @@ export default function CaseDetailsUser() {
     const [formData, setFormData] = useState({})
     const casesId = useParams()
     const [priceShow, setPriceshow] = useState("");
-    
+
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -208,7 +208,7 @@ export default function CaseDetailsUser() {
                     <Col sm={12} xl={8} dir='rtl' >
 
                         <div className={`${style.cardDetails__body}`}>
-                         
+
                             <h3 className={`${style.cardDetails__title}`}>{formData.name}</h3>
                             <p className={`${style.cardDetails__para}`}>{t("مشروع رقم")}</p>
                             <hr />
@@ -246,10 +246,10 @@ export default function CaseDetailsUser() {
 
                             </Row>
                             <button onClick={handleShow} className={`${style.cardDetails__btn}`} >
-                                 تعديل الحاله
-                             </button>
+                                تعديل الحاله
+                            </button>
                         </div>
-                         <EditCase show={show} onHide={handleClose} setShow={setShow} />
+                        <EditCase show={show} onHide={handleClose} setShow={setShow} />
                         <Player className={`${style.video}`} src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" poster={img1} />
                         <div className={`${style.modal__collect}`}><p className={`${style.paypal__para}`}> {t(" تبرعك هو أملهم و نجاحهم, فكن عونا لهم ")}</p></div>
                         <div >
@@ -293,9 +293,9 @@ export default function CaseDetailsUser() {
 
                     </Col>
                     <Col sm={12} xl={4}>
-             
+
                         {formData.donationtype_id === "1" ? <aside dir='rtl' className={`${style.aside}`}>
-                  
+
                             <button className={`${style.cardDetails__btn}`}>
                                 {t("تبرع الان للحالات عبر موقعنا ")}
                             </button>

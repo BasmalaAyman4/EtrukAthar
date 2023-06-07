@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { useTranslation } from 'react-i18next'
 import Cookies from 'js-cookie'
+import AnimatedPage from '../Global/AnimatedPage'
 export default function CharitiesView() {
     const { t } = useTranslation()
     const [dataCarity, setdataCarity] = useState([]);
@@ -23,7 +24,7 @@ export default function CharitiesView() {
             ).catch((err) => { console.log(err) })
     }, [currentLanguageCode])
     return (
-        <>
+        <AnimatedPage >
             <section className={`${style.charitiesView}`}>
                 <div className={`${style.charitiesLanding}`}>
                     <div className={`${style.charityBody}`}>
@@ -52,6 +53,6 @@ export default function CharitiesView() {
                     </div>
                 </Container>
             </section>
-        </>
+        </AnimatedPage>
     )
 }

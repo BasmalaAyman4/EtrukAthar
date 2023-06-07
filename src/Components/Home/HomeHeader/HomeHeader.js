@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Autoplay, Pagination, Navigation, EffectFade } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "./HomeHeader.module.css"
@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 const HomeHeader = () => {
+
   const { t } = useTranslation()
   return (
     <div className='mb-5'>

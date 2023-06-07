@@ -1,6 +1,7 @@
 .eventCard {
     border: 1px solid #e6e6e6;
-    display: flex;
+    display:grid;
+    grid-template-columns: 1fr auto;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -10,35 +11,28 @@
     margin-bottom: 20px;
     cursor: pointer;
 }
-@media (min-width:1201px) {
-    .eventCard{
-        width: 680px;
-    }
-}
+
 body[dir="rtl"] .event__date {
     background-color: #EF8451;
     padding: 15px;
-    border-radius: 0px 10px 10px 0px;
-    -webkit-border-radius:0px 10px 10px 0px;
-    -moz-border-radius: 0px 10px 10px 0px;
-    -ms-border-radius: 0px 10px 10px 0px;
-    -o-border-radius: 0px 10px 10px 0px;
+    border-radius: 10px 0px 0px 10px;
+    -webkit-border-radius: 10px 0px 0px 10px;
+    -moz-border-radius: 10px 0px 0px 10px;
+    -ms-border-radius: 10px 0px 0px 10px;
+    -o-border-radius: 10px 0px 0px 10px;
     color: #fff;
 }
 body[dir="ltr"] .event__date {
     background-color: #EF8451;
     padding: 15px;
-    border-radius: 10px 0 0px 10px;
-    -webkit-border-radius: 10px 0 0px 10px;
-    -moz-border-radius: 10px 0 0px 10px;
-    -ms-border-radius: 10px 0 0px 10px;
-    -o-border-radius: 10px 0 0px 10px;
+    border-radius: 0px 10px 10px 0px;
     color: #fff;
 }
 
 body[dir="rtl"] .eventCard__body {
     padding: 10px;
     direction: ltr;
+    
 }
 body[dir="ltr"] .eventCard__body {
     padding: 10px;
@@ -48,6 +42,7 @@ body[dir="ltr"] .eventCard__body {
     font-size: 20px;
     color: #8a8b8b;
     font-weight: 300;
+
 }
 .eventCard__time {
     font-size: 17px;
@@ -63,4 +58,43 @@ body[dir="ltr"] .eventCard__body {
 }
 .link:hover {
     color: #246d57da;
+}
+@media (max-width:767px) {
+    .eventCard__para {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 250px;
+    }
+        .eventCard__title{
+            white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                width: 250px;
+        }
+}
+@media (min-width:768px) and (max-width:991px) {
+    .eventCard__para {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 570px;
+    }
+
+    .eventCard__title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 250px;
+    }
+}
+@media (min-width:1201px) {
+    .eventCard {
+        width: 780px;
+    }
+        .eventCard__para{
+    white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                width: 650px;}
 }

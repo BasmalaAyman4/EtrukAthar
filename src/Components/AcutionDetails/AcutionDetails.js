@@ -23,6 +23,7 @@ import Modal from 'react-bootstrap/Modal';
 import { toast, ToastContainer } from 'react-toastify';
 import { useTranslation } from 'react-i18next'
 import Cookies from 'js-cookie'
+import AnimatedPage from "../Global/AnimatedPage";
 export default function AcutionDetails() {
     const mazadId = useParams()
     const { t } = useTranslation()
@@ -108,7 +109,6 @@ export default function AcutionDetails() {
         timeStatus.append("status", 'finished');
         axios.post(`https://otrok.invoacdmy.com/api/dashboard/mazad/update/${mazadId.id}`, timeStatus, {
             headers: {
-
                 "Content-Type": "multipart/form-data"
             }
         }).then(response => {
@@ -135,7 +135,7 @@ export default function AcutionDetails() {
     addBid.append("vendor_paid", count);
     const incrementBid = () => {
 
-        const toastId = toast.loading("...انتظر قليلا")
+        const toastId = toast.loading("...")
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         console.log(count)
         axios.post(`https://otrok.invoacdmy.com/api/user/mazad/increment/${mazadId.id}`, addBid, {
@@ -156,7 +156,7 @@ export default function AcutionDetails() {
 
 
     return (
-        <>
+        <AnimatedPage >
             <section className={`${style.acutionDetails}`}>
                 <Container>
                     <div className={`${style.acutionDetails__body}`}>
@@ -298,6 +298,6 @@ export default function AcutionDetails() {
                 </Container>
                 <ToastContainer />
             </section>
-        </>
+        </AnimatedPage>
     )
 }

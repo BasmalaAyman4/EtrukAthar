@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import React, { useContext } from "react";
 import Home from "../Pages/Home";
 import Login from "../Components/Login/Login"
@@ -21,12 +21,12 @@ import Acution from "../Components/Acution/Acution";
 import AcutionDetails from "../Components/AcutionDetails/AcutionDetails";
 import CharityCaseDetails from "../Components/charityCaseDetails/CharityCaseDetails";
 import CharityEventDetails from "../Components/charityEventDetails/CharityEventDetails";
-
+import { AnimatePresence } from "framer-motion"
 export default function Router() {
-
+  const location = useLocation();
   return (
-    <>
-      <Routes>
+    <AnimatePresence mode='wait'>
+      <Routes location={location} key={location.pathname}>
         <Route exact path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/forget" element={<Forget />} />
@@ -44,12 +44,12 @@ export default function Router() {
         <Route path="/userCase/:id" element={<CaseDetailsUser />} />
         <Route path="/Zakat" element={<Zakat />} />
         <Route path="/acution" element={<Acution />} />
-       
+
         <Route path="/acution/acution-details/:id" element={<AcutionDetails />} />
         <Route path="/charity-details/:id/charityCase-details/:id" element={<CharityCaseDetails />} />
         <Route path="/charity-details/:id/charityEvent-details/:id" element={<CharityEventDetails />} />
 
       </Routes>
-    </>
+    </AnimatePresence>
   )
 }

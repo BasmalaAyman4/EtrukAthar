@@ -34,6 +34,7 @@ import moment from 'moment'
 import plus from "./../../assets/icons/+.svg"
 import minus from "./../../assets/icons/mi.svg"
 import style from "./CharityCaseDetails.module.css"
+import AnimatedPage from '../Global/AnimatedPage';
 export default function CharityCaseDetails() {
     const [token, setToken] = useState(localStorage.getItem("token"))
     const [formData, setFormData] = useState([])
@@ -346,7 +347,7 @@ export default function CharityCaseDetails() {
     }
 
     return (
-        <>
+        <AnimatedPage >
             <Container>
                 <Row dir='rtl' className='mt-5'>
                     <Col sm={12} xl={8} dir='rtl' >
@@ -769,6 +770,6 @@ export default function CharityCaseDetails() {
                 <ToastContainer />
             </Container >
 
-        </>
+        </AnimatedPage>
     )
 }

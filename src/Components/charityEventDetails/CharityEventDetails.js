@@ -11,7 +11,7 @@ import { FaFacebook, FaTwitter, FaWhatsapp, FaInstagram } from "react-icons/fa";
 import { toast } from 'react-toastify'
 import { ToastContainer } from "react-toastify";
 import { useTranslation } from 'react-i18next'
-
+import AnimatedPage from '../Global/AnimatedPage';
 export default function CharityEventDetails() {
     const { t } = useTranslation()
     const [eventDetails, setEventDetails] = useState({})
@@ -43,7 +43,7 @@ export default function CharityEventDetails() {
 
     }
     return (
-        <>
+        <AnimatedPage >
             <Container>
                 <Row className={`${style.row}`}>
                     <Col>
@@ -85,6 +85,6 @@ export default function CharityEventDetails() {
                 </Row>
                 <ToastContainer />
             </Container>
-        </>
+        </AnimatedPage>
     )
 }
