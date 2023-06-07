@@ -53,31 +53,53 @@ export default function Card(props) {
                        {!IsLoading? 
                         <div className={`${styles.don}`}>
                             {props.donationType === "1" ? 
-                            <div className=""> {t("تم جمع المبلغ")} :  {props.numOfDonates} </div>
+                            <div className='d-flex flex  flex-column'>
+                               <div className=""> {t("تم جمع المبلغ")} :  </div>
+                               <span>  {props.numOfDonates +''+ t('ج')} </span>  
+                            </div>
                             : 
                             null 
                             }
                             {props.donationType === "2" ? 
-                            <div className=""> {t("عدد المطوعين")}:  {props.numOfDonates} </div>
+                            <div className='d-flex flex  flex-column'>
+                                <div className=""> {t("عدد المطوعين")} : 
+                                </div>
+                                <span>{props.numOfDonates} </span>
+                             </div>
                             : 
                             null 
                             }
                             {props.donationType === "3" ? 
-                            <div className="">{t("عدد الكارتين")}:  {props.numOfDonates} </div>
+                             <div className='d-flex flex  flex-column'>
+                                <div className="">{t("عدد الكارتين")}: </div>
+                                <span>{props.numOfDonates} </span>
+                             </div>
                             : 
                             null  
                             }
                             {props.donationType === "4" ? 
-                            <div className=""> {t("عدد الافراد")}: {props.numOfDonates} </div>
+                             <div className='d-flex flex  flex-column'>
+                                <div className=""> {t("عدد الافراد")} : 
+                                </div>
+                                <span>{props.numOfDonates} </span>
+                             </div>
+                          
                             : 
                             null 
                             }
                               {props.donationType === "5" ? 
-                            <div className=""> {t("عدد الاثاث")}: {props.numOfDonates} </div>
+                               <div className='d-flex flex  flex-column'>
+                                  <div className=""> {t("عدد الاثاث")} : 
+                                  </div>
+                                  <span>{props.numOfDonates}</span>
+                                </div>
                             : 
                             null 
                             }
-                            <div className=""> {t("المطلوب")}: {props.totalPrice}  </div>
+                              <div className='d-flex flex  flex-column'>
+                                <div className=""> {t("المطلوب")}:  </div>
+                                <span> { props.totalPrice}  </span>
+                              </div>
                         </div>
                         : 
                         <Skeleton  className={`skeleton-don`}/> 

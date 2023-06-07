@@ -483,51 +483,30 @@ export default function ProjectsDetails() {
                                         className={` ${style.PhoneInputInput} ${style.PhoneInput}  ${style.input}`}
                                         required />
 
-                                    <div className={`${style.modal__paypal}`}><p className={`${style.paypal__para}`}><FaCcMastercard className={`${style.icon}`} /> {t(" للتبرع من خلال البطاقة الائتمانية ")}</p></div>
-                                    <Accordion >
-                                        <Accordion.Item eventKey="0">
-                                            <Accordion.Header><img src={paypal} alt="" className={`${style.imgpay} pay`} /></Accordion.Header>
-                                            <Accordion.Body>
+                                   
+                                    <div class="radio-item-container">
+                                    
+                                    <div class="radio-item">
+                                            <label className='label_radio' for=''>
+                                                <input type="radio" id='' name="method" value={donateData.method} onChange={onChangeHandler} />
+                                                <span> Online Payment </span>
 
-                                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                                    <Form.Control type='number' name="verificationCode" className={`${style.input}`} placeholder={t(" رقم البطاقه الائتمانيه")} onChange={onChangeHandler} value={donateData.verificationCode} />
-                                                </Form.Group>
-                                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                                    <Form.Control type='name' name="visaName" className={`${style.input}`} placeholder={t("  اسم البطاقة الائتمانية")} onChange={onChangeHandler} value={donateData.visaName} />
-                                                </Form.Group>
-                                                <div className={`${style.cvc}`}>
-                                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                                        <Form.Control type='date' name="visaDate" className={`${style.input}`} placeholder={t(" expiration date")} onChange={onChangeHandler} value={donateData.visaDate} />
-                                                    </Form.Group>
-                                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                                        <Form.Control name="Cnn" type="number" className={`${style.input}`} placeholder={t("كود التحقق من البطاقة ")} onChange={onChangeHandler} value={donateData.Cnn} />
-                                                    </Form.Group>
-                                                </div>
-                                                <Button type="submit" onClick={onClickHandler} className={style.signup__btn}>
-                                                    تبرع الان
-                                                </Button>
-                                            </Accordion.Body>
-                                        </Accordion.Item>
-                                        <Accordion.Item eventKey="1">
-                                            <Accordion.Header><img src={vodafon} alt="" className={`${style.imgpay}`} /></Accordion.Header>
-                                            <Accordion.Body>
+                                            </label>
+                                            <div className={`${style.modal__paypal}`}><p className={`${style.paypal__para}`}><FaCcMastercard className={`${style.icon}`} /> {t(" للتبرع من خلال البطاقة الائتمانية ")}</p></div>
+                                        </div>
 
-                                                <PhoneInput
-                                                    defaultCountry="EG"
-                                                    international
-                                                    error={formData.phone ? (isValidPhoneNumber(formData.phone) ? undefined : 'Invalid phone number') : 'Phone number required'}
-                                                    value="+20 01022225555"
-                                                    name="phone"
-                                                    className={` ${style.PhoneInputInput} ${style.PhoneInput}  ${style.input}`}
-                                                    required />
-                                            </Accordion.Body>
-                                        </Accordion.Item>
-                                    </Accordion>
-                                    <div className={`${style.modal__paypal}`}><p className={`${style.paypal__para}`}>{t(" للتبرع من خلال مندوبنا ")}</p></div>
-                                    <Accordion >
-                                        <Accordion.Item eventKey="2">
-                                            <Accordion.Header><img src={delivery} alt="" className={`${style.imgpay}`} /></Accordion.Header>
-                                            <Accordion.Body>
+                                        
+                                        <div class="radio-item">
+                                            <label className='label_radio' for=''>
+                                                <input type="radio" id='' name="method" value={donateData.method}  onChange={onChangeHandler} />
+                                                <span> representative </span>
+                                            </label>
+                                            <div className={`${style.modal__paypal}`}><p className={`${style.paypal__para}`}><img src={delivery} alt="" className={`${style.imgpay}`} />{t(" للتبرع من خلال مندوبنا ")}</p></div>
+                                        </div>
+
+                                </div>
+                      
+                                    
 
                                                 <Form.Group className="mb-3" controlId="formBasicEmail" >
                                                     <Form.Control type='text' name="address" className={`${style.input}`} placeholder={t("العنوان")} onChange={onChangeHandler} value={donateData.address} />
@@ -538,9 +517,8 @@ export default function ProjectsDetails() {
                                                         تحديد ميعاد التبرع لارسال المندوب
                                                     </Form.Text>
                                                 </Form.Group>
-                                            </Accordion.Body>
-                                        </Accordion.Item>
-                                    </Accordion>
+                                          
+                              
                                     <Button type="submit" className={style.signup__btn}>
                                         تبرع الان
                                     </Button>

@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState} from 'react'
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import styles from '../../Components/Projects/Projects.module.css'
@@ -9,14 +9,15 @@ import { Button } from 'react-bootstrap';
 import '../../Components/Projects/Projects.css'
 import plus from "./../../assets/icons/+.svg"
 import minus from "./../../assets/icons/mi.svg"
-import MultiImageInput from "react-multiple-image-input";
 import { BsQuestionCircle } from "react-icons/bs";
 import style from "./AddCase.module.css"
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 const AddCase = ({ show, setShow }) => {
   const [dataCategories, setDataCategories] = useState([]);
   const [dataType, setDataType] = useState([]);
   const handleClose = () => setShow(false);
+  const {t} = useTranslation()
   const currentLanguageCode = Cookies.get('i18next') || 'en'
   const [token, setToken] = useState(localStorage.getItem("token"))
   const [formData, setFormData] = useState({
@@ -381,17 +382,17 @@ const AddCase = ({ show, setShow }) => {
 
   const onSubmitHandler = (e) => {
 
-    const toastId = toast.loading("please wait ... ")
+    const toastId = toast.loading(t(" ... انتظر قليلا"))
     setTimeout(() => { toast.dismiss(toastId); }, 1000);
     e.preventDefault()
-    axios.post("https://otrok.invoacdmy.com/api/user/case/store", addNewCase, {
+    axios.post(`https://otrok.invoacdmy.com/api/user/case/store?lang=${currentLanguageCode}`, addNewCase, {
       headers: {
         "Authorization": `Bearer ${token}`,
         "Content-Type": "multipart/form-data"
       }
     })
       .then(response => {
-        toast.success('تم اضافه الحاله بنجاح .. رجاء الانتظار حتي التأكد من البيانات و يتم قبولها من قِبلنا ')
+        toast.success(t("تم اضافه الحاله بنجاح .. رجاء الانتظار حتي التأكد من البيانات و يتم قبولها من قِبلنا"))
         console.log(response)
       }
       ).catch((err) => { toast.error(err.response.data.message) })
@@ -403,11 +404,11 @@ const AddCase = ({ show, setShow }) => {
       <Modal size="lg" show={show} onHide={handleClose} dir={currentLanguageCode === 'ar' ? 'rtl' : 'ltr'}>
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            لاضافة حالة يرجي ملئ البيانات
+            {t("لاضافة حالة يرجي ملئ البيانات")}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body >
-          {!token ? <p className={`${styles.para}`}> يجب تسجيل دخول لاضافة حالة  <a href='/login' className={`${styles.link}`}> تسجل دخول</a></p> :
+          {!token ? <p className={`${styles.para}`}> {t("يجب تسجيل دخول لاضافة حالة ")} <a href='/login' className={`${styles.link}`}> {t("تسجل دخول")}</a></p> :
             <Form onSubmit={onSubmitHandler}>
               <div className='text-center'>
                 <input className={`${styles.fileImg}  input-file-js`} ref={(e) => {

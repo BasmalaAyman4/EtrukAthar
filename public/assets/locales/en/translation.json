@@ -210,7 +210,15 @@
    "جمعيات تتوافر لدينا ":"Charities we provide",
    "مناسبات تم تغطيتها":"Covered Events",
    "حالات تم إنجازها":"Done Cases ",
-   "الدفع الحالي":"Pay Now"
+   "الدفع الحالي":"Pay Now",
+   "جنيه":"LE",
+   "ج":"LE",
+   " ... انتظر قليلا":" ... please wait",
+   "تم اضافه الحاله بنجاح .. رجاء الانتظار حتي التأكد من البيانات و يتم قبولها من قِبلنا":"The case has been added successfully.. Please wait until the data is confirmed and accepted by us in English",
+   "لاضافة حالة يرجي ملئ البيانات":"If you want to add case please fill this form",
+   "يجب تسجيل دخول لاضافة حالة ":"For adding case please ",
+   "تسجل دخول":"login"
+
 
 
    

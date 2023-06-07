@@ -112,9 +112,8 @@ export default function AcutionDetails() {
         
         const timeStatus = new FormData();
         timeStatus.append("status", 'finished');
-        axios.post(`https://otrok.invoacdmy.com/api/dashboard/mazad/update/${mazadId.id}`, timeStatus, {
+        axios.post(`https://otrok.invoacdmy.com/api/user/mazad/update/${mazadId.id}`, timeStatus, {
             headers: {
-                "Authorization": `Bearer ${localStorage.getItem('tokenA')}`,
                 "Content-Type": "multipart/form-data"
             }
         }).then(response => {

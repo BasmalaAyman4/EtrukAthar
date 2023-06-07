@@ -40,7 +40,13 @@
     font-family: "Changa-Regular"; 
 }
 
-.section__price {
+body[dir='rtl'] .section__price {
+    font-family: "Changa-Regular";
+    font-weight: 600;
+    color: #EF8451;
+    direction: ltr;
+}
+body[dir='ltr'] .section__price {
     font-family: "Changa-Regular";
     font-weight: 600;
     color: #EF8451;
