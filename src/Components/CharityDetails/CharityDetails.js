@@ -16,11 +16,12 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import axios from 'axios'
-import { useTranslation } from 'react-i18next'
+
 import Cookies from 'js-cookie'
 import CardCase from './../Card/Card'
 import HeaderTitleCharity from "../HeaderTitleCharity/HeaderTitleCharity"
 import AnimatedPage from '../Global/AnimatedPage';
+import { useTranslation } from 'react-i18next';
 export default function CharityDetails() {
     const { t } = useTranslation()
     const carityId = useParams()

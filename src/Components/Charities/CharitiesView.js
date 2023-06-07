@@ -26,7 +26,7 @@ export default function CharitiesView() {
     return (
         <AnimatedPage >
             <section className={`${style.charitiesView}`}>
-                <div className={`${style.charitiesLanding}`}>
+                <div className={`${style.charitiesLanding}`}>   
                     <div className={`${style.charityBody}`}>
                         <h1 className={`${style.charityTitle}`}>{t("نحن منظمة خيرية عالمية")}</h1>
                         <p className={`${style.charityPara}`}>{t("نحن نستجيب للمساعدات الطارئة عند الحاجة وندعم العائلات التي فقدت منازلها بسبب النزاع.")}</p>
