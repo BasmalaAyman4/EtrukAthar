@@ -70,12 +70,12 @@ export default function Footer() {
                                 </p>
                                 <p>
                                     <Link to='/charities' className='text-reset footer__link'>
-                                        {t(" الجمعيات الخيرية")}
+                                        {t("جمعيات  خيرية")}
                                     </Link>
                                 </p>
                                 <p>
                                     <Link to='/acution' className='text-reset footer__link'>
-                                        {t(" المزادات")}
+                                        {t("المزادات")}
                                     </Link>
                                 </p>
                                 <p>
@@ -94,7 +94,7 @@ export default function Footer() {
                                 </p>
                                 <p className='footer__contact-us_p'>
 
-                                    info@example.com
+                                    EtrukAthr@gmail.com
                                     <FaEnvelope className="me-3" />
                                 </p>
                                 <p className='footer__contact-us_p'>

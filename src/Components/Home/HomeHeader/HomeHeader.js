@@ -53,7 +53,7 @@ const HomeHeader = () => {
           <div className={`${styles['home-header__info']} text-center`}>
             <div className='container'>
               <h2>{t("مهما كان تبرعك صغيراً")}</h2>
-              <p className='mb-5'>{t("مهما كان تبرعك صغيراً")}</p>
+              <p className='mb-5'>{t(" فكن معنا لترك أثرا جميلا في العالم")}</p>
               <div className='row '>
               </div>
             </div>

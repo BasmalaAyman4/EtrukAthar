@@ -163,7 +163,7 @@ export default function NavbarMenu() {
                                             <NavLink className="nav-link" to="/Zakat" href="index.html">{t("حاسبة الزكاة")}   </NavLink>
                                         </li>
                                         <li>
-                                            <NavLink className="nav-link" to="/askForVoluntary" href="index.html"> {t("  تطوع معنا ")}</NavLink>
+                                            <NavLink className="nav-link" to="/askForVoluntary" href="index.html"> {t("تطوع معنا")}</NavLink>
                                         </li>
                                         <li>
                                             <NavLink className="nav-link" to="/acution" href="index.html"> {t("المزادات")}</NavLink>

@@ -33,7 +33,12 @@ body[dir="rtl"] .projects_dir{
     background-color: #fff !important;
 }
 .donate__link:hover{
-    color: #6b6b6b;
+    color: #fff !important;
+    background-color: #EF8451 !important;
+    border: 1px solid #EF8451;
+    outline: none;
+    margin-top: 20px;
+    
 }
 .donate__para{
     margin: auto;

@@ -88,7 +88,7 @@ export default function Acution() {
     addNewAcution.append("starting_price", formData.price);
     addNewAcution.append("mazad_amount", formData.mazad);
     addNewAcution.append("end_date", formData.dateSend);
-    addNewAcution.append("end_time", formData.timeSend);
+    addNewAcution.append("end_time", formData.timeSend+':00');
     const onSubmitHandler = (e) => {
 
         const toastId = toast.loading(" ... ")
@@ -185,9 +185,8 @@ export default function Acution() {
                                             <Form.Control type='date' name="dateSend" className={`${style.input}`} onChange={onChangeHandler} value={formData.dateSend} />
                                         </Form.Group>
                                         <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                            <Form.Control name="timeSend" className={`${style.input} ${style.question}`} onChange={onChangeHandler} value={formData.timeSend} placeholder="الوقت لانهاء المزاد  " />
-                                            <p className={` ${style.questionMark}`}><BsQuestionCircle /></p>
-                                            <p className={` ${style.questionMark__para}`}>{t("الوقت المشابهه لوقت الادخال 14:00:00")}</p>
+                                            <Form.Control name="timeSend" type="time" className={`${style.input} ${style.question}`} onChange={onChangeHandler} value={formData.timeSend} placeholder="الوقت لانهاء المزاد  " />
+                                           
                                         </Form.Group>
                                         <Button type="submit" className={style.signup__btn} >
                                             اضافة الان

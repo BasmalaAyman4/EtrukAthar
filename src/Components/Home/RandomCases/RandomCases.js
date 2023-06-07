@@ -9,18 +9,28 @@ import Card from '../../Card/Card';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useTranslation } from 'react-i18next';
+import Loading from '../../Loading/Loading';
 
 const RandomCases = () => {
 
   const [randomCases, setRandomCases] = useState([])
   const currentLanguageCode = Cookies.get('i18next') || 'en'
+  const [isLoading, setIsLoading] = useState(true);
   const { t } = useTranslation()
   useEffect(() => {
+    setIsLoading(true)
+    setTimeout(() => {
     axios.get(`https://otrok.invoacdmy.com/api/user/case/last?lang=${currentLanguageCode}`)
       .then(response => {
         setRandomCases(response.data.cases)
+        setIsLoading(false)
       }
-      ).catch((err) => { console.log(err) })
+      ).catch((err) => { 
+        console.log(err) 
+        setIsLoading(false)
+      }
+      )
+    }, 500)
 
   }, [currentLanguageCode])
 
@@ -29,6 +39,10 @@ const RandomCases = () => {
     <section className={` ${styles["roundom-cases"]}`}>
       <div className='container '>
       <h3 className={`${styles["roundom-cases__title"]} text-center `}>{t("اخر الحالات المضافه")}</h3>
+      {isLoading?
+
+        <Loading />
+        :
         <Swiper
           spaceBetween={30}
           autoHeight={true}
@@ -58,6 +72,8 @@ const RandomCases = () => {
 
           className="mySwiper"
         >
+          
+                                
           {randomCases && randomCases.map(item => (
             randomCases.length > 0 ?
             <SwiperSlide className='mt-5'>
@@ -80,6 +96,7 @@ const RandomCases = () => {
           ))}
 
         </Swiper>
+}
       </div>
     </section>
   )

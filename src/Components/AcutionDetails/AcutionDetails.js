@@ -21,12 +21,11 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios'
 import Modal from 'react-bootstrap/Modal';
 import { toast, ToastContainer } from 'react-toastify';
-import { useTranslation } from 'react-i18next'
-import Cookies from 'js-cookie'
+import { useTranslation } from 'react-i18next';
+
 export default function AcutionDetails() {
     const mazadId = useParams()
     const { t } = useTranslation()
-    const currentLanguageCode = Cookies.get('i18next') || 'en'
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -44,6 +43,7 @@ export default function AcutionDetails() {
     const [moreFromVendor, setMoreFromVendor] = useState([])
     const [increment, setIncrement] = useState(0)
     const [timeOver, setTimeOver] = useState(false)
+    const [distantStatue,setDistantStatue] = useState(false)
     const [token, setToken] = useState(localStorage.getItem("token"))
     const showActive = (view) => {
         setActive(view)
@@ -68,14 +68,15 @@ export default function AcutionDetails() {
                 setMazadHistory(response.data.history)
             }).catch((err) => { console.log(err) })
 
-        axios.get(`https://otrok.invoacdmy.com/api/user/mazad/othermazad/${mazadId.id}?lang=${currentLanguageCode}`)
+        axios.get(`https://otrok.invoacdmy.com/api/user/mazad/othermazad/${mazadId.id}`)
             .then((response) => {
                 setMoreFromVendor(response.data.others)
             }).catch((err) => { console.log(err) })
-    }, [currentLanguageCode])
+    }, [])
 
     const date = moment(mazadDetails.end_date).format('LL')
     const none = (new Date(moment(mazadDetails.end_date).format('LL') + " " + mazadDetails.end_time).getTime()) - (new Date().getTime());
+   
     let interval = useRef();
     const startTimer = () => {
         const countdownDate = new Date(moment(mazadDetails.end_date).format('LL') + " " + mazadDetails.end_time).getTime();
@@ -86,9 +87,8 @@ export default function AcutionDetails() {
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)));
             const minutes = Math.floor((distance % (1000 * 60 * 60) / (1000 * 60)));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            if (distance === 0) {
-
+     
+            if (distance <= 0 ) {
                 setTimeOver(true)
                 clearInterval(interval.current)
             } else {
@@ -98,26 +98,33 @@ export default function AcutionDetails() {
                 setTimerMinutes(minutes);
                 setTimerSeconds(seconds);
             }
+
+
         }, 1000);
+
+       
     }
-
-
+   
+    
+    
     function handleStatus() {
-
+        
         const timeStatus = new FormData();
         timeStatus.append("status", 'finished');
         axios.post(`https://otrok.invoacdmy.com/api/dashboard/mazad/update/${mazadId.id}`, timeStatus, {
             headers: {
-
+                "Authorization": `Bearer ${localStorage.getItem('tokenA')}`,
                 "Content-Type": "multipart/form-data"
             }
         }).then(response => {
-
+            console.log(response)
         }
         ).catch((err) => { toast.error(err.response.data.message) })
     }
-    if (timeOver === true) {
+    const [isStatus,setIsStatus] = useState(false);
+    if (timeOver === true && !isStatus ) {
         handleStatus()
+        setIsStatus(true);
     }
 
     useEffect(() => {
@@ -177,6 +184,7 @@ export default function AcutionDetails() {
 
                         </Col>
                         <Col>
+                            
                             <div className={`${style.desc__body}`}>
                                 <p className={`${style.desc__para}`}>{mazadDetails.description_ar}</p>
                                 <h3 className={`${style.desc__paid}`}>{t("الدفع الحالي")} : <span className={`${style.desc__price}`}>${mazadDetails.current_price} </span></h3>
@@ -231,15 +239,16 @@ export default function AcutionDetails() {
                         </Col>
                     </Row>
                     <div className={`${style.acution__info}`}>
-                        <Link to='' className={`${active === "description" ? style.style__link : style.view__link}`} onClick={() => { showActive("description") }}>  {t("وصف")}</Link>
-                        <Link to='' className={`${active === "history" ? style.style__link : style.view__link}`} onClick={() => { showActive("history") }}> {t("تاريخ المزاد")}</Link>
-                        <Link to='' className={`${active === "info" ? style.style__link : style.view__link}`} onClick={() => { showActive("info") }}> {t("معلومات البائع")}</Link>
-                        <Link to='' className={`${active === "vendor" ? style.style__link : style.view__link}`} onClick={() => { showActive("vendor") }}> {t("المزيد من البائع")}</Link>
+                        <Link to='' className={`${active === "description" ? style.style__link : style.view__link}`} onClick={() => { showActive("description") }}> DESCRIPTION</Link>
+                        <Link to='' className={`${active === "history" ? style.style__link : style.view__link}`} onClick={() => { showActive("history") }}>AUCTION HISTORY</Link>
+                        <Link to='' className={`${active === "info" ? style.style__link : style.view__link}`} onClick={() => { showActive("info") }}>VENDOR INFO</Link>
+                        <Link to='' className={`${active === "vendor" ? style.style__link : style.view__link}`} onClick={() => { showActive("vendor") }}>MORE FROM VENDOR</Link>
                     </div>
                     <div className={`${active === "description" ? style.acution__info__body : style.none}`}>
-                        <p className={`${style.acution__info__para}`}>{mazadDetails.description_ar}</p>
+                        <p className={`${style.acution__info__para}`}>Going forward knowledge is power or we need to button up our approach old boys club. Please use “solutionise” instead of solution ideas! 🙂 draw a line in the sand, for take five, punch the tree, and come back in here with a clear head. Out of scope data-point work flows , nor critical mass, and time to open the kimono yet move the needle.</p>
+                        <p className={`${style.acution__info__para}`}>You better eat a reality sandwich before you walk back in that boardroom fire up your browser, so come up with something buzzworthy, for it’s about managing expectations yet baseline into the weeds. Gain traction product management breakout fastworks we just need to put these last issues to bed, or table the discussion </p>
                     </div>
-                    <div className={`${active === "history" ? style.acution__info__bodyy : style.none}`}>
+                    <div className={`${active === "history" ? style.acution__info__body : style.none}`}>
                         <DataGrid
                             rows={mazadHistory}
                             columns={userColumns}
@@ -256,8 +265,8 @@ export default function AcutionDetails() {
                         />
                     </div>
                     <div className={`${active === "info" ? style.acution__info__body : style.none}`}>
-                        <p className={`${style.info__para}`}> <AiOutlineUser className={`${style.info__icon}`} />{t("البائع")} : <span>{vendorName}</span> </p>
-                        <p className={`${style.info__para}`}> <CiLocationOn className={`${style.info__icon}`} /> {t("البريد الالكتروني")} : <span> {vendorEmail}</span> </p>
+                        <p className={`${style.info__para}`}> <AiOutlineUser className={`${style.info__icon}`} /> Vendor : <span>{vendorName}</span> </p>
+                        <p className={`${style.info__para}`}> <CiLocationOn className={`${style.info__icon}`} /> Email: <span> {vendorEmail}</span> </p>
                     </div>
                     <div className={`${active === "vendor" ? style.vendor__body : style.none}`}>
                         {moreFromVendor && moreFromVendor.map(acutionCard => (
@@ -277,7 +286,7 @@ export default function AcutionDetails() {
                                                 <div >
                                                     {((new Date(moment(acutionCard.end_date).format('LL') + " " + acutionCard.end_time).getTime()) - (new Date().getTime())) < 0
                                                         ?
-                                                        <p className={`${style.ended}`}> {t("انتهى المزاد")}</p>
+                                                        <p className={`${style.ended}`}>Acution Ended</p>
                                                         :
                                                         ""
                                                     }
@@ -287,7 +296,7 @@ export default function AcutionDetails() {
                                     </div>
                                     <div className={`${style.cardBody}`}>
                                         <h4 className={`${style.card__title}`}>{acutionCard.name}</h4>
-                                        <p className={`${style.card__acution}`}> {t("الدفع الحالي")} : {acutionCard.current_price}</p>
+                                        <p className={`${style.card__acution}`}> current Baid : {acutionCard.current_price}</p>
                                     </div>
                                 </Col>
                             </Link>

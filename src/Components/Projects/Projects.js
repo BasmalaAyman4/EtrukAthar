@@ -135,14 +135,14 @@ export default function Projects() {
             <section className={`${styles.projects} mb-5 pb-5`}>
 
                 <HeaderTitle title={t("الحالات")} para={t("المبلغ المجموع للحالات")} price={moneyDonate } />
-                <Button onClick={handleShow} className={`${styles.donate__link}`}>
+                <Button onClick={handleShow} className={`${styles.donate__link} mt-4`}>
                     {t(" اضافة حالة لصندوق الحالات")}
                 </Button>
                 <div>
 
                 </div>
                 <AddCase show={show} onHide={handleClose} setShow={setShow} />
-                <div className="container mb-5">
+                <div className="container mb-5 ">
                     <p className={`${styles.donate__para}`}>{t("نواظب على التنقيب عن مستلزمات المجتمع، ساعين لأجل توفير مشاريع من شأنها تلبية متطلباتهم، وتوفير حياةٍ كريمة لكلّ من تكبّد ويلاتُ الحرب")}</p>
                     <div className={`${styles.projects_dir} row mb-5 pb-5`}>
                         <div className='col-lg-2 col-md-12 col-sm-12 category'>
