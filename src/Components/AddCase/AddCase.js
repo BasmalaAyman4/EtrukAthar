@@ -16,6 +16,7 @@ import { useTranslation } from 'react-i18next';
 const AddCase = ({ show, setShow }) => {
   const [dataCategories, setDataCategories] = useState([]);
   const [dataType, setDataType] = useState([]);
+  const [disabled,setDisabled] = useState(false)
   const handleClose = () => setShow(false);
   const {t} = useTranslation()
   const currentLanguageCode = Cookies.get('i18next') || 'en'
@@ -124,32 +125,6 @@ const AddCase = ({ show, setShow }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
   const [formError, setFormError] = useState({})
-  // function errorAddCase() {
-  //     let err = {}
-
-  //     if (formData.title === '') {
-  //         err.title = 'عنوان الحالة مطلوب';
-  //     }
-  //     if (formData.img === '') {
-  //         err.img = "يرجي اختيار صوره للحالة";
-  //     }
-  //     if (formData.description === '') {
-  //         err.description = "نبذه مختصره عن الحالة مطلوبه";
-  //     }
-  //     if (formData.totalPrice === '') {
-  //         err.totalPrice = "المبلغ المراد تجميعه مطلوب"
-  //     }
-  //     if (formData.paiedAmount === '') {
-  //         err.paiedAmount = "المبلغ الذي تم تجميعه مطلوب"
-  //     }
-  //     if (formData.caseType === '') {
-  //         err.caseType = "يرجي اختيار نوع الحالة"
-  //     }
-  //     if (formData.donationType === '') {
-  //         err.donationType = ' يرجي اختيار نوع التبرع';
-  //     }
-  //     setFormError({ ...err })
-  // }
 
   const [checkedEnKind, setCheckedEnKind] = useState([]);
 
@@ -189,8 +164,13 @@ const AddCase = ({ show, setShow }) => {
   const addNewCase = new FormData();
   addNewCase.append("name_ar", formData.titleAr);
   addNewCase.append("name_en", formData.titleEn);
-  addNewCase.append("description_ar", formData.descriptionAr);
-  addNewCase.append("description_en", formData.descriptionEn);
+
+  if(formData.descriptionAr){
+    addNewCase.append("description_ar", formData.descriptionAr);
+  }
+  if(formData.descriptionEn){
+    addNewCase.append("description_en", formData.descriptionEn);
+  }
   if (fileImage) {
 
     [...fileImage].forEach((item, index) => {
@@ -201,7 +181,10 @@ const AddCase = ({ show, setShow }) => {
   addNewCase.append("donationtype_id", formData.donationTypeId);
   addNewCase.append("category_id", formData.caseTypeId);
   addNewCase.append("status", formData.statusCase);
-  addNewCase.append("file", formData.file);
+  if(formData.file){
+    addNewCase.append("file", formData.file);
+  }
+ 
   if (formData.donationTypeId === "1") {
     addNewCase.append("initial_amount", formData.totalPrice);
   }
@@ -381,7 +364,7 @@ const AddCase = ({ show, setShow }) => {
 
 
   const onSubmitHandler = (e) => {
-
+     setDisabled(true)
     const toastId = toast.loading(t(" ... انتظر قليلا"))
     setTimeout(() => { toast.dismiss(toastId); }, 1000);
     e.preventDefault()
@@ -394,8 +377,12 @@ const AddCase = ({ show, setShow }) => {
       .then(response => {
         toast.success(t("تم اضافه الحاله بنجاح .. رجاء الانتظار حتي التأكد من البيانات و يتم قبولها من قِبلنا"))
         console.log(response)
+        setDisabled(false)
       }
-      ).catch((err) => { toast.error(err.response.data.message) })
+      ).catch((err) => { 
+        toast.error(err.response.data.message)
+         setDisabled(false) 
+        })
 
   }
 
@@ -409,7 +396,7 @@ const AddCase = ({ show, setShow }) => {
         </Modal.Header>
         <Modal.Body >
           {!token ? <p className={`${styles.para}`}> {t("يجب تسجيل دخول لاضافة حالة ")} <a href='/login' className={`${styles.link}`}> {t("تسجل دخول")}</a></p> :
-            <Form onSubmit={onSubmitHandler}>
+            <Form onSubmit={onSubmitHandler} className='text-center'>
               <div className='text-center'>
                 <input className={`${styles.fileImg}  input-file-js`} ref={(e) => {
                   addFileInput.current = e
@@ -436,7 +423,7 @@ const AddCase = ({ show, setShow }) => {
                           );
                         })}
                       <button className='btn' type="button" onClick={(e) => deleteFile(e)}>
-                        delete
+                        {t("حذف الصور")}
                       </button>
                     </div>
 
@@ -446,19 +433,19 @@ const AddCase = ({ show, setShow }) => {
               </div>
 
               <Form.Group className="mb-3" controlId="formBasicEmail" >
-                <Form.Control name="titleAr" className={`${styles.input}`} placeholder="    اسم الحالة بالعربية" onChange={onChangeHandler} value={formData.titleAr} />
+                <Form.Control name="titleAr" className={`${styles.input}`} placeholder={t("اسم الحالة بالعربية")} onChange={onChangeHandler} value={formData.titleAr} required />
                 <Form.Text className={`${styles.msErr}`}>
                   {formError.title}
                 </Form.Text>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail" >
-                <Form.Control name="titleEn" className={`${styles.input}`} placeholder="    اسم الحالة بالانجيزية" onChange={onChangeHandler} value={formData.titleEn} />
+                <Form.Control name="titleEn" className={`${styles.input}`} placeholder={t("اسم الحالة بالانجيزية")} onChange={onChangeHandler} value={formData.titleEn} required />
                 <Form.Text className={`${styles.msErr}`}>
                   {formError.title}
                 </Form.Text>
 
               </Form.Group>
-              <Form.Group className="mb-3" controlId="" >
+              <Form.Group className={`${style["questionMark__container"]} mb-3`} controlId="" >
 
                 <Form.Control
                   name="file"
@@ -469,17 +456,17 @@ const AddCase = ({ show, setShow }) => {
                   onChange={(e) => { previewUploadFile(e) }}
                 />
                 <p className={` ${style.questionMark}`}><BsQuestionCircle /></p>
-                <p className={` ${style.questionMark__para}`}>الملف التعريفي الخاص بالحالة و وصفها</p>
+                <p className={` ${style.questionMark__para}`}>{t("الملف التعريفي الخاص بالحالة و وصفها")}</p>
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail" >
-                <Form.Control as="textarea" rows="3" name="descriptionAr" className={`${styles.textArea}`} placeholder="نبذه مختصره عن الحاله بالعربية" onChange={onChangeHandler} value={formData.descriptionAr} />
+                <Form.Control as="textarea" rows="3" name="descriptionAr" className={`${styles.textArea}`} placeholder={t("نبذه مختصره عن الحاله بالعربية")} onChange={onChangeHandler} value={formData.descriptionAr} />
                 <Form.Text className={`${styles.msErr}`}>
                   {formError.description}
                 </Form.Text>
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicEmail" >
-                <Form.Control as="textarea" rows="3" name="descriptionEn" className={`${styles.textArea}`} placeholder="نبذه مختصره عن الحاله بالانجليزية" onChange={onChangeHandler} value={formData.descriptionEn} />
+                <Form.Control as="textarea"  rows="3" name="descriptionEn" className={`${styles.textArea}`} placeholder={t("نبذه مختصره عن الحاله بالانجليزية")} onChange={onChangeHandler} value={formData.descriptionEn}  />
                 <Form.Text className={`${styles.msErr}`}>
                   {formError.description}
                 </Form.Text>
@@ -489,12 +476,14 @@ const AddCase = ({ show, setShow }) => {
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <select
                   placeholder="State"
+                  id='caseTypeId'
                   className={`${styles.input} select`}
                   name="caseTypeId"
                   onChange={onChangeHandler}
                   value={formData.caseTypeId}
+                  required
                 >
-                  <option className={styles.option}>نوع الحالة</option>
+                  <option className={styles.option} value=''>{t("نوع الحالة")}</option>
                   {dataCategories && dataCategories.map(category =>
                     <option className={styles.option} value={category.id} key={category.id}>{category.name}</option>
                   )}
@@ -502,16 +491,19 @@ const AddCase = ({ show, setShow }) => {
                 <Form.Text className={`${styles.msErr}`}>
                   {formError.caseType}
                 </Form.Text>
+              
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <select
+                 id='donationTypeId'
                   placeholder="State"
                   className={`${styles.input} select`}
                   name="donationTypeId"
                   onChange={onChangeHandler}
+                  required
                   value={formData.donationTypeId}
                 >
-                  <option className={styles.option}> نوع التبرع</option>
+                  <option className={styles.option} value=''>{t("نوع التبرع")}</option>
                   {dataType && dataType.map(type =>
                     <option className={styles.option} value={type.id} key={type.id} >{type.name}</option>
                   )}
@@ -527,7 +519,9 @@ const AddCase = ({ show, setShow }) => {
                     className={`${styles.input}`}
                     name="totalPrice"
                     type='number'
-                    placeholder=" المبلغ المطلوب"
+                    min='1'
+                    required
+                    placeholder={t(" المبلغ المطلوب")}
                     onChange={onChangeHandler}
                     value={formData.totalPrice} />
                   <Form.Text className={`${styles.msErr}`}>
@@ -540,12 +534,14 @@ const AddCase = ({ show, setShow }) => {
               {formData?.donationTypeId === '2' ?
                 <Form.Group className="mb-3" controlId="formBasicEmail" >
                   <Form.Control
-                    placeholder=" العدد المتبرعين المطلوب"
+                    placeholder={t(" العدد المتبرعين المطلوب")}
                     className={`${styles.input}`}
                     name="numberOfVolunteers"
                     type='number'
+                    min='1'
                     onChange={onChangeHandler}
                     value={formData.numberOfVolunteers}
+                    required
                   />
                   <Form.Text className={`${styles.msErr}`}>
                     {formError.totalPrice}
@@ -557,10 +553,12 @@ const AddCase = ({ show, setShow }) => {
               {formData?.donationTypeId === '3' ?
                 <Form.Group className="mb-3" controlId="formBasicEmail" >
                   <Form.Control
-                    placeholder="العدد الكارتين المطلوبة"
+                    placeholder={t("العدد الكارتين المطلوبة")}
                     className={`${styles.input}`}
                     name="numberOfCartons"
                     type='number'
+                    min='1'
+                    required
                     onChange={onChangeHandler}
                     value={formData.numberOfCartons}
                   />
@@ -575,10 +573,12 @@ const AddCase = ({ show, setShow }) => {
                 <>
                   <Form.Group className="mb-3" controlId="formBasicEmail" >
                     <Form.Control
-                      placeholder="العدد الاشخاص"
+                      placeholder={t("العدد الاشخاص")}
                       className={`${styles.input}`}
                       name="numberOfPeople"
                       type='number'
+                      required
+                      min='1'
                       onChange={onChangeHandler}
                       value={formData.numberOfPeople}
                     />
@@ -586,31 +586,33 @@ const AddCase = ({ show, setShow }) => {
                       {formError.totalPrice}
                     </Form.Text>
                   </Form.Group>
-                  <Form.Group className="mb-3" controlId="formBasicPassword">
+                  <Form.Group className={`${style["questionMark__container-clothes"]} mb-3`}   controlId="formBasicPassword">
                     <div className="formInput d-flex mt-2" >
                       <div className="form-group ">
                         <input className="form-group_checklist" type="checkbox" name="men" id="men" value="men" onChange={(e) => { handleCheckedKind(e) }} />
-                        <label className="form-group_checklist_label" for="men" value="men">رجالي</label>
+                        <label className="form-group_checklist_label" for="men" value="men">{t("رجالي")}</label>
                       </div>
                       <div className="form-group ">
                         <input className="form-group_checklist" type="checkbox" id="women" value="women" onChange={(e) => { handleCheckedKind(e) }} />
-                        <label className="form-group_checklist_label" for="women" value="women">حريمي</label>
+                        <label className="form-group_checklist_label" for="women" value="women">{t("حريمي")}</label>
                       </div>
                       <div className="form-group ">
                         <input className="form-group_checklist" type="checkbox" id="child" value="child" onChange={(e) => { handleCheckedKind(e) }} />
-                        <label className="form-group_checklist_label" for="child" value="child">اطفالي</label>
+                        <label className="form-group_checklist_label" for="child" value="child">{t("اطفالي")}</label>
                       </div>
                     </div>
                     <div className="formInput d-flex mt-2" >
                       <div className="form-group ">
                         <input className="form-group_checklist" type="checkbox" id="summer" value="summer" onChange={(e) => { handleCheckedSeasons(e) }} />
-                        <label className="form-group_checklist_label font" for="summer" value="summer">صيفي</label>
+                        <label className="form-group_checklist_label font" for="summer" value="summer">{t("صيفي")}</label>
                       </div>
                       <div className="form-group ">
                         <input className="form-group_checklist" type="checkbox" id="winter" value="winter" onChange={(e) => { handleCheckedSeasons(e) }} />
-                        <label className="form-group_checklist_label " for="winter" value="winter">شتوي</label>
+                        <label className="form-group_checklist_label " for="winter" value="winter">{t("شتوي")}</label>
                       </div>
                     </div>
+                    <p className={` ${style.questionMark}`}><BsQuestionCircle /></p>
+                   <p className={` ${style.questionMark__para}`}>{t("الرجاء اختيار فئه الملابس")}</p>
                   </Form.Group>
                 </>
                 :
@@ -623,10 +625,12 @@ const AddCase = ({ show, setShow }) => {
                     <>
                       <Form.Group className="mb-3" controlId="formBasicEmail" >
                         <Form.Control
-                          placeholder="العدد الاثاث"
+                          placeholder={t("عدد قطع الاثاث")}
                           className={`${styles.input}`}
                           name="amountItem"
                           type='number'
+                          min='1'
+                          required
                           value={item.amountItem}
                           onChange={event => handleFormChange(index, event)}
                         />
@@ -640,10 +644,11 @@ const AddCase = ({ show, setShow }) => {
                           className={`${styles.input} select`}
                           name="nameEnItem"
                           data-index={index}
+                          required
                           onChange={event => handleFurnitureChange(index, event)}
                           value={item.nameEnItem}
                         >
-                          <option value=''> اسم القطعه بالانجليزية</option>
+                          <option value=''>{t("اسم القطعه بالانجليزية")}</option>
                           {furnitureEnOption && furnitureEnOption.map(opt =>
                             <option value={opt.value} name={opt.name} key={opt.value} >{opt.value}</option>
                           )}
@@ -657,7 +662,7 @@ const AddCase = ({ show, setShow }) => {
                           name="nameArItem"
                           disabled
                         >
-                          <option value=''> اسم القطعه بالعربية </option>
+                          <option value=''> {t("اسم القطعه بالعربية")}</option>
                           {furnitureArOption && furnitureArOption.map(opt =>
                             <option value={opt.value} name={opt.name} key={opt.value} >{opt.name}</option>
                           )}
@@ -667,7 +672,7 @@ const AddCase = ({ show, setShow }) => {
                       {
                         index > 0 || dataFurniture.length === 2 ?
                           <Form.Group className="mb-3 d-flex" controlId="formBasicPassword">
-                            <button type='button' onClick={() => { deleteItem(index) }} className={`${styles["add-uncle-button"]}`} ><img width={20} src={minus} alt="" />مسح القطعة</button>
+                            <button type='button' onClick={() => { deleteItem(index) }} className={`${styles["add-uncle-button"]}`} ><img width={20} src={minus} alt="" />{t("مسح القطعة")}</button>
                           </Form.Group>
                           :
                           <>
@@ -682,14 +687,14 @@ const AddCase = ({ show, setShow }) => {
 
 
                   <Form.Group className="mb-3 d-flex" controlId="formBasicPassword">
-                    <button type="button" className={`${styles["add-uncle-button"]}`} onClick={() => { addItem() }}><img src={plus} alt="" />  اضافه القطعة</button>
+                    <button type="button" className={`${styles["add-uncle-button"]}`} onClick={() => { addItem() }}><img src={plus} alt="" /> {t("اضافه القطعة")}</button>
                   </Form.Group>
                 </>
                 :
                 null
               }
-              <Button type="submit" className={styles.signup__btn} >
-                اضافة الان
+              <Button type="submit" disabled={disabled === true ? true : false} className={`${styles.signup__btn} text-center`} >
+                {t("اضافة الان")}
               </Button>
             </Form>
           }

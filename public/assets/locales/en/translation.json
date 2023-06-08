@@ -13,7 +13,7 @@
     "جمعيات  خيرية":"Charities",
     "صندوق علمني ":"Teach Me Fund",
     " من نحن": "who are we",
-     "تعديل حسابي" :"Edit Profile",
+     "تعديل حسابي" :" Profile",
     "كيف اتبرع ؟ ":" How to donate",
     "حاسبة الزكاة":"Zakat Calculator",
     "تسجيل":"sign up",
@@ -197,7 +197,7 @@
     "المطلوب":"requried",
     "عدد المطوعين":"collected Volunteers",
     "عدد الكارتين":"collected cartoons",
-    "عدد الافراد" :"collected for people",
+    "عدد الافراد" :"collected for persons",
    "عدد الاثاث":"collected Items",
    "تم تسجيل الدخول بنجاح":"Successfully Logged!",
    "فئات":"Categories Of Cases",
@@ -214,7 +214,7 @@
    "جنيه":"LE",
    "ج":"LE",
    " ... انتظر قليلا":" ... please wait",
-   "تم اضافه الحاله بنجاح .. رجاء الانتظار حتي التأكد من البيانات و يتم قبولها من قِبلنا":"The case has been added successfully.. Please wait until the data is confirmed and accepted by us in English",
+   "تم اضافه الحاله بنجاح .. رجاء الانتظار حتي التأكد من البيانات و يتم قبولها من قِبلنا":"The case has been added successfully.. Please wait until the data is confirmed and accepted by us",
    "لاضافة حالة يرجي ملئ البيانات":"If you want to add case please fill this form",
    "يجب تسجيل دخول لاضافة حالة ":"For adding case please ",
    "تسجل دخول":"login",
@@ -248,9 +248,69 @@
     "نبذه مختصره عن المزاد بالانجليزية": "A brief overview of the auction in English",
     "السعر الذي يبدأ به المزاد":"auction starting price",
     "السعر الذي يزيد به المزاد": "the price at which the auction increases",
-    "الوقت المشابهه لوقت الادخال 14:00:00":"the time similar to the entry time 14:00:00"
-
-
+    "الوقت المشابهه لوقت الادخال 14:00:00":"the time similar to the entry time 14:00:00",
+    "حذف الصور":"Delete images",
+    "اسم الحالة بالعربية":"Case name in Arabic",
+    "اسم الحالة بالانجيزية":"Case name in English",
+    "الملف التعريفي الخاص بالحالة و وصفها":"File attachment of case ",
+    "نبذه مختصره عن الحاله بالعربية":"Case description in Arabic",
+    "نبذه مختصره عن الحاله بالانجليزية":"Case description in English",
+    "نوع الحالة":"Case category",
+    "نوع التبرع":"Donate type",
+    " المبلغ المطلوب":"Required amount",
+    " العدد المتبرعين المطلوب":"Required number of volunteers",
+    "العدد الكارتين المطلوبة":"Required number of cartoons",
+    "العدد الاشخاص":"Number of persons who are need clothes ",
+    "رجالي":"men",
+    "حريمي":"women",
+    "اطفالي":"child",
+    "صيفي":"summer",
+    "شتوي":"winter",
+    "عدد قطع الاثاث":"number of furniture which needed ",
+    "اسم القطعه بالانجليزية":"Name of item in English",
+    "اسم القطعه بالعربية":"Name of item in Arabic",
+    "اضافه القطعة":"Add item",
+    "مسح القطعة":"Delete item",
+    "اضافة الان":"Add Now",
+    "الرجاء اختيار فئه الملابس":"please choose category of clothes",
+    "تبرع الان   للحالات عبر موقعنا ":"Donate now through our site",
+    "كرتونة":" cartoon",
+    "عدد الاشخاص":" person",
+    "ل":"for ",
+    "عنصر":"furniture or device",
+    " تم جمع ملابس":"collected clothes for",
+    "تعديل الحساب":"Edit Profile",
+    "الحالات التي تمت اضافتها بواسطتك":"Cases added by you",
+    "حفظ التغيرات":"save changes",
+    "تبرعاتك":"your donations",
+    "حالاتك":"Your Case",
+    "المبلغ المتبرع به":"amount donated",
+    "جمعية":"As Charity",
+    "النوع":"Gender",
+    "اسم الجمعية بالانجليزي":"Charity name in English.",
+    "اسم الجمعية بالعربي":"Charity name in Arabic.",
+    "تم التسجيل بنجاح":"successfully registered",
+    "ملف الشفافية":"transparency file",
+    "تطوع دائم":"Permanent Volunteer: The volunteer must be employed on an ongoing basis.",
+    "تطوع مؤقت":"Temporary volunteering: It is volunteering either for a specific period of time or for intermittent periods of time according to the need for a specific and specific activity only or for a set of specific activities.",
+    "واجبات المتطوع":"Duties of a volunteer",
+    "– أداء واجبات عمله ومهامه الموكلة إليه بنشاط متوخياً الأمانة والنزاهة والدقة والمهنية والتجرد وبأقصى إمكانياته.":"- Actively performs his duties and tasks entrusted to him with honesty, integrity, accuracy, professionalism and impartiality to the fullest of his abilities.",
+    "– الحرص على الإلمام بالقوانين والأنظمة النافذة وتطبيقها دون أي تجاوز أو مخالفة أو إهمال.":"Ensuring familiarity with the laws and regulations in force and their application without any infringement, violation or negligence.",
+    "– تكريس أوقات الدوام الرسمي للقيام بمهام عمله، وعدم القيام بأي نشاط لا يتعلق بمهامه المهنية.":"- Dedicating official working hours to carrying out his work duties, and not doing any activity that is not related to his professional duties",
+    "– السعي الدائم لتحسين أدائه وتطوير قدراته المهنية والاطلاع على آخر المستجدات في إجمالي عمله.":"- Constantly striving to improve his performance, develop his professional capabilities, and keep abreast of the latest developments in his overall work.",
+    "– تقديم المقترحات التي من شأنها تحسين أساليب العمل ورفع مستوى الأداء المهني، والمساعدة في توفير بيئة عمل آمنة وصحية.":"- Submitting proposals that would improve work methods, raise the level of professional performance, and help provide a safe and healthy work environment.",
+    "– الامتناع عن أي تصرفات أو ممارسات أو أعمال تنتهك الآداب والسلوك الأخلاقي، والامتناع عن الإساءة إلى المعتقدات الدينية للآخرين داخل أو خارج دائرته أو التحريض ضدها.":"- Refrain from any actions, practices or actions that violate morals and ethical behavior, and refrain from offending the religious beliefs of others inside or outside his circle or inciting against them.",
+    "شروط التطوع":"Terms of volunteering",
+    "– أن يكون المتطوع حسن السيرة و السلوك و ألا يكون صدر بحقه أي حكم ولا يكون مطالبا بالمثول أمام أي محكمة .":"- The volunteer must be of good conduct and behavior, and that no judgment has been passed against him and that he is not required to appear before any court.",
+    "– أن يلتزم المتطوع برسالة وأهداف المجموعة الموضحة في النظام الداخلي ويسعى لتنفيذها بـ إحسان .":"- The volunteer must abide by the group's mission and goals set out in the bylaw and strive to implement them with kindness",
+    "– الإيمان بالعمل التطوعي وتقديم القيمة المضافة للمجموعة من خلالهُ.":"- Belief in voluntary work and providing the added value to the group through it.",
+    "– الاستعداد لتنمية مهاراته و تطويرها بما يخدم العمل .":"- Willingness to develop and develop his skills to serve the work.",
+    "– الالتزام ب تأدية المهام المكلف بها .":"- Commitment to perform the assigned tasks.",
+    "– الالتزام بمدونة السلوك المهني.":"- Commitment to a code of professional conduct.",
+    "تقوم المجموعة بطرح فرص تطوعية في الأردن و الداخل السوري ، تبعاً للبرامج المنفذة وفق الاحتياج ، بإمكانكم متابعتنا عبر الموقع و صفحات التواصل الاجتماعي وتعبئة الاستبيان المرفق .":"The group is offering volunteer opportunities in Jordan and inside Syria, according to the implemented programs according to need. You can follow us through the website and social media pages and fill out the attached questionnaire.",
+    "نرحب بكل من يشارك و يساعد و يبتسم 😊":"We welcome everyone who participates, helps and smiles 😊",
+    "تقديم طلب التطوع":"Submit a volunteer application"
+    
 
    
    

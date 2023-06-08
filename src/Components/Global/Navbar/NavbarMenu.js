@@ -58,6 +58,7 @@ export default function NavbarMenu() {
 
     }, [currentLanguage, t])
     function handleLanguage(code, index, event) {
+        // window.location.reload();
         event.preventDefault();
         i18next.changeLanguage(code)   
         

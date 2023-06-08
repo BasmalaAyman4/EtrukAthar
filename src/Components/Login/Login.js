@@ -16,9 +16,10 @@ export default function Login() {
     // }
     const { t } = useTranslation()
     const navigate = useNavigate();
-    const authContext = useContext(AuthContext);
+    const [disabled,setDisabled] = useState(false)
+ 
     const validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    const validPass = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+  
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -70,32 +71,25 @@ export default function Login() {
 
 
     function handleSubmitLogin(e) {
-        const toastId = toast.loading("Please wait...")
+        setDisabled(true)
+        console.log(disabled)
+        const toastId = toast.loading(t(" ... انتظر قليلا"))
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         e.preventDefault()
         handleErrors()
-        if (userType === '1') {
-            axios.post(`https://otrok.invoacdmy.com/api/login`, reqSignUpData)
-                .then((response) => {
-                    localStorage.setItem("token", response.data.token)
-                    toast.success(t("تم تسجيل الدخول بنجاح"))
-                    handleRedirect()
-                })
-                .catch((err) => {
-                    toast.error(err.response.data.message)
-                });
-        } else {
-            axios.post(`https://otrok.invoacdmy.com/api/login`, reqSignUpData)
-                .then((response) => {
-                    localStorage.setItem("token", response.data.token)
-                    toast.success("تم تسجيل الدخول بنجاح")
-                    handleRedirect()
-                })
-                .catch((err) => {
-                    toast.error(err.response.data.message)
-                });
-        }
+        axios.post(`https://otrok.invoacdmy.com/api/login`, reqSignUpData)
+            .then((response) => {
 
+                localStorage.setItem("token", response.data.token)
+                toast.success(t("تم تسجيل الدخول بنجاح"))
+                setDisabled(false)
+                handleRedirect()
+                    
+            })
+            .catch((err) => {
+                toast.error(err.response.data.message)
+                setDisabled(false)
+            })
     }
 
     return (
@@ -136,7 +130,7 @@ export default function Login() {
                                                 {formError.password}
                                             </Form.Text>
                                         </Form.Group>
-                                        <button className={style.log__btn} type='button' onClick={(e) => { handleSubmitLogin(e) }}>{t("تسجيل الدخول")}</button>
+                                        <button className={style.log__btn} type='button' disabled={disabled? true : false} onClick={(e) => { handleSubmitLogin(e) }}>{t("تسجيل الدخول")}</button>
                                     </div>
                                     <hr className={style.forgetLine} />
                                     <a href='/forget' className={style.log__link}> {t("هل نسيت كلمة السر؟")}</a>

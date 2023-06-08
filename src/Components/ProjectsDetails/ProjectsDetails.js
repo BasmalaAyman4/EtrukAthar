@@ -15,6 +15,7 @@ import details3 from './../../assets/images/details3.jpeg'
 import new1 from './../../assets/images/3-copy-scaled.jpg'
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import imgNull from '../../assets/images/eae946efbbf74117a65d488206a09b63.png'
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination } from "swiper";
@@ -29,7 +30,7 @@ import 'react-phone-number-input/style.css'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import axios from 'axios'
-import { useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify'
 import { ToastContainer } from "react-toastify";
 import moment from 'moment'
@@ -39,41 +40,36 @@ import Cookies from 'js-cookie'
 
 export default function ProjectsDetails() {
     const [token, setToken] = useState(localStorage.getItem("token"))
+
+    const navigate = useNavigate();
     const [formData, setFormData] = useState([])
     const [image, setImage] = useState([]);
     const [items, setItems] = useState({})
     const [donationType, setDonationType] = useState()
     const casesId = useParams()
+    const [queryParameters] = useSearchParams()
     const [priceShow, setPriceshow] = useState("");
     const currentLanguageCode = Cookies.get('i18next') || 'en'
 
     const { t } = useTranslation()
-
-    function clickPrice(price) {
-        setPriceshow(price)
-      
-    }
+  
     const [donateData, setDonateData] = useState({
         name: '',
         email: '',
         numbercard: '',
         namecard: '',
-        cvc: '',
         phone: '',
         address: '',
         city: '',
         numberOfVoulenteers: '',
-        expiry: '',
         helpDescription: '',
         food: '',
         dateSend: '',
         amoutDescriptipn: 'جنيه',
         numberOfCartons: '',
         numberOfPeople: '',
-        visaName: '',
-        Cnn: '',
-        verificationCode: '',
-        visaDate: '',
+        method: '',
+        money:''
     })
 
     useEffect(() => {
@@ -84,18 +80,40 @@ export default function ProjectsDetails() {
                 setImage(response.data.case.caseimage)
                 setDonationType(response.data.case.donationtype_id)
             }).catch((err) => { console.log(err) })
+        if(queryParameters.get("status") === '1'){
+            toast.success('تمت العملية بنجاح')
+        }
     }, [])
 
-
-
+   
+   
     const onChangeHandler = e => {
         setDonateData({ ...donateData, [e.target.name]: e.target.value })
+        console.log(donateData)
 
+    }
+    function clickPrice(price) {
+        setPriceshow(price)
+        console.log(priceShow,'fff')
+
+      
+    }
+    function changePrice(e) {
+        setDonateData({ ...donateData, money: e.target.value })
     }
     const onChangeHandlerPhone = data => {
         setDonateData({ ...donateData, phone: data })
     }
-
+    const onChangePaymentMethod = e => {
+        setDonateData({ ...donateData, method: e.target.value })
+        console.log(donateData)
+       
+    }
+   const handleChangeMoney= e => {
+    setPriceshow(e.target.value)
+   }
+   const [formError, setFormError] = useState({})
+  
 
 
     const [checkedEnKind, setCheckedEnKind] = useState([]);
@@ -115,7 +133,7 @@ export default function ProjectsDetails() {
         itemId: "",
         amountItem: ""
     }])
-
+  
     const addItem = () => {
         let newfield = {
             itemId: "",
@@ -131,7 +149,7 @@ export default function ProjectsDetails() {
         data.splice(index, 1)
         setDataFurniture(data)
     }
-
+     
 
     const [checkedEnSeasons, setCheckedEnSeasons] = useState([]);
     function handleCheckedSeasons(e) {
@@ -146,14 +164,20 @@ export default function ProjectsDetails() {
         setCheckedEnSeasons(updatedEnList);
 
     };
-
+    function handleErrors() {
+        let err = {}
+        if (checkedEnKind.length) {
+            err.checkedEnKind = "يجب اختيار فئه الملابس"
+        }
+        setFormError({ ...err })
+    }
     const handleFormChange = (index, event) => {
         let data = [...dataFurniture];
         data[index][event.target.name] = event.target.value;
         setDataFurniture(data);
         console.log(dataFurniture, 'items')
     }
-
+   
 
     const [arOptionValue, setArOptionValue] = useState()
     function handleFurnitureChange(index, event) {
@@ -180,19 +204,18 @@ export default function ProjectsDetails() {
     storeDonate.append("name", donateData.name);
     storeDonate.append("email", donateData.email);
     storeDonate.append("phone", donateData.phone);
-    storeDonate.append("address", donateData.address);
-    storeDonate.append("city", donateData.city);
-    storeDonate.append("date_to_send", donateData.dateSend.slice(0, 10));
-    storeDonate.append("city", donateData.city);
+    // storeDonate.append("address", donateData.address);
+    // storeDonate.append("city", donateData.city);
+    // storeDonate.append("date_to_send", donateData.dateSend.slice(0, 10));
+    
     storeDonate.append("donationtype_id", donationType);
     if (formData.donationtype_id === '2') {
-        storeDonate.append("amount", donateData.numberOfVoulenteers);
+        storeDonate.append("amount_financial", donateData.numberOfVoulenteers);
         storeDonate.append("method", "representative");
     }
-    if (donateData.address && formData.donationtype_id === '1') {
-        storeDonate.append("method", "representative");
+    if (formData.donationtype_id === '1') {
+        storeDonate.append("method", donateData.method);
         storeDonate.append("amount_financial", priceShow);
-
     }
     if (donateData.address && formData.donationtype_id === '3') {
         storeDonate.append("amount", donateData.numberOfCartons);
@@ -209,10 +232,10 @@ export default function ProjectsDetails() {
         storeDonate.append('description', checkedEnSeasons.toString())
 
     }
-    if (formData.donationtype_id === '1') {
-        storeDonate.append("date_to_send", donateData.dateSend.slice(0, 10));
+    // if (formData.donationtype_id === '1') {
+    //     storeDonate.append("date_to_send", donateData.dateSend.slice(0, 10));
 
-    }
+    // }
     if (formData.donationtype_id === "5") {
         dataFurniture.map((item, index) => {
             storeDonate.append(`items[${index}][id]`, item.itemId);
@@ -231,25 +254,24 @@ export default function ProjectsDetails() {
         const toastId = toast.loading("...انتظر قليلا")
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         e.preventDefault()
-        if (token) {
-            axios.post("https://otrok.invoacdmy.com/api/user/donation/financial/user", storeDonate, {
+        if (localStorage.getItem("token")) {
+            axios.post(`https://otrok.invoacdmy.com/api/user/donation/financial/user?lang=${currentLanguageCode}`, storeDonate, {
                 headers: {
                     "Authorization": `Bearer ${token}`,
                     "Content-Type": "multipart/form-data"
                 }
             }).then(response => {
-                toast.success('تمت العملية بنجاح')
-                console.log(response.data.message)
+                window.location.replace(response.data.payment_response.redirect_url);
+
             }
             ).catch((err) => { toast.error(err.response.data.message) })
         } else {
-            axios.post("https://otrok.invoacdmy.com/api/user/donation/financial/guest", storeDonate, {
+            axios.post(`https://otrok.invoacdmy.com/api/user/donation/financial/guest?lang=${currentLanguageCode}`, storeDonate, {
                 headers: {
                     "Content-Type": "multipart/form-data"
                 }
-            })
-                .then(response => {
-                    toast.success('تمت العملية بنجاح')
+            }).then(response => {
+                    window.location.replace(response.data.payment_response.redirect_url);
                 }
                 ).catch((err) => { toast.error(err.response.data.message) })
         }
@@ -263,7 +285,7 @@ export default function ProjectsDetails() {
         const toastId = toast.loading("...انتظر قليلا")
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         e.preventDefault()
-        axios.post("https://otrok.invoacdmy.com/api/user/donation/store/payment", storeDonate, {
+        axios.post(`https://otrok.invoacdmy.com/api/user/donation/store/payment?lang=${currentLanguageCode}`, storeDonate, {
             headers: {
                 "Content-Type": "multipart/form-data"
             }
@@ -279,7 +301,7 @@ export default function ProjectsDetails() {
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         e.preventDefault()
         if (token) {
-            axios.post("https://otrok.invoacdmy.com/api/user/donation/volunteering/user", storeDonate, {
+            axios.post(`https://otrok.invoacdmy.com/api/user/donation/volunteering/user?lang=${currentLanguageCode}`, storeDonate, {
                 headers: {
                     "Authorization": `Bearer ${token}`,
                     "Content-Type": "multipart/form-data"
@@ -289,7 +311,7 @@ export default function ProjectsDetails() {
             }
             ).catch((err) => { toast.error(err.response.data.message) })
         } else {
-            axios.post("https://otrok.invoacdmy.com/api/user/donation/volunteering/guest", storeDonate, {
+            axios.post(`https://otrok.invoacdmy.com/api/user/donation/volunteering/guest?lang=${currentLanguageCode}`, storeDonate, {
                 headers: {
                     "Content-Type": "multipart/form-data"
                 }
@@ -306,7 +328,7 @@ export default function ProjectsDetails() {
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         e.preventDefault()
         if (token) {
-            axios.post("https://otrok.invoacdmy.com/api/user/donation/food/user", storeDonate, {
+            axios.post(`https://otrok.invoacdmy.com/api/user/donation/food/user?lang=${currentLanguageCode}`, storeDonate, {
                 headers: {
                     "Authorization": `Bearer ${token}`,
                     "Content-Type": "multipart/form-data"
@@ -316,7 +338,7 @@ export default function ProjectsDetails() {
             }
             ).catch((err) => { toast.error(err.response.data.message) })
         } else {
-            axios.post("https://otrok.invoacdmy.com/api/user/donation/food/guest", storeDonate, {
+            axios.post(`https://otrok.invoacdmy.com/api/user/donation/food/guest?lang=${currentLanguageCode}`, storeDonate, {
                 headers: {
                     "Content-Type": "multipart/form-data"
                 }
@@ -332,7 +354,7 @@ export default function ProjectsDetails() {
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         e.preventDefault()
         if (token) {
-            axios.post("https://otrok.invoacdmy.com/api/user/donation/clothes/user", storeDonate, {
+            axios.post(`https://otrok.invoacdmy.com/api/user/donation/clothes/user?lang=${currentLanguageCode}`, storeDonate, {
                 headers: {
                     "Authorization": `Bearer ${token}`,
                     "Content-Type": "multipart/form-data"
@@ -343,7 +365,7 @@ export default function ProjectsDetails() {
             ).catch((err) => { toast.error(err.response.data.message) })
 
         } else {
-            axios.post("https://otrok.invoacdmy.com/api/user/donation/clothes/guest", storeDonate, {
+            axios.post(`https://otrok.invoacdmy.com/api/user/donation/clothes/guest?lang=${currentLanguageCode}`, storeDonate, {
                 headers: {
                     "Content-Type": "multipart/form-data"
                 }
@@ -359,7 +381,7 @@ export default function ProjectsDetails() {
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         e.preventDefault()
         if (token) {
-            axios.post("https://otrok.invoacdmy.com/api/user/donation/furniture/user", storeDonate, {
+            axios.post(`https://otrok.invoacdmy.com/api/user/donation/furniture/user?lang=${currentLanguageCode}`, storeDonate, {
                 headers: {
                     "Authorization": `Bearer ${token}`,
                     "Content-Type": "multipart/form-data"
@@ -369,7 +391,7 @@ export default function ProjectsDetails() {
             }
             ).catch((err) => { toast.error(err.response.data.message) })
         } else {
-            axios.post("https://otrok.invoacdmy.com/api/user/donation/furniture/guest", storeDonate, {
+            axios.post(`https://otrok.invoacdmy.com/api/user/donation/furniture/guest?lang=${currentLanguageCode}`, storeDonate, {
                 headers: {
                     "Content-Type": "multipart/form-data"
                 }
@@ -384,51 +406,93 @@ export default function ProjectsDetails() {
         <>
 
             <Container>
-                <Row dir='rtl' className='mt-5'>
-                    <Col sm={12} xl={8} dir='rtl' >
+                <Row dir={currentLanguageCode === 'ar' ? 'rtl' : 'ltr'} className='mt-5'>
+                    <Col sm={12} xl={8}  >
 
                         <div className={`${style.cardDetails__body}`}>
                             <h3 className={`${style.cardDetails__title}`}>{formData.name}</h3>
                             <p className={`${style.cardDetails__para}`}>{t("مشروع رقم")} {formData.id}</p>
                             <hr />
                         </div>
+                       
+                        {formData.donationtype_id === "1" ? 
                         <div className={`${style.collect}`}>
-                            <p className={`${style.collect__para}`}>{t("تم جمع ")}<bold className={`${style.bold}`}>{formData.paied_amount}</bold> {t("من اصل")} {formData.initial_amount}</p>
+                            <p className={`${style.collect__para}`}>{t("تم جمع المبلغ")}<bold className={`${style.bold}`}>{formData.paied_amount +''+ t('ج')}</bold> {t("من اصل")} {formData.initial_amount}</p>
                             <ProgressBar now={((formData.paied_amount * 100) / formData.initial_amount)} className={`${style.progress} `} />
                         </div>
+                         : 
+                         null 
+                         }
+                          {formData.donationtype_id === "2" ? 
+                            <div className={`${style.collect}`}>
+                                <p className={`${style.collect__para}`}>{t("تم جمع ")}<bold className={`${style.bold}`}>{formData.paied_amount +''+ t("متطوع")}</bold> {t("من اصل")} {formData.initial_amount}</p>
+                                <ProgressBar now={((formData.paied_amount * 100) / formData.initial_amount)} className={`${style.progress} `} />
+                            </div>
+                            : 
+                            null 
+                         }
+                          {formData.donationtype_id === "3" ? 
+                            <div className={`${style.collect}`}>
+                                <p className={`${style.collect__para}`}>{t("تم جمع ")}<bold className={`${style.bold}`}>{formData.paied_amount +''+ t("كرتونة")}</bold> {t("من اصل")} {formData.initial_amount}</p>
+                                <ProgressBar now={((formData.paied_amount * 100) / formData.initial_amount)} className={`${style.progress} `} />
+                            </div>
+                            : 
+                            null 
+                         }
+                          {formData.donationtype_id === "4" ? 
+                            <div className={`${style.collect}`}>
+                                <p className={`${style.collect__para}`}>{t(" تم جمع ملابس") + " " + t("ل") }<bold className={`${style.bold}`}>{formData.paied_amount +''+ t("عدد الاشخاص")}</bold> {t("من اصل")} {formData.initial_amount}</p>
+                                <ProgressBar now={((formData.paied_amount * 100) / formData.initial_amount)} className={`${style.progress} `} />
+                            </div>
+                            : 
+                            null 
+                         }
+                           {formData.donationtype_id === "5" ? 
+                            <div className={`${style.collect}`}>
+                                <p className={`${style.collect__para}`}>{t("تم جمع ")}<bold className={`${style.bold}`}>{ formData.paied_amount +''+ t( "عنصر")}</bold> {t("من اصل")} {formData.initial_amount}</p>
+                                <ProgressBar now={((formData.paied_amount * 100) / formData.initial_amount)} className={`${style.progress} `} />
+                            </div>
+                            : 
+                            null 
+                         }
+                        <div >
+                            <p className={`${style.details__para}`}> {formData.description}</p>
+                            
+                        </div>
+                        {formData.file?
+                        <>
+                        <Link to={formData.file}>{t("الملف التعريفي الخاص بالحالة و وصفها")}</Link>
+                        </>
+                        :
+                       null
+                        }  
                         <div className={`${style.cardDetails__icon}`}>
                             <Row>
                                 <Col md={3}  >
                                     <button className={`${style.icon__social} ${style.icon__social1}`}>
                                         <FaWhatsapp className={`${style.i}`} />
-                                        <span>Whatsapp</span>
+                                        <span className='m-1'>Whatsapp</span>
                                     </button>
                                 </Col>
                                 <Col md={3}  >
                                     <button className={`${style.icon__social} ${style.icon__social2}`}>
                                         <FaTelegram className={`${style.i}`} />
-                                        <span>Telegram</span>
+                                        <span className='m-1'>Telegram</span>
                                     </button>
                                 </Col>
                                 <Col md={3}  >
                                     <button className={`${style.icon__social} ${style.icon__social3}`}>
                                         <FaFacebook className={`${style.i}`} />
-                                        <span>Facebook</span>
+                                        <span className='m-1'>Facebook</span>
                                     </button>
                                 </Col>
                                 <Col md={3} >
                                     <button className={`${style.icon__social} ${style.icon__social4}`}>
                                         <FaTwitter className={`${style.i}`} />
-                                        <span>Twitter</span>
+                                        <span className='m-1'>Twitter</span>
                                     </button>
                                 </Col>
                             </Row>
-                        </div>
-                        <div className={`${style.modal__collect}`}><p className={`${style.paypal__para}`}> {t(" تبرعك هو أملهم و نجاحهم, فكن عونا لهم ")}</p></div>
-                        <div >
-                            <p className={`${style.details__para}`}>لا يعلمون من الشتاء سوى رجفة أطراف أطفالهم وتجمّدها، ولا من الأمطار والثلوج سوى غرق الخيام وسقوطها فوق رؤوسهم، فلا مأوى يحميهم من برد الشتاء، ولا جدار يُخفّف عنهم قسوته.</p>
-                            <p className={`${style.details__para}`}>من أجل آلاف العوائل، المصابين، المرضى، الأيتام والأرامل، من أجل عجزهم وبكاء أطفالهم، نُطلق وككل عام حملة دفء 11 المخصصة للاجئين السوريين في الأردن و أهلنا المهجرين في الشمال السوري لتأمين الكسوة الشتوية ومستلزمات التدفئة من مدفأة وحطب وغيرها من مواد التدفئة ، ونُتيح لكم فرصة التبرع للمساهمة بتأمينها لأكبر عدد من العوائل.</p>
-                            <p className={`${style.details__para}`}>حيث تبلغ قيمة اللباس الشتوي للطفل الواحد 20 $ و تزويد عائلة لمدة شهر بمواد التدفئة 110$ تشمل (مدفأة و نصف طن من الحطب و البيرين) .</p>
                         </div>
                         <Swiper
                             spaceBetween={30}
@@ -441,13 +505,23 @@ export default function ProjectsDetails() {
                                 clickable: true,
                             }}
                             modules={[Autoplay, Pagination]}
-                        >
+                        >   
+                            {!image.length ? 
+                           
+                              <SwiperSlide>
+                                <img src={imgNull}  alt='' />
+                                </SwiperSlide>
+                          
+                            :
+                            <>
                             {image && image.map((imgSrc, index) => (<SwiperSlide><img src={imgSrc.image} key={index} alt='' className={`${style.imgSwiper}`} /></SwiperSlide>))}
+                            </>
+                            }
                         </Swiper>
 
 
-
                     </Col>
+                    
                     <Col sm={12} xl={4}>
 
                         {formData.donationtype_id === "1" ?
@@ -455,17 +529,14 @@ export default function ProjectsDetails() {
                                 <button className={`${style.cardDetails__btn}`}>
                                     {t("تبرع الان   للحالات عبر موقعنا ")}
                                 </button>
-                                <NumericInput max={formData.remaining_amount} min='10' value={priceShow ? priceShow : 10.00} className={`${style.price__input}`} /><span className={`${style.price__icon}`} value={donateData.amoutDescriptipn} >ج</span>
+                                <input max={formData.remaining_amount} min='10' type='number' name='money' onChange={handleChangeMoney} value={priceShow ? priceShow : 10.00} className={`${style.price__input}`} /><span className={`${style.price__icon}`} value={donateData.amoutDescriptipn} >ج</span>
                                 <div className={`${style.price__choose}`}>
                                     <button className={`${style.price__btn}`} onClick={() => { clickPrice(10.00) }}>10.00 </button>
                                     <button className={`${style.price__btn}`} onClick={() => { clickPrice(25.00) }}>25.00</button>
                                     <button className={`${style.price__btn}`} onClick={() => { clickPrice(50.00) }}>50.00</button>
                                     <button className={`${style.price__btn}`} onClick={() => { clickPrice(100.00) }}>100.00</button>
                                 </div>
-                                {/* <div className={`${style.price__checkbox}`}>
-                                <label><input type="checkbox" /><span className={`${style.price__para}`}>{t("تغطيه رسوم المعاملات 1.29$")}
-                                </span></label>
-                            </div> */}
+                           
                                 <Form onSubmit={onSubmitHandler}>
                                     <Form.Group className="mb-3" controlId="formBasicEmail" >
                                         <Form.Control type='name' name="name" className={`${style.input}`} placeholder={t("  اسم المستخدم ")} onChange={onChangeHandler} value={donateData.name} required />
@@ -487,8 +558,8 @@ export default function ProjectsDetails() {
                                     <div class="radio-item-container">
                                     
                                     <div class="radio-item">
-                                            <label className='label_radio' for=''>
-                                                <input type="radio" id='' name="method" value={donateData.method} onChange={onChangeHandler} />
+                                            <label className='label_radio' for='online_payment'>
+                                                <input type="radio" id='online_payment' name="method" value='online_payment'  onChange={onChangePaymentMethod} />
                                                 <span> Online Payment </span>
 
                                             </label>
@@ -497,8 +568,8 @@ export default function ProjectsDetails() {
 
                                         
                                         <div class="radio-item">
-                                            <label className='label_radio' for=''>
-                                                <input type="radio" id='' name="method" value={donateData.method}  onChange={onChangeHandler} />
+                                            <label className='label_radio' for='representative'>
+                                                <input type="radio" id='representative' name="method"  value='representative' onChange={onChangePaymentMethod} />
                                                 <span> representative </span>
                                             </label>
                                             <div className={`${style.modal__paypal}`}><p className={`${style.paypal__para}`}><img src={delivery} alt="" className={`${style.imgpay}`} />{t(" للتبرع من خلال مندوبنا ")}</p></div>
@@ -507,18 +578,22 @@ export default function ProjectsDetails() {
                                 </div>
                       
                                     
-
-                                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                                    <Form.Control type='text' name="address" className={`${style.input}`} placeholder={t("العنوان")} onChange={onChangeHandler} value={donateData.address} />
-                                                </Form.Group>
-                                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                                    <Form.Control type='date' name="dateSend" className={`${style.input}`} onChange={onChangeHandler} value={donateData.dateSend} />
-                                                    <Form.Text className={`${style.date}`}>
-                                                        تحديد ميعاد التبرع لارسال المندوب
-                                                    </Form.Text>
-                                                </Form.Group>
+                                        { donateData.method === 'representative' ?
+                                                 <div className={`${style["representative-form"]}`}>
+                                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                                        <Form.Control type='text' name="address" className={`${style.input}`} placeholder={t("العنوان")} onChange={onChangeHandler} value={donateData.address} />
+                                                    </Form.Group>
+                                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                                        <Form.Control type='date' name="dateSend" className={`${style.input}`} onChange={onChangeHandler} value={donateData.dateSend} />
+                                                        <Form.Text className={`${style.date}`}>
+                                                            تحديد ميعاد التبرع لارسال المندوب
+                                                        </Form.Text>
+                                                    </Form.Group>
+                                                </div>
+                                                :
+                                                null
                                           
-                              
+                                        }
                                     <Button type="submit" className={style.signup__btn}>
                                         تبرع الان
                                     </Button>
@@ -652,6 +727,8 @@ export default function ProjectsDetails() {
                                             <label className="form-group_checklist_label" for="child" value="child">اطفالي</label>
                                         </div>
                                     </div>
+                                    </Form.Group>
+                                    <Form.Group className="mb-3 mt-4" controlId="formBasicPassword">
                                     <div className="formInput d-flex mt-2" >
                                         <div className="form-group ">
                                             <input className="form-group_checklist" type="checkbox" id="summer" value="summer" onChange={(e) => { handleCheckedSeasons(e) }} />
@@ -761,7 +838,8 @@ export default function ProjectsDetails() {
                                     :
                                     null
                                 }
-
+                                
+                                {donateData.method === ''}
 
                                 <Form.Group className="mb-3" controlId="formBasicEmail" >
                                     <Form.Control as="textarea" rows="3" name="helpDescription" className={`${style.textArea}`} placeholder={t("تفاصيل العناصر")} onChange={onChangeHandler} value={donateData.helpDescription} required />

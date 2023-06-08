@@ -24,7 +24,7 @@ body[dir="rtl"] .modal__collect {
     padding: 20px 20px 5px 10px;
     font-family: "Changa-Regular", sans-serif !important;
     margin-top: 10px;
-    min-width: 400px;
+    min-width: 360px;
     margin-bottom: 15px;
     direction: ltr;
 }
@@ -35,7 +35,7 @@ body[dir="ltr"] .modal__collect {
     padding: 20px 20px 5px 10px;
     font-family: "Changa-Regular", sans-serif !important;
     margin-top: 10px;
-    min-width: 400px;
+    width: 360px;
     margin-bottom: 15px;
     direction: rtl;
 }
@@ -335,6 +335,7 @@ body[dir="ltr"] .icon__social{
 .imgpay{
     width: 100px;
     height: 50px;
+    
 }
 .cvc{
     display: grid;
@@ -401,4 +402,7 @@ font-family: "Changa-Regular" !important;
   }
   .imgSwiper{
     width: 100%;
+  }
+  .defaultImage{
+    
   }

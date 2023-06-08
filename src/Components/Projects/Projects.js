@@ -138,7 +138,7 @@ export default function Projects() {
                 exit={{ opacity: 0 }}
             >
 
-                <HeaderTitle title={t("الحالات")} para={t("المبلغ المجموع للحالات")} price={moneyDonate} />
+                <HeaderTitle title={t("الحالات")} para={t("المبلغ المجموع للحالات")} price={moneyDonate ? moneyDonate : 0 } />
                 <Button onClick={handleShow} className={`${styles.donate__link}`}>
                     {t(" اضافة حالة لصندوق الحالات")}
                 </Button>

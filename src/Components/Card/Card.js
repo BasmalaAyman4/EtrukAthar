@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import Skeleton from 'react-loading-skeleton'
-
+import imgNull from '../../assets/images/eae946efbbf74117a65d488206a09b63.png'
 export default function Card(props) {
     const { t } = useTranslation()
     const currentLanguageCode = Cookies.get('i18next') || 'en'
@@ -24,7 +24,7 @@ export default function Card(props) {
                {!IsLoading?
                     <div className={`${styles.cardFig}`}>
                     
-                        <img src={props.photo} alt="" className={`${styles.figImg}`} />
+                        <img src={props.photo? props.photo:imgNull} alt="" className={`${styles.figImg}`} />
                     
                         <div className={`${styles.cardLink}`}>
                             <Link to={`/card-details/${props.id}`} className={`${styles.cardDonate}`}>{t("للمزيد من التفاصيل ")} </Link>
@@ -55,7 +55,7 @@ export default function Card(props) {
                             {props.donationType === "1" ? 
                             <div className='d-flex flex  flex-column'>
                                <div className=""> {t("تم جمع المبلغ")} :  </div>
-                               <span>  {props.numOfDonates +''+ t('ج')} </span>  
+                               <span>  {props.numOfDonates +''+ t("ج")} </span>  
                             </div>
                             : 
                             null 

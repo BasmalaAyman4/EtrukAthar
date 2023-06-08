@@ -1,15 +1,29 @@
-  .question {
+  /* .question {
       position: relative;
   }
-
-  .questionMark {
+   */
+.questionMark__container{
+    position: relative;
+  }
+  .questionMark__container-clothes{
+    position: relative;
+  }
+ body[dir="ltr"] .questionMark {
       position: absolute;
       right: 95%;
-      top: 42%;
+      top: 20%;
+      z-index: 2000;
       cursor: pointer;
   }
-  .questionMark__para{
-    background-color: aliceblue;
+  body[dir="rtl"]   .questionMark {
+    position: absolute;
+    left: 95%;
+    top: 20%;
+    z-index: 2000;
+    cursor: pointer;
+}
+body[dir="ltr"] .questionMark__para{
+    background-color: rgb(238, 245, 244);
     padding: 5px;
     width: 39%;
     text-align: center;
@@ -19,9 +33,24 @@
     -ms-border-radius: 15px;
     -o-border-radius: 15px;
     position: absolute;
-        right: 55%;
-        top: 41.5%;
-        opacity: 0;
+    right: 55%;
+    top: 10%;
+    opacity: 0;
+}
+body[dir="rtl"] .questionMark__para{
+    background-color: rgb(238, 245, 244);
+    padding: 5px;
+    width: 39%;
+    text-align: center;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    position: absolute;
+    left: 55%;
+    top: 10%;
+    opacity: 0;
 }
 .questionMark:hover + .questionMark__para{
     opacity: 1;
