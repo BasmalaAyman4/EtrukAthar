@@ -59,8 +59,8 @@ export default function NavbarMenu() {
     }, [currentLanguage, t])
     function handleLanguage(code, index, event) {
         event.preventDefault();
-        i18next.changeLanguage(code)   
-        
+        i18next.changeLanguage(code)
+
 
     }
     function logout() {
@@ -79,34 +79,34 @@ export default function NavbarMenu() {
 
                             {languages.map(({ code, name }, index) => (
                                 <>
-                               { currentLanguageCode === 'ar' && code === 'ar' ?
-                                <Link
-                                    id={`language${index}`}
-                                    key={code}
-                                    onClick={(event) => { handleLanguage(code, index, event) }}
-                                    className={`px-3 pt-2 ${styles.header__link} d-none`}
-                                    href="#">{name}
-                                </Link>
-                                :
-                                currentLanguageCode === 'en' && code === 'en' ?
-                                <Link
-                                id={`language${index}`}
-                                key={code}
-                                onClick={(event) => { handleLanguage(code, index, event) }}
-                                className={`px-3 pt-2 ${styles.header__link} d-none`}
-                                href="#">{name}
-                               </Link>
-                               :
-                               <Link
-                               id={`language${index}`}
-                               key={code}
-                               onClick={(event) => { handleLanguage(code, index, event) }}
-                               className={`px-3 pt-2 ${styles.header__link} `}
-                               href="#">{name}
-                              </Link>
+                                    {currentLanguageCode === 'ar' && code === 'ar' ?
+                                        <Link
+                                            id={`language${index}`}
+                                            key={code}
+                                            onClick={(event) => { handleLanguage(code, index, event) }}
+                                            className={`px-3 pt-2 ${styles.header__link} d-none`}
+                                            href="#">{name}
+                                        </Link>
+                                        :
+                                        currentLanguageCode === 'en' && code === 'en' ?
+                                            <Link
+                                                id={`language${index}`}
+                                                key={code}
+                                                onClick={(event) => { handleLanguage(code, index, event) }}
+                                                className={`px-3 pt-2 ${styles.header__link} d-none`}
+                                                href="#">{name}
+                                            </Link>
+                                            :
+                                            <Link
+                                                id={`language${index}`}
+                                                key={code}
+                                                onClick={(event) => { handleLanguage(code, index, event) }}
+                                                className={`px-3 pt-2 ${styles.header__link} `}
+                                                href="#">{name}
+                                            </Link>
 
-                               }
-                               </>
+                                    }
+                                </>
                             ))}
 
 
@@ -156,7 +156,7 @@ export default function NavbarMenu() {
                                         </li>
 
                                         <li>
-                                            <NavLink className="nav-link" to="/" href="index.html">{t("صندوق علمني ")} </NavLink>
+                                            <NavLink className="nav-link" to="/" href="index.html">{t("ملف الشفافية")} </NavLink>
                                         </li>
 
                                         <li>
