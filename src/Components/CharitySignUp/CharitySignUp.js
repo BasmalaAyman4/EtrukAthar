@@ -10,8 +10,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import imgNull from '../../assets/images/eae946efbbf74117a65d488206a09b63.png'
+import Cookies from 'js-cookie'
 export default function CharitySignUp() {
     const { t } = useTranslation()
+    const [disabled, setDisabled] = useState(false);
+    const currentLanguageCode = Cookies.get('i18next') || 'en'
     const validname = /^[A-Za-z]+$/;
     const validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     const validPass = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
@@ -38,29 +41,29 @@ export default function CharitySignUp() {
     function handleErrors() {
         let err = {}
 
-        if (formData.name === '') {
-            err.name = 'الاسم مطلوب';
-        }
-        if (formData.email === '') {
-            err.email = "البريد الالكتروني مطلوب";
-        } else if (!validEmail.test(formData.email)) {
-            err.email = "البريد الالكتروني غير صحيح";
-        }
-        if (formData.password === '') {
-            err.password = "كلمه السر مطلوبه"
-        }
-        if (formData.confirmPassword === '') {
-            err.confirmPassword = "تاكيد كلمه السر مطلوبه"
-        }
-        if (formData.confirmPassword && formData.confirmPassword !== formData.password) {
-            err.confirmPassword = " كلمه المرور لا تتطابق"
-        }
-        if (formData.address === '') {
-            err.address = 'العنوان مطلوب';
-        }
-        if (formData.phone === '') {
-            err.phone = 'رقم الهاتف مطلوب';
-        }
+        /*        if (formData.name === '') {
+                   err.name = 'الاسم مطلوب';
+               }
+               if (formData.email === '') {
+                   err.email = "البريد الالكتروني مطلوب";
+               } else if (!validEmail.test(formData.email)) {
+                   err.email = "البريد الالكتروني غير صحيح";
+               }
+               if (formData.password === '') {
+                   err.password = "كلمه السر مطلوبه"
+               }
+               if (formData.confirmPassword === '') {
+                   err.confirmPassword = "تاكيد كلمه السر مطلوبه"
+               }
+               if (formData.confirmPassword && formData.confirmPassword !== formData.password) {
+                   err.confirmPassword = " كلمه المرور لا تتطابق"
+               }
+               if (formData.address === '') {
+                   err.address = 'العنوان مطلوب';
+               }
+               if (formData.phone === '') {
+                   err.phone = 'رقم الهاتف مطلوب';
+               } */
         setFormError({ ...err })
     }
     const onChangeHandlerPhone = data => {
@@ -125,15 +128,16 @@ export default function CharitySignUp() {
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         e.preventDefault()
         handleErrors()
-        axios.post(`https://otrok.invoacdmy.com/api/register`, reqSignUpData)
+        setDisabled(!disabled)
+        axios.post(`https://otrok.invoacdmy.com/api/register?lang=${currentLanguageCode}`, reqSignUpData)
             .then((response) => {
                 localStorage.setItem("token", response.data.token)
                 toast.success("Successfully registered!")
                 handleRedirect()
-            })
+            }, [currentLanguageCode])
             .catch((err) => {
                 toast.error(err.response.data.message)
-            });
+            }, [currentLanguageCode]);
     }
 
     return (
@@ -162,7 +166,7 @@ export default function CharitySignUp() {
                                         <div ref={addFile} onClick={() => { handleLogo() }}>
                                             <img className={`${style.img}`} ref={imageContentRef} src={imageUrl} alt="" />
                                         </div>
-                                         
+
                                         <div className={style.userName}>
 
                                             <Form.Group className="mb-3" controlId="name" >
@@ -236,7 +240,7 @@ export default function CharitySignUp() {
 
                                         </div>
 
-                                        <Button className={style.signup__btn} type="submit">
+                                        <Button className={style.signup__btn} type="submit" disabled={disabled}>
                                             {t("انشاء حساب")}
                                         </Button>
 

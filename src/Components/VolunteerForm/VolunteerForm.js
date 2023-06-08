@@ -15,7 +15,12 @@ import axios from 'axios'
 import Cookies from 'js-cookie'
 import { toast } from 'react-toastify'
 import { ToastContainer } from "react-toastify";
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 export default function VolunteerForm() {
+    useEffect(() => {
+        Aos.init({ duration: 2000 });
+    }, [])
     const [active, setActive] = useState('')
     const currentLanguageCode = Cookies.get('i18next') || 'en'
     const [token, setToken] = useState(localStorage.getItem("token"))
@@ -136,14 +141,14 @@ export default function VolunteerForm() {
                 <div className={`${style.form}`}>
                     <Container>
                         <Row className={`${style.contact}`}>
-                            <Col>
+                            <Col data-aos="fade-right">
                                 <p className={`${style.volunteerPara}`}>{t("انضم إلينا")}</p>
                                 <h1 className={`${style.volunteerti}`}>{t("تطوع معنا لمساعدة الآخرين")}</h1>
                                 <p className={`${style.formPara}`}>{t("اترك أثراً هو هدفنا .. فكن معنا لترك أثرا جميلا في العالم.")}</p>
                                 <img src={vol} alt="" className={`${style.formImg}`} />
                             </Col>
                             <Col>
-                                <div className={`${style.contactForm}`}>
+                                <div className={`${style.contactForm}`} data-aos="fade-up">
                                     <Form onSubmit={onSubmitHandler} id="contact" >
                                         <div className={style.userName} dir='rtl'>
 

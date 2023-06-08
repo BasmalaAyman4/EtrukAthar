@@ -6,6 +6,7 @@ import axios from 'axios';
 import { Col, Row } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
 import Cookies from 'js-cookie'
+import img from "./../../assets/images/eae946efbbf74117a65d488206a09b63.png"
 export default function AcutionCard() {
     const { t } = useTranslation()
     const [dataAcution, setDataAcution] = useState([])
@@ -28,7 +29,9 @@ export default function AcutionCard() {
                                 <div className={`${style.flipCard}`}>
                                     <div className={`${style.flipCard__inner}`}>
                                         <div className={`${style.flipCard__front}`}>
-                                            <img src={acutionCard.mazadimage[0]?.image} alt="" />
+                                            <img src={acutionCard.mazadimage[0]?.image} alt=""
+
+                                            />
                                         </div>
                                         <div className={`${style.flipCard__back}`}>
                                             <img src={acutionCard.mazadimage[1]?.image} alt="" />

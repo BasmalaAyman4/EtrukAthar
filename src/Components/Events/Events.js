@@ -13,6 +13,8 @@ import moment from 'moment/moment'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import AnimatedPage from '../Global/AnimatedPage'
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 export default function Events() {
     const currentLanguageCode = Cookies.get('i18next') || 'en'
     const { t } = useTranslation()
@@ -21,6 +23,9 @@ export default function Events() {
     const showActive = (view) => {
         view === "list" ? setActive(true) : setActive(false)
     }
+    useEffect(() => {
+        Aos.init({ duration: 2000 });
+    }, [])
     useEffect(() => {
         axios.get(`https://otrok.invoacdmy.com/api/user/event/index?lang=${currentLanguageCode}`)
             .then(response => {
@@ -45,7 +50,7 @@ export default function Events() {
                     </div>
                     <Row>
                         {/* <div className={`${style.events__body}`}> */}
-                        <Col lg="8">
+                        <Col lg="8" data-aos="fade-up">
                             <div className={`${active ? style.upcomingEvent : style.none}`}>
                                 <h2 className={`${style.upcomingEvent__title}`}><RxCounterClockwiseClock /> {t("الاحداث القادمة")}</h2>
                                 {event && event.map(eventCard =>
@@ -90,7 +95,7 @@ export default function Events() {
                                 </Row>
                             </div>
                         </Col>
-                        <Col lg="4">
+                        <Col lg="4" data-aos="fade-down">
                             <div className={`${style.otherEvent}`}>
                                 <div className={`${style.annualEvents}`}>
                                     <h2 className={`${style.annualEvents__title}`} >{t("الاحداث السنوية")}</h2>

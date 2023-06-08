@@ -8,9 +8,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { TbBuildingWarehouse, TbUserPlus } from "react-icons/tb";
-
+import Cookies from 'js-cookie'
 export default function Login() {
     const [userType, setUserType] = useState("1")
+    const [disabled, setDisabled] = useState(false);
+    const currentLanguageCode = Cookies.get('i18next') || 'en'
     // const knowUserType = (role) => {
     //     role === "volenteer" ? setUserType('1') : setUserType('2')
     // }
@@ -37,14 +39,14 @@ export default function Login() {
 
         let err = {}
 
-        if (formData.email === '') {
-            err.email = "البريد الالكتروني مطلوب";
-        } else if (!validEmail.test(email)) {
-            err.email = "بريد غير صحيح";
-        }
-        if (formData.password === '') {
-            err.password = "كلمه السر مطلوبه"
-        }
+        /*       if (formData.email === '') {
+                  err.email = "البريد الالكتروني مطلوب";
+              } else if (!validEmail.test(email)) {
+                  err.email = "بريد غير صحيح";
+              }
+              if (formData.password === '') {
+                  err.password = "كلمه السر مطلوبه"
+              } */
         setFormError({ ...err })
     }
 
@@ -74,26 +76,27 @@ export default function Login() {
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         e.preventDefault()
         handleErrors()
+        setDisabled(!disabled)
         if (userType === '1') {
-            axios.post(`https://otrok.invoacdmy.com/api/login`, reqSignUpData)
+            axios.post(`https://otrok.invoacdmy.com/api/login?lang=${currentLanguageCode}`, reqSignUpData)
                 .then((response) => {
                     localStorage.setItem("token", response.data.token)
                     toast.success(t("تم تسجيل الدخول بنجاح"))
                     handleRedirect()
-                })
+                }, [currentLanguageCode])
                 .catch((err) => {
                     toast.error(err.response.data.message)
-                });
+                }, [currentLanguageCode]);
         } else {
-            axios.post(`https://otrok.invoacdmy.com/api/login`, reqSignUpData)
+            axios.post(`https://otrok.invoacdmy.com/api/login?lang=${currentLanguageCode}`, reqSignUpData)
                 .then((response) => {
                     localStorage.setItem("token", response.data.token)
-                    toast.success("تم تسجيل الدخول بنجاح")
+                    toast.success(t("تم تسجيل الدخول بنجاح"))
                     handleRedirect()
-                })
+                }, [currentLanguageCode])
                 .catch((err) => {
                     toast.error(err.response.data.message)
-                });
+                }, [currentLanguageCode]);
         }
 
     }
@@ -117,10 +120,10 @@ export default function Login() {
                                     <hr />
                                     <ul className={`${style.userLog__list}`}>
                                         <li className={`${style.userLog__item}`} onClick={() => { setUserType('1') }} >
-                                            <button type='button' className={`${userType === '1' ? style.user__link : style.userLog__link}`} > {t(" مستخدم")} <TbUserPlus className={`${style.iLog}`} /></button>
+                                            <button type='button' className={`${userType === '1' ? style.user__link : style.userLog__link}`} > {t("مستخدم")} <TbUserPlus className={`${style.iLog}`} /></button>
                                         </li>
                                         <li className={`${style.userLog__item}  `} onClick={() => { setUserType('2') }} >
-                                            <button type='button' className={`${userType === '2' ? style.user__link : style.userLog__link}`} >{t(" جمعية ")}  <TbBuildingWarehouse className={`${style.iLog}`} /></button>
+                                            <button type='button' className={`${userType === '2' ? style.user__link : style.userLog__link}`} >{t("جمعية")}  <TbBuildingWarehouse className={`${style.iLog}`} /></button>
                                         </li>
                                     </ul>
                                     <div className={style.userName}>
@@ -136,10 +139,10 @@ export default function Login() {
                                                 {formError.password}
                                             </Form.Text>
                                         </Form.Group>
-                                        <button className={style.log__btn} type='button' onClick={(e) => { handleSubmitLogin(e) }}>{t("تسجيل الدخول")}</button>
+                                        <button className={style.log__btn} type='button' onClick={(e) => { handleSubmitLogin(e) }} disabled={disabled} >{t("تسجيل الدخول")}</button>
                                     </div>
                                     <hr className={style.forgetLine} />
-                                    <a href='/forget' className={style.log__link}> {t("هل نسيت كلمة السر؟")}</a>
+
                                 </div>
 
                             </div>
@@ -147,7 +150,7 @@ export default function Login() {
                     </div>
                 </div>
                 <ToastContainer />
-            </section>
+            </section >
 
 
         </>

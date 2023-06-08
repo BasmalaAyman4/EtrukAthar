@@ -15,11 +15,16 @@ import { ToastContainer, toast } from 'react-toastify';
 import imgNull from '../../assets/images/eae946efbbf74117a65d488206a09b63.png'
 import { BsQuestionCircle } from "react-icons/bs";
 import AnimatedPage from "../Global/AnimatedPage";
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 export default function Acution() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const { t } = useTranslation()
+    useEffect(() => {
+        Aos.init({ duration: 2000 });
+    }, [])
     const currentLanguageCode = Cookies.get('i18next') || 'en'
     const [token, setToken] = useState(localStorage.getItem("token"))
     const [formData, setFormData] = useState({
@@ -33,6 +38,14 @@ export default function Acution() {
         price: '',
         mazad: ''
     })
+    useEffect(() => {
+        axios.get(`https://otrok.invoacdmy.com/api/user/mazad/get/money`)
+            .then((response) => {
+                setFormData(response.data)
+
+
+            }).catch((err) => { console.log(err) })
+    }, [])
     const addFile = useRef(null)
     const addFileInput = useRef(null)
     const imageContentRef = useRef(null);
@@ -89,7 +102,7 @@ export default function Acution() {
     addNewAcution.append("starting_price", formData.price);
     addNewAcution.append("mazad_amount", formData.mazad);
     addNewAcution.append("end_date", formData.dateSend);
-    addNewAcution.append("end_time", formData.timeSend+':00');
+    addNewAcution.append("end_time", formData.timeSend + ':00');
     const onSubmitHandler = (e) => {
 
         const toastId = toast.loading(" ... ")
@@ -118,7 +131,7 @@ export default function Acution() {
                 <HeaderTitle
                     title={t("المزادات")}
                     para={t("المبلغ المجموع للمزادات")}
-                    price='1.037.976.07$' />
+                    price={formData.sum} />
 
                 <div className={`${style.acution}`}>
                     <div className={`${style.acutionBody}`}>
@@ -187,7 +200,7 @@ export default function Acution() {
                                         </Form.Group>
                                         <Form.Group className="mb-3" controlId="formBasicEmail" >
                                             <Form.Control name="timeSend" type="time" className={`${style.input} ${style.question}`} onChange={onChangeHandler} value={formData.timeSend} placeholder="الوقت لانهاء المزاد  " />
-                                           
+
                                         </Form.Group>
                                         <Button type="submit" className={style.signup__btn} >
                                             اضافة الان
@@ -200,7 +213,7 @@ export default function Acution() {
                         <img alt="" src={acutionImg} className={`${style.acutionBody__img}`} />
                     </div>
                     <Container>
-                        <div className={`${style.AcutionCards}`}>
+                        <div className={`${style.AcutionCards}`} data-aos="fade-up">
                             <AcutionCard />
                         </div>
                     </Container>
