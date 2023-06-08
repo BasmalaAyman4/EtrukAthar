@@ -13,9 +13,13 @@ import Cookies from 'js-cookie'
 import AddCase from '../AddCase/AddCase'
 import Loading from '../Loading/Loading'
 import AnimatedPage from "../Global/AnimatedPage";
-
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 
 export default function Projects() {
+    useEffect(() => {
+        Aos.init({ duration: 500 });
+    }, [])
     const { t } = useTranslation()
     const [dataCases, setDataCases] = useState([]);
     const [dataCategories, setDataCategories] = useState([]);
@@ -148,9 +152,9 @@ export default function Projects() {
                 <AddCase show={show} onHide={handleClose} setShow={setShow} />
                 <div className="container mb-5 ">
                     <p className={`${styles.donate__para}`}>{t("نواظب على التنقيب عن مستلزمات المجتمع، ساعين لأجل توفير مشاريع من شأنها تلبية متطلباتهم، وتوفير حياةٍ كريمة لكلّ من تكبّد ويلاتُ الحرب")}</p>
-                    <div className={`${styles.projects_dir} row mb-5 pb-5`}>
-                        <div className='col-lg-2 col-md-12 col-sm-12 category'>
-                            <fieldset className={`${styles.category}`}>
+                    <div className={`${styles.projects_dir} row mb-5 pb-5`} >
+                        <div className='col-lg-2 col-md-12 col-sm-12 category' >
+                            <fieldset className={`${styles.category}`} data-aos="fade-down" >
                                 <h4 className='side-filter__item-header-title'> {t("فئات")} </h4>
                                 <div className="radio-item-container">
                                     <>
@@ -215,13 +219,13 @@ export default function Projects() {
                             </fieldset>
                         </div>
 
-                        <div className='col-lg-10 col-md-12 col-sm-12 mb-5'>
+                        <div className='col-lg-10 col-md-12 col-sm-12 mb-5' >
                             {isLoading ?
 
                                 <Loading />
                                 :
 
-                                <div className='row mt-5'>
+                                <div className='row mt-5' data-aos="fade-up">
                                     {dataCases.length !== 0 ?
                                         <>
                                             {dataCases && dataCases.map(caseCard =>

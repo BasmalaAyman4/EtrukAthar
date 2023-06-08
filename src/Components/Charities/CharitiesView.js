@@ -12,6 +12,8 @@ import axios from 'axios'
 import { useTranslation } from 'react-i18next'
 import Cookies from 'js-cookie'
 import AnimatedPage from '../Global/AnimatedPage'
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 export default function CharitiesView() {
     const { t } = useTranslation()
     const [dataCarity, setdataCarity] = useState([]);
@@ -23,10 +25,13 @@ export default function CharitiesView() {
             }
             ).catch((err) => { console.log(err) })
     }, [currentLanguageCode])
+    useEffect(() => {
+        Aos.init({ duration: 2000 });
+    }, [])
     return (
         <AnimatedPage >
-            <section className={`${style.charitiesView}`}>
-                <div className={`${style.charitiesLanding}`}>   
+            <section className={`${style.charitiesView}`} >
+                <div className={`${style.charitiesLanding}`}>
                     <div className={`${style.charityBody}`}>
                         <h1 className={`${style.charityTitle}`}>{t("نحن منظمة خيرية عالمية")}</h1>
                         <p className={`${style.charityPara}`}>{t("نحن نستجيب للمساعدات الطارئة عند الحاجة وندعم العائلات التي فقدت منازلها بسبب النزاع.")}</p>
@@ -35,7 +40,7 @@ export default function CharitiesView() {
                     </div>
                 </div>
                 <Container>
-                    <div className={`${style.charitiesName} `}>
+                    <div className={`${style.charitiesName} `} data-aos="fade-up">
                         <Row>
                             {dataCarity && dataCarity.map(carities =>
                                 <Col lg="3" className={`${style.colCharity}`}>

@@ -79,7 +79,8 @@
 .flipCard__back img,
 .flipCard__front img {
     width: 382px;
-    height: 435px;
+    height: 380px;
+    background-image: url(../../assets/images/eae946efbbf74117a65d488206a09b63.png);
 }
 
 .flipCard__back {

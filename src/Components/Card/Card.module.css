@@ -1,7 +1,7 @@
 body[dir="rtl"] .card {
     border: 1px solid #eee;
     width: 100% !important;
-    height: 490px;
+    height: 500px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
@@ -161,7 +161,7 @@ body[dir="ltr"] .card {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 50px 10px;
+    margin: 30px 10px;
     color: #777;
     font-family: "Changa-Regular";
 }

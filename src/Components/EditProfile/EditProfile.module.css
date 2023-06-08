@@ -1,4 +1,4 @@
-.logForm {
+/* .logForm {
     padding-bottom: 50px;
 }
 
@@ -23,11 +23,23 @@
 .loginPara {
     position: absolute;
     color: #333;
+    left: 10% !important;
+    background-color: #fff;
+    top: -18px;
+    font-size: 20px;
+}
+body[dir="rtl"] .loginPara{
+   
+
+}
+
+body[dir="ltr"] .loginPara{
+position: absolute;
+    color: #333;
     left: 80% !important;
     background-color: #fff;
     top: -18px;
     font-size: 20px;
-
 }
 .btnImg {
     border: 1px solid transparent;
@@ -138,7 +150,7 @@ body[dir="ltr"] .input::placeholder {
 }
 
 .input:focus {
-    /* background-color: #f5f0f0cb; */
+     background-color: #f5f0f0cb; 
     box-shadow: 0 0 0 0.25rem transparent;
     border: 0px solid #246d57da !important;
     transform: scale(1.00);
@@ -263,12 +275,11 @@ body[dir="ltr"] .PhoneInputInput input {
 
 @media (min-width:1201px) and (max-width:1450px) {
 
-    /* .signup__btn {
-        margin: 0 50%;
-    } */
+   
 }
 
-.row{
+.
+{
     text-align: right;
     margin-top: 70px !important;
     margin-bottom: 70px !important;
@@ -287,4 +298,248 @@ text-align: center;
 .im{
     margin-top: 10px;
     
+} */
+.user{
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    margin-top: 20px;
+}
+.style__link {
+    color: #EF8451;
+    background-color: #fff;
+    box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.1);
+    padding: 10px 50px;
+    margin: auto;
+    font-family: "Changa-Regular";
+    margin-bottom: 35px;
+}
+
+.style__link:hover {
+    color: #EF8451
+}
+
+.view__link {
+    color: #fff;
+    background-color: #EF8451;
+    box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.1);
+    padding: 10px 70px;
+    margin: auto;
+    font-family: "Changa-Regular";
+    margin-bottom: 35px;
+}
+
+.view__link:hover {
+    color: #fff;
+}
+.none{
+    display: none;
+}
+.btnImg {
+    border: 1px solid transparent;
+    width: 250px;
+    height: 250px;
+    cursor: pointer;
+    font-size: large;
+    background-color: #dad3d3 !important;
+    margin-top: 20px;
+}
+
+
+.img {
+    width: 250px;
+    height: 250px;
+    border: 2px solid #EF8451;
+    background-color: #EF8451;
+}
+
+.fileImg {
+    display: none;
+}
+.edit__info__body {
+    padding: 20px;
+    margin-top: 3%;
+    border: 1px solid #FFF;
+    background-color: #ffffff;
+    border-radius: 5px;
+    font-family: "Changa-Regular" !important;
+    box-shadow: 0 0 4px 0 #696969da;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    margin-bottom: 3%;
+}
+.signup__btn {
+    --color: #333;
+    font-family: inherit;
+    display: inline-block;
+    height: 2.6em;
+    line-height: 2.5em;
+    margin: 5px ;
+    position: relative;
+    overflow: hidden;
+    transition: color .5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 6px;
+    font-weight: 500;
+    width: 300px !important;
+    color: #fff;
+    background-color: #EF8451 !important;
+    border-radius: 8px !important;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border: 0px solid #EF8451 !important;
+    -webkit-border-radius: 8px !important;
+    -moz-border-radius: 8px !important;
+    -ms-border-radius: 8px !important;
+    -o-border-radius: 8px !important;
+}
+
+.signup__btn:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: #fff;
+    height: 100px;
+    width: 120px;
+    border-radius: 50%;
+}
+
+.signup__btn:hover {
+    color: #fff;
+    background-color: #EF8451 !important;
+    border: 0;
+}
+
+.signup__btn:before {
+    top: 100%;
+    left: 100%;
+    transition: all .7s;
+}
+
+.signup__btn:hover:before {
+    top: -30px;
+    left: -40px;
+}
+
+.signup__btn:active:before {
+    background: #fff;
+    transition: background 0s;
+}
+
+.signup__btn {
+    width: 100%;
+}
+body[dir="rtl"] .PhoneInputInput input {
+    border: none !important;
+    outline: none !important;
+    background-color: #fff !important;
+    border-radius: 0px !important;
+    direction: ltr !important;
+
+
+}
+
+body[dir="ltr"] .PhoneInputInput input {
+    border: none !important;
+    outline: none !important;
+    background-color: #fff !important;
+    border-radius: 0px !important;
+    direction: ltr !important;
+
+}
+.input {
+    border: 1px solid #708A81;
+    outline: none;
+    border-radius: 15px !important;
+    padding: 1em;
+    background-color: #fff !important;
+    transition: 300ms ease-in-out;
+    font-size: 14px;
+    color: #202020 !important;
+    height: 50px;
+    font-family: "Changa-Regular" !important;
+    position: relative;
+    direction: ltr !important;
+    width:100%
+}
+
+
+
+body[dir="rtl"] .input::placeholder {
+    text-align: left !important;
+}
+
+body[dir="ltr"] .input::placeholder {
+    text-align: right !important;
+}
+
+.input:focus {
+    background-color: #f5f0f0cb;
+    border: 0px solid #EF8451 !important;
+    transform: scale(1.00);
+    box-shadow: 0 0 0 0.25rem rgba(235, 137, 91, 0.61);
+}
+
+.select{
+   padding: 0px;
+}
+body[dir="rtl"] .edit__info__body {
+    direction: ltr;
+}
+
+body[dir="ltr"] .edit__info__body {
+   direction: rtl;
+}
+body[dir="rtl"] .formLine {
+    border-left: 2px solid #EF8451;
+    margin-top: 30px;
+}
+
+body[dir="ltr"] .formLine {
+    border-right: 2px solid #EF8451;
+    margin-top: 20px;
+}
+
+.donation__info__body{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 5%;
+
+}
+.donations{
+    padding: 20px;
+    margin-top: 3%;
+    border: 1px solid #FFF;
+    background-color: #ffffff;
+    border-radius: 5px;
+    font-family: "Changa-Regular" !important;
+    box-shadow: 0 0 4px 0 #696969da;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    margin-bottom: 3%;
+}
+.donations__para,
+.donations__price{
+    margin: auto;
+    text-align: center;
+}
+body[dir="ltr"] .donations__date{
+    margin: auto;
+        text-align: right;
+}
+body[dir="rtl"] .donations__date{
+    margin: auto;
+        text-align: left;
+}
+body[dir="ltr"] .donations {
+ direction: rtl;
+}
+
+body[dir="rtl"] .donations {
+direction: ltr;
 }

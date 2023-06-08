@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import { ToastContainer } from "react-toastify";
-
+import Cookies from 'js-cookie'
 import { RiEyeCloseLine } from "react-icons/ri";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { useNavigate } from 'react-router-dom'
@@ -20,6 +20,8 @@ export default function SignUp() {
 
   const { t } = useTranslation()
   const navigate = useNavigate();
+  const [disabled, setDisabled] = useState(false);
+  const currentLanguageCode = Cookies.get('i18next') || 'en'
   const validname = /^[A-Za-z]+$/;
   const validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   const validPass = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
@@ -48,30 +50,30 @@ export default function SignUp() {
   function handleSigupUserErrors() {
     let err = {}
 
-    if (formData.name === '') {
-      err.name = 'الاسم مطلوب';
-    }
-    if (formData.email === '') {
-      err.email = "البريد الالكتروني مطلوب";
-    } else if (!validEmail.test(formData.email)) {
-      err.email = "البريد الالكتروني غير صحيح";
-    }
-    if (formData.password === '') {
-      err.password = "كلمه السر مطلوبه"
-    }
-    if (formData.confirmPassword === '') {
-      err.confirmPassword = "تاكيد كلمه السر مطلوبه"
-    }
-    if (formData.confirmPassword && formData.confirmPassword !== formData.password) {
-      err.confirmPassword = " كلمه المرور لا تتطابق"
-    }
-    if (formData.gender === '') {
-      err.gender = 'النوع مطلوب';
-    }
-    if (formData.phone === '') {
-      err.phone = 'رقم الهاتف مطلوب';
-    }
-
+    /*    if (formData.name === '') {
+         err.name = 'الاسم مطلوب';
+       }
+       if (formData.email === '') {
+         err.email = "البريد الالكتروني مطلوب";
+       } else if (!validEmail.test(formData.email)) {
+         err.email = "البريد الالكتروني غير صحيح";
+       }
+       if (formData.password === '') {
+         err.password = "كلمه السر مطلوبه"
+       }
+       if (formData.confirmPassword === '') {
+         err.confirmPassword = "تاكيد كلمه السر مطلوبه"
+       }
+       if (formData.confirmPassword && formData.confirmPassword !== formData.password) {
+         err.confirmPassword = " كلمه المرور لا تتطابق"
+       }
+       if (formData.gender === '') {
+         err.gender = 'النوع مطلوب';
+       }
+       if (formData.phone === '') {
+         err.phone = 'رقم الهاتف مطلوب';
+       }
+    */
     setFormError({ ...err })
   }
 
@@ -105,15 +107,16 @@ export default function SignUp() {
     setTimeout(() => { toast.dismiss(toastId); }, 1000);
     e.preventDefault()
     handleSigupUserErrors()
-    axios.post(`https://otrok.invoacdmy.com/api/register`, reqSignUpData)
+    setDisabled(!disabled)
+    axios.post(`https://otrok.invoacdmy.com/api/register?lang=${currentLanguageCode}`, reqSignUpData)
       .then((response) => {
         localStorage.setItem("token", response.data.token)
-        toast.success("Successfully registered!")
+        toast.success(t("تم التسجيل بنجاح"))
         handleRedirect()
-      })
+      }, [currentLanguageCode])
       .catch((err) => {
         toast.error(err.response.data.message)
-      });
+      }, [currentLanguageCode]);
   }
 
 
@@ -130,7 +133,7 @@ export default function SignUp() {
             <div className='col-lg-8 col-md-12 col-sm-12 pb-5'>
               <div className={style.signup}>
                 <h2 className={style.signup__title}>{t("تسجيل حساب جديد")}</h2>
-                <p className={style.signup__para}>{t("تعمل  كجمعية خيرية؟")}<a href='/charitySign-up'>{t(" انشاء حساب كجمعية خيرية")}</a></p>
+                <p className={style.signup__para}>{t("تعمل  كجمعية خيرية؟")}<a href="/charitySign-up">{t(" انشاء حساب كجمعية خيرية")}</a></p>
                 <hr />
                 <Form onSubmit={onSubmitHandler} >
                   <div className={style.userName}>
@@ -156,7 +159,7 @@ export default function SignUp() {
                         value={formData.gender}
                         onChange={onChangeHandler}
                       >
-                        <option value=''>النوع</option>
+                        <option value=''>{t("النوع")}</option>
                         <option value='m'>ذكر</option>
                         <option value='f'>انثي</option>
                       </select>
@@ -214,7 +217,7 @@ export default function SignUp() {
 
 
                   </div>
-                  <Button className={style.signup__btn} type="submit">
+                  <Button className={style.signup__btn} type="submit" disabled={disabled}>
                     {t("انشاء حساب")}
                   </Button>
 

@@ -8,15 +8,17 @@ import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { TbBuildingWarehouse, TbUserPlus } from "react-icons/tb";
-
+import Cookies from 'js-cookie'
 export default function Login() {
     const [userType, setUserType] = useState("1")
+    const [disabled, setDisabled] = useState(false);
+    const currentLanguageCode = Cookies.get('i18next') || 'en'
     // const knowUserType = (role) => {
     //     role === "volenteer" ? setUserType('1') : setUserType('2')
     // }
     const { t } = useTranslation()
     const navigate = useNavigate();
-    const [disabled,setDisabled] = useState(false)
+ 
  
     const validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   
@@ -38,14 +40,14 @@ export default function Login() {
 
         let err = {}
 
-        if (formData.email === '') {
-            err.email = "البريد الالكتروني مطلوب";
-        } else if (!validEmail.test(email)) {
-            err.email = "بريد غير صحيح";
-        }
-        if (formData.password === '') {
-            err.password = "كلمه السر مطلوبه"
-        }
+        /*       if (formData.email === '') {
+                  err.email = "البريد الالكتروني مطلوب";
+              } else if (!validEmail.test(email)) {
+                  err.email = "بريد غير صحيح";
+              }
+              if (formData.password === '') {
+                  err.password = "كلمه السر مطلوبه"
+              } */
         setFormError({ ...err })
     }
 
@@ -111,10 +113,10 @@ export default function Login() {
                                     <hr />
                                     <ul className={`${style.userLog__list}`}>
                                         <li className={`${style.userLog__item}`} onClick={() => { setUserType('1') }} >
-                                            <button type='button' className={`${userType === '1' ? style.user__link : style.userLog__link}`} > {t(" مستخدم")} <TbUserPlus className={`${style.iLog}`} /></button>
+                                            <button type='button' className={`${userType === '1' ? style.user__link : style.userLog__link}`} > {t("مستخدم")} <TbUserPlus className={`${style.iLog}`} /></button>
                                         </li>
                                         <li className={`${style.userLog__item}  `} onClick={() => { setUserType('2') }} >
-                                            <button type='button' className={`${userType === '2' ? style.user__link : style.userLog__link}`} >{t(" جمعية ")}  <TbBuildingWarehouse className={`${style.iLog}`} /></button>
+                                            <button type='button' className={`${userType === '2' ? style.user__link : style.userLog__link}`} >{t("جمعية")}  <TbBuildingWarehouse className={`${style.iLog}`} /></button>
                                         </li>
                                     </ul>
                                     <div className={style.userName}>
@@ -133,7 +135,7 @@ export default function Login() {
                                         <button className={style.log__btn} type='button' disabled={disabled? true : false} onClick={(e) => { handleSubmitLogin(e) }}>{t("تسجيل الدخول")}</button>
                                     </div>
                                     <hr className={style.forgetLine} />
-                                    <a href='/forget' className={style.log__link}> {t("هل نسيت كلمة السر؟")}</a>
+
                                 </div>
 
                             </div>
@@ -141,7 +143,7 @@ export default function Login() {
                     </div>
                 </div>
                 <ToastContainer />
-            </section>
+            </section >
 
 
         </>

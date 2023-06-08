@@ -212,3 +212,44 @@ body[dir="ltr"] .formPara {
 body[dir="rtl"] .formPara {
     direction: ltr;
 }
+.formImg {
+    animation: move .8s infinite alternate;
+    -webkit-animation: move .8s infinite alternate;
+}
+
+@keyframes move {
+    0% {
+        transform: translatex(0);
+        -webkit-transform: translatex(0);
+        -moz-transform: translatex(0);
+        -ms-transform: translatex(0);
+        -o-transform: translatex(0);
+}
+
+    100% {
+        transform: translatex(30px);
+        -webkit-transform: translatex(30px);
+        -moz-transform: translatex(30px);
+        -ms-transform: translatex(30px);
+        -o-transform: translatex(30px);
+}
+}
+.volunteerImg{ animation: movee .8s infinite alternate; -webkit-animation: movee .8s infinite alternate;
+}
+@keyframes movee {
+    0% {
+        transform: translatey(0);
+        -webkit-transform: translatey(0);
+        -moz-transform: translatey(0);
+        -ms-transform: translatey(0);
+        -o-transform: translatey(0);
+}
+
+    100% {
+        transform: translatey(-30px);
+        -webkit-transform: translatey(-30px);
+        -moz-transform: translatey(-30px);
+        -ms-transform: translatey(-30px);
+        -o-transform: translatey(-30px);
+}
+}
