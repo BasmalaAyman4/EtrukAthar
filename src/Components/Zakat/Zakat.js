@@ -13,9 +13,9 @@ import 'aos/dist/aos.css'
 export default function Zakat() {
     const { t } = useTranslation()
     const [zakat, setZakat] = useState({
-        money: '',
-        gold21: "",
-        gold24: '',
+        money: '0',
+        gold21: "0",
+        gold24: '0',
 
     });
     useEffect(() => {
@@ -50,19 +50,45 @@ export default function Zakat() {
                                 <h4 className={`${style.zakatValue}`}> {t("قيمة الزكاة")}</h4>
                                 <hr />
                                 <div >
+                                {zakat.money ?
                                     <div className={`${style.zakatValue__body}`}>
-                                        <p>{zakat.money <= (zakat.price_gold21 * 87.48) ? "0 ج.م" : ((zakat.money * 2.5) / 100)}</p>
+                                        <p>{zakat.money <= (zakat.price_gold21 * 87.48) ? "0" : ((zakat.money * 2.5) / 100)} {t("ج")}</p>
                                         <p>  {t("زكاة المال")}</p>
                                     </div>
+                                    :
+                                    
                                     <div className={`${style.zakatValue__body}`}>
-                                        <p>{((zakat.gold21 * zakat.price_gold21 * 2.5) / 100) + ((zakat.gold24 * zakat.price_gold24 * 2.5) / 100) || ((zakat.gold21 * zakat.price_gold21 * 2.5) / 100) || ((zakat.gold24 * zakat.price_gold24 * 2.5) / 100)} ج.م</p>
-                                        <p>{t("زكاة الدهب")}</p>
+                                    
+                                        <p>  0 </p>
+                                        <p> {t("زكاة المال")}</p>
                                     </div>
+                                  }
+                                      {zakat.gold21 || zakat.gold24?
+                                        <div className={`${style.zakatValue__body}`}>
+                                        
+                                        <p>{((zakat.gold21 * zakat.price_gold21 * 2.5) / 100) + ((zakat.gold24 * zakat.price_gold24 * 2.5) / 100) || ((zakat.gold21 * zakat.price_gold21 * 2.5) / 100) || ((zakat.gold24 * zakat.price_gold24 * 2.5) / 100)} {t("ج")}</p>
+                                            <p>{t("زكاة الدهب")}</p>
+                                        </div>
+                                        :
+                                        <div className={`${style.zakatValue__body}`}>
+                                        
+                                            <p> 0 </p>
+                                            <p>{t("زكاة الدهب")}</p>
+                                        </div>
+                                      }
+                                  
                                     <hr />
+                                    {zakat.gold21 || zakat.gold24 || zakat.money ?
                                     <div className={`${style.zakatValue__body}`}>
-                                        <p>{zakat.money <= (zakat.price_gold21 * 87.48) ? ((zakat.gold21 * zakat.price_gold21 * 2.5) / 100) + ((zakat.gold24 * zakat.price_gold24 * 2.5) / 100) : ((zakat.money * 2.5) / 100) + ((zakat.gold21 * zakat.price_gold21 * 2.5) / 100) + ((zakat.gold24 * zakat.price_gold24 * 2.5) / 100)} ج.م</p>
+                                         <p>{zakat.money <= (zakat.price_gold21 * 87.48) ? ((zakat.gold21 * zakat.price_gold21 * 2.5) / 100) + ((zakat.gold24 * zakat.price_gold24 * 2.5) / 100) : ((zakat.money * 2.5) / 100) + ((zakat.gold21 * zakat.price_gold21 * 2.5) / 100) + ((zakat.gold24 * zakat.price_gold24 * 2.5) / 100)} {t("ج")}</p>
+                                    </div>
+                                    :
+                                    <div className={`${style.zakatValue__body}`}>
+                                        <p> 0 </p>
                                         <p className={`${style.zakatValue__total}`}>{t("إجمالي مبلغ الزكاة")}</p>
                                     </div>
+                                    }
+
                                 </div>
                                 <Button className={`${style.zakatValue__btn}`} onClick={donate}> {t("تبرع الآن")}</Button>
                             </div>
@@ -76,7 +102,7 @@ export default function Zakat() {
                                     <div className={`${style.zakatBody__cart}`}>
                                         <div className={`${style.group}`}>
                                             <label className={`${style.label}`}> {t("قيمة المال الذي أملكه")}</label>
-                                            <input required="" type="number" name="money" className={`${style.input}`} placeholder={t("القيمة هنا")} value={zakat.money}
+                                            <input required="" type="number" min="1" name="money" className={`${style.input}`} placeholder={t("القيمة هنا")} value={zakat.money}
                                                 onChange={onChangeHandler} />  {zakat.money <= (zakat.price_gold21 * 87.48) ? <p className={`${style.err}`}> {t("  لحساب زكاة المال")} {t("يجب ادخال مبلغ اكبر من  ")}{much}</p> : ""}
                                         </div>
                                         <div className={`${style.zakatMoney__cart}`}>
@@ -92,7 +118,7 @@ export default function Zakat() {
                                     <div className={`${style.zakatBody__cart}`}>
                                         <div className={`${style.group}`}>
                                             <label className={`${style.label}`}> {t("وزن الذهب الذي تملكه من عيار 21")}</label>
-                                            <input required="" type="number" className={`${style.input} ${style.dahab}`} placeholder={t("القيمة هنا")} name="gold21" value={zakat.gold21} onChange={onChangeHandler} />
+                                            <input required="" min="1" type="number" className={`${style.input} ${style.dahab}`} placeholder={t("القيمة هنا")} name="gold21" value={zakat.gold21} onChange={onChangeHandler} />
                                         </div>
                                         <div className={`${style.zakatMoney__cart}`}>
                                             <p>{t("قيمة الذهب اليوم")}</p>
@@ -106,7 +132,7 @@ export default function Zakat() {
                                     <div className={`${style.zakatBody__cart}`}>
                                         <div className={`${style.group}`}>
                                             <label className={`${style.label}`}>  {t("وزن الذهب الذي تملكه من عيار 24")}</label>
-                                            <input required="" type="number" className={`${style.input} ${style.dahab}`} placeholder={t("القيمة هنا")} name="gold24" value={zakat.gold24} onChange={onChangeHandler} />
+                                            <input required="" min="1" type="number" className={`${style.input} ${style.dahab}`} placeholder={t("القيمة هنا")} name="gold24" value={zakat.gold24} onChange={onChangeHandler} />
                                         </div>
                                         <div className={`${style.zakatMoney__cart}`}>
                                             <p> {t("قيمة الذهب اليوم")}</p>
