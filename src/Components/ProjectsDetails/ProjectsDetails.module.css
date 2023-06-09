@@ -407,3 +407,30 @@ body[dir="ltr"] .add-button {
     line-height: 30px !important;
     margin-top: 20px;
  }
+ body[dir="ltr"]  .desc__para {
+    margin-top: 20px;
+    direction: rtl;
+}
+body[dir="rtl"]  .desc__para{
+    margin-top: 20px;
+    direction: ltr;
+}
+      body[dir="ltr"] .cardDetails__para {
+          direction: rtl;
+      }
+  
+      body[dir="rtl"] .cardDetails__para{
+          direction: ltr;
+      }
+                 body[dir="ltr"] .cardDetails__title {
+                     direction: rtl;
+                 }
+      
+                 body[dir="rtl"] .cardDetails__title {
+                     direction: ltr;
+                 }
+.rej{
+  color: rgb(141, 7, 7);
+  font-size: 20px;
+  font-weight: bold;
+}
