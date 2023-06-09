@@ -146,7 +146,7 @@ export default function EditProfile() {
 
     return (
         <>
-            <HeaderTitle title={(" تعديل الحساب")} />
+            <HeaderTitle title={("تعديل الحساب الشخصي")} />
             {/* <section className={style.logForm}>
 
                 <div className={style.login}>
@@ -286,7 +286,7 @@ export default function EditProfile() {
                                                     <Form.Control name="nameEn" className={`${style.input}`} onChange={onChangeHandler} value={formData.nameEn} />
                                                 </Form.Group>
                                                 <Form.Group className="mb-3" controlId="email">
-                                                    <Form.Label className={style.label}>{t("البريد الإلكتروني")}</Form.Label>
+                                                    <Form.Label className={style.label}>{t("البريد الالكتروني")}</Form.Label>
                                                     <Form.Control name="email" autoComplete="off" className={`${style.input}`} onChange={onChangeHandler} value={formData.email} />
                                                 </Form.Group>
                                                 <Form.Group controlId="gender" className={`${style.g} mb-3`}>
@@ -295,7 +295,7 @@ export default function EditProfile() {
 
                                                 </Form.Group>
                                                 <Form.Group className="mb-3" controlId="phone">
-                                                    <Form.Label className={style.label}> الهاتف</Form.Label>
+                                                    <Form.Label className={style.label}> {t("الهاتف")}</Form.Label>
                                                     <div class={style.inputGroupp}>
                                                         <PhoneInput
                                                             defaultCountry="EG"
@@ -308,7 +308,7 @@ export default function EditProfile() {
                                                     </div>
                                                 </Form.Group>
                                                 <Form.Group className="mb-3" controlId="gender">
-                                                    <Form.Label className={style.label}> النوع</Form.Label>
+                                                    <Form.Label className={style.label}> {t("النوع")}</Form.Label>
                                                     <select
                                                         placeholder="State"
                                                         className={`${style.input} select`}
@@ -316,9 +316,9 @@ export default function EditProfile() {
                                                         value={formData.gender}
                                                         onChange={onChangeHandler}
                                                     >
-                                                        <option value=''>النوع</option>
-                                                        <option value='m'>ذكر</option>
-                                                        <option value='f'>انثي</option>
+                                                        <option value=''>{t("النوع")}</option>
+                                                        <option value='m'>{t("ذكر")}</option>
+                                                        <option value='f'>{t("انثي")}</option>
                                                     </select>
                                                 </Form.Group>
                                                 <Form.Group className="mb-3" controlId="age">
@@ -336,7 +336,11 @@ export default function EditProfile() {
                                     <Row data-aos="fade-up">
                                         {dataCases && dataCases.map(caseCard =>
                                             <Col lg={4}>
-                                                <UserCart id={caseCard.id} status={caseCard.status} reason_reject_ar={caseCard.reason_reject_ar} photo={caseCard?.caseimage[0]?.image} title={caseCard.name_ar} para={caseCard.description_ar} progress={((caseCard.paied_amount * 100) / caseCard.initial_amount)} totalPrice={caseCard.initial_amount} numOfDonates={caseCard.paied_amount} />
+                                                {currentLanguageCode === "ar" ?
+                                                    <UserCart id={caseCard.id} status={caseCard.status} reason_reject_ar={caseCard.reason_reject_ar} photo={caseCard?.caseimage[0]?.image} title={caseCard.name_ar} para={caseCard.description_ar} progress={((caseCard.paied_amount * 100) / caseCard.initial_amount)} totalPrice={caseCard.initial_amount} numOfDonates={caseCard.paied_amount} /> :
+                                                    <UserCart id={caseCard.id} status={caseCard.status} reason_reject_en={caseCard.reason_reject_en} photo={caseCard?.caseimage[0]?.image} title={caseCard.name_en} para={caseCard.description_en} progress={((caseCard.paied_amount * 100) / caseCard.initial_amount)} totalPrice={caseCard.initial_amount} numOfDonates={caseCard.paied_amount} />
+                                                }
+
                                             </Col>
                                         )}
                                     </Row>

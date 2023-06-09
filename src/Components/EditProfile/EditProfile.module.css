@@ -543,3 +543,10 @@ body[dir="ltr"] .donations {
 body[dir="rtl"] .donations {
 direction: ltr;
 }
+body[dir="rtl"] .case__info__body {
+    direction: ltr;
+}
+
+body[dir="ltr"] .case__info__body {
+    direction: rtl;
+}

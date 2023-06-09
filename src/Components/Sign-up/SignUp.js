@@ -160,8 +160,8 @@ export default function SignUp() {
                         onChange={onChangeHandler}
                       >
                         <option value=''>{t("النوع")}</option>
-                        <option value='m'>ذكر</option>
-                        <option value='f'>انثي</option>
+                        <option value='m'>{t("ذكر")}</option>
+                        <option value='f'>{t("انثي")}</option>
                       </select>
                       <Form.Text className={`${style.msErr}`}>
                         {formError.gender}

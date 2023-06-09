@@ -172,10 +172,10 @@ export default function VolunteerForm() {
                                                 <Form.Control name="age" type="text" autoComplete="off" className={`${style.input}`} placeholder={t("العمر")} onChange={onChangeHandler} value={volunteerData.age} />
                                             </Form.Group>
                                             <Form.Group className="mb-3" controlId="formBasicPassword">
-                                                <Form.Control name="city" type="text" autoComplete="off" className={`${style.input}`} placeholder={t(" المدينة")} onChange={onChangeHandler} value={volunteerData.city} />
+                                                <Form.Control name="city" type="text" autoComplete="off" className={`${style.input}`} placeholder={t("المدينة")} onChange={onChangeHandler} value={volunteerData.city} />
                                             </Form.Group>
                                             <Form.Group className="mb-3" controlId="formBasicPassword">
-                                                <Form.Control name="address" type="text" autoComplete="off" className={`${style.input}`} placeholder={t(" العنوان")} required onChange={onChangeHandler} value={volunteerData.address} />
+                                                <Form.Control name="address" type="text" autoComplete="off" className={`${style.input}`} placeholder={t("العنوان")} required onChange={onChangeHandler} value={volunteerData.address} />
                                             </Form.Group>
                                             <Form.Group className="mb-3" controlId="formBasicPassword">
                                                 <select
@@ -186,10 +186,10 @@ export default function VolunteerForm() {
                                                     onChange={onChangeHandler}
                                                     value={volunteerData.volunteeroption}
                                                 >
-                                                    <option>اختيار التطوع</option>
-                                                    <option>المكفوفين و ضعاف البصر</option>
-                                                    <option> blind</option>
-                                                    <option>الاطعام</option>
+                                                    <option>{t("اختيار التطوع")}</option>
+                                                    <option>{t("المكفوفين")}</option>
+                                                    <option>  {t("الاطعام")}</option>
+
                                                 </select>
                                             </Form.Group>
                                             <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -201,21 +201,21 @@ export default function VolunteerForm() {
                                                     onChange={showmember}
                                                     value={volunteerData.team}
                                                 >
-                                                    <option>اختيار نوع التطوع</option>
-                                                    <option value="individual" >فرد</option>
-                                                    <option value="group">جماعة</option>
+                                                    <option>{t("اختيار نوع التطوع")}</option>
+                                                    <option value="individual" >{t("فرد")}</option>
+                                                    <option value="group">{t("جماعه")}</option>
                                                 </select>
                                             </Form.Group>
                                             {
                                                 active === "group" && (
                                                     <Form.Group className="mb-3" controlId="formBasicPassword" >
-                                                        <Form.Control name="numOfGroup" type="text" autoComplete="off" className={`${style.input}`} placeholder={t(" عدد الافراد")} required onChange={onChangeHandler} value={volunteerData.numOfGroup} />
+                                                        <Form.Control name="numOfGroup" type="text" autoComplete="off" className={`${style.input}`} placeholder={t("عدد الافراد")} required onChange={onChangeHandler} value={volunteerData.numOfGroup} />
                                                     </Form.Group>
                                                 )
                                             }
 
                                             <Button className={style.signup__btn} type="submit">
-                                                {t(" تطوع الان")}
+                                                {t("تطوع الان")}
                                             </Button>
                                         </div>
                                     </Form>
