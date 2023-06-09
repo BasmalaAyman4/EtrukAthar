@@ -1,6 +1,9 @@
 .swiper-pagination-bullet{
   background-color:  #000 !important;
 }
+.form-money{
+  width: 100%;
+}
 body[dir="rtl"] .progress{
    direction: ltr;
 }

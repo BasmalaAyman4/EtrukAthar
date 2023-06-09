@@ -54,11 +54,11 @@ export default function NavbarMenu() {
     useEffect(() => {
 
         document.body.dir = currentLanguage.dir || 'ltr'
-        document.title = t("عنوان")
+        document.title = t(" اترك أثراً")
 
     }, [currentLanguage, t])
     function handleLanguage(code, index, event) {
-        // window.location.reload();
+        window.location.reload();
         event.preventDefault();
         i18next.changeLanguage(code)
 
