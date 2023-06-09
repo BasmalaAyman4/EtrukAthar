@@ -105,7 +105,7 @@ export default function Acution() {
     addNewAcution.append("end_time", formData.timeSend + ':00');
     const onSubmitHandler = (e) => {
 
-        const toastId = toast.loading(" ... ")
+        const toastId = toast.loading(t(" ... انتظر قليلا"))
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         e.preventDefault()
         axios.post(`https://otrok.invoacdmy.com/api/user/mazad/store?lang=${currentLanguageCode}`, addNewAcution, {

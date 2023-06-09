@@ -34,7 +34,7 @@ export default function CharityEventDetails() {
 
     }, [currentLanguageCode])
     const onSubmitHandler = (e) => {
-        const toastId = toast.loading("...انتظر قليلا")
+        const toastId = toast.loading(t(" ... انتظر قليلا"))
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         e.preventDefault()
 

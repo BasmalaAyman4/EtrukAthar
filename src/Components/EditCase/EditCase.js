@@ -110,17 +110,17 @@ const EditCase = ({ show, setShow }) => {
     const onSubmitHandler = (e) => {
         console.log(formData.donationTypeId)
         console.log(formData)
-        const toastId = toast.loading("Please wait... ")
+        const toastId = toast.loading(t(" ... انتظر قليلا"))
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         e.preventDefault()
-        axios.post(`https://otrok.invoacdmy.com/api/user/case/update/${updateId.id}`, addNewCase, {
+        axios.post(`https://otrok.invoacdmy.com/api/user/case/update/${updateId.id}?lang=${currentLanguageCode}`, addNewCase, {
             headers: {
                 "Content-Type": "multipart/form-data",
                 "Authorization": `Bearer ${token}`,
             }
-        })
+        }, [currentLanguageCode])
             .then(response => {
-                toast.success('تم تعديل الحاله بنجاح')
+                toast.success(response.data.message)
                 console.log(response)
             }
             ).catch((err) => { toast.error(err.response.data.message) })

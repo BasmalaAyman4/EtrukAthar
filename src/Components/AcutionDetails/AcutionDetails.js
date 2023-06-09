@@ -143,17 +143,17 @@ export default function AcutionDetails() {
     addBid.append("vendor_paid", count);
     const incrementBid = () => {
 
-        const toastId = toast.loading("...")
+        const toastId = toast.loading(t(" ... انتظر قليلا"))
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         console.log(count)
-        axios.post(`https://otrok.invoacdmy.com/api/user/mazad/increment/${mazadId.id}`, addBid, {
+        axios.post(`https://otrok.invoacdmy.com/api/user/mazad/increment/${mazadId.id}?lang=${currentLanguageCode}`, addBid, {
             headers: {
                 "Authorization": `Bearer ${token}`,
                 "Content-Type": "multipart/form-data"
             }
-        })
+        }, [currentLanguageCode])
             .then(response => {
-                toast.success('تمت العملية بنجاح')
+                toast.success(response.data.message)
                 handleReload()
                 console.log(response.data.vendor_paid)
 
@@ -271,36 +271,36 @@ export default function AcutionDetails() {
                     </div>
                     <div className={`${active === "vendor" ? style.vendor__body : style.none}`}>
                         {moreFromVendor && moreFromVendor.map(acutionCard => (
-                            <Link to={`acution-details/${acutionCard.id}`}>
-                                <Col className={`${style.card}`}  >
-                                    <div className={`${style.image}`}>
-                                        <div className={`${style.flipCard}`}>
-                                            <div className={`${style.flipCard__inner}`}>
-                                                <div className={`${style.flipCard__front}`}>
-                                                    <img src={acutionCard.mazadimage[0]?.image} alt="" />
-                                                </div>
-                                                <div className={`${style.flipCard__back}`}>
-                                                    <img src={acutionCard.mazadimage[1]?.image} alt="" />
-                                                </div>
+
+                            <Col className={`${style.card}`}  >
+                                <div className={`${style.image}`}>
+                                    <div className={`${style.flipCard}`}>
+                                        <div className={`${style.flipCard__inner}`}>
+                                            <div className={`${style.flipCard__front}`}>
+                                                <img src={acutionCard.mazadimage[0]?.image} alt="" />
                                             </div>
-                                            <div className={`${style.acutionEnded}`}>
-                                                <div >
-                                                    {((new Date(moment(acutionCard.end_date).format('LL') + " " + acutionCard.end_time).getTime()) - (new Date().getTime())) < 0
-                                                        ?
-                                                        <p className={`${style.ended}`}>{t("انتهى المزاد")}</p>
-                                                        :
-                                                        ""
-                                                    }
-                                                </div>
+                                            <div className={`${style.flipCard__back}`}>
+                                                <img src={acutionCard.mazadimage[1]?.image} alt="" />
+                                            </div>
+                                        </div>
+                                        <div className={`${style.acutionEnded}`}>
+                                            <div >
+                                                {((new Date(moment(acutionCard.end_date).format('LL') + " " + acutionCard.end_time).getTime()) - (new Date().getTime())) < 0
+                                                    ?
+                                                    <p className={`${style.ended}`}>{t("انتهى المزاد")}</p>
+                                                    :
+                                                    ""
+                                                }
                                             </div>
                                         </div>
                                     </div>
-                                    <div className={`${style.cardBody}`}>
-                                        <h4 className={`${style.card__title}`}>{acutionCard.name}</h4>
-                                        <p className={`${style.card__acution}`}> {t("الدفع الحالي")}: {acutionCard.current_price}</p>
-                                    </div>
-                                </Col>
-                            </Link>
+                                </div>
+                                <div className={`${style.cardBody}`}>
+                                    <h4 className={`${style.card__title}`}>{acutionCard.name}</h4>
+                                    <p className={`${style.card__acution}`}> {t("الدفع الحالي")}: {acutionCard.current_price}</p>
+                                </div>
+                            </Col>
+
                         ))}
 
                     </div>

@@ -118,15 +118,15 @@ export default function EditProfile() {
     storeProfile.append("image", formData.img);
     storeProfile.append("gender", formData.gender);
     const onSubmitHandler = (e) => {
-        const toastId = toast.loading("...انتظر قليلا")
+        const toastId = toast.loading(t(" ... انتظر قليلا"))
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         e.preventDefault()
-        axios.post("https://otrok.invoacdmy.com/api/user/profile/edit", storeProfile, {
+        axios.post(`https://otrok.invoacdmy.com/api/user/profile/edit?lang=${currentLanguageCode}`, storeProfile, {
             headers: {
                 "Authorization": `Bearer ${token}`,
                 "Content-Type": "multipart/form-data"
             }
-        })
+        }, [currentLanguageCode])
             .then(response => {
                 toast.success(response.data.message)
 

@@ -103,7 +103,7 @@ export default function SignUp() {
 
   const onSubmitHandler = (e) => {
 
-    const toastId = toast.loading("Please wait...")
+    const toastId = toast.loading(t(" ... انتظر قليلا"))
     setTimeout(() => { toast.dismiss(toastId); }, 1000);
     e.preventDefault()
     handleSigupUserErrors()

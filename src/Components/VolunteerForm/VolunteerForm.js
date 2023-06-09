@@ -33,7 +33,7 @@ export default function VolunteerForm() {
         volunteeroption: '',
         team: '',
         numOfGroup: '',
-        phoneNum: ""
+        phone: ""
     })
     const showmember = (e) => {
         const member = e.target.value;
@@ -57,7 +57,7 @@ export default function VolunteerForm() {
                     volunteeroption: "",
                     team: "",
                     numOfGroup: "",
-                    phoneNum: response.data.user.phone
+                    phone: response.data.user.phone
                 })
 
             }).catch((err) => { console.log(err) })
@@ -78,12 +78,12 @@ export default function VolunteerForm() {
     storeVolunteer.append("age", volunteerData.age);
     storeVolunteer.append("address", volunteerData.address);
     storeVolunteer.append("city", volunteerData.city);
-    storeVolunteer.append("phone", volunteerData.phoneNum);
-    storeVolunteer.append("activity", volunteerData.volunteeroption);
+    storeVolunteer.append("phone", volunteerData.phone);
+    storeVolunteer.append("activity", "blind");
     storeVolunteer.append("volunteer_type", volunteerData.team);
     storeVolunteer.append("num_of_members", volunteerData.numOfGroup);
     const onSubmitHandler = (e) => {
-        const toastId = toast.loading("...انتظر قليلا")
+        const toastId = toast.loading(t(" ... انتظر قليلا"))
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         e.preventDefault()
         axios.post(`https://otrok.invoacdmy.com/api/user/volunteer/store/user?lang=${currentLanguageCode}`, storeVolunteer, {
@@ -163,9 +163,9 @@ export default function VolunteerForm() {
                                                 <PhoneInput
                                                     defaultCountry="EG"
                                                     international
-                                                    name="phoneNum"
+                                                    name="phone"
                                                     onChange={onChangeHandlerPhone}
-                                                    value={`"${volunteerData.phoneNum}"`}
+                                                    value={`"${volunteerData.phone}"`}
                                                     className={` ${style.PhoneInputInput} ${style.PhoneInput}  ${style.input}`} />
                                             </div>
                                             <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -177,21 +177,7 @@ export default function VolunteerForm() {
                                             <Form.Group className="mb-3" controlId="formBasicPassword">
                                                 <Form.Control name="address" type="text" autoComplete="off" className={`${style.input}`} placeholder={t("العنوان")} required onChange={onChangeHandler} value={volunteerData.address} />
                                             </Form.Group>
-                                            <Form.Group className="mb-3" controlId="formBasicPassword">
-                                                <select
-                                                    placeholder="State"
-                                                    className={`${style.input} select`}
-                                                    name="volunteeroption"
-                                                    required
-                                                    onChange={onChangeHandler}
-                                                    value={volunteerData.volunteeroption}
-                                                >
-                                                    <option>{t("اختيار التطوع")}</option>
-                                                    <option>{t("المكفوفين")}</option>
-                                                    <option>  {t("الاطعام")}</option>
 
-                                                </select>
-                                            </Form.Group>
                                             <Form.Group className="mb-3" controlId="formBasicPassword">
                                                 <select
                                                     placeholder="State"

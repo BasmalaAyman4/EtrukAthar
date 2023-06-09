@@ -124,7 +124,7 @@ export default function CharitySignUp() {
 
     const onSubmitHandler = (e) => {
 
-        const toastId = toast.loading("Please wait...")
+        const toastId = toast.loading(t(" ... انتظر قليلا"))
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         e.preventDefault()
         handleErrors()
@@ -132,7 +132,7 @@ export default function CharitySignUp() {
         axios.post(`https://otrok.invoacdmy.com/api/register?lang=${currentLanguageCode}`, reqSignUpData)
             .then((response) => {
                 localStorage.setItem("token", response.data.token)
-                toast.success("Successfully registered!")
+                toast.success(response.data.message)
                 handleRedirect()
             }, [currentLanguageCode])
             .catch((err) => {
