@@ -42,11 +42,11 @@ export default function ProjectsDetails() {
     const casesId = useParams()
     const [queryParameters] = useSearchParams()
     const [priceShow, setPriceshow] = useState(10);
-    const [disabled,setDisabled] = useState(false)
+    const [disabled, setDisabled] = useState(false)
     const currentLanguageCode = Cookies.get('i18next') || 'en'
 
     const { t } = useTranslation()
-  
+
     const [donateData, setDonateData] = useState({
         name: '',
         email: '',
@@ -63,7 +63,7 @@ export default function ProjectsDetails() {
         numberOfCartons: '',
         numberOfPeople: '',
         method: '',
-        money:''
+        money: ''
     })
 
     useEffect(() => {
@@ -74,13 +74,13 @@ export default function ProjectsDetails() {
                 setImage(response.data.case.caseimage)
                 setDonationType(response.data.case.donationtype_id)
             }).catch((err) => { console.log(err) })
-        if(queryParameters.get("status") === '1'){
+        if (queryParameters.get("status") === '1') {
             toast.success(t(" عملية التبرع تمت بنجاح"))
         }
     }, [])
 
-   
-   
+
+
     const onChangeHandler = e => {
         setDonateData({ ...donateData, [e.target.name]: e.target.value })
         console.log(donateData)
@@ -88,9 +88,9 @@ export default function ProjectsDetails() {
     }
     function clickPrice(price) {
         setPriceshow(price)
-        console.log(priceShow,'fff')
+        console.log(priceShow, 'fff')
 
-      
+
     }
     function changePrice(e) {
         setDonateData({ ...donateData, money: e.target.value })
@@ -101,13 +101,13 @@ export default function ProjectsDetails() {
     const onChangePaymentMethod = e => {
         setDonateData({ ...donateData, method: e.target.value })
         console.log(donateData)
-       
+
     }
-   const handleChangeMoney= e => {
-    setPriceshow(e.target.value)
-   }
-   const [formError, setFormError] = useState({})
-  
+    const handleChangeMoney = e => {
+        setPriceshow(e.target.value)
+    }
+    const [formError, setFormError] = useState({})
+
 
 
     const [checkedEnKind, setCheckedEnKind] = useState([]);
@@ -127,7 +127,7 @@ export default function ProjectsDetails() {
         itemId: "",
         amountItem: ""
     }])
-  
+
     const addItem = () => {
         let newfield = {
             itemId: "",
@@ -143,7 +143,7 @@ export default function ProjectsDetails() {
         data.splice(index, 1)
         setDataFurniture(data)
     }
-     
+
 
     const [checkedEnSeasons, setCheckedEnSeasons] = useState([]);
     function handleCheckedSeasons(e) {
@@ -158,14 +158,14 @@ export default function ProjectsDetails() {
         setCheckedEnSeasons(updatedEnList);
 
     };
- 
+
     const handleFormChange = (index, event) => {
         let data = [...dataFurniture];
         data[index][event.target.name] = event.target.value;
         setDataFurniture(data);
         console.log(dataFurniture, 'items')
     }
-   
+
 
     const [arOptionValue, setArOptionValue] = useState()
     function handleFurnitureChange(index, event) {
@@ -204,7 +204,7 @@ export default function ProjectsDetails() {
     if (formData.donationtype_id === '1') {
         storeDonate.append("method", donateData.method);
         storeDonate.append("amount_financial", priceShow);
-        if(donateData.method === 'representative'){
+        if (donateData.method === 'representative') {
             storeDonate.append("address", donateData.address);
             storeDonate.append("date_to_send", donateData.dateSend.slice(0, 10));
         }
@@ -239,7 +239,7 @@ export default function ProjectsDetails() {
         storeDonate.append("method", "representative");
         storeDonate.append("address", donateData.address);
         storeDonate.append("city", donateData.city);
-        if(donateData.helpDescription){
+        if (donateData.helpDescription) {
             storeDonate.append("description", donateData.helpDescription);
         }
     }
@@ -252,7 +252,7 @@ export default function ProjectsDetails() {
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         e.preventDefault()
         if (localStorage.getItem("token")) {
-            if(donateData.method === 'online_payment'){
+            if (donateData.method === 'online_payment') {
                 axios.post(`https://otrok.invoacdmy.com/api/user/donation/financial/user?lang=${currentLanguageCode}`, storeDonate, {
                     headers: {
                         "Authorization": `Bearer ${token}`,
@@ -262,11 +262,11 @@ export default function ProjectsDetails() {
                     setDisabled(false)
                     window.location.replace(response.data.payment_response.redirect_url);
                 }
-                ).catch((err) => { 
-                    toast.error(err.response.data.message) 
+                ).catch((err) => {
+                    toast.error(err.response.data.message)
                     setDisabled(false)
                 })
-            }else{
+            } else {
                 axios.post(`https://otrok.invoacdmy.com/api/user/donation/financial/user?lang=${currentLanguageCode}`, storeDonate, {
                     headers: {
                         "Authorization": `Bearer ${token}`,
@@ -276,14 +276,14 @@ export default function ProjectsDetails() {
                     toast.success(t(" عملية التبرع تمت بنجاح"))
                     setDisabled(false)
                 }
-                ).catch((err) => { 
+                ).catch((err) => {
                     toast.error(err.response.data.message)
                     setDisabled(false)
-                 }
+                }
                 )
             }
         } else {
-            if(donateData.method === 'online_payment'){
+            if (donateData.method === 'online_payment') {
                 axios.post(`https://otrok.invoacdmy.com/api/user/donation/financial/guest?lang=${currentLanguageCode}`, storeDonate, {
                     headers: {
                         "Content-Type": "multipart/form-data"
@@ -293,11 +293,11 @@ export default function ProjectsDetails() {
                     window.location.replace(response.data.payment_response.redirect_url);
 
                 }
-                ).catch((err) => { 
+                ).catch((err) => {
                     toast.error(err.response.data.message)
                     setDisabled(false)
-                 })
-            }else{
+                })
+            } else {
                 axios.post(`https://otrok.invoacdmy.com/api/user/donation/financial/guest?lang=${currentLanguageCode}`, storeDonate, {
                     headers: {
                         "Content-Type": "multipart/form-data"
@@ -306,14 +306,14 @@ export default function ProjectsDetails() {
                     toast.success(t(" عملية التبرع تمت بنجاح"))
                     setDisabled(false)
                 }
-                ).catch((err) => { 
+                ).catch((err) => {
                     toast.error(err.response.data.message)
                     setDisabled(false)
-                 })
+                })
             }
         }
     }
- 
+
     const onSubmitHandlerVolunteer = (e) => {
         setDisabled(true)
         const toastId = toast.loading(t(" ... انتظر قليلا"))
@@ -329,10 +329,10 @@ export default function ProjectsDetails() {
                 toast.success(t(" عملية التطوع تمت بنجاح"))
                 setDisabled(false)
             }
-            ).catch((err) => { 
+            ).catch((err) => {
                 toast.error(err.response.data.message)
                 setDisabled(false)
-             })
+            })
         } else {
             axios.post(`https://otrok.invoacdmy.com/api/user/donation/volunteering/guest?lang=${currentLanguageCode}`, storeDonate, {
                 headers: {
@@ -343,10 +343,10 @@ export default function ProjectsDetails() {
                     toast.success(t(" عملية التطوع تمت بنجاح"))
                     setDisabled(false)
                 }
-                ).catch((err) => { 
+                ).catch((err) => {
                     toast.error(err.response.data.message)
                     setDisabled(false)
-                 })
+                })
         }
     }
 
@@ -365,8 +365,8 @@ export default function ProjectsDetails() {
                 toast.success(t(" عملية التبرع تمت بنجاح"))
                 setDisabled(false)
             }
-            ).catch((err) => { 
-                toast.error(err.response.data.message) 
+            ).catch((err) => {
+                toast.error(err.response.data.message)
                 setDisabled(false)
             })
         } else {
@@ -380,9 +380,9 @@ export default function ProjectsDetails() {
                     setDisabled(false)
                 }
                 ).catch((err) => {
-                     toast.error(err.response.data.message)
-                     setDisabled(false)
-                    })
+                    toast.error(err.response.data.message)
+                    setDisabled(false)
+                })
         }
     }
     const onSubmitHandlerClothes = (e) => {
@@ -400,10 +400,10 @@ export default function ProjectsDetails() {
                 toast.success(t(" عملية التبرع تمت بنجاح"))
                 setDisabled(false)
             }
-            ).catch((err) => { 
+            ).catch((err) => {
                 toast.error(err.response.data.message)
                 setDisabled(false)
-             })
+            })
 
         } else {
             axios.post(`https://otrok.invoacdmy.com/api/user/donation/clothes/guest?lang=${currentLanguageCode}`, storeDonate, {
@@ -415,8 +415,8 @@ export default function ProjectsDetails() {
                 setDisabled(false)
             }
             ).catch((err) => {
-                 toast.error(err.response.data.message) 
-                 setDisabled(false)
+                toast.error(err.response.data.message)
+                setDisabled(false)
             })
         }
 
@@ -436,10 +436,10 @@ export default function ProjectsDetails() {
                 toast.success(t(" عملية التبرع تمت بنجاح"))
                 setDisabled(false)
             }
-            ).catch((err) => { 
+            ).catch((err) => {
                 toast.error(err.response.data.message)
                 setDisabled(false)
-             })
+            })
         } else {
             axios.post(`https://otrok.invoacdmy.com/api/user/donation/furniture/guest?lang=${currentLanguageCode}`, storeDonate, {
                 headers: {
@@ -452,7 +452,7 @@ export default function ProjectsDetails() {
             ).catch((err) => {
                 toast.error(err.response.data.message)
                 setDisabled(false)
-             })
+            })
         }
     }
 
@@ -468,70 +468,102 @@ export default function ProjectsDetails() {
                             <p className={`${style.cardDetails__para}`}>{t("مشروع رقم")} {formData.id}</p>
                             <hr />
                         </div>
-                       
-                        {formData.donationtype_id === "1" ? 
-                        <div className={`${style.collect}`}>
-                            <p className={`${style.collect__para}`}>{t("تم جمع المبلغ")}<bold className={`${style.bold}`}>{formData.paied_amount +''+ t('ج')}</bold> {t("من اصل")} {formData.initial_amount}</p>
-                            <ProgressBar now={((formData.paied_amount * 100) / formData.initial_amount)} className={`${style.progress} `} />
-                        </div>
-                         : 
-                         null 
-                         }
-                          {formData.donationtype_id === "2" ? 
-                            <div className={`${style.collect}`}>
-                                <p className={`${style.collect__para}`}>{t("تم جمع ")}<bold className={`${style.bold}`}>{formData.paied_amount +''+ t("متطوع")}</bold> {t("من اصل")} {formData.initial_amount}</p>
-                                <ProgressBar now={((formData.paied_amount * 100) / formData.initial_amount)} className={`${style.progress} `} />
-                            </div>
-                            : 
-                            null 
-                         }
-                          {formData.donationtype_id === "3" ? 
-                            <div className={`${style.collect}`}>
-                                <p className={`${style.collect__para}`}>{t("تم جمع ")}<bold className={`${style.bold}`}>{formData.paied_amount +''+ t("كرتونة")}</bold> {t("من اصل")} {formData.initial_amount}</p>
-                                <ProgressBar now={((formData.paied_amount * 100) / formData.initial_amount)} className={`${style.progress} `} />
-                            </div>
-                            : 
-                            null 
-                         }
-                          {formData.donationtype_id === "4" ? 
-                            <div className={`${style.collect}`}>
-                                <p className={`${style.collect__para}`}>{t(" تم جمع ملابس") + " " + t("ل") }<bold className={`${style.bold}`}>{formData.paied_amount +''+ t("عدد الاشخاص")}</bold> {t("من اصل")} {formData.initial_amount}</p>
-                                <ProgressBar now={((formData.paied_amount * 100) / formData.initial_amount)} className={`${style.progress} `} />
-                            </div>
-                            : 
-                            null 
-                         }
 
-                        {formData.donationtype_id === "5" ? 
+                        {formData.donationtype_id === "1" ?
                             <div className={`${style.collect}`}>
-                                <p className={`${style.collect__para}`}>{t("تم جمع ")}<bold className={`${style.bold}`}>{ formData.paied_amount +''+ t( "عنصر")}</bold> {t("من اصل")} {formData.initial_amount}</p>
+                                <p className={`${style.collect__para}`}>{t("تم جمع المبلغ")}<bold className={`${style.bold}`}>{formData.paied_amount + '' + t('ج')}</bold> {t("من اصل")} {formData.initial_amount}</p>
                                 <ProgressBar now={((formData.paied_amount * 100) / formData.initial_amount)} className={`${style.progress} `} />
                             </div>
-                            : 
-                            null 
+                            :
+                            null
+                        }
+                        {formData.donationtype_id === "2" ?
+                            <div className={`${style.collect}`}>
+                                <p className={`${style.collect__para}`}>{t("تم جمع ")}<bold className={`${style.bold}`}>{formData.paied_amount + '' + t("متطوع")}</bold> {t("من اصل")} {formData.initial_amount}</p>
+                                <ProgressBar now={((formData.paied_amount * 100) / formData.initial_amount)} className={`${style.progress} `} />
+                            </div>
+                            :
+                            null
+                        }
+                        {formData.donationtype_id === "3" ?
+                            <div className={`${style.collect}`}>
+                                <p className={`${style.collect__para}`}>{t("تم جمع ")}<bold className={`${style.bold}`}>{formData.paied_amount + '' + t("كرتونة")}</bold> {t("من اصل")} {formData.initial_amount}</p>
+                                <ProgressBar now={((formData.paied_amount * 100) / formData.initial_amount)} className={`${style.progress} `} />
+                            </div>
+                            :
+                            null
+                        }
+                        {formData.donationtype_id === "4" ?
+                            <div className={`${style.collect}`}>
+                                <p className={`${style.collect__para}`}>{t(" تم جمع ملابس") + " " + t("ل")}<bold className={`${style.bold}`}>{formData.paied_amount + '' + t("عدد الاشخاص")}</bold> {t("من اصل")} {formData.initial_amount}</p>
+                                <ProgressBar now={((formData.paied_amount * 100) / formData.initial_amount)} className={`${style.progress} `} />
+                            </div>
+                            :
+                            null
+                        }
+                        {formData.donationtype_id === "4" ?
+                            currentLanguageCode === "ar" ?
+                                <>
+                                    <p className={`${style.items}`}>{t("تفاصيل عن الملابس المراد تجميعها:")}</p>
+
+                                    <p className={`${style.details__para}`}> {t("نوع الملابس")}  : {formData.type_ar}</p>
+                                    <p className={`${style.details__para}`}> {t("لمن الملابس")}  : {formData.gender_ar}</p>
+
+                                </>
+                                :
+                                <>
+                                    <p className={`${style.items}`}>{t("تفاصيل عن الملابس المراد تجميعها:")}</p>
+
+                                    <p className={`${style.details__para}`}> {t("نوع الملابس")}  : {formData.type_en}</p>
+                                    <p className={`${style.details__para}`}> {t("لمن الملابس")}  : {formData.gender_en}</p>
+
+                                </>
+                            :
+                            null
+
+                        }
+                        {/*  {formData.donationtype_id === "4" && currentLanguageCode === "en" ?
+                            <>
+                                <p className={`${style.items}`}>{t("تفاصيل عن الملابس المراد تجميعها:")}</p>
+
+                                <p className={`${style.details__para}`}> {t("نوع الملابس")}  : {formData.type_en}</p>
+                                <p className={`${style.details__para}`}> {t("لمن الملابس")}  : {formData.gender_en}</p>
+
+                            </>
+                            :
+                            null
+                        } */}
+
+                        {formData.donationtype_id === "5" ?
+                            <div className={`${style.collect}`}>
+                                <p className={`${style.collect__para}`}>{t("تم جمع ")}<bold className={`${style.bold}`}>{formData.paied_amount + '' + t("عنصر")}</bold> {t("من اصل")} {formData.initial_amount}</p>
+                                <ProgressBar now={((formData.paied_amount * 100) / formData.initial_amount)} className={`${style.progress} `} />
+                            </div>
+                            :
+                            null
                         }
 
-                        {formData.donationtype_id === "5" ? 
-                             <>
+                        {formData.donationtype_id === "5" ?
+                            <>
                                 <p className={`${style.items}`}>{t("ساعدنا في جمع")}</p>
                                 {items && items.map(item =>
                                     <p className={`${style.details__para}`}> {item.name} : {item.amount}</p>
                                 )}
                             </>
-                            : 
-                            null 
+                            :
+                            null
                         }
 
                         <div >
                             <p className={`${style.details__para}`}> {formData.description}</p>
                         </div>
-                        {formData.file?
-                        <>
-                        <Link to={formData.file}>{t("الملف التعريفي الخاص بالحالة و وصفها")}</Link>
-                        </>
-                        :
-                       null
-                        }  
+                        {formData.file ?
+                            <>
+                                <Link to={formData.file}>{t("الملف التعريفي الخاص بالحالة و وصفها")}</Link>
+                            </>
+                            :
+                            null
+                        }
                         <div className={`${style.cardDetails__icon}`}>
                             <Row>
                                 <Col md={3}  >
@@ -571,27 +603,27 @@ export default function ProjectsDetails() {
                                 clickable: true,
                             }}
                             modules={[Autoplay, Pagination]}
-                        >   
-                            {!image.length ? 
-                           
-                              <SwiperSlide>
-                                <img src={imgNull}  alt='' />
+                        >
+                            {!image.length ?
+
+                                <SwiperSlide>
+                                    <img src={imgNull} alt='' />
                                 </SwiperSlide>
-                          
-                            :
-                            <>
-                            {image && image.map((imgSrc, index) => (<SwiperSlide><img src={imgSrc.image} key={index} alt='' className={`${style.imgSwiper}`} /></SwiperSlide>))}
-                            </>
+
+                                :
+                                <>
+                                    {image && image.map((imgSrc, index) => (<SwiperSlide><img src={imgSrc.image} key={index} alt='' className={`${style.imgSwiper}`} /></SwiperSlide>))}
+                                </>
                             }
                         </Swiper>
 
 
                     </Col>
-                    
+
                     <Col sm={12} xl={4}>
 
                         {formData.donationtype_id === "1" ?
-                        <aside dir={currentLanguageCode === 'ar' ? 'rtl' : 'ltr'} className={`${style.aside}`}>
+                            <aside dir={currentLanguageCode === 'ar' ? 'rtl' : 'ltr'} className={`${style.aside}`}>
                                 <button className={`${style.cardDetails__btn}`}>
                                     {t("تبرع الان   للحالات عبر موقعنا ")}
                                 </button>
@@ -602,7 +634,7 @@ export default function ProjectsDetails() {
                                     <button className={`${style.price__btn}`} onClick={() => { clickPrice(50.00) }}>50.00</button>
                                     <button className={`${style.price__btn}`} onClick={() => { clickPrice(100.00) }}>100.00</button>
                                 </div>
-                           
+
                                 <Form className="form-money" onSubmit={onSubmitHandler}>
                                     <Form.Group className="mb-3" controlId="formBasicEmail" >
                                         <Form.Control type='name' name="name" className={`${style.input}`} placeholder={t("اسم المستخدم")} onChange={onChangeHandler} value={donateData.name} required />
@@ -622,303 +654,303 @@ export default function ProjectsDetails() {
 
 
                                     <div class="radio-item-container">
-                                     
-                                    <div class="radio-item"> 
-                                    <div className={`${style.modal__paypal}`}><p className={`${style.paypal__para}`}><FaCcMastercard className={`${style.icon}`} /> {t(" للتبرع من خلال البطاقة الائتمانية")}</p></div>
+
+                                        <div class="radio-item">
+                                            <div className={`${style.modal__paypal}`}><p className={`${style.paypal__para}`}><FaCcMastercard className={`${style.icon}`} /> {t(" للتبرع من خلال البطاقة الائتمانية")}</p></div>
                                             <label className='label_radio' for='online_payment'>
-                                                <input type="radio" id='online_payment' name="method" value='online_payment'  onChange={onChangePaymentMethod} />
+                                                <input type="radio" id='online_payment' name="method" value='online_payment' onChange={onChangePaymentMethod} />
                                                 <span>{t("التبرع اونلاين")}</span>
 
                                             </label>
-                                           
+
                                         </div>
 
-                                        
+
                                         <div class="radio-item">
-                                            
-                                            <div className={`${style.modal__paypal}`}><p className={`${style.paypal__para}`}><img src={delivery} alt=""  className={`${style.imgpay}`} />{t("للتبرع من خلال مندوبنا")}</p></div>
+
+                                            <div className={`${style.modal__paypal}`}><p className={`${style.paypal__para}`}><img src={delivery} alt="" className={`${style.imgpay}`} />{t("للتبرع من خلال مندوبنا")}</p></div>
                                             <label className='label_radio' for='representative'>
-                                                <input type="radio" id='representative' name="method"  value='representative' onChange={onChangePaymentMethod} />
+                                                <input type="radio" id='representative' name="method" value='representative' onChange={onChangePaymentMethod} />
                                                 <span> {t("مندوب")} </span>
                                             </label>
                                         </div>
 
-                                </div>
-                      
-                                    
-                                    { donateData.method === 'representative' ?
-                                                 <div className={`${style["representative-form"]}`}>
-                                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                                        <Form.Control required type='text' name="address" className={`${style.input} mt-0`} placeholder={t("العنوان")} onChange={onChangeHandler} value={donateData.address} />
-                                                    </Form.Group>
-                                                    <Form.Group  className="mb-3" controlId="formBasicEmail" >
-                                                        <Form.Control required type='date' name="dateSend" className={`${style.input}`} onChange={onChangeHandler} value={donateData.dateSend} />
-                                                        <Form.Text className={`${style.date}`}>
-                                                           {t("تحديد ميعاد التبرع لارسال المندوب")}
-                                                        </Form.Text>
-                                                    </Form.Group>
-                                                </div>
-                                                :
-                                                null
-                                          
+                                    </div>
+
+
+                                    {donateData.method === 'representative' ?
+                                        <div className={`${style["representative-form"]}`}>
+                                            <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                                <Form.Control required type='text' name="address" className={`${style.input} mt-0`} placeholder={t("العنوان")} onChange={onChangeHandler} value={donateData.address} />
+                                            </Form.Group>
+                                            <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                                <Form.Control required type='date' name="dateSend" className={`${style.input}`} onChange={onChangeHandler} value={donateData.dateSend} />
+                                                <Form.Text className={`${style.date}`}>
+                                                    {t("تحديد ميعاد التبرع لارسال المندوب")}
+                                                </Form.Text>
+                                            </Form.Group>
+                                        </div>
+                                        :
+                                        null
+
                                     }
-                                    <Button type="submit" disabled={disabled? true : false} className={`${style["signup__btn"]} mb-3`}>
-                                       {t("تبرع الآن")}
+                                    <Button type="submit" disabled={disabled ? true : false} className={`${style["signup__btn"]} mb-3`}>
+                                        {t("تبرع الآن")}
                                     </Button>
                                 </Form>
-                        </aside> : ""}
+                            </aside> : ""}
 
                         {formData.donationtype_id === "2" ?
-                        <aside dir={currentLanguageCode === 'ar' ? 'rtl' : 'ltr'}className={`${style.aside}`}>
-                            <button className={`${style.cardDetails__btn}`}>
-                                {t("تبرع الان   للحالات عبر موقعنا ")}
-                            </button>
-                            <Form onSubmit={onSubmitHandlerVolunteer}>
-                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control  type='name' name="name" className={`${style.input}`} placeholder={t("اسم المستخدم")} onChange={onChangeHandler} value={donateData.name} required />
-                                </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control  type='email' name="email" className={`${style.input}`} placeholder={t("البريد الالكتروني")} onChange={onChangeHandler} value={donateData.email} required />
-                                </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control  type='text' name="city" className={`${style.input}`} placeholder={t("المدينة")} onChange={onChangeHandler} value={donateData.city} required />
-                                </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control  type='text' name="address" className={`${style.input}`} placeholder={t("العنوان")} onChange={onChangeHandler} value={donateData.address} required />
-                                </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control  min='1'  max='100000000' type='number' name="numberOfVoulenteers" className={`${style.input}`} placeholder={t("عدد المتطوعين")} onChange={onChangeHandler} value={donateData.numberOfVoulenteers} required />
-                                </Form.Group>
-                                <PhoneInput
-                                    defaultCountry="EG"
-                                    international
-                                    error={donateData.phone ? (isValidPhoneNumber(donateData.phone) ? undefined : 'Invalid phone number') : 'Phone number required'}
-                                    value={donateData.phone}
-                                    name="phone"
-                                    onChange={onChangeHandlerPhone}
-                                    className={` ${style.PhoneInputInput} ${style.PhoneInput}  ${style.input}`}
-                                    required />
-                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control  as="textarea" rows="3" name="helpDescription" className={`${style.textArea}`} onChange={onChangeHandler} value={donateData.helpDescription} placeholder={t("بماذا يمكنك المساعدة")} />
-                                </Form.Group>
-                                <Button type="submit" disabled={disabled? true : false}  className={style.signup__btn}>
-                                    {t("تبرع الآن")}
-                                </Button>
-                            </Form>
-                        </aside> : ""}
+                            <aside dir={currentLanguageCode === 'ar' ? 'rtl' : 'ltr'} className={`${style.aside}`}>
+                                <button className={`${style.cardDetails__btn}`}>
+                                    {t("تبرع الان   للحالات عبر موقعنا ")}
+                                </button>
+                                <Form onSubmit={onSubmitHandlerVolunteer}>
+                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                        <Form.Control type='name' name="name" className={`${style.input}`} placeholder={t("اسم المستخدم")} onChange={onChangeHandler} value={donateData.name} required />
+                                    </Form.Group>
+                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                        <Form.Control type='email' name="email" className={`${style.input}`} placeholder={t("البريد الالكتروني")} onChange={onChangeHandler} value={donateData.email} required />
+                                    </Form.Group>
+                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                        <Form.Control type='text' name="city" className={`${style.input}`} placeholder={t("المدينة")} onChange={onChangeHandler} value={donateData.city} required />
+                                    </Form.Group>
+                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                        <Form.Control type='text' name="address" className={`${style.input}`} placeholder={t("العنوان")} onChange={onChangeHandler} value={donateData.address} required />
+                                    </Form.Group>
+                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                        <Form.Control min='1' max='100000000' type='number' name="numberOfVoulenteers" className={`${style.input}`} placeholder={t("عدد المتطوعين")} onChange={onChangeHandler} value={donateData.numberOfVoulenteers} required />
+                                    </Form.Group>
+                                    <PhoneInput
+                                        defaultCountry="EG"
+                                        international
+                                        error={donateData.phone ? (isValidPhoneNumber(donateData.phone) ? undefined : 'Invalid phone number') : 'Phone number required'}
+                                        value={donateData.phone}
+                                        name="phone"
+                                        onChange={onChangeHandlerPhone}
+                                        className={` ${style.PhoneInputInput} ${style.PhoneInput}  ${style.input}`}
+                                        required />
+                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                        <Form.Control as="textarea" rows="3" name="helpDescription" className={`${style.textArea}`} onChange={onChangeHandler} value={donateData.helpDescription} placeholder={t("بماذا يمكنك المساعدة")} />
+                                    </Form.Group>
+                                    <Button type="submit" disabled={disabled ? true : false} className={style.signup__btn}>
+                                        {t("تبرع الآن")}
+                                    </Button>
+                                </Form>
+                            </aside> : ""}
 
-                        {formData.donationtype_id === "3" ? 
-                        <aside dir={currentLanguageCode === 'ar' ? 'rtl' : 'ltr'} className={`${style.aside}`}>
-                            <button className={`${style.cardDetails__btn}`}>
-                                {t("تبرع الان   للحالات عبر موقعنا ")}
-                            </button>
-                            <Form onSubmit={onSubmitHandlerFood}>
-                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control type='name' name="name" className={`${style.input}`} placeholder={t("اسم المستخدم")} onChange={onChangeHandler} value={donateData.name} required />
-                                </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control type='email' name="email" className={`${style.input}`} placeholder={t("البريد الالكتروني")} onChange={onChangeHandler} value={donateData.email} required />
-                                </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control type='text' name="city" className={`${style.input}`} placeholder={t("المدينة")} onChange={onChangeHandler} value={donateData.city} required />
-                                </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control type='text' name="address" className={`${style.input}`} placeholder={t("العنوان")} onChange={onChangeHandler} value={donateData.address} required />
-                                </Form.Group>
-                                <PhoneInput
-                                    defaultCountry="EG"
-                                    international
-                                    error={donateData.phone ? (isValidPhoneNumber(donateData.phone) ? undefined : 'Invalid phone number') : 'Phone number required'}
-                                    value={donateData.phone}
-                                    name="phone"
-                                    onChange={onChangeHandlerPhone}
-                                    className={` ${style.PhoneInputInput} ${style.PhoneInput}  ${style.input}`}
-                                    required />
-                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control type='number'min='1'  max='100000000' name="numberOfCartons" className={`${style.input}`} placeholder={t("عدد الكارتين")} onChange={onChangeHandler} value={donateData.numberOfCartons} required />
-                                </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control type='date' name="dateSend" className={`${style.input}`} onChange={onChangeHandler} value={donateData.dateSend} required />
-                                    <Form.Text className={`${style.date}`}>
-                                    {t("تحديد ميعاد التبرع لارسال المندوب")}
-                                    </Form.Text>
-                                </Form.Group>
-                                <Button type="submit" disabled={disabled? true : false} className={style.signup__btn}>
-                                {t("تبرع الآن")}
-                                </Button>
-                            </Form>
-                        </aside> : ""}
+                        {formData.donationtype_id === "3" ?
+                            <aside dir={currentLanguageCode === 'ar' ? 'rtl' : 'ltr'} className={`${style.aside}`}>
+                                <button className={`${style.cardDetails__btn}`}>
+                                    {t("تبرع الان   للحالات عبر موقعنا ")}
+                                </button>
+                                <Form onSubmit={onSubmitHandlerFood}>
+                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                        <Form.Control type='name' name="name" className={`${style.input}`} placeholder={t("اسم المستخدم")} onChange={onChangeHandler} value={donateData.name} required />
+                                    </Form.Group>
+                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                        <Form.Control type='email' name="email" className={`${style.input}`} placeholder={t("البريد الالكتروني")} onChange={onChangeHandler} value={donateData.email} required />
+                                    </Form.Group>
+                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                        <Form.Control type='text' name="city" className={`${style.input}`} placeholder={t("المدينة")} onChange={onChangeHandler} value={donateData.city} required />
+                                    </Form.Group>
+                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                        <Form.Control type='text' name="address" className={`${style.input}`} placeholder={t("العنوان")} onChange={onChangeHandler} value={donateData.address} required />
+                                    </Form.Group>
+                                    <PhoneInput
+                                        defaultCountry="EG"
+                                        international
+                                        error={donateData.phone ? (isValidPhoneNumber(donateData.phone) ? undefined : 'Invalid phone number') : 'Phone number required'}
+                                        value={donateData.phone}
+                                        name="phone"
+                                        onChange={onChangeHandlerPhone}
+                                        className={` ${style.PhoneInputInput} ${style.PhoneInput}  ${style.input}`}
+                                        required />
+                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                        <Form.Control type='number' min='1' max='100000000' name="numberOfCartons" className={`${style.input}`} placeholder={t("عدد الكارتين")} onChange={onChangeHandler} value={donateData.numberOfCartons} required />
+                                    </Form.Group>
+                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                        <Form.Control type='date' name="dateSend" className={`${style.input}`} onChange={onChangeHandler} value={donateData.dateSend} required />
+                                        <Form.Text className={`${style.date}`}>
+                                            {t("تحديد ميعاد التبرع لارسال المندوب")}
+                                        </Form.Text>
+                                    </Form.Group>
+                                    <Button type="submit" disabled={disabled ? true : false} className={style.signup__btn}>
+                                        {t("تبرع الآن")}
+                                    </Button>
+                                </Form>
+                            </aside> : ""}
 
-                     
-                        {formData.donationtype_id === "4" ? 
-                        <aside dir={currentLanguageCode === 'ar' ? 'rtl' : 'ltr'} className={`${style.aside}`}>
-                            <button className={`${style.cardDetails__btn}`}>
-                                {t("تبرع الان   للحالات عبر موقعنا ")}
-                            </button>
-                            <Form onSubmit={onSubmitHandlerClothes}>
-                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control type='name' name="name" className={`${style.input}`} placeholder={t("اسم المستخدم")} onChange={onChangeHandler} value={donateData.name} required />
-                                </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control type='email' name="email" className={`${style.input}`} placeholder={t("البريد الالكتروني")} onChange={onChangeHandler} value={donateData.email} required />
-                                </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control type='text' name="city" className={`${style.input}`} placeholder={t("المدينة")} onChange={onChangeHandler} value={donateData.city} required />
-                                </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control type='text' name="address" className={`${style.input}`} placeholder={t("العنوان")} onChange={onChangeHandler} value={donateData.address} required />
-                                </Form.Group>
-                                <PhoneInput
-                                    defaultCountry="EG"
-                                    international
-                                    error={donateData.phone ? (isValidPhoneNumber(donateData.phone) ? undefined : 'Invalid phone number') : 'Phone number required'}
-                                    value={donateData.phone}
-                                    name="phone"
-                                    onChange={onChangeHandlerPhone}
-                                    className={` ${style.PhoneInputInput} ${style.PhoneInput}  ${style.input}`}
-                                    required />
-                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control type='number' name="numberOfPeople" min='1' max='100000000' className={`${style.input}`} placeholder={t("عدد الافراد")} onChange={onChangeHandler} value={donateData.numberOfPeople} required />
-                                </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control type='date' name="dateSend" className={`${style.input}`} onChange={onChangeHandler} value={donateData.dateSend} required />
-                                    <Form.Text className={`${style.date}`}>
-                                      {t("تحديد ميعاد التبرع لارسال المندوب")}
-                                    </Form.Text>
-                                </Form.Group>
-                                <Form.Group className="mb-3 mt-4" controlId="formBasicPassword">
-                                    <div className="formInput d-flex mt-2" >
-                                        <div className="form-group ">
-                                            <input className="form-group_checklist" type="checkbox" name="men" id="men" value="men" onChange={(e) => { handleCheckedKind(e) }} />
-                                            <label className="form-group_checklist_label" for="men" value="men">{t("رجالي")}</label>
-                                        </div>
-                                        <div className="form-group ">
-                                            <input className="form-group_checklist" type="checkbox" id="women" value="women" onChange={(e) => { handleCheckedKind(e) }} />
-                                            <label className="form-group_checklist_label" for="women" value="women"> {t("حريمي")}</label>
-                                        </div>
-                                        <div className="form-group ">
-                                            <input className="form-group_checklist" type="checkbox" id="child" value="child" onChange={(e) => { handleCheckedKind(e) }} />
-                                            <label className="form-group_checklist_label" for="child" value="child"> {t("اطفالي")}</label>
-                                        </div>
-                                    </div>
+
+                        {formData.donationtype_id === "4" ?
+                            <aside dir={currentLanguageCode === 'ar' ? 'rtl' : 'ltr'} className={`${style.aside}`}>
+                                <button className={`${style.cardDetails__btn}`}>
+                                    {t("تبرع الان   للحالات عبر موقعنا ")}
+                                </button>
+                                <Form onSubmit={onSubmitHandlerClothes}>
+                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                        <Form.Control type='name' name="name" className={`${style.input}`} placeholder={t("اسم المستخدم")} onChange={onChangeHandler} value={donateData.name} required />
+                                    </Form.Group>
+                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                        <Form.Control type='email' name="email" className={`${style.input}`} placeholder={t("البريد الالكتروني")} onChange={onChangeHandler} value={donateData.email} required />
+                                    </Form.Group>
+                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                        <Form.Control type='text' name="city" className={`${style.input}`} placeholder={t("المدينة")} onChange={onChangeHandler} value={donateData.city} required />
+                                    </Form.Group>
+                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                        <Form.Control type='text' name="address" className={`${style.input}`} placeholder={t("العنوان")} onChange={onChangeHandler} value={donateData.address} required />
+                                    </Form.Group>
+                                    <PhoneInput
+                                        defaultCountry="EG"
+                                        international
+                                        error={donateData.phone ? (isValidPhoneNumber(donateData.phone) ? undefined : 'Invalid phone number') : 'Phone number required'}
+                                        value={donateData.phone}
+                                        name="phone"
+                                        onChange={onChangeHandlerPhone}
+                                        className={` ${style.PhoneInputInput} ${style.PhoneInput}  ${style.input}`}
+                                        required />
+                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                        <Form.Control type='number' name="numberOfPeople" min='1' max='100000000' className={`${style.input}`} placeholder={t("عدد الافراد")} onChange={onChangeHandler} value={donateData.numberOfPeople} required />
+                                    </Form.Group>
+                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                        <Form.Control type='date' name="dateSend" className={`${style.input}`} onChange={onChangeHandler} value={donateData.dateSend} required />
+                                        <Form.Text className={`${style.date}`}>
+                                            {t("تحديد ميعاد التبرع لارسال المندوب")}
+                                        </Form.Text>
                                     </Form.Group>
                                     <Form.Group className="mb-3 mt-4" controlId="formBasicPassword">
-                                    <div className="formInput d-flex mt-2" >
-                                        <div className="form-group ">
-                                            <input className="form-group_checklist" type="checkbox" id="summer" value="summer" onChange={(e) => { handleCheckedSeasons(e) }} />
-                                            <label className="form-group_checklist_label font" for="summer" value="summer"> {t("صيفي")}</label>
+                                        <div className="formInput d-flex mt-2" >
+                                            <div className="form-group ">
+                                                <input className="form-group_checklist" type="checkbox" name="men" id="men" value="men" onChange={(e) => { handleCheckedKind(e) }} />
+                                                <label className="form-group_checklist_label" for="men" value="men">{t("رجالي")}</label>
+                                            </div>
+                                            <div className="form-group ">
+                                                <input className="form-group_checklist" type="checkbox" id="women" value="women" onChange={(e) => { handleCheckedKind(e) }} />
+                                                <label className="form-group_checklist_label" for="women" value="women"> {t("حريمي")}</label>
+                                            </div>
+                                            <div className="form-group ">
+                                                <input className="form-group_checklist" type="checkbox" id="child" value="child" onChange={(e) => { handleCheckedKind(e) }} />
+                                                <label className="form-group_checklist_label" for="child" value="child"> {t("اطفالي")}</label>
+                                            </div>
                                         </div>
-                                        <div className="form-group ">
-                                            <input className="form-group_checklist" type="checkbox" id="winter" value="winter" onChange={(e) => { handleCheckedSeasons(e) }} />
-                                            <label className="form-group_checklist_label " for="winter" value="winter">{t("شتوي")}</label>
+                                    </Form.Group>
+                                    <Form.Group className="mb-3 mt-4" controlId="formBasicPassword">
+                                        <div className="formInput d-flex mt-2" >
+                                            <div className="form-group ">
+                                                <input className="form-group_checklist" type="checkbox" id="summer" value="summer" onChange={(e) => { handleCheckedSeasons(e) }} />
+                                                <label className="form-group_checklist_label font" for="summer" value="summer"> {t("صيفي")}</label>
+                                            </div>
+                                            <div className="form-group ">
+                                                <input className="form-group_checklist" type="checkbox" id="winter" value="winter" onChange={(e) => { handleCheckedSeasons(e) }} />
+                                                <label className="form-group_checklist_label " for="winter" value="winter">{t("شتوي")}</label>
+                                            </div>
                                         </div>
-                                    </div>
-                                </Form.Group>
+                                    </Form.Group>
 
 
-                                <Button type="submit"  disabled={disabled? true : false}  className={style.signup__btn}>
-                                   {t("تبرع الآن")}
-                                </Button>
-                            </Form>
-                        </aside> : ""}
+                                    <Button type="submit" disabled={disabled ? true : false} className={style.signup__btn}>
+                                        {t("تبرع الآن")}
+                                    </Button>
+                                </Form>
+                            </aside> : ""}
 
                         {formData.donationtype_id === "5" ?
-                        <aside dir={currentLanguageCode === 'ar' ? 'rtl' : 'ltr'} className={`${style.aside}`}>
-                            <button className={`${style.cardDetails__btn}`}>
-                                {t("تبرع الان   للحالات عبر موقعنا ")}
-                            </button>
-                            <Form onSubmit={onSubmitHandlerFurniture}>
-                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control type='name' name="name" className={`${style.input}`} placeholder={t("اسم المستخدم")} onChange={onChangeHandler} value={donateData.name} required />
-                                </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control type='email' name="email" className={`${style.input}`} placeholder={t("البريد الالكتروني")} onChange={onChangeHandler} value={donateData.email} required />
-                                </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control type='text' name="city" className={`${style.input}`} placeholder={t("المدينة")} onChange={onChangeHandler} value={donateData.city} required />
-                                </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control type='text' name="address" className={`${style.input}`} placeholder={t("العنوان")} onChange={onChangeHandler} value={donateData.address} required />
-                                </Form.Group>
-                                <PhoneInput
-                                    defaultCountry="EG"
-                                    international
-                                    error={donateData.phone ? (isValidPhoneNumber(donateData.phone) ? undefined : 'Invalid phone number') : 'Phone number required'}
-                                    value={donateData.phone}
-                                    name="phone"
-                                    onChange={onChangeHandlerPhone}
-                                    className={` ${style.PhoneInputInput} ${style.PhoneInput}  ${style.input}`}
-                                    required />
-                                {formData?.donationtype_id === '5' ?
-                                    <>
-                                        {dataFurniture && dataFurniture.map((item, index) => (
-                                            <>
-                                                <Form.Group className="" controlId="formBasicEmail" >
+                            <aside dir={currentLanguageCode === 'ar' ? 'rtl' : 'ltr'} className={`${style.aside}`}>
+                                <button className={`${style.cardDetails__btn}`}>
+                                    {t("تبرع الان   للحالات عبر موقعنا ")}
+                                </button>
+                                <Form onSubmit={onSubmitHandlerFurniture}>
+                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                        <Form.Control type='name' name="name" className={`${style.input}`} placeholder={t("اسم المستخدم")} onChange={onChangeHandler} value={donateData.name} required />
+                                    </Form.Group>
+                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                        <Form.Control type='email' name="email" className={`${style.input}`} placeholder={t("البريد الالكتروني")} onChange={onChangeHandler} value={donateData.email} required />
+                                    </Form.Group>
+                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                        <Form.Control type='text' name="city" className={`${style.input}`} placeholder={t("المدينة")} onChange={onChangeHandler} value={donateData.city} required />
+                                    </Form.Group>
+                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                        <Form.Control type='text' name="address" className={`${style.input}`} placeholder={t("العنوان")} onChange={onChangeHandler} value={donateData.address} required />
+                                    </Form.Group>
+                                    <PhoneInput
+                                        defaultCountry="EG"
+                                        international
+                                        error={donateData.phone ? (isValidPhoneNumber(donateData.phone) ? undefined : 'Invalid phone number') : 'Phone number required'}
+                                        value={donateData.phone}
+                                        name="phone"
+                                        onChange={onChangeHandlerPhone}
+                                        className={` ${style.PhoneInputInput} ${style.PhoneInput}  ${style.input}`}
+                                        required />
+                                    {formData?.donationtype_id === '5' ?
+                                        <>
+                                            {dataFurniture && dataFurniture.map((item, index) => (
+                                                <>
+                                                    <Form.Group className="" controlId="formBasicEmail" >
 
-                                                    <Form.Control
-                                                        placeholder={t(" عدد الاثاث المراد التبرع بها")}
-                                                        className={`${style.input}`}
-                                                        min='1'
-                                                        max={formData.remaining_amount}
-                                                        name="amountItem"
-                                                        type='number'
-                                                        value={item.amountItem}
-                                                        onChange={event => handleFormChange(index, event)}
-                                                        required
+                                                        <Form.Control
+                                                            placeholder={t(" عدد الاثاث المراد التبرع بها")}
+                                                            className={`${style.input}`}
+                                                            min='1'
+                                                            max={formData.remaining_amount}
+                                                            name="amountItem"
+                                                            type='number'
+                                                            value={item.amountItem}
+                                                            onChange={event => handleFormChange(index, event)}
+                                                            required
 
-                                                    />
+                                                        />
 
-                                                </Form.Group>
-                                                <Form.Group className="mb-1" controlId="formBasicEmail" >
-                                                    <select
-                                                        className={`${style.input} `}
-                                                        style={{ width: '100%', padding: "10px" }}
-                                                        name="itemId"
-                                                        data-index={index}
-                                                        onChange={event => handleFurnitureChange(index, event)}
-                                                        value={item.id}
-                                                        required
-                                                    >
-                                                        <option value=''>{t("الاثاث المراد التبرع بها")} </option>
-                                                        {items && items.map(item =>
-                                                            <option value={item.id} name={item.name} key={item.id} >{item.name}</option>
-                                                        )}
+                                                    </Form.Group>
+                                                    <Form.Group className="mb-1" controlId="formBasicEmail" >
+                                                        <select
+                                                            className={`${style.input} `}
+                                                            style={{ width: '100%', padding: "10px" }}
+                                                            name="itemId"
+                                                            data-index={index}
+                                                            onChange={event => handleFurnitureChange(index, event)}
+                                                            value={item.id}
+                                                            required
+                                                        >
+                                                            <option value=''>{t("الاثاث المراد التبرع بها")} </option>
+                                                            {items && items.map(item =>
+                                                                <option value={item.id} name={item.name} key={item.id} >{item.name}</option>
+                                                            )}
 
-                                                    </select>
-                                                </Form.Group>
-                                                {
-                                                    index > 0 || dataFurniture.length === 2 ?
-                                                        <div className="formInput" >
-                                                            <button type='button' onClick={() => { deleteItem(index) }} className={`${style["add-button"]}`} ><img width={20} src={minus} alt="" /> {t("مسح القطعة")}</button>
-                                                        </div>
-                                                        :
-                                                        <>
-                                                        </>
-                                                }
-                                            </>
-                                        ))
-                                        }
-                                        <div className="formInput d-flex" >
-                                            <button type="button" className={`${style["add-button"]}`} onClick={() => { addItem() }}><img src={plus} alt="" /> {t("اضافه القطعة")}</button>
-                                        </div>
-                                    </>
-                                    :
-                                    null
-                                }
-                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control as="textarea" rows="3" name="helpDescription" className={`${style.textArea}`} placeholder={t("تفاصيل الاثاث او الاجهزه")} onChange={onChangeHandler} value={donateData.helpDescription}  />
-                                </Form.Group>
-                                <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                    <Form.Control type='date' name="dateSend" className={`${style.input}`} onChange={onChangeHandler} value={donateData.dateSend} required />
-                                    <Form.Text className={`${style.date}`}>
-                                      {t("تحديد ميعاد التبرع لارسال المندوب")}
-                                    </Form.Text>
-                                </Form.Group>
-                                <Button type="submit" disabled={disabled? true : false}  className={style.signup__btn}>
-                                   {t("تبرع الآن")}
-                                </Button>
-                            </Form>
-                        </aside> : ""}
+                                                        </select>
+                                                    </Form.Group>
+                                                    {
+                                                        index > 0 || dataFurniture.length === 2 ?
+                                                            <div className="formInput" >
+                                                                <button type='button' onClick={() => { deleteItem(index) }} className={`${style["add-button"]}`} ><img width={20} src={minus} alt="" /> {t("مسح القطعة")}</button>
+                                                            </div>
+                                                            :
+                                                            <>
+                                                            </>
+                                                    }
+                                                </>
+                                            ))
+                                            }
+                                            <div className="formInput d-flex" >
+                                                <button type="button" className={`${style["add-button"]}`} onClick={() => { addItem() }}><img src={plus} alt="" /> {t("اضافه القطعة")}</button>
+                                            </div>
+                                        </>
+                                        :
+                                        null
+                                    }
+                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                        <Form.Control as="textarea" rows="3" name="helpDescription" className={`${style.textArea}`} placeholder={t("تفاصيل الاثاث او الاجهزه")} onChange={onChangeHandler} value={donateData.helpDescription} />
+                                    </Form.Group>
+                                    <Form.Group className="mb-3" controlId="formBasicEmail" >
+                                        <Form.Control type='date' name="dateSend" className={`${style.input}`} onChange={onChangeHandler} value={donateData.dateSend} required />
+                                        <Form.Text className={`${style.date}`}>
+                                            {t("تحديد ميعاد التبرع لارسال المندوب")}
+                                        </Form.Text>
+                                    </Form.Group>
+                                    <Button type="submit" disabled={disabled ? true : false} className={style.signup__btn}>
+                                        {t("تبرع الآن")}
+                                    </Button>
+                                </Form>
+                            </aside> : ""}
                     </Col>
                 </Row>
                 <ToastContainer />

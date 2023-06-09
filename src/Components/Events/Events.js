@@ -37,7 +37,7 @@ export default function Events() {
     return (
         <AnimatedPage >
             <section className={`${style.events}`}>
-                <HeaderTitle title={t(" المناسبات")} para={t("المبلغ المجموع للمناسبات")} price='10.763.00$' />
+                <HeaderTitle title={t(" المناسبات")} para={t("المبلغ المجموع للمناسبات")} />
                 <Container>
                     <p className={`${style.events__para}`}> {t("سعينا إلى جعل أي فرحة لكم مضاعفة بأجر لا يقدر بثمن")} </p>
                     <div className={`${style.eventsStyle}`}>
@@ -59,7 +59,7 @@ export default function Events() {
                                         day={moment(eventCard.start_date).format("Do")}
                                         title={eventCard.name}
                                         para={eventCard.description}
-                                        time={`(${moment(eventCard.start_time, ["HH:mm"]).format("hh:mm a")}) الي ( ${moment(eventCard.end_time, ["HH:mm"]).format("hh:mm a")} )`}
+                                        time={`(${moment(eventCard.start_time, ["HH:mm"]).format("hh:mm a")}) ${t("الي")}( ${moment(eventCard.end_time, ["HH:mm"]).format("hh:mm a")} )`}
                                     />
                                 )}
                             </div>
@@ -99,8 +99,8 @@ export default function Events() {
                             <div className={`${style.otherEvent}`}>
                                 <div className={`${style.annualEvents}`}>
                                     <h2 className={`${style.annualEvents__title}`} >{t("الاحداث السنوية")}</h2>
-                                    <Link to='#' className={`${style.annualEvents__link}`}>{t("حمله البذور و العقائق ")}</Link>
-                                    <Link to='#' className={`${style.annualEvents__link}`}>{t("حمله اعاله الاطفال ")}</Link>
+                                    <Link to='#' className={`${style.annualEvents__link}`}>{t("حمله البذور و العقائق")}</Link>
+                                    <Link to='#' className={`${style.annualEvents__link}`}>{t("حمله اعاله الاطفال")}</Link>
                                 </div>
                                 <div className={`${style.annualEvents} ${style.otherEvents}`}>
                                     <h2 className={`${style.annualEvents__title}`} >{t("مناسبات اخري")}</h2>

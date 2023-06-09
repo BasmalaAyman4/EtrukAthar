@@ -66,7 +66,11 @@ export default function CharityDetails() {
                         <Col>
                             <h2 className={`${style.aboutusTitle}`}>{carityData.name}</h2>
                             <div>
-                                <h1 className={`${style.aboutTitle}`}> {t("نحن نعمل من أجل الفقراء لمنحهم حياة سعيدة.")}</h1>
+                                {carityData.description ? <h1 className={`${style.aboutTitle}`}>{carityData.description}</h1>
+                                    :
+                                    <h1 className={`${style.aboutTitle}`}> {t("نحن نعمل من أجل الفقراء لمنحهم حياة سعيدة.")}</h1>
+                                }
+
                                 <p className={`${style.aboutPara}`}></p>
                                 <h2 className={`${style.aboutTake}`}>{t(":نأخذ أنواعًا مختلفة من التبرعات")}</h2>
                                 <div className={`${style.checkList}`}>

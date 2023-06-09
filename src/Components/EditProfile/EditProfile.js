@@ -14,7 +14,13 @@ import { Link } from 'react-router-dom';
 import UserCart from '../UserCart/UserCart';
 import imgNull from '../../assets/images/remove.photos-removed-background.png'
 import Cookies from 'js-cookie'
+import AnimatedPage from "../Global/AnimatedPage";
+import Aos from 'aos'
+import 'aos/dist/aos.css'
 export default function EditProfile() {
+    useEffect(() => {
+        Aos.init({ duration: 500 });
+    }, [])
     const [token, setToken] = useState(localStorage.getItem("token"))
     const currentLanguageCode = Cookies.get('i18next') || 'en'
     const [dataCases, setDataCases] = useState([]);
@@ -242,119 +248,124 @@ export default function EditProfile() {
                 </Container>
                 <ToastContainer />
             </section> */}
+            <AnimatedPage >
+                <section
+                    intial={{ opacity: 0 }}
+                    animate={{ opacity: 0 }}
+                    exit={{ opacity: 0 }}
+                >
+                    <Container>
+                        <Row className={`justify-content-md-center`}>
 
-            <section>
-                <Container>
-                    <Row className={`justify-content-md-center`}>
-
-                        <Col lg={9} className={`${style.formLine}`}>
-                            <div className={`${active === "edit" ? style.edit__info__body : style.none}`}>
-                                <Form>
-                                    <Row>
-                                        <Col lg={4}>
-                                            <div className={`${style.im} text-center`}>
-                                                <input className={`${style.fileImg}  input-file-js`} ref={(e) => {
-                                                    addFileInput.current = e
-                                                }} id="input-file" name="img" type="file" onChange={(e) => { previewUploadImage(e) }} />
-                                                {
-                                                    imageUrl == null ?
-                                                        <>
+                            <Col lg={9} className={`${style.formLine}`} data-aos="fade-up">
+                                <div className={`${active === "edit" ? style.edit__info__body : style.none}`}>
+                                    <Form>
+                                        <Row>
+                                            <Col lg={4}>
+                                                <div className={`${style.im} text-center`}>
+                                                    <input className={`${style.fileImg}  input-file-js`} ref={(e) => {
+                                                        addFileInput.current = e
+                                                    }} id="input-file" name="img" type="file" onChange={(e) => { previewUploadImage(e) }} />
+                                                    {
+                                                        imageUrl == null ?
+                                                            <>
+                                                                <div ref={addFile} onClick={() => { handleLogo() }}>
+                                                                    <img className={`${style.img}`} ref={imageFirmRef} src={imgNull} alt="" />
+                                                                </div>
+                                                            </>
+                                                            :
                                                             <div ref={addFile} onClick={() => { handleLogo() }}>
-                                                                <img className={`${style.img}`} ref={imageFirmRef} src={imgNull} alt="" />
+                                                                <img className={`${style.img}`} ref={imageContentRef} src={imageUrl} alt="" />
                                                             </div>
-                                                        </>
-                                                        :
-                                                        <div ref={addFile} onClick={() => { handleLogo() }}>
-                                                            <img className={`${style.img}`} ref={imageContentRef} src={imageUrl} alt="" />
-                                                        </div>
-                                                }
-                                            </div>
-                                        </Col >
-                                        <Col lg={8}>
-                                            <Form.Group className="mb-3" controlId="name" >
-                                                <Form.Label className={style.label}> {t("اسم المستخدم")}</Form.Label>
-                                                <Form.Control name="nameEn" className={`${style.input}`} onChange={onChangeHandler} value={formData.nameEn} />
-                                            </Form.Group>
-                                            <Form.Group className="mb-3" controlId="email">
-                                                <Form.Label className={style.label}>{t("البريد الإلكتروني")}</Form.Label>
-                                                <Form.Control name="email" autoComplete="off" className={`${style.input}`} onChange={onChangeHandler} value={formData.email} />
-                                            </Form.Group>
-                                            <Form.Group controlId="gender" className={`${style.g} mb-3`}>
-                                                <Form.Label className={style.label}> {t("العنوان")}</Form.Label>
-                                                <Form.Control name="address" autoComplete="off" className={`${style.input}`} onChange={onChangeHandler} value={formData.address} />
-
-                                            </Form.Group>
-                                            <Form.Group className="mb-3" controlId="phone">
-                                                <Form.Label className={style.label}> الهاتف</Form.Label>
-                                                <div class={style.inputGroupp}>
-                                                    <PhoneInput
-                                                        defaultCountry="EG"
-                                                        international
-                                                        error={formData.phone ? (isValidPhoneNumber(formData.phone) ? undefined : 'Invalid phone number') : 'Phone number required'}
-                                                        value={formData.phone}
-                                                        name="phone"
-                                                        onChange={onChangeHandlerPhone}
-                                                        className={` ${style.PhoneInputInput} ${style.PhoneInput}  ${style.input}`} />
+                                                    }
                                                 </div>
-                                            </Form.Group>
-                                            <Form.Group className="mb-3" controlId="gender">
-                                                <Form.Label className={style.label}> النوع</Form.Label>
-                                                <select
-                                                    placeholder="State"
-                                                    className={`${style.input} select`}
-                                                    name="gender"
-                                                    value={formData.gender}
-                                                    onChange={onChangeHandler}
-                                                >
-                                                    <option value=''>النوع</option>
-                                                    <option value='m'>ذكر</option>
-                                                    <option value='f'>انثي</option>
-                                                </select>
-                                            </Form.Group>
-                                            <Form.Group className="mb-3" controlId="age">
-                                                <Form.Label className={style.label}> {t("العمر")} </Form.Label>
-                                                <Form.Control name="age" autoComplete="off" className={`${style.input}`} onChange={onChangeHandler} value={formData.age} />
-                                            </Form.Group>
-                                            <Button className={style.signup__btn} type="submit" onClick={onSubmitHandler}>
-                                                {t("حفظ التغيرات")}
-                                            </Button>
-                                        </Col>
+                                            </Col >
+                                            <Col lg={8}>
+                                                <Form.Group className="mb-3" controlId="name" >
+                                                    <Form.Label className={style.label}> {t("اسم المستخدم")}</Form.Label>
+                                                    <Form.Control name="nameEn" className={`${style.input}`} onChange={onChangeHandler} value={formData.nameEn} />
+                                                </Form.Group>
+                                                <Form.Group className="mb-3" controlId="email">
+                                                    <Form.Label className={style.label}>{t("البريد الإلكتروني")}</Form.Label>
+                                                    <Form.Control name="email" autoComplete="off" className={`${style.input}`} onChange={onChangeHandler} value={formData.email} />
+                                                </Form.Group>
+                                                <Form.Group controlId="gender" className={`${style.g} mb-3`}>
+                                                    <Form.Label className={style.label}> {t("العنوان")}</Form.Label>
+                                                    <Form.Control name="address" autoComplete="off" className={`${style.input}`} onChange={onChangeHandler} value={formData.address} />
+
+                                                </Form.Group>
+                                                <Form.Group className="mb-3" controlId="phone">
+                                                    <Form.Label className={style.label}> الهاتف</Form.Label>
+                                                    <div class={style.inputGroupp}>
+                                                        <PhoneInput
+                                                            defaultCountry="EG"
+                                                            international
+                                                            error={formData.phone ? (isValidPhoneNumber(formData.phone) ? undefined : 'Invalid phone number') : 'Phone number required'}
+                                                            value={formData.phone}
+                                                            name="phone"
+                                                            onChange={onChangeHandlerPhone}
+                                                            className={` ${style.PhoneInputInput} ${style.PhoneInput}  ${style.input}`} />
+                                                    </div>
+                                                </Form.Group>
+                                                <Form.Group className="mb-3" controlId="gender">
+                                                    <Form.Label className={style.label}> النوع</Form.Label>
+                                                    <select
+                                                        placeholder="State"
+                                                        className={`${style.input} select`}
+                                                        name="gender"
+                                                        value={formData.gender}
+                                                        onChange={onChangeHandler}
+                                                    >
+                                                        <option value=''>النوع</option>
+                                                        <option value='m'>ذكر</option>
+                                                        <option value='f'>انثي</option>
+                                                    </select>
+                                                </Form.Group>
+                                                <Form.Group className="mb-3" controlId="age">
+                                                    <Form.Label className={style.label}> {t("العمر")} </Form.Label>
+                                                    <Form.Control name="age" autoComplete="off" className={`${style.input}`} onChange={onChangeHandler} value={formData.age} />
+                                                </Form.Group>
+                                                <Button className={style.signup__btn} type="submit" onClick={onSubmitHandler}>
+                                                    {t("حفظ التغيرات")}
+                                                </Button>
+                                            </Col>
+                                        </Row>
+                                    </Form>
+                                </div>
+                                <div className={`${active === "case" ? style.case__info__body : style.none}`}>
+                                    <Row data-aos="fade-up">
+                                        {dataCases && dataCases.map(caseCard =>
+                                            <Col lg={4}>
+                                                <UserCart id={caseCard.id} status={caseCard.status} reason_reject_ar={caseCard.reason_reject_ar} photo={caseCard?.caseimage[0]?.image} title={caseCard.name_ar} para={caseCard.description_ar} progress={((caseCard.paied_amount * 100) / caseCard.initial_amount)} totalPrice={caseCard.initial_amount} numOfDonates={caseCard.paied_amount} />
+                                            </Col>
+                                        )}
                                     </Row>
-                                </Form>
-                            </div>
-                            <div className={`${active === "case" ? style.case__info__body : style.none}`}>
-                                <Row>
-                                    {dataCases && dataCases.map(caseCard =>
-                                        <Col lg={4}>
-                                            <UserCart id={caseCard.id} status={caseCard.status} reason_reject_ar={caseCard.reason_reject_ar} photo={caseCard?.caseimage[0]?.image} title={caseCard.name_ar} para={caseCard.description_ar} progress={((caseCard.paied_amount * 100) / caseCard.initial_amount)} totalPrice={caseCard.initial_amount} numOfDonates={caseCard.paied_amount} />
-                                        </Col>
+                                </div>
+                                <div className={`${active === "donate" ? style.donation__info__body : style.none}`} data-aos="fade-up">
+                                    {dataDonation && dataDonation.map(donationCard =>
+                                        <>
+                                            <div className={`${style.donations}`}>
+                                                <p className={`${style.donations__date}`}>{donationCard.date_to_send}</p>
+                                                <p className={`${style.donations__para}`}>{donationCard.amount}</p>
+                                                <p className={`${style.donations__price}`}> {t("المبلغ المتبرع به")}</p>
+                                            </div>
+
+                                        </>
                                     )}
-                                </Row>
-                            </div>
-                            <div className={`${active === "donate" ? style.donation__info__body : style.none}`}>
-                                {dataDonation && dataDonation.map(donationCard =>
-                                    <>
-                                        <div className={`${style.donations}`}>
-                                            <p className={`${style.donations__date}`}>{donationCard.date_to_send}</p>
-                                            <p className={`${style.donations__para}`}>{donationCard.amount}</p>
-                                            <p className={`${style.donations__price}`}> {t("المبلغ المتبرع به")}</p>
-                                        </div>
+                                </div>
 
-                                    </>
-                                )}
-                            </div>
-
-                        </Col>
-                        <Col lg={3}>
-                            <div className={`${style.user}`}>
-                                <Link to='' className={`${active === "edit" ? style.style__link : style.view__link}`} onClick={() => { showActive("edit") }}> {t("تعديل الحساب")}</Link>
-                                <Link to='' className={`${active === "case" ? style.style__link : style.view__link}`} onClick={() => { showActive("case") }}> {t("حالاتك")}</Link>
-                                <Link to='' className={`${active === "donate" ? style.style__link : style.view__link}`} onClick={() => { showActive("donate") }}> {t("تبرعاتك")}</Link>
-                            </div>
-                        </Col>
-                    </Row>
-                </Container>
-            </section>
+                            </Col>
+                            <Col lg={3} data-aos="fade-down">
+                                <div className={`${style.user}`}>
+                                    <Link to='' className={`${active === "edit" ? style.style__link : style.view__link}`} onClick={() => { showActive("edit") }}> {t("تعديل الحساب")}</Link>
+                                    <Link to='' className={`${active === "case" ? style.style__link : style.view__link}`} onClick={() => { showActive("case") }}> {t("حالاتك")}</Link>
+                                    <Link to='' className={`${active === "donate" ? style.style__link : style.view__link}`} onClick={() => { showActive("donate") }}> {t("تبرعاتك")}</Link>
+                                </div>
+                            </Col>
+                        </Row>
+                    </Container>
+                </section>
+            </AnimatedPage >
         </>
     )
 }

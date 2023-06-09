@@ -157,7 +157,7 @@ export default function NavbarMenu() {
                                         </li>
 
                                         <li>
-                                            <NavLink className="nav-link" to="/" href="index.html">{t("ملف الشفافية")} </NavLink>
+                                            <NavLink className="nav-link" to="/Donor-Wall" href="index.html">{t("ملف الشفافية")} </NavLink>
                                         </li>
 
                                         <li>

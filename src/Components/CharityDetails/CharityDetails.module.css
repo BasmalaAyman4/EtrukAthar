@@ -144,7 +144,7 @@ body[dir="rtl"] .donation {
     font-family: "Changa-SemiBold";
 }
 .event{
-    height: 450px;
+    height: 480px;
 }
 .card:hover {
     animation: move .5s infinite alternate;

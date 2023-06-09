@@ -324,7 +324,23 @@
     " عدد الاثاث المراد التبرع بها":"Number of furniture which will be donated",
     "الاثاث المراد التبرع بها":"furniture or device which will be donated",
     "تفاصيل الاثاث او الاجهزه":"Details about Furnitures or devices",
-    "ساعدنا في جمع":"help us to collect :"
+    "ساعدنا في جمع":"help us to collect :",
+        "تعديل الحالة":"modify status",
+    "تويتر":"Twitter",
+    "فيسبوك":"Facebook",
+    "تيليجرام":"Telegram",
+    "واتساب":"Whatsapp",
+        "تعديل":"Edit",
+   "لتعديل حالة يرجي ملئ البيانات":"To modify the status, please fill in the information.",
+   "الحالة مرفوضة":"status denied",
+   "نوع الملابس":"type of clothing",
+   "لمن الملابس":"for whom clothes",
+   "تفاصيل عن الملابس المراد تجميعها:":"Details of the garment to be collected:",
+   "الي":"to",
+   "المزيد من التفاصيل":"more details",
+   "حمله اعاله الاطفال":"Child Support Campaign",
+   "حمله البذور و العقائق":"Seeds and aphids campaign",
+   "انضم للحمله الان":"Join the campaign now"
 
     
 

@@ -138,7 +138,7 @@ body[dir="ltr"] .annualEvents{
     width: 70%;
 }
  body[dir="rtl"] .annualEvents__title{
-    background-color:#246d57da;
+    background-color:#EF8451;
     color: #fff;
     padding: 10px 30px;
     position: relative;
@@ -417,6 +417,13 @@ text-align: center;
  body[dir="rtl"] .event {
      direction: ltr;
  }
+  body[dir="ltr"] .up {
+      direction: rtl;
+  }
+
+  body[dir="rtl"] .up {
+      direction: ltr;
+  }
  @media (max-width:767px) {
     .desc {
          white-space: nowrap;

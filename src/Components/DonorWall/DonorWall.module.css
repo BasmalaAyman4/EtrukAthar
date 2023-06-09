@@ -1,0 +1,45 @@
+.donations {
+    padding: 20px;
+    margin-top: 3%;
+    border: 1px solid #FFF;
+    background-color: #ffffff;
+    border-radius: 5px;
+    font-family: "Changa-Regular" !important;
+    box-shadow: 0 0 4px 0 #696969da;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    margin-bottom: 3%;
+}
+
+.donations__para,
+.donations__price {
+    margin: auto;
+    text-align: center;
+}
+
+body[dir="ltr"] .donations__date {
+    margin: auto;
+    text-align: right;
+}
+
+body[dir="rtl"] .donations__date {
+    margin: auto;
+    text-align: left;
+}
+
+body[dir="ltr"] .donations {
+    direction: rtl;
+}
+
+body[dir="rtl"] .donations {
+    direction: ltr;
+}
+body[dir="rtl"] .donation__info__body {
+    direction: ltr;
+}
+
+body[dir="ltr"] .donation__info__body {
+    direction: rtl;
+}
