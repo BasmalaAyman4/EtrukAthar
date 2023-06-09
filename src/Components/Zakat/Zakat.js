@@ -50,43 +50,43 @@ export default function Zakat() {
                                 <h4 className={`${style.zakatValue}`}> {t("قيمة الزكاة")}</h4>
                                 <hr />
                                 <div >
-                                {zakat.money ?
-                                    <div className={`${style.zakatValue__body}`}>
-                                        <p>{zakat.money <= (zakat.price_gold21 * 87.48) ? "0" : ((zakat.money * 2.5) / 100)} {t("ج")}</p>
-                                        <p>  {t("زكاة المال")}</p>
-                                    </div>
-                                    :
-                                    
-                                    <div className={`${style.zakatValue__body}`}>
-                                    
-                                        <p>  0 </p>
-                                        <p> {t("زكاة المال")}</p>
-                                    </div>
-                                  }
-                                      {zakat.gold21 || zakat.gold24?
+                                    {zakat.money ?
                                         <div className={`${style.zakatValue__body}`}>
-                                        
-                                        <p>{((zakat.gold21 * zakat.price_gold21 * 2.5) / 100) + ((zakat.gold24 * zakat.price_gold24 * 2.5) / 100) || ((zakat.gold21 * zakat.price_gold21 * 2.5) / 100) || ((zakat.gold24 * zakat.price_gold24 * 2.5) / 100)} {t("ج")}</p>
+                                            <p>{zakat.money <= (zakat.price_gold21 * 87.48) ? "0" : ((zakat.money * 2.5) / 100)} {t("ج")}</p>
+                                            <p>  {t("زكاة المال")}</p>
+                                        </div>
+                                        :
+
+                                        <div className={`${style.zakatValue__body}`}>
+
+                                            <p>  0 </p>
+                                            <p> {t("زكاة المال")}</p>
+                                        </div>
+                                    }
+                                    {zakat.gold21 || zakat.gold24 ?
+                                        <div className={`${style.zakatValue__body}`}>
+
+                                            <p>{((zakat.gold21 * zakat.price_gold21 * 2.5) / 100) + ((zakat.gold24 * zakat.price_gold24 * 2.5) / 100) || ((zakat.gold21 * zakat.price_gold21 * 2.5) / 100) || ((zakat.gold24 * zakat.price_gold24 * 2.5) / 100)} {t("ج")}</p>
                                             <p>{t("زكاة الدهب")}</p>
                                         </div>
                                         :
                                         <div className={`${style.zakatValue__body}`}>
-                                        
+
                                             <p> 0 </p>
                                             <p>{t("زكاة الدهب")}</p>
                                         </div>
-                                      }
-                                  
+                                    }
+
                                     <hr />
                                     {zakat.gold21 || zakat.gold24 || zakat.money ?
-                                    <div className={`${style.zakatValue__body}`}>
-                                         <p>{zakat.money <= (zakat.price_gold21 * 87.48) ? ((zakat.gold21 * zakat.price_gold21 * 2.5) / 100) + ((zakat.gold24 * zakat.price_gold24 * 2.5) / 100) : ((zakat.money * 2.5) / 100) + ((zakat.gold21 * zakat.price_gold21 * 2.5) / 100) + ((zakat.gold24 * zakat.price_gold24 * 2.5) / 100)} {t("ج")}</p>
-                                    </div>
-                                    :
-                                    <div className={`${style.zakatValue__body}`}>
-                                        <p> 0 </p>
-                                        <p className={`${style.zakatValue__total}`}>{t("إجمالي مبلغ الزكاة")}</p>
-                                    </div>
+                                        <div className={`${style.zakatValue__body}`}>
+                                            <p>{zakat.money <= (zakat.price_gold21 * 87.48) ? (((zakat.gold21 * zakat.price_gold21 * 2.5) / 100) + ((zakat.gold24 * zakat.price_gold24 * 2.5) / 100) || ((zakat.gold21 * zakat.price_gold21 * 2.5) / 100) || ((zakat.gold24 * zakat.price_gold24 * 2.5) / 100)) : ((zakat.money * 2.5) / 100) + ((zakat.gold21 * zakat.price_gold21 * 2.5) / 100) + ((zakat.gold24 * zakat.price_gold24 * 2.5) / 100)} {t("ج")}</p>
+                                        </div>
+                                        :
+                                        <div className={`${style.zakatValue__body}`}>
+                                            <p> 0 </p>
+                                            <p className={`${style.zakatValue__total}`}>{t("إجمالي مبلغ الزكاة")}</p>
+                                        </div>
                                     }
 
                                 </div>

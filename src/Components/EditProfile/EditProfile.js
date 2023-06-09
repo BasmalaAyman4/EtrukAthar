@@ -13,8 +13,10 @@ import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import UserCart from '../UserCart/UserCart';
 import imgNull from '../../assets/images/remove.photos-removed-background.png'
+import Cookies from 'js-cookie'
 export default function EditProfile() {
     const [token, setToken] = useState(localStorage.getItem("token"))
+    const currentLanguageCode = Cookies.get('i18next') || 'en'
     const [dataCases, setDataCases] = useState([]);
     const [imageCases, setImageCases] = useState([]);
     const [dataDonation, setDataDonation] = useState([]);
@@ -50,12 +52,12 @@ export default function EditProfile() {
                 })
             }).catch((err) => { console.log(err) })
 
-        axios.get(`https://otrok.invoacdmy.com/api/user/profile/cases`, {
+        axios.get(`https://otrok.invoacdmy.com/api/user/profile/cases?lang=${currentLanguageCode}`, {
             headers: {
                 "Authorization": `Bearer ${token}`,
                 "Content-Type": "multipart/form-data"
             }
-        })
+        }, [currentLanguageCode])
             .then(response => {
                 setDataCases(response.data.cases)
                 setImageCases(response.data?.cases?.caseimage)
