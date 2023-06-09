@@ -22,6 +22,7 @@ import AcutionDetails from "../Components/AcutionDetails/AcutionDetails";
 import CharityCaseDetails from "../Components/charityCaseDetails/CharityCaseDetails";
 import CharityEventDetails from "../Components/charityEventDetails/CharityEventDetails";
 import { AnimatePresence } from "framer-motion"
+import DonorWall from "../Components/DonorWall/DonorWall";
 export default function Router() {
   const location = useLocation();
   return (
@@ -44,8 +45,7 @@ export default function Router() {
         <Route path="/userCase/:id" element={<CaseDetailsUser />} />
         <Route path="/Zakat" element={<Zakat />} />
         <Route path="/acution" element={<Acution />} />
-
-        <Route path="/acution/acution-details/:id" element={<AcutionDetails />} />
+        <Route path="/Donor-Wall" element={<DonorWall />} />        <Route path="/acution/acution-details/:id" element={<AcutionDetails />} />
         <Route path="/charity-details/:id/charityCase-details/:id" element={<CharityCaseDetails />} />
         <Route path="/charity-details/:id/charityEvent-details/:id" element={<CharityEventDetails />} />
 

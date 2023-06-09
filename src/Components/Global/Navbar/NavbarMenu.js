@@ -219,7 +219,7 @@ export default function NavbarMenu() {
                                     <NavLink to="/event" className={`${styles.mainNav__link} main-nav__link `}><MdNotificationsActive className='event' />{t(" المناسبات")}</NavLink>
                                     <NavLink to="/charities" className={`${styles.mainNav__link} main-nav__link`}>{t("جمعيات  خيرية")} </NavLink>
                                     <NavLink to="/acution" className={`${styles.mainNav__link} main-nav__link`}>{t("المزادات")}</NavLink>
-                                    <NavLink to="/box" className={`${styles.mainNav__link} main-nav__link`}> {t("صندوق علمني ")}</NavLink>
+                                    <NavLink to="/Donor-Wall" className={`${styles.mainNav__link} main-nav__link`}> {t("ملف الشفافية")}</NavLink>
 
 
                                 </Nav>

@@ -26,6 +26,7 @@ import { toast } from 'react-toastify'
 import { ToastContainer } from "react-toastify";
 import EditCase from '../EditCase/EditCase';
 import Cookies from 'js-cookie'
+import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, TelegramShareButton } from 'react-share';
 export default function CaseDetailsUser() {
     const [formData, setFormData] = useState({})
     const [image, setImage] = useState([]);
@@ -62,28 +63,40 @@ export default function CaseDetailsUser() {
                         <div className={`${style.cardDetails__icon}`}>
                             <Row>
                                 <Col md={3}  >
-                                    <button className={`${style.icon__social} ${style.icon__social1}`}>
+                                    <WhatsappShareButton
+                                        className={`${style.icon__social} ${style.icon__social1}`}
+                                        url={`https://etruk-athra.invoacdmy.com/userCase/${formData.id}`}
+                                    >
                                         <FaWhatsapp className={`${style.i}`} />
                                         <span> {t("واتساب")}</span>
-                                    </button>
+                                    </WhatsappShareButton>
                                 </Col>
                                 <Col md={3}  >
-                                    <button className={`${style.icon__social} ${style.icon__social2}`}>
+                                    <TelegramShareButton
+                                        className={`${style.icon__social} ${style.icon__social2}`}
+                                        url={`https://etruk-athra.invoacdmy.com/userCase/${formData.id}`}
+                                    >
                                         <FaTelegram className={`${style.i}`} />
                                         <span> {t("تيليجرام")}</span>
-                                    </button>
+                                    </TelegramShareButton>
                                 </Col>
                                 <Col md={3}  >
-                                    <button className={`${style.icon__social} ${style.icon__social3}`}>
+                                    <FacebookShareButton
+                                        className={`${style.icon__social} ${style.icon__social3}`}
+                                        url={`https://etruk-athra.invoacdmy.com/userCase/${formData.id}`}
+                                    >
                                         <FaFacebook className={`${style.i}`} />
                                         <span> {t("فيسبوك")}</span>
-                                    </button>
+                                    </FacebookShareButton>
                                 </Col>
                                 <Col md={3} >
-                                    <button className={`${style.icon__social} ${style.icon__social4}`}>
+                                    <TwitterShareButton
+                                        className={`${style.icon__social} ${style.icon__social4}`}
+                                        url={`https://etruk-athra.invoacdmy.com/userCase/${formData.id}`}
+                                    >
                                         <FaTwitter className={`${style.i}`} />
                                         <span> {t("تويتر")}</span>
-                                    </button>
+                                    </TwitterShareButton>
                                 </Col>
 
                             </Row>

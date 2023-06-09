@@ -193,44 +193,48 @@ body[dir="ltr"] .icon__social{
         
 }
 .icon__social1{
-    color: green;
+    color: green !important;
 }
 .icon__social1:hover{
     outline: 2px solid #70ca92;
     box-shadow: 4px 5px 17px -4px #269168;
+    color: #fff !important;
 }
 .icon__social1::before {
     background-color: #2caf78;
 }
 .icon__social2 {
-    color: rgb(36, 200, 230);
+    color: rgb(36, 200, 230) !important;
 }
 .icon__social2:hover {
     outline: 2px solid #70bcca;
     box-shadow: 4px 5px 17px -4px #267891;
+    color: #fff !important;
 }
 .icon__social2::before {
     background-color: rgb(36, 200, 230);
 }
 .icon__social3 {
-    color: rgb(0, 66, 128);
+    color: rgb(0, 66, 128) !important;
 }
 
 .icon__social3:hover {
     outline: 2px solid #7094ca;
     box-shadow: 4px 5px 17px -4px #264b91;
+    color: #fff !important;
 }
 .icon__social3::before {
     background-color: #2c4faf;
 }
 .icon__social4 {
     
-    color: rgb(40, 144, 241);
+    color: rgb(40, 144, 241) !important;
 }
 
 .icon__social4:hover {
     outline: 2px solid #708fca;
     box-shadow: 4px 5px 17px -4px #268591;
+    color: #fff !important;
 }
 .icon__social4::before {
     background-color: rgb(40, 144, 241);
