@@ -36,7 +36,7 @@ export default function CharitiesView() {
                         <h1 className={`${style.charityTitle}`}>{t("نحن منظمة خيرية عالمية")}</h1>
                         <p className={`${style.charityPara}`}>{t("نحن نستجيب للمساعدات الطارئة عند الحاجة وندعم العائلات التي فقدت منازلها بسبب النزاع.")}</p>
 
-                        <Link to="/sign-up" className={`${style.charitybtn}`}>{t("انضم إلينا")}</Link>
+                        <Link to="/charitySign-up" className={`${style.charitybtn}`}>{t("انضم إلينا")}</Link>
                     </div>
                 </div>
                 <Container>

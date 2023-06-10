@@ -242,7 +242,7 @@
     "البائع":"Vendor",
    "المبلغ المجموع للمزادات":"The total amount of auctions",
    "اخر المزادات المضافة":"Last Auctions Added",
-   "اضافة حالة للمزاد":"Add case to auction",
+   "اضافة مزاد":"Add auction",
    "اسم المزاد بالعربية":"Name of Auction in Arabic",
     "اسم المزاد بالانجيزية":"Name of Auction in English",
     "نبذه مختصره عن المزاد بالعربية": "A brief overview of the auction in Arabic",
@@ -332,7 +332,7 @@
     "واتساب":"Whatsapp",
         "تعديل":"Edit",
    "لتعديل حالة يرجي ملئ البيانات":"To modify the status, please fill in the information.",
-   "الحالة مرفوضة":"status denied",
+   "الحالة مرفوضة":"status is rejected",
    "نوع الملابس":"type of clothing",
    "لمن الملابس":"for whom clothes",
    "تفاصيل عن الملابس المراد تجميعها:":"Details of the garment to be collected:",
@@ -352,6 +352,8 @@
    "المكفوفين":"blind",
     "الاطعام":"Food",
     "تطوع الان":"volunteer now"
+   
+   
 
 
     

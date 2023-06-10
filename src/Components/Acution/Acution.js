@@ -135,7 +135,7 @@ export default function Acution() {
 
                 <div className={`${style.acution}`}>
                     <div className={`${style.acutionBody}`}>
-                        <Link variant="primary" onClick={handleShow} className={`${style.modalAcution}`}>{t("اضافة حالة للمزاد")}</Link>
+                        <Link variant="primary" onClick={handleShow} className={`${style.modalAcution}`}>{t( "اضافة مزاد")}</Link>
                         <Modal size="lg" show={show} onHide={handleClose} dir={currentLanguageCode === 'ar' ? 'rtl' : 'ltr'}>
                             <Modal.Header closeButton>
                                 <Modal.Title id="contained-modal-title-vcenter">
@@ -203,7 +203,7 @@ export default function Acution() {
 
                                         </Form.Group>
                                         <Button type="submit" className={style.signup__btn} >
-                                            اضافة الان
+                                        {t("اضافة الان")}
                                         </Button>
                                     </Form>
                                 }
