@@ -325,7 +325,7 @@
     "الاثاث المراد التبرع بها":"furniture or device which will be donated",
     "تفاصيل الاثاث او الاجهزه":"Details about Furnitures or devices",
     "ساعدنا في جمع":"help us to collect :",
-        "تعديل الحالة":"modify status",
+        "تعديل الحالة":"Edit Case",
     "تويتر":"Twitter",
     "فيسبوك":"Facebook",
     "تيليجرام":"Telegram",
@@ -351,7 +351,9 @@
     "اختيار التطوع":"Choice to Volunteer",
    "المكفوفين":"blind",
     "الاطعام":"Food",
-    "تطوع الان":"volunteer now"
+    "تطوع الان":"volunteer now",
+    "الحالة":"status",
+    "نشر":"published"
    
    
 
