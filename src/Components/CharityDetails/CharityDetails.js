@@ -18,7 +18,7 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import axios from 'axios'
 
 import Cookies from 'js-cookie'
-import CardCase from './../Card/Card'
+import CardCase from './../CardCharity/CardCharity'
 import HeaderTitleCharity from "../HeaderTitleCharity/HeaderTitleCharity"
 import AnimatedPage from '../Global/AnimatedPage';
 import { useTranslation } from 'react-i18next';
@@ -125,8 +125,6 @@ export default function CharityDetails() {
                                     para={caseCard?.description}
                                     progress={((caseCard?.paied_amount * 100) / caseCard?.initial_amount).toFixed(0)}
                                     totalPrice={caseCard?.initial_amount} numOfDonates={caseCard?.paied_amount} />
-
-
                             </Link>
                         )}
                     </div>
