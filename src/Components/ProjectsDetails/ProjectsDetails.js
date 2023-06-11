@@ -728,7 +728,7 @@ export default function ProjectsDetails() {
                                         <Form.Control type='text' name="address" className={`${style.input}`} placeholder={t("العنوان")} onChange={onChangeHandler} value={donateData.address} required />
                                     </Form.Group>
                                     <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                        <Form.Control min='1' max='100000000' type='number' name="numberOfVoulenteers" className={`${style.input}`} placeholder={t("عدد المتطوعين")} onChange={onChangeHandler} value={donateData.numberOfVoulenteers} required />
+                                        <Form.Control min='1'  max={formData.remaining_amount}  type='number' name="numberOfVoulenteers" className={`${style.input}`} placeholder={t("عدد المتطوعين")} onChange={onChangeHandler} value={donateData.numberOfVoulenteers} required />
                                     </Form.Group>
                                     <PhoneInput
                                         defaultCountry="EG"
@@ -776,7 +776,7 @@ export default function ProjectsDetails() {
                                         className={` ${style.PhoneInputInput} ${style.PhoneInput}  ${style.input}`}
                                         required />
                                     <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                        <Form.Control type='number' min='1' max='100000000' name="numberOfCartons" className={`${style.input}`} placeholder={t("عدد الكارتين")} onChange={onChangeHandler} value={donateData.numberOfCartons} required />
+                                        <Form.Control type='number' min='1'  max={formData.remaining_amount}  name="numberOfCartons" className={`${style.input}`} placeholder={t( "عدد الكارتين التي ستتبرع بها")} onChange={onChangeHandler} value={donateData.numberOfCartons} required />
                                     </Form.Group>
                                     <Form.Group className="mb-3" controlId="formBasicEmail" >
                                         <Form.Control type='date' name="dateSend" className={`${style.input}`} onChange={onChangeHandler} value={donateData.dateSend} required />
@@ -819,7 +819,7 @@ export default function ProjectsDetails() {
                                         className={` ${style.PhoneInputInput} ${style.PhoneInput}  ${style.input}`}
                                         required />
                                     <Form.Group className="mb-3" controlId="formBasicEmail" >
-                                        <Form.Control type='number' name="numberOfPeople" min='1' max='100000000' className={`${style.input}`} placeholder={t("عدد الافراد")} onChange={onChangeHandler} value={donateData.numberOfPeople} required />
+                                        <Form.Control type='number' name="numberOfPeople" min='1'  max={formData.remaining_amount}  className={`${style.input}`} placeholder={t("عدد الافراد")} onChange={onChangeHandler} value={donateData.numberOfPeople} required />
                                     </Form.Group>
                                     <Form.Group className="mb-3" controlId="formBasicEmail" >
                                         <Form.Control type='date' name="dateSend" className={`${style.input}`} onChange={onChangeHandler} value={donateData.dateSend} required />

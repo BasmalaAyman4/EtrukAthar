@@ -44,9 +44,14 @@ export default function EventDetails() {
             }
         }, [currentLanguageCode])
             .then(response => {
-                toast.success(response.data.message)
+                if(response.data.message === "you are not allowed to do this process" || response.data.message === "عملية غير مصرح بها" )
+                {
+                    toast.success(t("لقد طلبت الانضمام من قبل"))
+                }else{
+                    toast.success(t("لقد تم طلب انضمامك بنجاح"))
+                }          
             }
-            ).catch((err) => { toast.error("") })
+            ).catch((err) => { toast.error(err.data.message) })
 
     }
     return (

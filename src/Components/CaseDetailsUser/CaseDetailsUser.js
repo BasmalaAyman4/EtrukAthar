@@ -46,9 +46,9 @@ export default function CaseDetailsUser() {
     return (
         <>
 
-            <Container>
+            <Container className="test-center">
                 <Row dir='' className='mt-5 '>
-                    <Col sm={12} xl={10} dir='rtl' >
+                    <Col sm={12}   dir={currentLanguageCode === 'ar' ? 'rtl' : 'ltr'} >
 
                         <div className={`${style.cardDetails__body}`}>
 

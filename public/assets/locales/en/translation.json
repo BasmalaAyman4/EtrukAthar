@@ -235,9 +235,9 @@
     "دقائق":"Minutes",
     "ثواني":"Seconds",
     "وصف":"DESCRIPTION",
-    "تاريخ المزاد":"AUCTION HISTORY",
-    "معلومات البائع":"VENDOR INFO",
-    "المزيد من البائع":"MORE FROM VENDOR",
+    "تاريخ المزاد":"HISTORY",
+    "معلومات البائع":"INFO",
+    "المزيد من البائع":"MORE",
     "البريد الالكتروني":"Email",
     "البائع":"Vendor",
    "المبلغ المجموع للمزادات":"The total amount of auctions",
@@ -353,7 +353,13 @@
     "الاطعام":"Food",
     "تطوع الان":"volunteer now",
     "الحالة":"status",
-    "نشر":"published"
+    "نشر":"published",
+    "لقد تم طلب انضمامك بنجاح":"Your ask to join is done successfully",
+    "لقد طلبت الانضمام من قبل": "You asked for joining before",
+    "عدد الكارتين التي ستتبرع بها":"Number of cartoon you want donate",
+    "يجب تسجيل للانضمام الي المناسبه ":"Please login to join in the event",
+    "للانضمام الي الحدث الان":"For Joining in the event",
+    "تسجيل دخول":"Login"
    
    
 

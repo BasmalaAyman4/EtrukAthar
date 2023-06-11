@@ -46,8 +46,7 @@ export default function VolunteerForm() {
                 "Authorization": `Bearer ${token}`,
                 "Content-Type": "multipart/form-data"
             }
-        })
-            .then((response) => {
+        }).then((response) => {
                 setVolunteerData({
                     userName: response.data.user.name,
                     email: response.data.user.email,
@@ -86,23 +85,29 @@ export default function VolunteerForm() {
         const toastId = toast.loading(t(" ... انتظر قليلا"))
         setTimeout(() => { toast.dismiss(toastId); }, 1000);
         e.preventDefault()
+        if(token){
         axios.post(`https://otrok.invoacdmy.com/api/user/volunteer/store/user?lang=${currentLanguageCode}`, storeVolunteer, {
             headers: {
                 "Authorization": `Bearer ${token}`,
                 "Content-Type": "multipart/form-data"
             }
-        }, [currentLanguageCode])
+        },[currentLanguageCode]).then(response => {
+            toast.success(t("لقد تم طلب انضمامك بنجاح"))
+        }
+        ).catch((err) => { toast.error(err.response.data.message) })
+    }
+    else
+    {
         axios.post(`https://otrok.invoacdmy.com/api/user/volunteer/store/guest?lang=${currentLanguageCode}`, storeVolunteer, {
             headers: {
                 "Content-Type": "multipart/form-data"
             }
-        }, [currentLanguageCode])
-            .then(response => {
-                toast.success(response.data.message)
-                console.log(storeVolunteer, "bla")
+        },[currentLanguageCode]).then(response => {
+                toast.success(t("لقد تم طلب انضمامك بنجاح"))
+                
             }
             ).catch((err) => { toast.error(err.response.data.message) })
-
+        }
     }
 
     const { t } = useTranslation()
