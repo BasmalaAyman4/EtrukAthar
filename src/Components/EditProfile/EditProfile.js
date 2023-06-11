@@ -12,7 +12,7 @@ import Col from 'react-bootstrap/Col';
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import UserCart from '../UserCart/UserCart';
-import imgNull from '../../assets/images/remove.photos-removed-background.png'
+import imgNull from '../../assets/images/r.png'
 import Cookies from 'js-cookie'
 import AnimatedPage from "../Global/AnimatedPage";
 import Aos from 'aos'
@@ -147,7 +147,7 @@ export default function EditProfile() {
     return (
         <>
             <HeaderTitle title={t("تعديل الحساب الشخصي")} />
-          
+
             <AnimatedPage >
                 <section
                     intial={{ opacity: 0 }}

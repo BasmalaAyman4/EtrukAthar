@@ -18,10 +18,10 @@ export default function Login() {
     // }
     const { t } = useTranslation()
     const navigate = useNavigate();
- 
- 
+
+
     const validEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-  
+
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -86,7 +86,8 @@ export default function Login() {
                 toast.success(t("تم تسجيل الدخول بنجاح"))
                 setDisabled(false)
                 handleRedirect()
-                    
+
+
             })
             .catch((err) => {
                 toast.error(err.response.data.message)
@@ -115,7 +116,7 @@ export default function Login() {
                                         <li className={`${style.userLog__item}`} onClick={() => { setUserType('1') }} >
                                             <button type='button' className={`${userType === '1' ? style.user__link : style.userLog__link}`} > {t("مستخدم")} <TbUserPlus className={`${style.iLog}`} /></button>
                                         </li>
-                                        <li className={`${style.userLog__item}  `} onClick={() => { setUserType('2') }} >
+                                        <li className={`${style.userLog__item}  `} onClick={() => window.location.replace("")} >
                                             <button type='button' className={`${userType === '2' ? style.user__link : style.userLog__link}`} >{t("جمعية")}  <TbBuildingWarehouse className={`${style.iLog}`} /></button>
                                         </li>
                                     </ul>
@@ -132,7 +133,7 @@ export default function Login() {
                                                 {formError.password}
                                             </Form.Text>
                                         </Form.Group>
-                                        <button className={style.log__btn} type='button' disabled={disabled? true : false} onClick={(e) => { handleSubmitLogin(e) }}>{t("تسجيل الدخول")}</button>
+                                        <button className={style.log__btn} type='button' disabled={disabled ? true : false} onClick={(e) => { handleSubmitLogin(e) }}>{t("تسجيل الدخول")}</button>
                                     </div>
                                     <hr className={style.forgetLine} />
 

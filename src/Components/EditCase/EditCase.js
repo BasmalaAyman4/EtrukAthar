@@ -201,7 +201,7 @@ const EditCase = ({ show, setShow }) => {
                                     value={formData.statusCase}
                                 >
                                     <option value=''>{t("الحالة")}</option>
-                                    <option value='published'>published</option>
+                                    <option value='published'> {t("نشر")}</option>
                                 </select>
                             </Form.Group>
                             <Button type="submit" className={styles.signup__btn} >
