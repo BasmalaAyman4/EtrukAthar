@@ -66,7 +66,7 @@ export default function CharityCaseDetails() {
     })
 
     useEffect(() => {
-        axios.get(`https://otrok.invoacdmy.com/api/user/case/show/${casesId.id}?lang=${currentLanguageCode}`)
+        axios.get(`http://otrok.invoacdmy.com/api/user/case/show/${casesId.id}?lang=${currentLanguageCode}`)
             .then((response) => {
                 setFormData(response.data.case)
                 setItems(response.data.items)

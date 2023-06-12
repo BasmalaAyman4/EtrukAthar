@@ -43,6 +43,7 @@ export default function ProjectsDetails() {
     const [queryParameters] = useSearchParams()
     const [priceShow, setPriceshow] = useState(10);
     const [disabled, setDisabled] = useState(false)
+    const [isStatus, setIsStatus] = useState(false);
     const currentLanguageCode = Cookies.get('i18next') || 'en'
 
     const { t } = useTranslation()
@@ -74,10 +75,12 @@ export default function ProjectsDetails() {
                 setImage(response.data.case.caseimage)
                 setDonationType(response.data.case.donationtype_id)
             }).catch((err) => { console.log(err) })
-        if (queryParameters.get("status") === '1') {
+        if (queryParameters.get("status") === '1' && !isStatus) {
             toast.success(t(" عملية التبرع تمت بنجاح"))
+             setIsStatus(true)
         }
     })
+
 
 
 
