@@ -77,7 +77,7 @@ export default function ProjectsDetails() {
             }).catch((err) => { console.log(err) })
         if (queryParameters.get("status") === '1' && !isStatus) {
             toast.success(t(" عملية التبرع تمت بنجاح"))
-             setIsStatus(true)
+            setIsStatus(true)
         }
     })
 

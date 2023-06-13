@@ -116,7 +116,7 @@ export default function Login() {
                                         <li className={`${style.userLog__item}`} onClick={() => { setUserType('1') }} >
                                             <button type='button' className={`${userType === '1' ? style.user__link : style.userLog__link}`} > {t("مستخدم")} <TbUserPlus className={`${style.iLog}`} /></button>
                                         </li>
-                                        <li className={`${style.userLog__item}  `} onClick={() => window.location.replace("")} >
+                                        <li className={`${style.userLog__item}  `} onClick={() => window.location.replace("http://etruk-athra-charity.invoacdmy.com/")} >
                                             <button type='button' className={`${userType === '2' ? style.user__link : style.userLog__link}`} >{t("جمعية")}  <TbBuildingWarehouse className={`${style.iLog}`} /></button>
                                         </li>
                                     </ul>

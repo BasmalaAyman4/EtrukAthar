@@ -4,7 +4,7 @@ import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-k
 import { FaFacebook, FaLinkedin, FaGoogle, FaTwitter, FaWhatsapp, FaGithub, FaHome, FaEnvelope, FaPhone, FaPrint, FaYoutube, FaInstagram } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import QR from "../../../assets/icons/frame.svg"
+import QR from "../../../assets/icons/websiteplanet-qr.svg"
 export default function Footer() {
     const { t } = useTranslation()
     return (

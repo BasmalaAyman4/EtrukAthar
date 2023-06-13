@@ -238,9 +238,7 @@ body[dir="ltr"] .evBtn {
     direction: rtl;
 }
 .project{
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 2%;
+    margin: auto;
 }
 body[dir="rtl"] .project {
     direction: ltr;
@@ -252,6 +250,7 @@ body[dir="ltr"] .project {
 .infoPara{
     color: #333;
     margin-bottom: 30px;
+
 }
 body[dir="rtl"] .infoPara {
     direction: ltr;

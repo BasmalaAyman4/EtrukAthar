@@ -143,8 +143,7 @@
     "قيمة الزكاة":"The amount of zakat",
     "زكاة المال":"Money Zakat",
     "زكاة الدهب":"Gold Zakat",
-    "إجمالي مبلغ الزكاة":"The total amount of zakat",
-   
+    "إجمالي مبلغ الزكاة":"The total amount of zakat",   
     "قيمة المال الذي أملكه":"The amount of the money I have",
     "القيمة هنا":"the amount here",
     "العملة":"The currency",
@@ -154,7 +153,6 @@
     "وحدة القياس":"measruing unit",
     "الجرام":"Gram",
     "وزن الذهب الذي تملكه من عيار 24":"The weight of gold you own karat 24",
-  
     "منضم بالفعل":"Already Joined",
     "انضم للحملة":"Join The Campaign",
      "القضايا العالمية":"Global Causes",
@@ -167,7 +165,7 @@
     "الغارمين":"Al Gharemeen",
     "العمل معا":"work together",
     "نحن نعمل من أجل الفقراء لمنحهم حياة سعيدة.":"We work for the poor to give them a happy life.",
-    ":نأخذ أنواعًا مختلفة من التبرعات":"We take different types of donations:",
+    ":نأخذ أنواعًا مختلفة من التبرعات":":We take different types of donations",
     "التبرع بالطعام":"Food Donation",
     "التبرع بالمال":"Money Donation",
     "التبرع بالملابس":"Clothes Donation",
@@ -359,7 +357,9 @@
     "عدد الكارتين التي ستتبرع بها":"Number of cartoon you want donate",
     "يجب تسجيل للانضمام الي المناسبه ":"Please login to join in the event",
     "للانضمام الي الحدث الان":"For Joining in the event",
-    "تسجيل دخول":"Login"
+    "تسجيل دخول":"Login",
+     "الاحداث القادمه":"coming events",
+    "جميع الاحداث":"All events"
    
    
 

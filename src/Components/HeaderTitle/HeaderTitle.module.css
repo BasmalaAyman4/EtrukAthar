@@ -27,7 +27,7 @@
     background-color: #EF8451;
     height: 4px;
     width: 50px;
-    z-index: 1000;
+    z-index: 90;
     bottom: -20px;
     left: 50%;
 }

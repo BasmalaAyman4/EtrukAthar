@@ -19,6 +19,7 @@ export default function Events() {
     const currentLanguageCode = Cookies.get('i18next') || 'en'
     const { t } = useTranslation()
     const [event, setEvent] = useState([]);
+    const [lastEvent, setLastEvent] = useState([])
     const [active, setActive] = useState(true)
     const showActive = (view) => {
         view === "list" ? setActive(true) : setActive(false)
@@ -27,11 +28,20 @@ export default function Events() {
         Aos.init({ duration: 2000 });
     }, [])
     useEffect(() => {
+
+        axios.get(`https://otrok.invoacdmy.com/api/user/event/latest/events?lang=${currentLanguageCode}`)
+            .then(response => {
+                setLastEvent(response.data.events)
+                console.log(response.data.events)
+            }
+            ).catch((err) => { console.log(err) })
+
         axios.get(`https://otrok.invoacdmy.com/api/user/event/index?lang=${currentLanguageCode}`)
             .then(response => {
                 setEvent(response.data.result)
             }
             ).catch((err) => { console.log(err) })
+
 
     }, [currentLanguageCode]);
     return (
@@ -44,8 +54,8 @@ export default function Events() {
                         <div>
                         </div>
                         <div className={`${style.events__view}`}>
-                            <Link to='' className={`${active ? style.style__link : style.view__link}`} onClick={() => { showActive("list") }}><BsListUl /> {t("عرض الاحداث")}</Link>
-                            <Link to='' className={`${active ? style.calender__link : style.style__link}`} onClick={() => { showActive("calender") }}><BsGrid3X3 /> {t("عرض الاحداث")}</Link>
+                            <Link to='' className={`${active ? style.style__link : style.view__link}`} onClick={() => { showActive("list") }}><BsListUl /> {t("الاحداث القادمه")}</Link>
+                            <Link to='' className={`${active ? style.calender__link : style.style__link}`} onClick={() => { showActive("calender") }}><BsGrid3X3 /> {t("جميع الاحداث")}</Link>
                         </div>
                     </div>
                     <Row>
@@ -53,7 +63,7 @@ export default function Events() {
                         <Col lg="8" data-aos="fade-up">
                             <div className={`${active ? style.upcomingEvent : style.none}`}>
                                 <h2 className={`${style.upcomingEvent__title}`}><RxCounterClockwiseClock /> {t("الاحداث القادمة")}</h2>
-                                {event && event.map(eventCard =>
+                                {lastEvent && lastEvent.map(eventCard =>
                                     <EventCard id={eventCard.id}
                                         month={moment(eventCard.start_date).format("MMM")}
                                         day={moment(eventCard.start_date).format("Do")}
@@ -64,7 +74,7 @@ export default function Events() {
                                 )}
                             </div>
                             <div className={`${active ? style.none : style.upcomingEvent}`}>
-                                <h2 className={`${style.upcomingEvent__title}`}><BsGrid3X3 />  {t("الاحداث القادمة")}</h2>
+                                <h2 className={`${style.upcomingEvent__title}`}><BsGrid3X3 />  {t("جميع الاحداث")}</h2>
                                 <Row className={`${style.up}`}>
                                     {event && event.map(eventCard =>
 

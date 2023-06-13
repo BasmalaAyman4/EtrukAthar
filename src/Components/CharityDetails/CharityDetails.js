@@ -114,20 +114,26 @@ export default function CharityDetails() {
                         <h1 className={`${style.causesTitle}`}> {t("مشاريع مستمره")} </h1>
                         <p className={`${style.causesPara}`}>{t("بعض المشاريع الجارية العاجلة التي تحتاج إلى استكمال")}</p>
                     </div>
-                    <div className={`${style.project}`}>
+
+                    <div className={`${style.project} row`}>
                         {caseData && caseData.map(caseCard =>
-                            <Link to={`charityCase-details/${caseCard.id}`}>
-                                <CardCase
-                                    id={caseCard?.id}
-                                    donationType={caseCard?.donationtype_id}
-                                    photo={caseCard?.caseimage[0]?.image}
-                                    title={caseCard?.name}
-                                    para={caseCard?.description}
-                                    progress={((caseCard?.paied_amount * 100) / caseCard?.initial_amount).toFixed(0)}
-                                    totalPrice={caseCard?.initial_amount} numOfDonates={caseCard?.paied_amount} />
-                            </Link>
+                            <div className='col-lg-4 col-md-6 col-sm-12'>
+                                <Link to={`charityCase-details/${caseCard.id}`}>
+
+                                    <CardCase
+                                        id={caseCard?.id}
+                                        donationType={caseCard?.donationtype_id}
+                                        photo={caseCard?.caseimage[0]?.image}
+                                        title={caseCard?.name}
+                                        para={caseCard?.description}
+                                        progress={((caseCard?.paied_amount * 100) / caseCard?.initial_amount).toFixed(0)}
+                                        totalPrice={caseCard?.initial_amount} numOfDonates={caseCard?.paied_amount} />
+
+                                </Link>
+                            </div>
                         )}
                     </div>
+
                 </Container>
                 <div className={`${style.secTwo}`}>
                     <Container>
@@ -136,28 +142,30 @@ export default function CharityDetails() {
                             <h1 className={`${style.causesTitleEvent}`}>{t("الأخبار والسعادة")}</h1>
                             <p className={`${style.causesParaEvent}`}>{t("بعض الأحداث الجارية العاجلة التي تحتاج إلى إكمال")}</p>
                         </div>
-                        <div className={`${style.project}`}>
+                        <div className={`${style.project} row`}>
                             {eventData && eventData.map(eventCard =>
-                                <Link to={`charityEvent-details/${eventCard.id}`}>
-                                    <div className={`${style.card} ${style.event}`}>
-                                        <div className={`${style.header}`}>
-                                            <div className={`${style.image}`}>
-                                                <img src={eventCard.image} alt="" />
-                                                <span className={`${style.tag}`}>{eventCard.start_date}</span>
+                                <div className='col-lg-4 col-md-6 col-sm-12'>
+                                    <Link to={`charityEvent-details/${eventCard.id}`}>
+                                        <div className={`${style.card} ${style.event} mt-3`}>
+                                            <div className={`${style.header}`}>
+                                                <div className={`${style.image}`}>
+                                                    <img src={eventCard.image} alt="" />
+                                                    <span className={`${style.tag}`}>{eventCard.start_date}</span>
+                                                </div>
+                                            </div>
+                                            <div className={`${style.info}`}>
+                                                <a href="#" class="block">
+                                                    <h4 className={`${style.title}`}>{eventCard.name}</h4>
+                                                    <p className={`${style.infoPara}`}>{eventCard.description}</p>
+                                                </a>
+
+                                            </div>
+                                            <div className={`${style.evBtn}`}>
+                                                <Link to={`charityEvent-details/${eventCard.id}`} className={`${style.caseBtn}`}>{t("للمزيد من التفاصيل ")} </Link>
                                             </div>
                                         </div>
-                                        <div className={`${style.info}`}>
-                                            <a href="#" class="block">
-                                                <h4 className={`${style.title}`}>{eventCard.name}</h4>
-                                                <p className={`${style.infoPara}`}>{eventCard.description}</p>
-                                            </a>
-
-                                        </div>
-                                        <div className={`${style.evBtn}`}>
-                                            <Link to={`charityEvent-details/${eventCard.id}`} className={`${style.caseBtn}`}>{t("للمزيد من التفاصيل ")} </Link>
-                                        </div>
-                                    </div>
-                                </Link>
+                                    </Link>
+                                </div>
                             )}
                         </div>
                     </Container>

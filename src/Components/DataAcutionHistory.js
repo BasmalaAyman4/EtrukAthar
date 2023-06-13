@@ -1,11 +1,7 @@
 
 export const userColumns = [
 
-    {
-        field: "id",
-        headerName: "ID",
-        width: 200,
-    },
+
     {
         field: "vendor_paid_time",
         headerName: "Date",
